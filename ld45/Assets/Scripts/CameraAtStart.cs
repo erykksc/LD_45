@@ -9,7 +9,7 @@ public class CameraAtStart : MonoBehaviour
     void Start()
     {
         transform.position = new Vector3(26, 13,-3);
-        factory.Add(Cell.getHexCoords(new Vector2(26, 13),1));
+        factory.Add(Cell.getHexCoords(new Vector2(26, 13),1),1);
     }
 
     // Update is called once per frame
