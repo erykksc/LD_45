@@ -12,9 +12,10 @@ public class ScoreCore : MonoBehaviour
         public Text BankPriceDisplayer;
         public Text TurretPriceDisplayer;
         public Text WallPriceDisplayer;
-
+        public static int[] Prices = { 10, 20, 30, 40 };
 
     public static int Cash=0;
+
 
     [Space]
     [Header("Round Related")]
@@ -35,6 +36,7 @@ public class ScoreCore : MonoBehaviour
 
     void Awake()
     {
+        Cash = 80;
         if (CashDisplayer == null)
         {
             CashDisplayer = GameObject.Find("CashDisplayer").GetComponent<Text>();
