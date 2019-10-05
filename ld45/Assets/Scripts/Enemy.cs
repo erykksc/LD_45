@@ -4,12 +4,33 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision) {
-        //Debug.Log("Collision");
+    [SerializeField] private int damage;
+    [SerializeField] private int hp;
+
+    private void Start() {
+        damage = 30;
+    }
+
+    public void dealDamage(int damage2deal)
+    {
+        if (damage > 0)
+        {
+            hp -= damage;
+        }
+
+        if (hp <= 0)
+        {
+            GameObject.Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) 
+    {
         if (collision.gameObject.CompareTag("Cell"))
         {
-            GameObject.Destroy(collision.gameObject);
-            //Debug.Log($"{collision.gameObject.name} destroyed");
+            collision.gameObject.GetComponent<Cell>().dealDamage(damage);
+            // c
+            // Debug.Log($"{collision.gameObject.name} destroyed");
         }
     }
 }
