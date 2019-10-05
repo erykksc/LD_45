@@ -7,52 +7,22 @@ public class Cell : MonoBehaviour
     // Start is called before the first frame update
 
     public Cell right = null , up = null , down = null, left = null;
-    
-    public void Instantiate(Vector2Int p)
+
+    public void Awake()
     {
-        pos = p;
-        transform.localPosition = (Vector2) pos;
+    //    SnapToIntPosition();
     }
-
-    public bool active = true;
-
+    
     public bool isActivated = false;
 
     public int timesActivated = 0;
 
-    public SpriteRenderer renderer;
-
     public Vector2Int pos;
-
-    [SerializeField] private int hp = 100;
-
-    public int getHp()
-    {
-        return hp;
-    }
-    void setHp(int h)
-    {
-        hp = h;
-    }
-    /// Functions
-    /*public IEnumerator animate(int duration)
-    {
-        Color color = new Color(1, 1, 1);
-        float t = 0;
-        while(t<duration)
-        {
-            color.r = 1 * (t / duration);
-            t += Time.deltaTime;
-            yield return null;
-        }
-    }*/
 
     public void getImpulse(Cell parent)
     {
-        Debug.Log("from getImpulse");
         if(parent.timesActivated>timesActivated)
         {
-            //Debug.Log("got impulse");
             isActivated = true;
             timesActivated = parent.timesActivated;
             StartCoroutine(propagateImpuls());
@@ -60,11 +30,9 @@ public class Cell : MonoBehaviour
     }
 
     // coroutine
-    public IEnumerator propagateImpuls()
+    private IEnumerator propagateImpuls()
     {
-        renderer.color = Color.green;
-        Debug.Log($"inside propagate impulse, activated{timesActivated}");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         if(right!=null)
         {
             right.getImpulse(this);
@@ -81,15 +49,11 @@ public class Cell : MonoBehaviour
         {
             down.getImpulse(this);
         }
-        isActivated = false;
-        renderer.color = Color.blue;
     }
 
-    public void Awake()
+    void Start()
     {
-        renderer = GetComponent<SpriteRenderer>();
-        renderer.color = Color.blue;
-        //Debug.Log("change color");
+        
     }
 
     private void Update()
