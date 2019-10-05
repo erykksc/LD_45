@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    // Start is called before the first frame update
 
     public Cell right = null , up = null , down = null, left = null;
     
-    public void Instantiate(Vector2Int p)
-    {
-        pos = p;
-        transform.localPosition = (Vector2) pos;
-    }
+
 
     public bool active = true;
-
     public bool isActivated = false;
 
     public int timesActivated = 0;
@@ -26,6 +20,12 @@ public class Cell : MonoBehaviour
 
     [SerializeField] private int hp = 100;
 
+
+    public void Instantiate(Vector2Int p)
+    {
+        pos = p;
+        transform.localPosition = (Vector2)pos;
+    }
     public int getHp()
     {
         return hp;
@@ -34,6 +34,8 @@ public class Cell : MonoBehaviour
     {
         hp = h;
     }
+
+
     /// Functions
     /*public IEnumerator animate(int duration)
     {
