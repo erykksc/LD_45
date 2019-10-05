@@ -6,13 +6,21 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private float spawnRate = 1.0f;
-    [SerializeField] private int enemies2Spawn = 5;
+    [SerializeField] private int numOfEnemies2Spawn = 5;
     [SerializeField] private bool destroyAfterSpawning = true;
     private float nextSpawn = 0.0f;
 
-    public void setEnemies2Spawn(int numOfEnemies)
+    public void setProperties(GameObject newEnemyPrefab, int newNumOfEnemies, float newSpawnRate, bool newDestroyAfterSpawning)
     {
-        enemies2Spawn = numOfEnemies;
+        enemyPrefab = newEnemyPrefab;
+        setNumOfEnemies2Spawn(newNumOfEnemies);
+        setSpawnRate(newSpawnRate);
+        setDestroyAfterSpawning(newDestroyAfterSpawning);
+    }
+
+    public void setNumOfEnemies2Spawn(int newEnemies2Spawn)
+    {
+        numOfEnemies2Spawn = newEnemies2Spawn;
     }
 
     public void setSpawnRate(float newSpawnRate)
@@ -26,13 +34,13 @@ public class EnemySpawner : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        if (Time.time > nextSpawn && enemies2Spawn > 0)
+        if (Time.time > nextSpawn && numOfEnemies2Spawn > 0)
         {
-            enemies2Spawn -= 1;
+            numOfEnemies2Spawn -= 1;
             nextSpawn = Time.time + spawnRate;
             GameObject Enemy = Instantiate(enemyPrefab, gameObject.transform);
         }
-        else if (enemies2Spawn <= 0 && destroyAfterSpawning)
+        else if (numOfEnemies2Spawn <= 0 && destroyAfterSpawning)
         {
             GameObject.Destroy(gameObject);
         }
