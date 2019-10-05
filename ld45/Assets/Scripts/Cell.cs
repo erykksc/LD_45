@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-
+    //These are the neighbouring tiles
     public Cell right = null , up = null , down = null, left = null;
     
 
-
+    //This is on only ONCE per energy cycle. Used for singe-time actions
     public bool active = true;
+
+    //This determines the energy of the tile
     public bool isActivated = false;
 
     public int timesActivated = 0;
@@ -56,10 +58,18 @@ public class Cell : MonoBehaviour
         {
             //Debug.Log("got impulse");
             isActivated = true;
+            WhenActivatedDoOnce();
             timesActivated = parent.timesActivated;
             StartCoroutine(propagateImpuls());
+            
         }
     }
+    public void WhenActivatedDoOnce()
+    {
+        if (name=="Bank" ) { ScoreCore.Cash += 1; Debug.Log("Cash++"); }
+        else if(name=="Wall" ) { setHp(getHp()+10); }
+    }
+
 
     // coroutine
     public IEnumerator propagateImpuls()
@@ -107,6 +117,7 @@ public class Cell : MonoBehaviour
         //if (isActivated && gameObject.GetComponent<SpriteRenderer>().sprite == SpriteDeactivated) gameObject.GetComponent<SpriteRenderer>().sprite = SpriteActivated;
         //if (!isActivated && gameObject.GetComponent<SpriteRenderer>().sprite == SpriteActivated) gameObject.GetComponent<SpriteRenderer>().sprite = SpriteDeactivated;
     }
+
 
     //This will ensure that this GameObject is at coordinates expressed in Int values
     public void SnapToIntPosition()
