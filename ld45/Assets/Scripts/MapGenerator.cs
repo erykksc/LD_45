@@ -33,8 +33,9 @@ public class MapGenerator : MonoBehaviour
 
     void CreateShape()
     {
+        int i = 0;
         vertices = new Vector2Int[(xSize + 1) * (ySize + 1)];
-        for (int i = 0, y = 0; y <= ySize; y++)
+        for (int y = 0; y <= ySize; y++)
         {
             for (int x = 0; x <= xSize; x++)
             {
@@ -42,9 +43,10 @@ public class MapGenerator : MonoBehaviour
                 i++;
             }
         }
+        factoryAddVerticies();
     }
 
-    private void OnDrawGizmos()
+    private void factoryAddVerticies()
     {
         if (vertices == null)
             return;
