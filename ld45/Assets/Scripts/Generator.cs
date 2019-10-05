@@ -13,7 +13,12 @@ public class Generator : Cell
     {
         while(active)
         {
-            yield return new WaitForSeconds(pulsationRate);
+            //yield return new WaitForSeconds(pulsationRate);
+            //for(int i = 0;i<sprites.Length*2;i++)
+            {
+                //sprites[0].
+                yield return new WaitForSeconds(pulsationRate / 1);
+            }
             timesActivated++;
             if (right != null)
             {

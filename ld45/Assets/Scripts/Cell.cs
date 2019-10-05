@@ -48,7 +48,7 @@ public class Cell : MonoBehaviour
     }
 
     //This is on only ONCE per energy cycle. Used for singe-time actions
-    public bool active = true;
+    public bool active = false;
 
     //This determines the energy of the tile
     public bool isActivated = false;
@@ -57,7 +57,11 @@ public class Cell : MonoBehaviour
 
     public Vector2Int pos;
 
-    [SerializeField] private int hp = 100;
+    public static float timeStep = 0.5f;
+
+    [SerializeField] private int hp = 10000;
+
+    public Sprite [] sprites;
 
 
     public void InstantiateCell(Vector2Int p)
@@ -88,7 +92,7 @@ public class Cell : MonoBehaviour
     }
 
 
-    /// Functions
+    /// Function
     /*public IEnumerator animate(int duration)
     {
         Color color = new Color(1, 1, 1);
@@ -108,6 +112,10 @@ public class Cell : MonoBehaviour
         {
             //Debug.Log("got impulse");
             isActivated = true;
+
+            try {  }
+            catch { }
+
             WhenActivatedDoOnce();
             timesActivated = parent.timesActivated;
             StartCoroutine(propagateImpuls());
@@ -122,8 +130,15 @@ public class Cell : MonoBehaviour
     // coroutine
     public IEnumerator propagateImpuls()
     {
-        GetComponent<SpriteRenderer>().color = Color.blue;
-        yield return new WaitForSeconds(0.5f);
+        for(int i = 0;i<sprites.Length;i++)
+        {
+            GetComponent<SpriteRenderer>().sprite = sprites[i];
+            yield return new WaitForSeconds(timeStep / (sprites.Length-1));
+        }
+        GetComponent<SpriteRenderer>().sprite = sprites[0];
+        //GetComponent<SpriteRenderer>().color = Color.blue;
+        //yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(timeStep);
         if(right!=null)
         {
             right.getImpulse(this);
@@ -149,12 +164,14 @@ public class Cell : MonoBehaviour
             ldown.getImpulse(this);
         }
         isActivated = false;
-        GetComponent<SpriteRenderer>().color = Color.green;
+        //GetComponent<SpriteRenderer>().color = Color.green;
     }
 
     public void Awake()
     {
-        GetComponent<SpriteRenderer>().color = Color.green;
+        GetComponent<SpriteRenderer>().sprite = sprites[0];
+        //GetComponent<SpriteRenderer>().color = Color.green;
+        //GetComponent<SpriteRenderer>().color = Color.green;
         //GetComponent<SpriteRenderer>().color = Color.blue;
     }
 
