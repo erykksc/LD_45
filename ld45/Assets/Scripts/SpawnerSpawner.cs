@@ -20,7 +20,7 @@ public class SpawnerSpawner : MonoBehaviour
     {
         if (Delay <= passed)
         {
-            Spawn();
+            // Spawn();
             passed = 0;
         }
         else
@@ -28,8 +28,10 @@ public class SpawnerSpawner : MonoBehaviour
             passed++;
         }
     }
-    public void Spawn()
+    public void Spawn(GameObject enemyPrefab, int numOfEnemies, float spawnRate, bool destroyAfterSpawning)
     {
-        Instantiate(toSpawn, (Vector3) RandomUnitVector()*distance + gameObject.GetComponent<Transform>().position, gameObject.GetComponent<Transform>().rotation);
+
+        // GameObject spawner = Instantiate(enemyPrefab, (Vector3) RandomUnitVector()*distance + gameObject.GetComponent<Transform>().position, gameObject.GetComponent<Transform>().rotation);
+        // spawner.GetComponent<EnemySpawner>().setProperties(enemyPrefab, )
     }
 }
