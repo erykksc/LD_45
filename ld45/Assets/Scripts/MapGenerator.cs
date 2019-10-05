@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int maxDepth;
+    public int maxWidth;
+   public float[,] GenerateNoiseMap(int mapDepth, int mapWidth, float scale)
     {
-        
-    }
+        float[,] noiseMap = new float[maxDepth, maxWidth];
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        for (int yIndex = 0; yIndex < mapDepth; yIndex++)
+        {
+            for (int xIndex = 0; xIndex < mapWidth; xIndex++)
+            {
+                float sampleX = xIndex / scale;
+                float sampleY = yIndex / scale;
+                float noise = Mathf.PerlinNoise(sampleX, sampleY);
+                noiseMap[yIndex, xIndex] = noise;
+            }
+        }
+        return noiseMap;
     }
 }

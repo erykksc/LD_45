@@ -8,12 +8,14 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2303628884093944391}
-  - component: {fileID: 4987674659610779846}
-  - component: {fileID: 857295904101952724}
+  - component: {fileID: 3958082683386459038}
+  - component: {fileID: 6757179059648770494}
+  - component: {fileID: 7448687123482099983}
+  - component: {fileID: 7963373915709482425}
+  - component: {fileID: 6901387415023196856}
   m_Layer: 0
   m_Name: Generator
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,6 +95,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e8442d3cee2c540a151e605790c226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsActive: 0
+  SpriteActivated: {fileID: 21300000, guid: 708eb3518278242a0a7fa1606dc6dcb5, type: 3}
+  SpriteDeactivated: {fileID: 21300000, guid: 87ccc7198b261b7299031c6fb095a56c, type: 3}
+--- !u!50 &7963373915709482425
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6348213426565246916}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &6901387415023196856
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6348213426565246916}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
   right: {fileID: 0}
   up: {fileID: 0}
   down: {fileID: 0}
@@ -100,3 +152,4 @@ MonoBehaviour:
   isActivated: 0
   timesActivated: 0
   pos: {x: 0, y: 0}
+

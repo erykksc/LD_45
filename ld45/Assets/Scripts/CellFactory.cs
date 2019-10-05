@@ -20,13 +20,13 @@ public class CellFactory : MonoBehaviour
     public void Add(Vector2Int pos,int index = 0)
     {
         Cell o;
-       if(index>=cellPrefabs.Length)
+        if(index>=cellPrefabs.Length)
         {
             return;
         }
         o = Instantiate(cellPrefabs[index]);
         o.Instantiate(pos);
-
+        o.name = cellPrefabs[index].name;
         for (int i = 0; i < cells.Count; i++)
         {
 
@@ -67,29 +67,12 @@ public class CellFactory : MonoBehaviour
 
         }
         cells.Add(o);
-        Debug.Log(cells.Count);
+        //Debug.Log(cells.Count);
     }
     void Start()
     {
 
         cells = new List<Cell>();
-        /*Add(new Vector2Int(1, 0), 3);
-        Add(new Vector2Int(-1, 0), 3);
-        Add(new Vector2Int(0, 1), 3);
-        Add(new Vector2Int(1, 1), 3);
-        Add(new Vector2Int(-1, 1), 3);
-        Add(new Vector2Int(0, 2), 3);
-        Add(new Vector2Int(1, 2), 3);
-        Add(new Vector2Int(-1, 2), 3);
-        Add(new Vector2Int(0, 3), 3);
-        Add(new Vector2Int(1, 3), 3);
-        Add(new Vector2Int(-1, 3), 3);
-        Add(new Vector2Int(0, 4), 3);
-        Add(new Vector2Int(1, 4), 3);
-        Add(new Vector2Int(-1, 4), 3);
-        Add(new Vector2Int(2, 1), 3);
-        Add(new Vector2Int(2, -1), 3);
-        Add(new Vector2Int(2, 0), 3);*/
         for(int i = 0;i<10;i++)
         {
             for(int j = 0;j<10;j++)
@@ -98,7 +81,6 @@ public class CellFactory : MonoBehaviour
             }
         }
         Add(new Vector2Int(-1, 0), 1);
-
         //cells[0].isActivated = true;
 
         //cells[3].timesActivated = 1;
