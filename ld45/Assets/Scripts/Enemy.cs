@@ -28,7 +28,6 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Cell"))
         {
             collision.gameObject.GetComponent<Cell>().dealDamage(damage);
-            // c
             // Debug.Log($"{collision.gameObject.name} destroyed");
         }
     }
