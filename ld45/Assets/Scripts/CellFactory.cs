@@ -11,11 +11,11 @@ public class CellFactory : ScriptableObject
     public void Add(Vector2 pos)
     {
         Cell o = Instantiate(cell);
-        for(int i = 0;i<cells.Count;i++)
+        for (int i = 0; i < cells.Count; i++)
         {
-            if(o.pos.x-cells[i].pos.x==0)
+            if (o.pos.x - cells[i].pos.x == 0)
             {
-                if(o.pos.y-cells[i].pos.y==1)
+                if (o.pos.y - cells[i].pos.y == 1)
                 {
                     o.down = cells[i];
                     cells[i].up = o;
@@ -26,9 +26,9 @@ public class CellFactory : ScriptableObject
                     cells[i].down = o;
                 }
             }
-            if(o.pos.y-cells[i].pos.y==0)
+            if (o.pos.y - cells[i].pos.y == 0)
             {
-                if(o.pos.x-cells[i].pos.x==1)
+                if (o.pos.x - cells[i].pos.x == 1)
                 {
                     o.left = cells[i];
                     cells[i].right = o;
@@ -42,15 +42,5 @@ public class CellFactory : ScriptableObject
         }
         cells.Add(o);
     }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
+   

@@ -7,16 +7,13 @@ public class Cell : MonoBehaviour
     // Start is called before the first frame update
 
     public Cell right = null , up = null , down = null, left = null;
-
-<<<<<<< Updated upstream
+    
 
     public void Awake()
     {
-        SnapToIntPosition();
+    //    SnapToIntPosition();
     }
-
-    public void Start()
-=======
+    
     public bool isActivated = false;
 
     public int timesActivated = 0;
@@ -24,7 +21,6 @@ public class Cell : MonoBehaviour
     public Vector2Int pos;
 
     public void getImpulse(Cell parent)
->>>>>>> Stashed changes
     {
         if(parent.timesActivated>timesActivated)
         {
@@ -62,20 +58,6 @@ public class Cell : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-<<<<<<< Updated upstream
-        while (true)
-        {
-            IsActive = !IsActive;
-            Debug.Log("change");
-            SnapToIntPosition();
-            yield return new WaitForSeconds(2);
-        }
-=======
-        
-    }
->>>>>>> Stashed changes
 
     public void FixedUpdate()
     {
