@@ -163,7 +163,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b53668de13aa9547bb0ad0dff33c5fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPrefabs: []
+  cellPrefabs:
+  - {fileID: 5002463019353143019, guid: 4f89b60628498a940ab85e5e6d4baa36, type: 3}
+  - {fileID: 857295904101952724, guid: 518acd10e9fa5ee4fbc84f5fe972daf8, type: 3}
+  - {fileID: 2420661698668056619, guid: 278f2e636af4f5147be8b9da9cf0da9c, type: 3}
+  - {fileID: 7047951885071311558, guid: 9ea86e612cf249a46a7d055da72e5262, type: 3}
 --- !u!1 &2007518078
 GameObject:
   m_ObjectHideFlags: 0
