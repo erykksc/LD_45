@@ -31,13 +31,17 @@ public class EnemyControl : MonoBehaviour
     }
     void Start()
     {
-        Target = GetTarget();   
+        //Target = GetTarget();   
     }
 
 
 
     void FixedUpdate()
     {
+        if (Target == null)
+        {
+            Target = GetTarget();
+        }
         if (gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > maxSpeed)
         {
             gameObject.GetComponent<Rigidbody2D>().velocity = gameObject.GetComponent<Rigidbody2D>().velocity.normalized * maxSpeed;
