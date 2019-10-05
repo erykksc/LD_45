@@ -48,7 +48,7 @@ public class Cell : MonoBehaviour
     }
 
     //This is on only ONCE per energy cycle. Used for singe-time actions
-    public bool active = true;
+    public bool active = false;
 
     //This determines the energy of the tile
     public bool isActivated = false;
@@ -59,7 +59,9 @@ public class Cell : MonoBehaviour
 
     public static float timeStep = 0.5f;
 
-    [SerializeField] private int hp = 100;
+    [SerializeField] private int hp = 10000;
+
+    public Sprite [] sprites;
 
 
     public void InstantiateCell(Vector2Int p)
@@ -128,15 +130,15 @@ public class Cell : MonoBehaviour
     // coroutine
     public IEnumerator propagateImpuls()
     {
-        /*
-        for(int i = 0;i<6;i++)
+        for(int i = 0;i<sprites.Length;i++)
         {
-
-            yield return new WaitForSeconds(timeStep / 6);
+            GetComponent<SpriteRenderer>().sprite = sprites[i];
+            yield return new WaitForSeconds(timeStep / (sprites.Length-1));
         }
-        */
-
-        yield return new WaitForSeconds(timeStep);
+        GetComponent<SpriteRenderer>().sprite = sprites[0];
+        //GetComponent<SpriteRenderer>().color = Color.blue;
+        //yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(timeStep);
         if(right!=null)
         {
             right.getImpulse(this);
@@ -162,12 +164,13 @@ public class Cell : MonoBehaviour
             ldown.getImpulse(this);
         }
         isActivated = false;
-        try {  }
-        catch { }
+        //GetComponent<SpriteRenderer>().color = Color.green;
     }
 
     public void Awake()
     {
+        GetComponent<SpriteRenderer>().sprite = sprites[0];
+        //GetComponent<SpriteRenderer>().color = Color.green;
         //GetComponent<SpriteRenderer>().color = Color.green;
         //GetComponent<SpriteRenderer>().color = Color.blue;
     }
