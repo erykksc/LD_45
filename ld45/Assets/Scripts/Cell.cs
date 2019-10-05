@@ -9,6 +9,12 @@ public class Cell : MonoBehaviour
         public Sprite SpriteDeactivated;
 
 
+
+    public void Awake()
+    {
+        SnapToIntPosition();
+    }
+
     public void Start()
     {
         StartCoroutine(LoopActivation());
@@ -28,8 +34,17 @@ public class Cell : MonoBehaviour
         {
             IsActive = !IsActive;
             Debug.Log("change");
+            SnapToIntPosition();
             yield return new WaitForSeconds(2);
         }
 
     }
+
+    //This will ensure that this GameObject is at coordinates expressed in Int values
+    public void SnapToIntPosition()
+    {
+        Vector2 SnappedPosition = new Vector2(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
+        transform.position = SnappedPosition;
+    }
+
 }
