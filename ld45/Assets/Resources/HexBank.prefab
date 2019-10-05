@@ -106,6 +106,7 @@ MonoBehaviour:
   timesActivated: 0
   pos: {x: 0, y: 0}
   hp: 100
+  sprites: []
 --- !u!50 &1063100235041580244
 Rigidbody2D:
   serializedVersion: 4
@@ -144,7 +145,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.1764706, y: 1.1764706}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
