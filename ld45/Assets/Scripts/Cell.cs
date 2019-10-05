@@ -35,6 +35,14 @@ public class Cell : MonoBehaviour
         hp = h;
     }
 
+    public void dealDamage(int damage)
+    {
+        if (damage > 0)
+        {
+            hp -= damage;
+        }
+    }
+
 
     /// Functions
     /*public IEnumerator animate(int duration)
