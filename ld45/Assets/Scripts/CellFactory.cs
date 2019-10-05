@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class CellFactory : MonoBehaviour
 {
+    static int getSign(int v)
+    {
+        if(v<0)
+        {
+            return -1;
+        }
+        return 1;
+    }
     // Start is called before the first frame update
     List<Cell> cells;
     public Cell [] cellPrefabs;
@@ -21,32 +29,42 @@ public class CellFactory : MonoBehaviour
         o.name = cellPrefabs[index].name;
         for (int i = 0; i < cells.Count; i++)
         {
-            if (o.pos.x - cells[i].pos.x == 0)
+
+            if (o.pos.x - cells[i].pos.x == -1 + (o.pos.y % 2) && o.pos.y - cells[i].pos.y == 1)
             {
-                if (o.pos.y - cells[i].pos.y == 1)
-                {
-                    o.down = cells[i];
-                    cells[i].up = o;
-                }
-                if (o.pos.y - cells[i].pos.y == -1)
-                {
-                    o.up = cells[i];
-                    cells[i].down = o;
-                }
+                o.rdown = cells[i];
+                cells[i].lup = o;
             }
-            if (o.pos.y - cells[i].pos.y == 0)
+            if (cells[i].pos.x - o.pos.x == -1 + (cells[i].pos.y % 2) && cells[i].pos.y - o.pos.y == 1)
             {
-                if (o.pos.x - cells[i].pos.x == 1)
-                {
-                    o.left = cells[i];
-                    cells[i].right = o;
-                }
-                if (o.pos.x - cells[i].pos.x == -1)
-                {
-                    o.right = cells[i];
-                    cells[i].left = o;
-                }
+                //swap
+                cells[i].rdown = o;
+                o.lup = cells[i];
             }
+            ///
+            if (cells[i].pos.x - o.pos.x == 0 + (cells[i].pos.y % 2) &&  cells[i].pos.y - o.pos.y == 1) 
+            {
+                //swap
+                cells[i].ldown = o;
+                o.rup = cells[i];
+            }
+            if (o.pos.x - cells[i].pos.x == 0 + (o.pos.y % 2) && o.pos.y - cells[i].pos.y == 1)
+            {
+                o.ldown = cells[i];
+                cells[i].rup = o;
+            }
+            ///
+            if (o.pos.x - cells[i].pos.x == 1 && o.pos.y - cells[i].pos.y == 0)
+            {
+                o.left = cells[i];
+                cells[i].right = o;
+            }
+            if (cells[i].pos.x - o.pos.x  == 1 && cells[i].pos.y - o.pos.y == 0)
+            {
+                cells[i].left = o;
+                o.right = cells[i];
+            }
+
         }
         cells.Add(o);
         //Debug.Log(cells.Count);
@@ -55,17 +73,14 @@ public class CellFactory : MonoBehaviour
     {
 
         cells = new List<Cell>();
-        Add(new Vector2Int(0, 0),1);
-        Add(new Vector2Int(1, 0));
-        Add(new Vector2Int(-1, 0));
-        Add(new Vector2Int(-2, 0),2);
-        Add(new Vector2Int(-3, 0), 2);
-        Add(new Vector2Int(-3, 1), 2);
-        Add(new Vector2Int(-3, 2), 2);
-        Add(new Vector2Int(-3, 3), 2);
-        Add(new Vector2Int(-2, 3), 2);
-        Add(new Vector2Int(-4, 3), 3);
-        Add(new Vector2Int(-1, 3), 3);
+        for(int i = 0;i<10;i++)
+        {
+            for(int j = 0;j<10;j++)
+            {
+                Add(new Vector2Int(i, j), 3);
+            }
+        }
+        Add(new Vector2Int(-1, 0), 1);
         //cells[0].isActivated = true;
 
         //cells[3].timesActivated = 1;
