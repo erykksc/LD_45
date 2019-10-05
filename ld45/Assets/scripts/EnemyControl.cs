@@ -6,6 +6,8 @@ public class EnemyControl : MonoBehaviour
 {
 
     public GameObject Target;
+    public float maxSpeed;
+    public float speed;
 
     GameObject GetTarget()
     {
@@ -35,8 +37,20 @@ public class EnemyControl : MonoBehaviour
 
 
 
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > maxSpeed)
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity = gameObject.GetComponent<Rigidbody2D>().velocity.normalized * maxSpeed;
+        }
+        //construct movement vector
+        Vector2 position = gameObject.GetComponent<Transform>().position;
+        Vector2 playerPos = Target.GetComponent<Transform>().position;
+        //Debug.Log(playerPos);
+        Vector2 move = playerPos - position;
+
+        move = move.normalized * speed;
+        //normalize
+        gameObject.GetComponent<Rigidbody2D>().AddForce(move,ForceMode2D.Force);
     }
 }

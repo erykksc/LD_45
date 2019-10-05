@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3958082683386459038}
   - component: {fileID: 6757179059648770494}
   - component: {fileID: 7448687123482099983}
+  - component: {fileID: 7963373915709482425}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Cell
@@ -96,3 +97,24 @@ MonoBehaviour:
   IsActive: 0
   SpriteActivated: {fileID: 21300000, guid: 708eb3518278242a0a7fa1606dc6dcb5, type: 3}
   SpriteDeactivated: {fileID: 21300000, guid: 87ccc7198b261b7299031c6fb095a56c, type: 3}
+--- !u!50 &7963373915709482425
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6348213426565246916}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
