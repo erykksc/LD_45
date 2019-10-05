@@ -298,6 +298,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CashDisplayer: {fileID: 814644880}
+  nextRoundCheckTime: 0
+  roundCheckingRate: 0.5
+  roundNum: 0
+  timeBetweenRounds: 10
+  startOfTheNextRoundTime: 0
+  waitingForNextRound: 1
+  distanceOfSpawnersFromGen: 25
 --- !u!114 &599833002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,8 +465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSelected: 0
   Factory: {fileID: 56327861}
-  SpawnedTile: {fileID: 5564123390375404287, guid: 9a1b828594a5fc64484ebcc2fb537063,
-    type: 3}
+  SpawnedIdentifier: 0
   ReturnPosition: {x: 0, y: 0, z: 0}
 --- !u!212 &695234993
 SpriteRenderer:
@@ -613,6 +619,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: CellFactory
       objectReference: {fileID: 0}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1903357091318707322, guid: 9a1b828594a5fc64484ebcc2fb537063,
+        type: 3}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1098080621417425859, guid: 492eac2f546b8a84599f27fc1cd57582,
+        type: 3}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 5629181446744162878, guid: d5d5952a8bc46494084362c30268edad,
+        type: 3}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 7895721678476721793, guid: c807489d857dd7049a7d1c2188ad1038,
+        type: 3}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 4161193831991739826, guid: cf996d7e8891b4a40a8029b46fc32338,
+        type: 3}
     - target: {fileID: 165064216686711199, guid: b9f3f2a3438db8c479d6003e71841953,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -678,41 +719,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 1903357091318707322, guid: 9a1b828594a5fc64484ebcc2fb537063,
-        type: 3}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 1376361979428711924, guid: 3558502e8e928794c841359ac89f62b3,
-        type: 3}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 5629181446744162878, guid: d5d5952a8bc46494084362c30268edad,
-        type: 3}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 7895721678476721793, guid: c807489d857dd7049a7d1c2188ad1038,
-        type: 3}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.data[4]
-      value: 
-      objectReference: {fileID: 4161193831991739826, guid: cf996d7e8891b4a40a8029b46fc32338,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9f3f2a3438db8c479d6003e71841953, type: 3}
 --- !u!4 &954446197 stripped
@@ -770,8 +776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSelected: 0
   Factory: {fileID: 56327861}
-  SpawnedTile: {fileID: 5721281602423333230, guid: d5d5952a8bc46494084362c30268edad,
-    type: 3}
+  SpawnedIdentifier: 2
   ReturnPosition: {x: 0, y: 0, z: 0}
 --- !u!212 &1066906420
 SpriteRenderer:
@@ -885,8 +890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSelected: 0
   Factory: {fileID: 56327861}
-  SpawnedTile: {fileID: 5054562334420310897, guid: c807489d857dd7049a7d1c2188ad1038,
-    type: 3}
+  SpawnedIdentifier: 3
   ReturnPosition: {x: 0, y: 0, z: 0}
 --- !u!212 &1108333351
 SpriteRenderer:

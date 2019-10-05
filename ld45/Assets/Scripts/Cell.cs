@@ -116,6 +116,7 @@ public class Cell : MonoBehaviour
     }
     public virtual void WhenActivatedDoOnce()
     {
+        Debug.Log("Once");
     }
 
 
@@ -157,7 +158,6 @@ public class Cell : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().color = Color.green;
         //GetComponent<SpriteRenderer>().color = Color.blue;
-        Debug.Log("change color");
     }
 
     private void Update()
