@@ -9,12 +9,42 @@ public class Cell : MonoBehaviour
 
     //}
     //These are the neighbouring tiles
+    public static Vector2 getGlobalCoords(Vector2Int pos, float size)
+    {
+        return new Vector2((-(pos.y % 2) * 0.5f + pos.x) * size, (pos.y * Mathf.Sqrt(3) * 0.5f) * size);
+    }
+    public static Vector2Int getHexCoords(Vector2 pos, float size)
+    {
+        float xstep, ystep;
+        xstep = size;
+        ystep = size * Mathf.Sqrt(3) * 0.5f;
+        int x, y;
+        x = (int)Mathf.Round(pos.x / xstep);
+        y = (int)Mathf.Round(pos.y / ystep);
+        //Debug.Log($"data:{y}");
+        float min = float.MaxValue;
+        Vector2Int mV = new Vector2Int(0, 0);
+        Vector2 tPos = new Vector2(0, 0);
+        for (int i = x - 3; i < x + 3; i++)
+        {
+            for (int j = y - 3; j < y + 3; j++)
+            {
+                tPos = getGlobalCoords(new Vector2Int(i, j), size);
+                if (Mathf.Pow(tPos.x - pos.x, 2) + Mathf.Pow(tPos.y - pos.y, 2) < min)
+                {
+                    min = Mathf.Pow(tPos.x - pos.x, 2) + Mathf.Pow(tPos.y - pos.y, 2);
+                    mV = new Vector2Int(i, j);
+                }
+            }
+        }
+        return mV;
+    }
     public Cell right = null , lup = null , ldown = null, left = null,rup = null,rdown = null;
     
     public void Instantiate(Vector2Int p)
     {
         pos = p;
-        transform.localPosition = new Vector2(-(pos.y%2)*0.5f+pos.x,pos.y*Mathf.Sqrt(3)*0.5f);
+        transform.localPosition = getGlobalCoords(pos,1);
     }
 
     //This is on only ONCE per energy cycle. Used for singe-time actions
