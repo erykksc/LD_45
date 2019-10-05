@@ -21,8 +21,6 @@ public class Cell : MonoBehaviour
 
     public int timesActivated = 0;
 
-    public SpriteRenderer renderer;
-
     public Vector2Int pos;
 
     [SerializeField] private int hp = 100;

@@ -7,12 +7,13 @@ public class Generator : Cell
     // Start is called before the first frame update
 
     //[SerializeField] static Sprite sprite;
+    [SerializeField] private float pulsationRate = 2.0f;
 
     IEnumerator pulsate()
     {
         while(active)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(pulsationRate);
             timesActivated++;
             if (right != null)
             {
