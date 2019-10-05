@@ -7,7 +7,6 @@ public class Cell : MonoBehaviour
     // Start is called before the first frame update
 
     public Cell right = null , up = null , down = null, left = null;
-    
 
     public void Awake()
     {
@@ -55,6 +54,11 @@ public class Cell : MonoBehaviour
     void Start()
     {
         
+    }
+
+    private void Update()
+    {
+
     }
 
     // Update is called once per frame

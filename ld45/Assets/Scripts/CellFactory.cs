@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CellFactory : ScriptableObject
+public class CellFactory : MonoBehaviour
 {
     // Start is called before the first frame update
     List<Cell> cells;
-    Cell cell;
+    public Cell cell;
 
-    public void Add(Vector2 pos)
+
+    public void Add(Vector2Int pos)
     {
         Cell o = Instantiate(cell);
+        o.pos = pos;
+        o.transform.localPosition = (Vector2)pos;
         for (int i = 0; i < cells.Count; i++)
         {
             if (o.pos.x - cells[i].pos.x == 0)
@@ -41,6 +44,14 @@ public class CellFactory : ScriptableObject
             }
         }
         cells.Add(o);
+        Debug.Log(cells.Count);
+    }
+    void Start()
+    {
+        cells = new List<Cell>();
+        Add(new Vector2Int(0, 0));
+        Add(new Vector2Int(1, 0));
+        //Add(new Vector2(1, 0));
     }
 }
    
