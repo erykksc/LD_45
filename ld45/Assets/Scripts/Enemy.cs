@@ -7,8 +7,8 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag("Cell"))
         {
-            GameObject.Destroy(GetComponent<Collider>().gameObject);
-            Debug.Log($"{GetComponent<Collider>().gameObject.name} destroyed");
+            GameObject.Destroy(collision.gameObject);
+            Debug.Log($"{collision.gameObject.name} destroyed");
         }
     }
 }
