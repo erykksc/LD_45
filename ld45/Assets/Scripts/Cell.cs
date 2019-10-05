@@ -43,6 +43,11 @@ public class Cell : MonoBehaviour
         {
             hp -= damage;
         }
+
+        if (hp <= 0)
+        {
+            GameObject.Destroy(gameObject);
+        }
     }
 
 
