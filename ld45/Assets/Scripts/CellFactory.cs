@@ -73,21 +73,6 @@ public class CellFactory : MonoBehaviour
     {
 
         cells = new List<Cell>();
-        for(int i = 0;i<10;i++)
-        {
-            for(int j = 0;j<10;j++)
-            {
-                Add(new Vector2Int(i, j), 3);
-            }
-        }
-        Add(new Vector2Int(-1, 0), 1);
-        //cells[0].isActivated = true;
-
-        //cells[3].timesActivated = 1;
-
-        //cells[2].getImpulse(cells[3]);
-        //StartCoroutine(cells[2].propagateImpuls());
-        //Add(new Vector2(1, 0));
     }
 }
    
