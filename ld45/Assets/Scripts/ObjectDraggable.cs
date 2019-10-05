@@ -9,7 +9,8 @@ public class ObjectDraggable : MonoBehaviour
     public GameObject SpawnedTile;
     public Vector3 ReturnPosition;
 
-    public void Awake()
+
+    public void SetDraggableReturnPosition()
     {
         ReturnPosition = gameObject.transform.position;
     }
@@ -19,6 +20,7 @@ public class ObjectDraggable : MonoBehaviour
         //When LMB is pressed, start following
         if (Input.GetMouseButtonDown(0))
         {
+            SetDraggableReturnPosition();
             IsSelected = true;
         }
     }
@@ -34,12 +36,13 @@ public class ObjectDraggable : MonoBehaviour
         {
 
             IsSelected = false;
-            Vector3 WorldPos =  Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+            Vector2 WorldPos =  Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
 
-            //Factory.Add(Cell.        )
-            //GameObject NewCell = Instantiate<GameObject>(SpawnedTile, Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,  10)),Quaternion.identity     );
+            Factory.Add(Cell.getHexCoords(WorldPos,1));
 
-            //gameObject.transform.position = ReturnPosition;
+
+
+            gameObject.transform.position = ReturnPosition;
         }
         
     }
