@@ -5,6 +5,14 @@ using UnityEngine;
 public class ObjectDraggable : MonoBehaviour
 {
     public bool IsSelected = false;
+    public CellFactory Factory;
+    public GameObject SpawnedTile;
+    public Vector3 ReturnPosition;
+
+    public void Awake()
+    {
+        ReturnPosition = gameObject.transform.position;
+    }
 
     private void OnMouseOver()
     {
@@ -24,8 +32,12 @@ public class ObjectDraggable : MonoBehaviour
         //When LMB is relesed, (drag ends)  do the following
         if (IsSelected &&Input.GetMouseButtonUp(0) )
         {
+
             IsSelected = false;
-            
+            //Factory.Add()
+            GameObject NewCell = Instantiate<GameObject>(SpawnedTile, Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,  10)),Quaternion.identity     );
+
+            gameObject.transform.position = ReturnPosition;
         }
         
     }
