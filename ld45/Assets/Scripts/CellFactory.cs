@@ -6,14 +6,19 @@ public class CellFactory : MonoBehaviour
 {
     // Start is called before the first frame update
     List<Cell> cells;
-    public Cell cell;
+    public Cell [] cellPrefabs;
 
 
-    public void Add(Vector2Int pos)
+    public void Add(Vector2Int pos,int index = 0)
     {
-        Cell o = Instantiate(cell);
-        o.pos = pos;
-        o.transform.localPosition = (Vector2)pos;
+        Cell o;
+       if(index>=cellPrefabs.Length)
+        {
+            return;
+        }
+        o = Instantiate(cellPrefabs[index]);
+        o.Instantiate(pos);
+
         for (int i = 0; i < cells.Count; i++)
         {
             if (o.pos.x - cells[i].pos.x == 0)
@@ -48,9 +53,25 @@ public class CellFactory : MonoBehaviour
     }
     void Start()
     {
+
         cells = new List<Cell>();
-        Add(new Vector2Int(0, 0));
+        Add(new Vector2Int(0, 0),1);
         Add(new Vector2Int(1, 0));
+        Add(new Vector2Int(-1, 0));
+        Add(new Vector2Int(-2, 0),2);
+        Add(new Vector2Int(-3, 0), 2);
+        Add(new Vector2Int(-3, 1), 2);
+        Add(new Vector2Int(-3, 2), 2);
+        Add(new Vector2Int(-3, 3), 2);
+        Add(new Vector2Int(-2, 3), 2);
+        Add(new Vector2Int(-4, 3), 2);
+        Add(new Vector2Int(-1, 3), 2);
+        //cells[0].isActivated = true;
+
+        //cells[3].timesActivated = 1;
+
+        //cells[2].getImpulse(cells[3]);
+        //StartCoroutine(cells[2].propagateImpuls());
         //Add(new Vector2(1, 0));
     }
 }
