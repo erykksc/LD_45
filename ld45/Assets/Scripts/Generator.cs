@@ -16,9 +16,10 @@ public class Generator : Cell
             for (int i = 0; i < sprites.Length; i++)
             {
                 GetComponent<SpriteRenderer>().sprite = sprites[i];
-                yield return new WaitForSeconds(timeStep / (sprites.Length - 1));
+                yield return new WaitForSeconds(pulsationRate / (sprites.Length - 1));
             }
             GetComponent<SpriteRenderer>().sprite = sprites[0];
+
 
             timesActivated++;
             if (right != null)

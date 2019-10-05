@@ -16,7 +16,7 @@ public class Wall : Cell
     
     private void Awake()
     {
-        GetComponent<SpriteRenderer>().color = Color.green;
+        //GetComponent<SpriteRenderer>().color = Color.green;
         //sprite = gameObject.GetComponent<Sprite>();
     }
     
