@@ -34,14 +34,20 @@ public class ObjectDraggable : MonoBehaviour
         //When LMB is relesed, (drag ends)  do the following
         if (IsSelected &&Input.GetMouseButtonUp(0) )
         {
-
+            
             IsSelected = false;
             Vector2 WorldPos =  Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-            GameObject.Instantiate(Resources.Load<GameObject>("BuildParticles") as GameObject  , Cell.getGlobalCoords(Cell.getHexCoords(WorldPos, 1), 1), Quaternion.identity);
-            Factory.Add(Cell.getHexCoords(WorldPos,1),SpawnedIdentifier);
+
+            Vector2Int hPos = Cell.getHexCoords(WorldPos, 1);
 
                 
 
+            if (Factory.Find(hPos) == null&&ScoreCore.Cash>= ScoreCore.Prices[SpawnedIdentifier])
+            {
+                Factory.Add(hPos, SpawnedIdentifier);
+                GameObject.Instantiate(Resources.Load<GameObject>("BuildParticles") as GameObject, Cell.getGlobalCoords(Cell.getHexCoords(WorldPos, 1), 1), Quaternion.identity);
+                ScoreCore.Cash -= ScoreCore.Prices[SpawnedIdentifier];
+            }
             gameObject.transform.position = ReturnPosition;
         }
         
