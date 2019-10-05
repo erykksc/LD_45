@@ -7,9 +7,8 @@ public class Bank : Cell
    
 
     // Update is called once per frame
-    void WhenActivatedDoOnce()
+    public override void WhenActivatedDoOnce()
     {
-
-        
+        ScoreCore.Cash += 1;
     }
 }

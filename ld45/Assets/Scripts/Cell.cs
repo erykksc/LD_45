@@ -32,9 +32,9 @@ public class Cell : MonoBehaviour
     {
         return hp;
     }
-    void setHp(int h)
+    public void setHp(int newHp)
     {
-        hp = h;
+        hp = newHp;
     }
 
     public void dealDamage(int damage)
@@ -79,11 +79,6 @@ public class Cell : MonoBehaviour
     }
     public virtual void WhenActivatedDoOnce()
     {
-        if (name=="Bank" ) 
-        {
-            ScoreCore.Cash += 1;
-            Debug.Log("Cash++");
-        }
         else if(name=="Wall" )
         {
             setHp(getHp()+10);

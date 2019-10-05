@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Wall : Cell
 {
-
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int healPerImpulse = 10;
+    public int getHealPerImpulse()
     {
-        
+        return healPerImpulse;
     }
-
-    // Update is called once per frame
-    void Update()
+    public void setHealPerImpulse(int newHealPerImpulse)
     {
-        
+        healPerImpulse = newHealPerImpulse;
+    }
+    public override void WhenActivatedDoOnce()
+    {
+        setHp(getHp()+healPerImpulse);
     }
 }
