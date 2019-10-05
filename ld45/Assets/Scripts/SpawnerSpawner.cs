@@ -4,34 +4,34 @@ using UnityEngine;
 
 public class SpawnerSpawner : MonoBehaviour
 {
-    public int Delay = 10;
     private int passed = 0;
     // Start is called before the first frame update
-    public float distance;
-    public GameObject toSpawn;
+    [SerializeField] private float distance;
+    [SerializeField] private GameObject spawner;
+    [SerializeField] private GameObject enemyPrefab;
     
-    public Vector2 RandomUnitVector()
+    public Vector2 randomUnitVector()
     {
         float random = Random.Range(0f, 260f);
         return new Vector2(Mathf.Cos(random), Mathf.Sin(random));
     }
 
-    void FixedUpdate()
+    public void Spawn(float distanceFromMainSpawner, int numOfEnemiesInGroup, int numOfGroups, float spawnRateOfMembers)
     {
-        if (Delay <= passed)
+        for(int i=0; i<numOfGroups; i++)
         {
-            // Spawn();
-            passed = 0;
-        }
-        else
-        {
-            passed++;
+            spawnSpawner(enemyPrefab, numOfEnemiesInGroup, spawnRateOfMembers);
         }
     }
-    public void Spawn(GameObject enemyPrefab, int numOfEnemies, float spawnRate, bool destroyAfterSpawning)
+
+    public void spawnSpawner(GameObject enemyPrefab, int numOfEnemies, float spawnRate, bool destroyAfterSpawning=true)
     {
 
-        // GameObject spawner = Instantiate(enemyPrefab, (Vector3) RandomUnitVector()*distance + gameObject.GetComponent<Transform>().position, gameObject.GetComponent<Transform>().rotation);
-        // spawner.GetComponent<EnemySpawner>().setProperties(enemyPrefab, )
+        GameObject newSpawner = Instantiate(spawner, (Vector3) randomUnitVector()*distance + gameObject.GetComponent<Transform>().position, gameObject.GetComponent<Transform>().rotation);
+        newSpawner.GetComponent<EnemySpawner>().setProperties(enemyPrefab, numOfEnemies, spawnRate, destroyAfterSpawning);
+    }
+
+    private void Start() {
+        Spawn(25, 5, 2, 0.0f);
     }
 }

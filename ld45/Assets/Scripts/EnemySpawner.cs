@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private bool destroyAfterSpawning = true;
     private float nextSpawn = 0.0f;
 
-    public void setProperties(GameObject newEnemyPrefab, int newNumOfEnemies, float newSpawnRate, bool newDestroyAfterSpawning)
+    public void setProperties(GameObject newEnemyPrefab, int newNumOfEnemies, float newSpawnRate, bool newDestroyAfterSpawning=true)
     {
         enemyPrefab = newEnemyPrefab;
         setNumOfEnemies2Spawn(newNumOfEnemies);
@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
         {
             numOfEnemies2Spawn -= 1;
             nextSpawn = Time.time + spawnRate;
-            GameObject Enemy = Instantiate(enemyPrefab, gameObject.transform);
+            GameObject enemy = Instantiate(enemyPrefab, gameObject.transform.position, Quaternion.identity);
         }
         else if (numOfEnemies2Spawn <= 0 && destroyAfterSpawning)
         {
