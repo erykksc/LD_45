@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7810491408712204320}
   - component: {fileID: 6527251113921186245}
   - component: {fileID: 7648367746658132373}
+  - component: {fileID: -4099060618519869073}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Cell
@@ -96,3 +97,24 @@ MonoBehaviour:
   IsActive: 0
   SpriteActivated: {fileID: 21300000, guid: 2da3085d8ec016a14a3f6efed51bdba3, type: 3}
   SpriteDeactivated: {fileID: 21300000, guid: 27a4f3ee11d1b2cf3aeac8426f4cc63f, type: 3}
+--- !u!50 &-4099060618519869073
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4436824652062353358}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

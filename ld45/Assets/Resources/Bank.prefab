@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2470841001084897351}
   - component: {fileID: 7515710619347119144}
   - component: {fileID: 8642249554013453924}
+  - component: {fileID: -6810542047904417353}
   m_Layer: 0
   m_Name: Bank
   m_TagString: Cell
@@ -96,3 +97,24 @@ MonoBehaviour:
   IsActive: 0
   SpriteActivated: {fileID: 21300000, guid: 112be8f6389884419898ae794b8aeec3, type: 3}
   SpriteDeactivated: {fileID: 21300000, guid: 20b8ae62dca1eb672937bd5b556c93cf, type: 3}
+--- !u!50 &-6810542047904417353
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3088518996906089078}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
