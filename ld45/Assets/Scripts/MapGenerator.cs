@@ -42,10 +42,17 @@ public class MapGenerator : MonoBehaviour
             {
                 vertices[i] = new Vector2Int(x, y);
                 i++;
-                factory.Add(vertices[i], 3);
-
             }
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        if (vertices == null)
+            return;
+        for (int i = 0; i < vertices.Length; i++)
+        {
+            factory.Add(vertices[i], 3);
+        }
+    } 
 }
