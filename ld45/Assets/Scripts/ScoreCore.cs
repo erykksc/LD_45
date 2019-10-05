@@ -22,6 +22,7 @@ public class ScoreCore : MonoBehaviour
 
     void Awake()
     {
+        Cash = 20;
         if (CashDisplayer == null)
         {
             CashDisplayer = GameObject.Find("CashDisplayer").GetComponent<Text>();
