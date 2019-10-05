@@ -52,7 +52,7 @@ public class MapGenerator : MonoBehaviour
             return;
         for (int i = 0; i < vertices.Length; i++)
         {
-            factory.Add(vertices[i], 0);
+            factory.Add(vertices[i], 0).transform.localRotation = Quaternion.Euler(0,0,60*(int)Random.Range(0,7));
         }
     } 
 }
