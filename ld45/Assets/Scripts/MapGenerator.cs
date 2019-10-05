@@ -52,7 +52,7 @@ public class MapGenerator : MonoBehaviour
             return;
         for (int i = 0; i < vertices.Length; i++)
         {
-            factory.Add(vertices[i], 3);
+            factory.Add(vertices[i], 4);
         }
     } 
 }
