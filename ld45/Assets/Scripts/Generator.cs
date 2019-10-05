@@ -5,9 +5,6 @@ using UnityEngine;
 public class Generator : Cell
 {
     // Start is called before the first frame update
-
-    //[SerializeField] static Sprite sprite;
-
     IEnumerator pulsate()
     {
         while(active)
@@ -22,32 +19,19 @@ public class Generator : Cell
             {
                 left.getImpulse(this);
             }
-            if (rup != null)
+            if (up != null)
             {
-                rup.getImpulse(this);
+                up.getImpulse(this);
             }
-            if (rdown != null)
+            if (down != null)
             {
-                rdown.getImpulse(this);
-            }
-            if (lup != null)
-            {
-                lup.getImpulse(this);
-            }
-            if (ldown != null)
-            {
-                ldown.getImpulse(this);
+                down.getImpulse(this);
             }
         }
     }
     void Start()
     {
         StartCoroutine(pulsate());
-    }
-    private void Awake()
-    {
-        //sprite = gameObject.GetComponent<Sprite>();
-        //gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
     }
 
     // Update is called once per frame
