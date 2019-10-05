@@ -9,7 +9,7 @@ public class Generator : Cell
     {
         while(active)
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(4);
             timesActivated++;
             if (right != null)
             {

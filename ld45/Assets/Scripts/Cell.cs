@@ -64,7 +64,7 @@ public class Cell : MonoBehaviour
     {
         renderer.color = Color.green;
         Debug.Log($"inside propagate impulse, activated{timesActivated}");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         if(right!=null)
         {
             right.getImpulse(this);
