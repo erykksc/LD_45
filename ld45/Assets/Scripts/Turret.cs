@@ -32,7 +32,7 @@ public class Turret : Cell
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    public override void WhenActivatedDoOnce()
     {
         Shoot();
     }

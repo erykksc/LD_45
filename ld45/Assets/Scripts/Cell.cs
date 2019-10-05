@@ -66,7 +66,7 @@ public class Cell : MonoBehaviour
 
     public void getImpulse(Cell parent)
     {
-        Debug.Log("from getImpulse");
+        // Debug.Log("from getImpulse");
         if(parent.timesActivated>timesActivated)
         {
             //Debug.Log("got impulse");
@@ -77,10 +77,17 @@ public class Cell : MonoBehaviour
             
         }
     }
-    public void WhenActivatedDoOnce()
+    public virtual void WhenActivatedDoOnce()
     {
-        if (name=="Bank" ) { ScoreCore.Cash += 1; Debug.Log("Cash++"); }
-        else if(name=="Wall" ) { setHp(getHp()+10); }
+        if (name=="Bank" ) 
+        {
+            ScoreCore.Cash += 1;
+            Debug.Log("Cash++");
+        }
+        else if(name=="Wall" )
+        {
+            setHp(getHp()+10);
+        }
     }
 
 
