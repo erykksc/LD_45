@@ -8,6 +8,10 @@ public class ScoreCore : MonoBehaviour
 {
     public Text CashDisplayer;
     public static int Cash=0;
+
+    public static int[] Prices = { 10, 20, 30, 40 };
+
+
     [SerializeField] private float nextRoundCheckTime = 0.0f;
     [SerializeField] private float roundCheckingRate = 0.5f;
     [SerializeField] private int roundNum = 0;
@@ -22,7 +26,7 @@ public class ScoreCore : MonoBehaviour
 
     void Awake()
     {
-        Cash = 20;
+        Cash = 80;
         if (CashDisplayer == null)
         {
             CashDisplayer = GameObject.Find("CashDisplayer").GetComponent<Text>();

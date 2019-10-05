@@ -42,11 +42,11 @@ public class ObjectDraggable : MonoBehaviour
 
                 
 
-            if (Factory.Find(hPos) == null&&ScoreCore.Cash>=10)
+            if (Factory.Find(hPos) == null&&ScoreCore.Cash>= ScoreCore.Prices[SpawnedIdentifier])
             {
                 Factory.Add(hPos, SpawnedIdentifier);
                 GameObject.Instantiate(Resources.Load<GameObject>("BuildParticles") as GameObject, Cell.getGlobalCoords(Cell.getHexCoords(WorldPos, 1), 1), Quaternion.identity);
-                ScoreCore.Cash -= 10;
+                ScoreCore.Cash -= ScoreCore.Prices[SpawnedIdentifier];
             }
             gameObject.transform.position = ReturnPosition;
         }
