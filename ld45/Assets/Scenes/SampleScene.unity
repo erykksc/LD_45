@@ -394,52 +394,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 982438584}
   m_CullTransparentMesh: 0
---- !u!1 &1513500816
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1513500818}
-  - component: {fileID: 1513500817}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1513500817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513500816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1220246e22fed54eb05816afc25c36f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  factory: {fileID: 1969738744}
-  xSize: 51
-  ySize: 31
---- !u!4 &1513500818
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513500816}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6404898, y: 3.0541482, z: -0.36132812}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1955563311
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,6 +511,8 @@ MonoBehaviour:
   - {fileID: 5629181446744162878, guid: d5d5952a8bc46494084362c30268edad, type: 3}
   - {fileID: 7895721678476721793, guid: c807489d857dd7049a7d1c2188ad1038, type: 3}
   - {fileID: 4161193831991739826, guid: cf996d7e8891b4a40a8029b46fc32338, type: 3}
+  - {fileID: 6519181575863912346, guid: 1ad4bd2e52fb5064cbbf0d2c32127d1f, type: 3}
+  - {fileID: 6519181575863912346, guid: 1ad4bd2e52fb5064cbbf0d2c32127d1f, type: 3}
 --- !u!1 &1983058803
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,6 +542,7 @@ GameObject:
   - component: {fileID: 2007518079}
   - component: {fileID: 2007518082}
   - component: {fileID: 2007518083}
+  - component: {fileID: 2007518084}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -672,6 +629,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CashDisplayer: {fileID: 0}
+  nextRoundCheckTime: 0
+  roundCheckingRate: 0.5
+  roundNum: 0
+  timeBetweenRounds: 10
+  startOfTheNextRoundTime: 0
+  waitingForNextRound: 1
+  distanceOfSpawnersFromGen: 25
 --- !u!114 &2007518083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,3 +648,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d142d62a73f1f3e4ca6fb513e219a251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  factory: {fileID: 1969738744}
+--- !u!114 &2007518084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007518078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1220246e22fed54eb05816afc25c36f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  factory: {fileID: 1969738744}
+  xSize: 51
+  ySize: 31
