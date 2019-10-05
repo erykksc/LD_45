@@ -69,7 +69,7 @@ public class CellFactory : MonoBehaviour
         cells.Add(o);
         //Debug.Log(cells.Count);
     }
-    void Start()
+    void Awake()
     {
 
         cells = new List<Cell>();

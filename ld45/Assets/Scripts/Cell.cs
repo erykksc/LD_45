@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
+    //public static Vector2Int toHexCoords(Vector2 pos)
+    //{
+
+    //}
     //These are the neighbouring tiles
     public Cell right = null , lup = null , ldown = null, left = null,rup = null,rdown = null;
     
@@ -31,7 +35,7 @@ public class Cell : MonoBehaviour
     public void InstantiateCell(Vector2Int p)
     {
         pos = p;
-        transform.localPosition = (Vector2)pos;
+        transform.position = (Vector2)pos;
     }
     public int getHp()
     {
