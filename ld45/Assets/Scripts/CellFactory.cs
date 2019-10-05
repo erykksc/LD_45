@@ -97,7 +97,7 @@ public class CellFactory : MonoBehaviour
                 Add(new Vector2Int(i, j), 3);
             }
         }
-        Add(new Vector2Int(-1, 9), 1);
+        Add(new Vector2Int(-1, 0), 1);
 
         //cells[0].isActivated = true;
 
