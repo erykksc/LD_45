@@ -22,7 +22,6 @@ public class EnemyControl : MonoBehaviour
             float dist = diff.sqrMagnitude;
             if (dist < distance)
             {
-                Debug.Log("ok");
                 lastObject = x;
                 distance = dist;
             }

@@ -21,7 +21,5 @@ public class SpawnerSpawner : MonoBehaviour
     public void Spawn()
     {
         Instantiate(toSpawn, (Vector3) RandomUnitVector()*distance + gameObject.GetComponent<Transform>().position, gameObject.GetComponent<Transform>().rotation);
-        DrawArrow.ForDebug(gameObject.GetComponent<Transform>().position, RandomUnitVector()*distance);
-        Debug.Log(RandomUnitVector()*distance);
     }
 }
