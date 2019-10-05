@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
-
-
-    void Update()
-    {
-        
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.CompareTag("Cell"))
+        {
+            GameObject.Destroy(collider.gameObject);
+            Debug.Log($"{collider.gameObject.name} destroyed");
+        }
     }
 }
+
+
+
+
+
