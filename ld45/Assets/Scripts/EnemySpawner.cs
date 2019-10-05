@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
         enemies2Spawn = numOfEnemies;
     }
 
-    void spawnRate(float newSpawnRate)
+    void setSpawnRate(float newSpawnRate)
     {
         spawnRate = newSpawnRate;
     }
