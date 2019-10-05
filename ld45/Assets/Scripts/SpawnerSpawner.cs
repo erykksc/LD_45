@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpawnerSpawner : MonoBehaviour
 {
+    public int Delay = 10;
+    private int passed = 0;
     // Start is called before the first frame update
     public float distance;
     public GameObject toSpawn;
@@ -16,7 +18,15 @@ public class SpawnerSpawner : MonoBehaviour
 
     void FixedUpdate()
     {
-        Spawn();
+        if (Delay <= passed)
+        {
+            Spawn();
+            passed = 0;
+        }
+        else
+        {
+            passed++;
+        }
     }
     public void Spawn()
     {
