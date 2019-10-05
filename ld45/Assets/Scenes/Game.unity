@@ -481,6 +481,7 @@ MonoBehaviour:
   Factory: {fileID: 56327861}
   SpawnedIdentifier: 0
   ReturnPosition: {x: 0, y: 0, z: 0}
+  makeInfinite: 0
 --- !u!212 &695234993
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -519,8 +520,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 3474c6ebb2302324c9043a56a7bfacff, type: 3}
-  m_Color: {r: 0.9607843, g: 0.81755835, b: 0.23529412, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 89793aa7f0e39294e9f1c49ba1162547, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -642,13 +643,13 @@ PrefabInstance:
         type: 3}
       propertyPath: cellPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 1903357091318707322, guid: 9a1b828594a5fc64484ebcc2fb537063,
+      objectReference: {fileID: 931884006745790120, guid: 256b4337efde8b249bce665242b4577a,
         type: 3}
     - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
         type: 3}
       propertyPath: cellPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 1098080621417425859, guid: 492eac2f546b8a84599f27fc1cd57582,
+      objectReference: {fileID: 1380260495613729334, guid: 7a0835d092f6e814c9aa59110d265092,
         type: 3}
     - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
         type: 3}
@@ -660,7 +661,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cellPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 7895721678476721793, guid: c807489d857dd7049a7d1c2188ad1038,
+      objectReference: {fileID: 7895721678476721793, guid: 81edaac68c6798240a6c11c62d657157,
         type: 3}
     - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
         type: 3}
@@ -792,6 +793,7 @@ MonoBehaviour:
   Factory: {fileID: 56327861}
   SpawnedIdentifier: 2
   ReturnPosition: {x: 0, y: 0, z: 0}
+  makeInfinite: 0
 --- !u!212 &1066906420
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -906,6 +908,7 @@ MonoBehaviour:
   Factory: {fileID: 56327861}
   SpawnedIdentifier: 3
   ReturnPosition: {x: 0, y: 0, z: 0}
+  makeInfinite: 0
 --- !u!212 &1108333351
 SpriteRenderer:
   m_ObjectHideFlags: 0

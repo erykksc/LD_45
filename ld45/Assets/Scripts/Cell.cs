@@ -57,6 +57,8 @@ public class Cell : MonoBehaviour
 
     public Vector2Int pos;
 
+    public static float timeStep = 0.5f;
+
     [SerializeField] private int hp = 100;
 
 
@@ -88,7 +90,7 @@ public class Cell : MonoBehaviour
     }
 
 
-    /// Functions
+    /// Function
     /*public IEnumerator animate(int duration)
     {
         Color color = new Color(1, 1, 1);
@@ -108,6 +110,10 @@ public class Cell : MonoBehaviour
         {
             //Debug.Log("got impulse");
             isActivated = true;
+
+            try {  }
+            catch { }
+
             WhenActivatedDoOnce();
             timesActivated = parent.timesActivated;
             StartCoroutine(propagateImpuls());
@@ -122,8 +128,15 @@ public class Cell : MonoBehaviour
     // coroutine
     public IEnumerator propagateImpuls()
     {
-        GetComponent<SpriteRenderer>().color = Color.blue;
-        yield return new WaitForSeconds(0.5f);
+        /*
+        for(int i = 0;i<6;i++)
+        {
+
+            yield return new WaitForSeconds(timeStep / 6);
+        }
+        */
+
+        yield return new WaitForSeconds(timeStep);
         if(right!=null)
         {
             right.getImpulse(this);
@@ -149,12 +162,13 @@ public class Cell : MonoBehaviour
             ldown.getImpulse(this);
         }
         isActivated = false;
-        GetComponent<SpriteRenderer>().color = Color.green;
+        try {  }
+        catch { }
     }
 
     public void Awake()
     {
-        GetComponent<SpriteRenderer>().color = Color.green;
+        //GetComponent<SpriteRenderer>().color = Color.green;
         //GetComponent<SpriteRenderer>().color = Color.blue;
     }
 
