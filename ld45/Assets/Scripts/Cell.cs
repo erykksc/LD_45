@@ -179,5 +179,14 @@ public class Cell : MonoBehaviour
         Vector2 SnappedPosition = new Vector2(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
         transform.position = SnappedPosition;
     }
+    ~Cell()
+    {
+        left.right = null;
+        right.left = null;
+        lup.rdown = null;
+        rdown.lup = null;
+        rup.ldown = null;
+        ldown.rup = null;
+    }
 
 }
