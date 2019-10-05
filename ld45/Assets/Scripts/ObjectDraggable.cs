@@ -34,10 +34,12 @@ public class ObjectDraggable : MonoBehaviour
         {
 
             IsSelected = false;
-            Factory.Add()
+            Vector3 WorldPos =  Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+
+            //Factory.Add(Cell.        )
             //GameObject NewCell = Instantiate<GameObject>(SpawnedTile, Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,  10)),Quaternion.identity     );
 
-            gameObject.transform.position = ReturnPosition;
+            //gameObject.transform.position = ReturnPosition;
         }
         
     }
