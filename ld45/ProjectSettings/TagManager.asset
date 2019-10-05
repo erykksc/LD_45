@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cell
   - Enemy
+  - MainSpawner
   - Draggable
   layers:
   - Default

@@ -10,6 +10,7 @@ public class CameraAtStart : MonoBehaviour
     {
         transform.position = new Vector3(26, 13,-3);
         factory.Add(Cell.getHexCoords(new Vector2(26, 13),1),1);
+        ScoreCore.mainSpawner = GameObject.FindGameObjectWithTag("MainSpawner");
     }
 
     // Update is called once per frame

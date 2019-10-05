@@ -12,9 +12,9 @@ public class ScoreCore : MonoBehaviour
     [SerializeField] private float roundCheckingRate = 0.5f;
     [SerializeField] private int roundNum = 0;
     [SerializeField] private float timeBetweenRounds = 10.0f;
-    [SerializeField] private float startOfTheNextRound = 0.0f;
+    [SerializeField] private float startOfTheNextRoundTime = 0.0f;
     [SerializeField] private bool waitingForNextRound = true;
-    private GameObject mainSpawner;
+    public static GameObject mainSpawner;
     private int nextNumOfEnemiesGroups = 1;
     private int nextNumOfEnemiesPerGroup = 1;
     [SerializeField] private float distanceOfSpawnersFromGen = 25.0f;
@@ -29,7 +29,7 @@ public class ScoreCore : MonoBehaviour
     }
 
     private void Start() {
-        mainSpawner = GameObject.FindGameObjectWithTag("MainSpawner");
+        
     }
 
     void Update()
@@ -57,6 +57,7 @@ public class ScoreCore : MonoBehaviour
         mainSpawner.GetComponent<SpawnerSpawner>().Spawn(distanceOfSpawnersFromGen, nextNumOfEnemiesPerGroup, nextNumOfEnemiesGroups, 0.1f);
         //Temporary
         nextNumOfEnemiesPerGroup += 1;
+        waitingForNextRound = false;
     }
 
     private void FixedUpdate() {
@@ -66,7 +67,7 @@ public class ScoreCore : MonoBehaviour
             if (isRoundCompleted())
             {
                 nextRoundCheckTime = Time.time + timeBetweenRounds;
-                startOfTheNextRound = Time.time + timeBetweenRounds;
+                startOfTheNextRoundTime = Time.time + timeBetweenRounds;
                 waitingForNextRound = true;
             }
             else
@@ -74,7 +75,7 @@ public class ScoreCore : MonoBehaviour
                 nextRoundCheckTime = Time.time + roundCheckingRate;    
             }
         }
-        if (waitingForNextRound && (Time.time > startOfTheNextRound))
+        if (waitingForNextRound && (Time.time > startOfTheNextRoundTime))
         {
             startNextRound();
         }
