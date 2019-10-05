@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    public CellFactory factory;
+    public CellFactory cellFactory;
+    public CellFactory Grassfactory;
+
+
     private void Start()
     {
         CreateShape();
@@ -14,7 +17,14 @@ public class MapGenerator : MonoBehaviour
     public int xSize;
     public int ySize;
 
-   public float[,] GenerateNoiseMap(int ySize, int xSize, float scale)
+    private int pickTile()
+    {
+        int[] numbers = {1, 1, 1, 1, 1, 1, 1, 1, 2, 3};
+        int randInt = Random.Range(0, numbers.Length-1);
+        return numbers[randInt];
+    }
+
+    public float[,] GenerateNoiseMap(int ySize, int xSize, float scale)
     {
         float[,] noiseMap = new float[ySize, xSize];
 
@@ -52,7 +62,9 @@ public class MapGenerator : MonoBehaviour
             return;
         for (int i = 0; i < vertices.Length; i++)
         {
-            factory.Add(vertices[i], 0).transform.localRotation = Quaternion.Euler(0,0,60*(int)Random.Range(0,7));
+            //Creating a tile on pos Vert[i],setting it's sprtite by Picktile, setting its rotation too.
+            Cell cell = cellFactory.Add(vertices[i], pickTile());
+            cell.transform.localRotation = Quaternion.Euler(0,0,60);
         }
     } 
 }

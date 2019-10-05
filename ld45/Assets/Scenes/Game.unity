@@ -398,7 +398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1220246e22fed54eb05816afc25c36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factory: {fileID: 2004089835}
+  cellFactory: {fileID: 0}
+  Grassfactory: {fileID: 0}
   xSize: 50
   ySize: 30
 --- !u!114 &599833003
@@ -561,6 +562,7 @@ MonoBehaviour:
   Factory: {fileID: 56327861}
   SpawnedIdentifier: 0
   ReturnPosition: {x: 0, y: 0, z: 0}
+  makeInfinite: 0
 --- !u!212 &695234993
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -713,6 +715,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: CellFactory
       objectReference: {fileID: 0}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1903357091318707322, guid: 9a1b828594a5fc64484ebcc2fb537063,
+        type: 3}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1098080621417425859, guid: 492eac2f546b8a84599f27fc1cd57582,
+        type: 3}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 5629181446744162878, guid: d5d5952a8bc46494084362c30268edad,
+        type: 3}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 7895721678476721793, guid: c807489d857dd7049a7d1c2188ad1038,
+        type: 3}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 4161193831991739826, guid: cf996d7e8891b4a40a8029b46fc32338,
+        type: 3}
     - target: {fileID: 165064216686711199, guid: b9f3f2a3438db8c479d6003e71841953,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -778,41 +815,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 1903357091318707322, guid: 9a1b828594a5fc64484ebcc2fb537063,
-        type: 3}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 1098080621417425859, guid: 492eac2f546b8a84599f27fc1cd57582,
-        type: 3}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 5629181446744162878, guid: d5d5952a8bc46494084362c30268edad,
-        type: 3}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 7895721678476721793, guid: c807489d857dd7049a7d1c2188ad1038,
-        type: 3}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.data[4]
-      value: 
-      objectReference: {fileID: 4161193831991739826, guid: cf996d7e8891b4a40a8029b46fc32338,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9f3f2a3438db8c479d6003e71841953, type: 3}
 --- !u!4 &954446197 stripped
@@ -872,6 +874,7 @@ MonoBehaviour:
   Factory: {fileID: 56327861}
   SpawnedIdentifier: 2
   ReturnPosition: {x: 0, y: 0, z: 0}
+  makeInfinite: 0
 --- !u!212 &1066906420
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -986,6 +989,7 @@ MonoBehaviour:
   Factory: {fileID: 56327861}
   SpawnedIdentifier: 3
   ReturnPosition: {x: 0, y: 0, z: 0}
+  makeInfinite: 0
 --- !u!212 &1108333351
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1320,6 +1324,59 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassFactory
       objectReference: {fileID: 0}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4161193831991739826, guid: cf996d7e8891b4a40a8029b46fc32338,
+        type: 3}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 6462934462925235114, guid: a1b2ed1976ad52140acb024d6d1fd5de,
+        type: 3}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 8200172447272603831, guid: a58edae7c0348e8429bbc9c207cad592,
+        type: 3}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 3653784948793390078, guid: 96c24c8f4a2744d4bb8f1f4d9aa1ea31,
+        type: 3}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 7218382788439477786, guid: 946ff37fa1594dc4681730df70991743,
+        type: 3}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 1445653308963066968, guid: edf67af2d227145498f7c18d571793a2,
+        type: 3}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 5807915851294495187, guid: 196021b94721151438f1651ea621e169,
+        type: 3}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 6798495845740918290, guid: 71c073708e8d0884589f62e96166bb88,
+        type: 3}
     - target: {fileID: 165064216686711199, guid: b9f3f2a3438db8c479d6003e71841953,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1385,41 +1442,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 4161193831991739826, guid: cf996d7e8891b4a40a8029b46fc32338,
-        type: 3}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 1098080621417425859, guid: 492eac2f546b8a84599f27fc1cd57582,
-        type: 3}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 5629181446744162878, guid: d5d5952a8bc46494084362c30268edad,
-        type: 3}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 7895721678476721793, guid: c807489d857dd7049a7d1c2188ad1038,
-        type: 3}
-    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-        type: 3}
-      propertyPath: cellPrefabs.Array.data[4]
-      value: 
-      objectReference: {fileID: 4161193831991739826, guid: cf996d7e8891b4a40a8029b46fc32338,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9f3f2a3438db8c479d6003e71841953, type: 3}
 --- !u!4 &2004089834 stripped
@@ -1428,15 +1450,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2004089833}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2004089835 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
-    type: 3}
-  m_PrefabInstance: {fileID: 2004089833}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b53668de13aa9547bb0ad0dff33c5fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
