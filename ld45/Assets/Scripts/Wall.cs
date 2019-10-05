@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class Wall : Cell
 {
-
+    //[SerializeField] static Sprite sprite;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        GetComponent<SpriteRenderer>().color = Color.green;
+        //sprite = gameObject.GetComponent<Sprite>();
+    }
     void Start()
     {
         
