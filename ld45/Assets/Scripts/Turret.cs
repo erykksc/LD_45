@@ -34,6 +34,7 @@ public class Turret : Cell
     // Update is called once per frame
     public override void WhenActivatedDoOnce()
     {
+        Debug.Log("wrk");
         Shoot();
     }
     private void Shoot()
