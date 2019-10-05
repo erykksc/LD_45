@@ -66,6 +66,19 @@ public class CellFactory : MonoBehaviour
         Add(new Vector2Int(-2, 3), 2);
         Add(new Vector2Int(-4, 3), 2);
         Add(new Vector2Int(-1, 3), 2);
+        Add(new Vector2Int(-3, 1), 2);
+        Add(new Vector2Int(-2, 1), 2);
+        Add(new Vector2Int(-4, 1), 2);
+        Add(new Vector2Int(-1, 1), 2);
+        Add(new Vector2Int(0, 1), 2);
+        Add(new Vector2Int(-3, -1), 2);
+        Add(new Vector2Int(-2, -1), 2);
+        Add(new Vector2Int(-4, -1), 2);
+        Add(new Vector2Int(-1, -1), 2);
+        Add(new Vector2Int(-0, 1), 2);
+        Add(new Vector2Int(1, 1), 2);
+        Add(new Vector2Int(2, 1), 2);
+        Add(new Vector2Int(3, 1), 2);
         //cells[0].isActivated = true;
 
         //cells[3].timesActivated = 1;
