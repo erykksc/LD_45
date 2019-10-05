@@ -79,10 +79,6 @@ public class Cell : MonoBehaviour
     }
     public virtual void WhenActivatedDoOnce()
     {
-        else if(name=="Wall" )
-        {
-            setHp(getHp()+10);
-        }
     }
 
 
