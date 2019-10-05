@@ -13,13 +13,6 @@ public class Wall : Cell
     {
         healPerImpulse = newHealPerImpulse;
     }
-    
-    private void Awake()
-    {
-        GetComponent<SpriteRenderer>().color = Color.green;
-        //sprite = gameObject.GetComponent<Sprite>();
-    }
-    
     public override void WhenActivatedDoOnce()
     {
         setHp(getHp()+healPerImpulse);
