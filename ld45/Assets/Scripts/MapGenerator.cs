@@ -11,18 +11,16 @@ public class MapGenerator : MonoBehaviour
     }
 
     Vector2Int[] vertices;
-    public int maxDepth;
-    public int maxWidth;
     public int xSize;
     public int ySize;
 
-   public float[,] GenerateNoiseMap(int mapDepth, int mapWidth, float scale)
+   public float[,] GenerateNoiseMap(int ySize, int xSize, float scale)
     {
-        float[,] noiseMap = new float[maxDepth, maxWidth];
+        float[,] noiseMap = new float[ySize, xSize];
 
-        for (int yIndex = 0; yIndex < mapDepth; yIndex++)
+        for (int yIndex = 0; yIndex < ySize; yIndex++)
         {
-            for (int xIndex = 0; xIndex < mapWidth; xIndex++)
+            for (int xIndex = 0; xIndex < xSize; xIndex++)
             {
                 float sampleX = xIndex / scale;
                 float sampleY = yIndex / scale;
