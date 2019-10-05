@@ -40,7 +40,7 @@ public class Turret : Cell
     {
         GameObject Target = GetTarget();
         // Debug.Log("Searching");
-        Vector2 dist =  gameObject.GetComponent<Transform>().position - Target.GetComponent<Transform>().position;
+        Vector2 dist =  Target.GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
         // Debug.Log($"Distance to target: {dist}");
         if (dist.sqrMagnitude < range && Target != gameObject)
         {
