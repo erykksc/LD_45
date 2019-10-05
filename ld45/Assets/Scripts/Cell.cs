@@ -28,7 +28,7 @@ public class Cell : MonoBehaviour
     [SerializeField] private int hp = 100;
 
 
-    public void Instantiate(Vector2Int p)
+    public void InstantiateCell(Vector2Int p)
     {
         pos = p;
         transform.localPosition = (Vector2)pos;
