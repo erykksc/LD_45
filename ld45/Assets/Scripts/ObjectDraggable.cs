@@ -25,6 +25,7 @@ public class ObjectDraggable : MonoBehaviour
         if (IsSelected &&Input.GetMouseButtonUp(0) )
         {
             IsSelected = false;
+            
         }
         
     }
