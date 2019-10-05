@@ -18,7 +18,7 @@ public class CellFactory : MonoBehaviour
         }
         o = Instantiate(cellPrefabs[index]);
         o.Instantiate(pos);
-
+        o.name = cellPrefabs[index].name;
         for (int i = 0; i < cells.Count; i++)
         {
             if (o.pos.x - cells[i].pos.x == 0)
@@ -64,8 +64,8 @@ public class CellFactory : MonoBehaviour
         Add(new Vector2Int(-3, 2), 2);
         Add(new Vector2Int(-3, 3), 2);
         Add(new Vector2Int(-2, 3), 2);
-        Add(new Vector2Int(-4, 3), 2);
-        Add(new Vector2Int(-1, 3), 2);
+        Add(new Vector2Int(-4, 3), 3);
+        Add(new Vector2Int(-1, 3), 3);
         //cells[0].isActivated = true;
 
         //cells[3].timesActivated = 1;
