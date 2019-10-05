@@ -27,7 +27,7 @@ public class Cell : MonoBehaviour
         while (true)
         {
             IsActive = !IsActive;
-            Debug.Log("change");
+            //Debug.Log("change");
             yield return new WaitForSeconds(2);
         }
 
