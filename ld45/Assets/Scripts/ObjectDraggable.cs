@@ -9,6 +9,8 @@ public class ObjectDraggable : MonoBehaviour
     public int SpawnedIdentifier=0;
     public Vector3 ReturnPosition;
 
+    // xD
+    public bool makeInfinite = false;
 
     public void SetDraggableReturnPosition()
     {
@@ -42,7 +44,7 @@ public class ObjectDraggable : MonoBehaviour
 
                 
 
-            if (Factory.Find(hPos) == null&&ScoreCore.Cash>= ScoreCore.Prices[SpawnedIdentifier])
+            if ((Factory.Find(hPos) == null&&ScoreCore.Cash>= ScoreCore.Prices[SpawnedIdentifier])||makeInfinite)
             {
                 Factory.Add(hPos, SpawnedIdentifier);
                 GameObject.Instantiate(Resources.Load<GameObject>("BuildParticles") as GameObject, Cell.getGlobalCoords(Cell.getHexCoords(WorldPos, 1), 1), Quaternion.identity);
