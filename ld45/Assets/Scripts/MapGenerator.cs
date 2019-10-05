@@ -11,18 +11,16 @@ public class MapGenerator : MonoBehaviour
     }
 
     Vector2Int[] vertices;
-    public int maxDepth;
-    public int maxWidth;
     public int xSize;
     public int ySize;
 
-   public float[,] GenerateNoiseMap(int mapDepth, int mapWidth, float scale)
+   public float[,] GenerateNoiseMap(int ySize, int xSize, float scale)
     {
-        float[,] noiseMap = new float[maxDepth, maxWidth];
+        float[,] noiseMap = new float[ySize, xSize];
 
-        for (int yIndex = 0; yIndex < mapDepth; yIndex++)
+        for (int yIndex = 0; yIndex < ySize; yIndex++)
         {
-            for (int xIndex = 0; xIndex < mapWidth; xIndex++)
+            for (int xIndex = 0; xIndex < xSize; xIndex++)
             {
                 float sampleX = xIndex / scale;
                 float sampleY = yIndex / scale;
@@ -35,8 +33,9 @@ public class MapGenerator : MonoBehaviour
 
     void CreateShape()
     {
+        int i = 0;
         vertices = new Vector2Int[(xSize + 1) * (ySize + 1)];
-        for (int i = 0, y = 0; y <= ySize; y++)
+        for (int y = 0; y <= ySize; y++)
         {
             for (int x = 0; x <= xSize; x++)
             {
@@ -44,15 +43,16 @@ public class MapGenerator : MonoBehaviour
                 i++;
             }
         }
+        factoryAddVerticies();
     }
 
-    private void OnDrawGizmos()
+    private void factoryAddVerticies()
     {
         if (vertices == null)
             return;
         for (int i = 0; i < vertices.Length; i++)
         {
-            factory.Add(vertices[i], 3);
+            factory.Add(vertices[i], 4);
         }
     } 
 }
