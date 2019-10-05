@@ -12,7 +12,7 @@ public class CellFactory : MonoBehaviour
     public void Add(Vector2Int pos,int index = 0)
     {
         Cell o;
-       if(index>=cellPrefabs.Length)
+        if(index>=cellPrefabs.Length)
         {
             return;
         }
@@ -49,7 +49,7 @@ public class CellFactory : MonoBehaviour
             }
         }
         cells.Add(o);
-        Debug.Log(cells.Count);
+        //Debug.Log(cells.Count);
     }
     void Start()
     {
