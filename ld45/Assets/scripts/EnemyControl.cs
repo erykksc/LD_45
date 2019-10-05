@@ -9,8 +9,8 @@ public class EnemyControl : MonoBehaviour
     public float maxSpeed;
     public float speed;
     private bool isRunningAway = false;
-    private int BeenRunnigAwayFor = 0;
-    public int RunAwayFor = 50; 
+    private float startedToRunAway = 0.0f;
+    [SerializeField] private float runAwayFor = 0.2f; 
 
     GameObject GetTarget()
     {
@@ -60,11 +60,9 @@ public class EnemyControl : MonoBehaviour
         if (isRunningAway)
         {
             move = -move;
-            BeenRunnigAwayFor++;
-            if (BeenRunnigAwayFor >= RunAwayFor)
+            if (Time.time>startedToRunAway+runAwayFor)
             {
                 isRunningAway = false;
-                BeenRunnigAwayFor = 0;
             }
         }
 
@@ -74,5 +72,6 @@ public class EnemyControl : MonoBehaviour
     public void run()
     {
         isRunningAway = true;
+        startedToRunAway = Time.time;
     }
 }
