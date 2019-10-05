@@ -16,7 +16,17 @@ public class CellFactory : MonoBehaviour
     List<Cell> cells;
     public Cell [] cellPrefabs;
 
-
+    public Cell Find(Vector2Int pos)
+    {
+        for(int i = 0;i<cells.Count;i++)
+        {
+            if(pos == cells[i].pos)
+            {
+                return cells[i];
+            }
+        }
+        return null;
+    }
     public void Add(Vector2Int pos,int index = 0)
     {
         Cell o;

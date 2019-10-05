@@ -23,7 +23,6 @@ public class Enemy : MonoBehaviour
             GameObject.Destroy(gameObject);
         }
     }
-
     private void OnCollisionEnter2D(Collision2D collision) 
     {
         if (collision.gameObject.CompareTag("Cell"))
