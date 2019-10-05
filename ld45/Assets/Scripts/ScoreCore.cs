@@ -12,7 +12,7 @@ public class ScoreCore : MonoBehaviour
         public Text BankPriceDisplayer;
         public Text TurretPriceDisplayer;
         public Text WallPriceDisplayer;
-        public static int[] Prices = { 10, 20, 30, 40 };
+        public static int[] Prices = { 15, 999, 20, 5 };
 
     public static int Cash=0;
 
@@ -40,13 +40,17 @@ public class ScoreCore : MonoBehaviour
         if (CashDisplayer == null)
         {
             CashDisplayer = GameObject.Find("CashDisplayer").GetComponent<Text>();
+
         }
+        BankPriceDisplayer.text = (Prices[0].ToString() + "$");
+        TurretPriceDisplayer.text = (Prices[2].ToString() + "$");
+        WallPriceDisplayer.text = (Prices[3].ToString() + "$");
     }
 
     void Update()
     {
         //Cash++;
-        CashDisplayer.text = Cash.ToString();
+        CashDisplayer.text =( Cash.ToString()   +"$")  ;
     }
 
     private bool isRoundCompleted()
