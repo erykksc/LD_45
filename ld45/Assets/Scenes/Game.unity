@@ -398,8 +398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1220246e22fed54eb05816afc25c36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellFactory: {fileID: 0}
-  Grassfactory: {fileID: 0}
+  cellFactory: {fileID: 56327861}
+  grassFactory: {fileID: 2004089835}
   xSize: 50
   ySize: 30
 --- !u!114 &599833003
@@ -601,8 +601,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 3474c6ebb2302324c9043a56a7bfacff, type: 3}
-  m_Color: {r: 0.9607843, g: 0.81755835, b: 0.23529412, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 89793aa7f0e39294e9f1c49ba1162547, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1450,3 +1450,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2004089833}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2004089835 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+    type: 3}
+  m_PrefabInstance: {fileID: 2004089833}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b53668de13aa9547bb0ad0dff33c5fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

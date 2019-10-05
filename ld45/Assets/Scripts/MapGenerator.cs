@@ -5,7 +5,7 @@ using UnityEngine;
 public class MapGenerator : MonoBehaviour
 {
     public CellFactory cellFactory;
-    public CellFactory Grassfactory;
+    public CellFactory grassFactory;
 
 
     private void Start()
@@ -19,7 +19,7 @@ public class MapGenerator : MonoBehaviour
 
     private int pickTile()
     {
-        int[] numbers = {1, 1, 1, 1, 1, 1, 1, 1, 2, 3};
+        int[] numbers = {0, 0, 0, 0, 1, 1, 1, 1, 2, 3, 4, 5, 6, 7};
         int randInt = Random.Range(0, numbers.Length-1);
         return numbers[randInt];
     }
@@ -63,7 +63,7 @@ public class MapGenerator : MonoBehaviour
         for (int i = 0; i < vertices.Length; i++)
         {
             //Creating a tile on pos Vert[i],setting it's sprtite by Picktile, setting its rotation too.
-            Cell cell = cellFactory.Add(vertices[i], pickTile());
+            Cell cell = grassFactory.Add(vertices[i], pickTile());
             cell.transform.localRotation = Quaternion.Euler(0,0,60);
         }
     } 
