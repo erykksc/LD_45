@@ -6,28 +6,18 @@ using UnityEditor;
 
 public class ScoreCore : MonoBehaviour
 {
-    [Space]
-    [Header("Price Related")]
     public Text CashDisplayer;
-        public Text BankPriceDisplayer;
-        public Text TurretPriceDisplayer;
-        public Text WallPriceDisplayer;
-        public static int[] Prices = { 15, 999, 20, 5 };
-
     public static int Cash=0;
 
+    public static int[] Prices = { 10, 20, 30, 40 };
 
-    [Space]
-    [Header("Round Related")]
+
     [SerializeField] private float nextRoundCheckTime = 0.0f;
     [SerializeField] private float roundCheckingRate = 0.5f;
     [SerializeField] private int roundNum = 0;
     [SerializeField] private float timeBetweenRounds = 10.0f;
     [SerializeField] private float startOfTheNextRoundTime = 0.0f;
     [SerializeField] private bool waitingForNextRound = false;
-
-    [Space]
-    [Header("Enemy Related")]
     public static GameObject mainSpawner;
     private int nextNumOfEnemiesGroups = 1;
     private int nextNumOfEnemiesPerGroup = 1;
@@ -40,17 +30,13 @@ public class ScoreCore : MonoBehaviour
         if (CashDisplayer == null)
         {
             CashDisplayer = GameObject.Find("CashDisplayer").GetComponent<Text>();
-
         }
-        BankPriceDisplayer.text = (Prices[0].ToString() + "$");
-        TurretPriceDisplayer.text = (Prices[2].ToString() + "$");
-        WallPriceDisplayer.text = (Prices[3].ToString() + "$");
     }
 
     void Update()
     {
         //Cash++;
-        CashDisplayer.text =( Cash.ToString()   +"$")  ;
+        CashDisplayer.text = Cash.ToString();
     }
 
     private bool isRoundCompleted()
