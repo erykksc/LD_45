@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    // Start is called before the first frame update
-    //protected static Sprite sprite;
-
+    //These are the neighbouring tiles
     public Cell right = null , lup = null , ldown = null, left = null,rup = null,rdown = null;
     
     public void Instantiate(Vector2Int p)
@@ -15,8 +13,10 @@ public class Cell : MonoBehaviour
         transform.localPosition = new Vector2(-(pos.y%2)*0.5f+pos.x,pos.y*Mathf.Sqrt(3)*0.5f);
     }
 
+    //This is on only ONCE per energy cycle. Used for singe-time actions
     public bool active = true;
 
+    //This determines the energy of the tile
     public bool isActivated = false;
 
     public int timesActivated = 0;
@@ -27,14 +27,35 @@ public class Cell : MonoBehaviour
 
     [SerializeField] private int hp = 100;
 
+
+    public void Instantiate(Vector2Int p)
+    {
+        pos = p;
+        transform.localPosition = (Vector2)pos;
+    }
     public int getHp()
     {
         return hp;
     }
-    void setHp(int h)
+    public void setHp(int newHp)
     {
-        hp = h;
+        hp = newHp;
     }
+
+    public void dealDamage(int damage)
+    {
+        if (damage > 0)
+        {
+            hp -= damage;
+        }
+
+        if (hp <= 0)
+        {
+            GameObject.Destroy(gameObject);
+        }
+    }
+
+
     /// Functions
     /*public IEnumerator animate(int duration)
     {
@@ -50,15 +71,21 @@ public class Cell : MonoBehaviour
 
     public void getImpulse(Cell parent)
     {
-        Debug.Log("from getImpulse");
+        // Debug.Log("from getImpulse");
         if(parent.timesActivated>timesActivated)
         {
             //Debug.Log("got impulse");
             isActivated = true;
+            WhenActivatedDoOnce();
             timesActivated = parent.timesActivated;
             StartCoroutine(propagateImpuls());
+            
         }
     }
+    public virtual void WhenActivatedDoOnce()
+    {
+    }
+
 
     // coroutine
     public IEnumerator propagateImpuls()
@@ -114,6 +141,7 @@ public class Cell : MonoBehaviour
         //if (isActivated && gameObject.GetComponent<SpriteRenderer>().sprite == SpriteDeactivated) gameObject.GetComponent<SpriteRenderer>().sprite = SpriteActivated;
         //if (!isActivated && gameObject.GetComponent<SpriteRenderer>().sprite == SpriteActivated) gameObject.GetComponent<SpriteRenderer>().sprite = SpriteDeactivated;
     }
+
 
     //This will ensure that this GameObject is at coordinates expressed in Int values
     public void SnapToIntPosition()

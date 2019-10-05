@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class Wall : Cell
 {
-    //[SerializeField] static Sprite sprite;
-    // Start is called before the first frame update
-
+    [SerializeField] private int healPerImpulse = 10;
+    public int getHealPerImpulse()
+    {
+        return healPerImpulse;
+    }
+    public void setHealPerImpulse(int newHealPerImpulse)
+    {
+        healPerImpulse = newHealPerImpulse;
+    }
+    
     private void Awake()
     {
         GetComponent<SpriteRenderer>().color = Color.green;
         //sprite = gameObject.GetComponent<Sprite>();
     }
-    void Start()
+    
+    public override void WhenActivatedDoOnce()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        setHp(getHp()+healPerImpulse);
     }
 }
