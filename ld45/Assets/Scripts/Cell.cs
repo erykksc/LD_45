@@ -116,7 +116,6 @@ public class Cell : MonoBehaviour
     }
     public virtual void WhenActivatedDoOnce()
     {
-        Debug.Log("Once");
     }
 
 
@@ -124,7 +123,6 @@ public class Cell : MonoBehaviour
     public IEnumerator propagateImpuls()
     {
         GetComponent<SpriteRenderer>().color = Color.blue;
-        Debug.Log($"inside propagate impulse, activated{timesActivated}");
         yield return new WaitForSeconds(0.5f);
         if(right!=null)
         {

@@ -13,7 +13,7 @@ public class ScoreCore : MonoBehaviour
     [SerializeField] private int roundNum = 0;
     [SerializeField] private float timeBetweenRounds = 10.0f;
     [SerializeField] private float startOfTheNextRoundTime = 0.0f;
-    [SerializeField] private bool waitingForNextRound = true;
+    [SerializeField] private bool waitingForNextRound = false;
     public static GameObject mainSpawner;
     private int nextNumOfEnemiesGroups = 1;
     private int nextNumOfEnemiesPerGroup = 1;
@@ -26,10 +26,6 @@ public class ScoreCore : MonoBehaviour
         {
             CashDisplayer = GameObject.Find("CashDisplayer").GetComponent<Text>();
         }
-    }
-
-    private void Start() {
-        
     }
 
     void Update()
@@ -47,7 +43,7 @@ public class ScoreCore : MonoBehaviour
         }
         else
         {
-            return false;
+            return true;
         }
     }
 
@@ -56,15 +52,14 @@ public class ScoreCore : MonoBehaviour
         roundNum += 1;
         mainSpawner.GetComponent<SpawnerSpawner>().Spawn(distanceOfSpawnersFromGen, nextNumOfEnemiesPerGroup, nextNumOfEnemiesGroups, 0.1f);
         //Temporary
-        nextNumOfEnemiesPerGroup += 1;
+        nextNumOfEnemiesGroups += 1;
         waitingForNextRound = false;
     }
 
     private void FixedUpdate() {
         if (Time.time > nextRoundCheckTime)
         {
-            
-            if (isRoundCompleted())
+            if (isRoundCompleted() && !waitingForNextRound)
             {
                 nextRoundCheckTime = Time.time + timeBetweenRounds;
                 startOfTheNextRoundTime = Time.time + timeBetweenRounds;
