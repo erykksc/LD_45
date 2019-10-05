@@ -8,6 +8,9 @@ public class EnemyControl : MonoBehaviour
     public GameObject Target;
     public float maxSpeed;
     public float speed;
+    private bool isRunningAway = false;
+    private int BeenRunnigAwayFor = 0;
+    public int RunAwayFor = 50; 
 
     GameObject GetTarget()
     {
@@ -53,7 +56,23 @@ public class EnemyControl : MonoBehaviour
         Vector2 move = playerPos - position;
 
         move = move.normalized * speed;
+
+        if (isRunningAway)
+        {
+            move = -move;
+            BeenRunnigAwayFor++;
+            if (BeenRunnigAwayFor >= RunAwayFor)
+            {
+                isRunningAway = false;
+                BeenRunnigAwayFor = 0;
+            }
+        }
+
         //normalize
         gameObject.GetComponent<Rigidbody2D>().AddForce(move,ForceMode2D.Force);
+    }
+    public void run()
+    {
+        isRunningAway = true;
     }
 }

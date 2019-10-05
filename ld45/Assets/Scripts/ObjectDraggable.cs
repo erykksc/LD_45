@@ -40,9 +40,12 @@ public class ObjectDraggable : MonoBehaviour
 
             Vector2Int hPos = Cell.getHexCoords(WorldPos, 1);
 
+                
+
             if (Factory.Find(hPos) == null&&ScoreCore.Cash>=10)
             {
                 Factory.Add(hPos, SpawnedIdentifier);
+                GameObject.Instantiate(Resources.Load<GameObject>("BuildParticles") as GameObject, Cell.getGlobalCoords(Cell.getHexCoords(WorldPos, 1), 1), Quaternion.identity);
                 ScoreCore.Cash -= 10;
             }
             gameObject.transform.position = ReturnPosition;
