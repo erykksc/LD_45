@@ -27,12 +27,12 @@ public class CellFactory : MonoBehaviour
         }
         return null;
     }
-    public void Add(Vector2Int pos,int index = 0)
+    public Cell Add(Vector2Int pos,int index = 0)
     {
         Cell o;
         if(index>=cellPrefabs.Length)
         {
-            return;
+            return null;
         }
         o = Instantiate(cellPrefabs[index]);
         o.Instantiate(pos);
@@ -78,6 +78,37 @@ public class CellFactory : MonoBehaviour
         }
         cells.Add(o);
         //Debug.Log(cells.Count);
+        return o;
+    }
+    void DestroyCell(Vector2Int pos)
+    {
+        for(int i = 0;i<cells.Count;i++)
+        {
+            if(pos==cells[i].pos)
+            {
+                cells[i] = cells[cells.Count - 1];
+                cells.RemoveAt(cells.Count - 1);
+            }
+        }
+    }
+    void DestroyCell(Cell cell)
+    {
+        for (int i = 0; i < cells.Count; i++)
+        {
+            if (cell == cells[i])
+            {
+                cells[i] = cells[cells.Count - 1];
+                cells.RemoveAt(cells.Count - 1);
+            }
+        }
+    }
+    void DestroyCell(int index)
+    {
+        if(index>=0&&index<cells.Count)
+        {
+            cells[index] = cells[cells.Count - 1];
+            cells.RemoveAt(cells.Count - 1);
+        }
     }
     void Awake()
     {
