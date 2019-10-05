@@ -13,7 +13,7 @@ public class Turret : Cell
     private GameObject GetTarget()
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
-        //Debug.Log(objects.Length);
+        // Debug.Log($"Enemies found: {objects.Length}");
         
         GameObject lastObject = gameObject;
         float distance = Mathf.Infinity;
@@ -27,25 +27,24 @@ public class Turret : Cell
                 distance = dist;
             }
         }
-        //Debug.Log(lastObject);
+        // Debug.Log($"Closest target: {lastObject}");
         return lastObject;
     }
 
     // Update is called once per frame
     public override void WhenActivatedDoOnce()
     {
-        Debug.Log("wrk");
         Shoot();
     }
     private void Shoot()
     {
         GameObject Target = GetTarget();
-        //Debug.Log("Searching");
-        Vector2 dist = Target.GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
-        //Debug.Log(dist);
+        // Debug.Log("Searching");
+        Vector2 dist =  Target.GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
+        // Debug.Log($"Distance to target: {dist}");
         if (dist.sqrMagnitude < range && Target != gameObject)
         {
-            Debug.Log("One frame, one kill");
+            // Debug.Log("One frame, one kill");
             Destroy(Target);
             DrawArrow.ForDebug(gameObject.GetComponent<Transform>().position, dist);
         }
