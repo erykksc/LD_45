@@ -6,7 +6,7 @@ public class ObjectDraggable : MonoBehaviour
 {
     public bool IsSelected = false;
     public CellFactory Factory;
-    public GameObject SpawnedTile;
+    public int SpawnedIdentifier=0;
     public Vector3 ReturnPosition;
 
 
@@ -38,7 +38,7 @@ public class ObjectDraggable : MonoBehaviour
             IsSelected = false;
             Vector2 WorldPos =  Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
 
-            Factory.Add(Cell.getHexCoords(WorldPos,1));
+            Factory.Add(Cell.getHexCoords(WorldPos,1),SpawnedIdentifier);
 
 
 
