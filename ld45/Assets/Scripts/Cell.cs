@@ -10,7 +10,7 @@ public class Cell : MonoBehaviour
     public void Instantiate(Vector2Int p)
     {
         pos = p;
-        transform.localPosition = new Vector2(-(pos.y%2)*0.5f+pos.x,pos.y*Mathf.Sqrt(3)*0.5f);
+        transform.position = new Vector2(-(pos.y%2)*0.5f+pos.x,pos.y*Mathf.Sqrt(3)*0.5f);
     }
 
     //This is on only ONCE per energy cycle. Used for singe-time actions
