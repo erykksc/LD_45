@@ -24,9 +24,11 @@ public class CameraMovement : MonoBehaviour
     public void Start()
     {
         XMaxLimit = GetComponent<MapGenerator>().xSize - 17;
-        XMinLimit = 8;
+        XMinLimit = 7f;
         YMaxLimit = GetComponent<MapGenerator>().ySize - 13;
-        YMinLimit = 5;
+        YMinLimit = 4f;
+        Vector2 min = -Cell.getGlobalCoords(new Vector2Int(MapGenerator.xSize / 2,MapGenerator.ySize/2),55f/64f);
+        Vector2 max = Cell.getGlobalCoords(new Vector2Int(MapGenerator.xSize / 2, MapGenerator.ySize / 2), 55f / 64f);
     }
 
     void FixedUpdate()
@@ -39,7 +41,7 @@ public class CameraMovement : MonoBehaviour
         {
             GetComponent<Rigidbody2D>().AddForce(Vector2.right * MoveSpeed);
         }
-        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && transform.position.y < YMaxLimit)
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && transform.position.y > YMaxLimit)
         {
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * MoveSpeed);
         }
