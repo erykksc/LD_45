@@ -306,7 +306,7 @@ MonoBehaviour:
   WallPriceDisplayer: {fileID: 1271819163}
   nextRoundCheckTime: 0
   roundCheckingRate: 0.5
-  roundNum: 0
+  roundNum: 1
   timeBetweenRounds: 10
   startOfTheNextRoundTime: 0
   waitingForNextRound: 1
