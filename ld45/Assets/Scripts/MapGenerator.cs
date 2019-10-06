@@ -11,6 +11,10 @@ public class MapGenerator : MonoBehaviour
     private void Start()
     {
         CreateShape();
+
+        genRocks(5);
+        //genSpot(new Vector2Int(10, 9), new Vector2Int(1, 6), 8);//genRocks(5);
+        //genSpot(new Vector2Int(10, 10), new Vector2Int(1, 5), 7);
     }
 
     Vector2Int[] vertices;
@@ -63,12 +67,42 @@ public class MapGenerator : MonoBehaviour
         for (int i = 0; i < vertices.Length; i++)
         {
             //Creating a tile on pos Vert[i],setting it's sprtite by Picktile, setting its rotation too.
-            Cell cell = grassFactory.Add(vertices[i], pickTile());
-            cell.transform.localRotation = Quaternion.Euler(0,0,60);
+            grassFactory.Add(vertices[i], 0).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
+            //cell.transform.localRotation = Quaternion.Euler(0,0,60*Random.Range(1,7));
         }
-    } 
-    private void genRocks()
+    }
+    private void genRocks(int index)
     {
-
+        int xs = xSize / 10;
+        int ys = ySize / 10;
+        Vector2Int pos;
+        for(int i = 0;i<xs;i++)
+        {
+            for(int j = 0;j<ys;j++)
+            {
+                for(int k = 0;k<12;k++)
+                {
+                    pos = new Vector2Int((int)Random.Range(0, 10) + i * 10, (int)Random.Range(0, 10) + j * 10);
+                    grassFactory.DestroyCell(grassFactory.Find(pos));
+                    grassFactory.Add(pos, index).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
+                }
+            }
+        }
+    }
+    private void genSpot(Vector2Int pos3, Vector2Int size,int index)
+    {
+        Vector2Int pos;
+        int xoffset = 0;
+        for(int i = -2;i<size.y*2+2;i++)
+        {
+            xoffset = (int)Mathf.Sqrt(Mathf.Pow(size.x+size.y, 2) - Mathf.Pow(i - size.y, 2));
+            Debug.Log($"offset: {xoffset}");
+            for(int j = -xoffset;j<size.x*2+xoffset;j++)
+            {
+                pos = new Vector2Int(pos3.x+j+(pos3.y + i)%2,pos3.y+i);
+                grassFactory.DestroyCell(grassFactory.Find(pos));
+                grassFactory.Add(pos, index).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
+            }
+        }
     }
 }

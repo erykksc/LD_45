@@ -80,32 +80,35 @@ public class CellFactory : MonoBehaviour
         //Debug.Log(cells.Count);
         return o;
     }
-    void DestroyCell(Vector2Int pos)
+    public void DestroyCell(Vector2Int pos)
     {
         for(int i = 0;i<cells.Count;i++)
         {
             if(pos==cells[i].pos)
             {
+                Destroy(cells[i].gameObject);
                 cells[i] = cells[cells.Count - 1];
                 cells.RemoveAt(cells.Count - 1);
             }
         }
     }
-    void DestroyCell(Cell cell)
+    public void DestroyCell(Cell cell)
     {
         for (int i = 0; i < cells.Count; i++)
         {
             if (cell == cells[i])
             {
+                Destroy(cells[i].gameObject);
                 cells[i] = cells[cells.Count - 1];
                 cells.RemoveAt(cells.Count - 1);
             }
         }
     }
-    void DestroyCell(int index)
+    public void DestroyCell(int index)
     {
         if(index>=0&&index<cells.Count)
         {
+            Destroy(cells[index].gameObject);
             cells[index] = cells[cells.Count - 1];
             cells.RemoveAt(cells.Count - 1);
         }
