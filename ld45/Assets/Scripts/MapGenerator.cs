@@ -67,4 +67,8 @@ public class MapGenerator : MonoBehaviour
             cell.transform.localRotation = Quaternion.Euler(0,0,60);
         }
     } 
+    private void genRocks()
+    {
+
+    }
 }
