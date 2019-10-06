@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 7981637462068535399}
   - component: {fileID: 7981637462068535397}
   - component: {fileID: 1480674152154004419}
+  - component: {fileID: 3814441000205334073}
   m_Layer: 0
   m_Name: TurretBase
   m_TagString: Untagged
@@ -153,7 +154,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ed5a453db34a5301fb88813915d0aeab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2742c7b2816306447b8fd9aa9192c022, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -186,16 +187,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  buildable: 0
   pos: {x: 0, y: 0}
   hp: 10000
   sprites:
-  - {fileID: 21300000, guid: 4e473458e73011246b730361effd8e6a, type: 3}
-  - {fileID: 21300000, guid: eca9da65b74325f43867eeef9b9c1e59, type: 3}
-  - {fileID: 21300000, guid: 09fff0ac46d9e324e84efa9b052f2065, type: 3}
-  - {fileID: 21300000, guid: 07c45d8dbf9fb4c4c9ff979f464dda28, type: 3}
+  - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
+  - {fileID: 21300000, guid: ec1c31173f871364fa4e9575708496eb, type: 3}
+  - {fileID: 21300000, guid: 11ca59d4f23e31d4db6a2791c9311076, type: 3}
+  - {fileID: 21300000, guid: 755664c6230b09c4f9db7f3bf3c031dd, type: 3}
+  - {fileID: 21300000, guid: 2fbc69aad1aa73c4cbc37c8c4d7b8518, type: 3}
+  - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
   range: 10
   damage: 0
   damageSpeed: 0
+  timeGap: 0.5
 --- !u!50 &7981637462068535397
 Rigidbody2D:
   serializedVersion: 4
@@ -232,4 +237,107 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.4
+--- !u!120 &3814441000205334073
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7981637462068535396}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 50ed0777ce9321c53ab33d06de026253, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 40
+  m_Positions: []
+  m_Parameters:
+    serializedVersion: 3
+    widthMultiplier: 1
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.009521484
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.038091466
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 3
+    numCapVertices: 3
+    alignment: 0
+    textureMode: 1
+    shadowBias: 0.5
+    generateLightingData: 0
+  m_UseWorldSpace: 1
+  m_Loop: 0
