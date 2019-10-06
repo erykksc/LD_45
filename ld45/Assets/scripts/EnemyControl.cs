@@ -12,11 +12,13 @@ public class EnemyControl : MonoBehaviour
 
     private bool isRunningAway = false;
     private float startedToRunAway = 0.0f;
+    [SerializeField] private float bounceForce = 1.0f;
     [SerializeField] private Sprite[] Sprites;
     [SerializeField] private float runAwayFor = 0.2f; 
 
-    [SerializeField] private float AnimationSpeed=1;
-    private Vector2 move;
+    [SerializeField] private float AnimationSpeed = 1;
+
+    private Vector2 moveDirection;
     private Vector2 NonReversedMove;
 
     GameObject GetTarget()
@@ -62,15 +64,15 @@ public class EnemyControl : MonoBehaviour
         Vector2 position = gameObject.GetComponent<Transform>().position;
         Vector2 playerPos = Target.GetComponent<Transform>().position;
         //Debug.Log(playerPos);
-        move = playerPos - position;
+        moveDirection = playerPos - position;
 
-        move = move.normalized * speed;
+        moveDirection = moveDirection.normalized;
         //Extract movevector here
 
-        NonReversedMove = move;
+        NonReversedMove = moveDirection;
         if (isRunningAway)
         {
-            move = -move;
+            moveDirection = -moveDirection;
             if (Time.time>startedToRunAway+runAwayFor)
             {
                 isRunningAway = false;
@@ -78,7 +80,7 @@ public class EnemyControl : MonoBehaviour
         }
 
         //normalize
-        gameObject.GetComponent<Rigidbody2D>().AddForce(move,ForceMode2D.Force);
+        gameObject.GetComponent<Rigidbody2D>().AddForce(moveDirection*speed,ForceMode2D.Force);
     }
 
 
@@ -115,5 +117,9 @@ public IEnumerator animate()
     {
         isRunningAway = true;
         startedToRunAway = Time.time;
+    }
+    public void bounce()
+    {
+        gameObject.GetComponent<Rigidbody2D>().AddForce(-moveDirection*bounceForce, ForceMode2D.Force);
     }
 }
