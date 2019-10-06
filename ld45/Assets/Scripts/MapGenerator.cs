@@ -10,8 +10,6 @@ public class MapGenerator : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log($"In MapGenerator length of prefabs in grass {grassFactory.cellPrefabs.Length}");
-        lists = new List<Cell>[grassFactory.cellPrefabs.Length];
         CreateShape();
     }
 
@@ -19,11 +17,9 @@ public class MapGenerator : MonoBehaviour
     public int xSize;
     public int ySize;
 
-    List<Cell>[] lists;
-
     private int pickTile()
     {
-        int[] numbers = {0, 0, 0, 0, 1, 1, 1, 1, 2, 3, 4, 5, 6, 7};
+        int[] numbers = {0, 0, 0, 0, 1, 1, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         int randInt = Random.Range(0, numbers.Length-1);
         return numbers[randInt];
     }
@@ -67,40 +63,8 @@ public class MapGenerator : MonoBehaviour
         for (int i = 0; i < vertices.Length; i++)
         {
             //Creating a tile on pos Vert[i],setting it's sprtite by Picktile, setting its rotation too.
-            Cell cell = grassFactory.Add(vertices[i], (int)Random.Range(0,grassFactory.cellPrefabs.Length));
-            cell.transform.localRotation = Quaternion.Euler(0,0,60*(int)Random.Range(1,7));
+            Cell cell = grassFactory.Add(vertices[i], pickTile());
+            cell.transform.localRotation = Quaternion.Euler(0,0,60);
         }
     } 
-    void generateSeed(int index,int count,int size)
-    {
-        Cell a, b;
-        lists[index] = new List<Cell>();
-        Vector2Int rPos = new Vector2Int(0,0);
-        for(int i = 0;i<count;i++)
-        {
-            
-            rPos = new Vector2Int((int)((float)xSize*Random.Range(0f,1f)), (int)((float)ySize * Random.Range(0f, 1f)));
-            //Debug.Log($"pos: {rPos} on {i}");
-            //grassFactory.DestroyCell(rPos);
-            lists[index].Add(grassFactory.Add(rPos, 6));
-        }
-    }
-    void Filling(int index, int ind, Vector2Int pos, int size, int minNeig, int maxNeig)
-    {
-        List<Propagateable> options = new List<Propagateable>();
-        for(int i = 0;i<6;i++)
-        {
-            if(lists[index][ind].neighbours[i]!=null)
-            {
-                options.Add(lists[index][ind].neighbours[i]);
-            }
-        }
-
-
-
-        for(int i = 0;i<size;i++)
-        {
-
-        }
-    }
 }

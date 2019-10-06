@@ -5,8 +5,6 @@ using UnityEngine;
 public class Grass : Cell
 {
     // Start is called before the first frame update
-
-
     void Start()
     {
         
