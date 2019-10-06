@@ -34,9 +34,11 @@ public class CellFactory : MonoBehaviour
         {
             return null;
         }
+
         o = Instantiate(cellPrefabs[index]);
         o.Instantiate(pos);
         o.name = cellPrefabs[index].name;
+        o.transform.parent = transform;
         for (int i = 0; i < cells.Count; i++)
         {
 
@@ -112,7 +114,8 @@ public class CellFactory : MonoBehaviour
     }
     void Awake()
     {
-       
+        Debug.Log($"prefab0: {cellPrefabs[0].buildable}");
+        Debug.Log($"prefab0: {cellPrefabs[1].buildable}");
     }
 }
    
