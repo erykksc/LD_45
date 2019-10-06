@@ -11,6 +11,7 @@ public class Turret : Cell
     private int passed;
     public float timeGap = 0.5f;
     bool switch1 = true;
+    private LineRenderer line;
 
 
     //Finding a target by finding the nearest object with the tag ENEMY
@@ -55,8 +56,13 @@ public class Turret : Cell
         if (dist.sqrMagnitude < range && Target != gameObject)
         {
             Debug.Log("One frame, one kill");
+            //DrawArrow.ForDebug(gameObject.GetComponent<Transform>().position, dist);
+            Vector3[] points = new Vector3[2];
+            points[0] = (Vector2) gameObject.GetComponent<Transform>().position + dist.normalized * 0.4f;
+            points[1] = (Vector2) Target.GetComponent<Transform>().position;
+            line.SetPositions(points);
+            StartCoroutine(deleteLine());
             Destroy(Target);
-            DrawArrow.ForDebug(gameObject.GetComponent<Transform>().position, dist);
         }
     }
     private IEnumerator initiateShooting()
@@ -101,8 +107,18 @@ public class Turret : Cell
     private void Awake()
     {
         setPulseAction(action);
+        line = gameObject.GetComponent<LineRenderer>();
+        line.positionCount = 2;
     }
 
+    private IEnumerator deleteLine()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Vector3[] points = new Vector3[2];
+        points[0] = new Vector3(0,0,-1000);
+        points[1] = new Vector3(0,0,-1000);
+        line.SetPositions(points);
+    }
 
     private void Rotate(Vector2 Vect2)
     {
@@ -120,7 +136,7 @@ public class Turret : Cell
 
             }
         }
-       
+        
 
 
 
