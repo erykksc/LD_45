@@ -62,6 +62,7 @@ public class Turret : Cell
             points[0] = (Vector2) gameObject.GetComponent<Transform>().position;
             points[1] = (Vector2) Target.GetComponent<Transform>().position;
             line.SetPositions(points);
+            deleteLine();
             Destroy(Target);
         }
     }
@@ -112,7 +113,7 @@ public class Turret : Cell
 
     private IEnumerator deleteLine()
     {
-        yield return new WaitForSeconds(0.5);
+        yield return new WaitForSeconds(0.5f);
         line.positionCount = 0;
     }
 
