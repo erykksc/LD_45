@@ -17,6 +17,7 @@ public class EnemyControl : MonoBehaviour
 
     [SerializeField] private float AnimationSpeed=1;
     private Vector2 move;
+    private Vector2 NonReversedMove;
 
     GameObject GetTarget()
     {
@@ -66,6 +67,7 @@ public class EnemyControl : MonoBehaviour
         move = move.normalized * speed;
         //Extract movevector here
 
+        NonReversedMove = move;
         if (isRunningAway)
         {
             move = -move;
@@ -86,7 +88,7 @@ public IEnumerator animate()
         while (true)
       {
         float speed = GetComponent<Rigidbody2D>().velocity.magnitude;
-        Vector2 Direction =  move;
+        Vector2 Direction =  NonReversedMove;
 
         //Handle rotation
         gameObject.transform.up = Direction;
