@@ -31,8 +31,10 @@ public class Cell : Propagateable
         StartCoroutine(animate());
         onImpulse();
     }
-    public void onImpulse()
-    { }
+    public virtual void onImpulse()
+    {
+        
+    }
     public IEnumerator animate()
     {
         for(int i =0;i<sprites.Length;i++)

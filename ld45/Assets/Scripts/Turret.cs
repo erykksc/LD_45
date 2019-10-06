@@ -32,19 +32,20 @@ public class Turret : Cell
     }
 
     // Update is called once per frame
-    public void onImpulse()
+    public override void onImpulse()
     {
+        Debug.Log("wrk");
         Shoot();
     }
     private void Shoot()
     {
         GameObject Target = GetTarget();
-        // Debug.Log("Searching");
+        Debug.Log("Searching");
         Vector2 dist =  Target.GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
         // Debug.Log($"Distance to target: {dist}");
         if (dist.sqrMagnitude < range && Target != gameObject)
         {
-            // Debug.Log("One frame, one kill");
+            Debug.Log("One frame, one kill");
             Destroy(Target);
             DrawArrow.ForDebug(gameObject.GetComponent<Transform>().position, dist);
         }
