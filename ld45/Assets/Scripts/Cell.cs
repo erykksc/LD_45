@@ -106,7 +106,7 @@ public class Cell : Propagateable
     public void Instantiate(Vector2Int p)
     {
         pos = p;
-        transform.localPosition = getGlobalCoords(pos,1);
+        transform.localPosition = getGlobalCoords(pos,55f/64f);
     }
 
     public void InstantiateCell(Vector2Int p)
