@@ -53,6 +53,11 @@ public class ObjectDraggable : MonoBehaviour
                 ScoreCore.Cash -= ScoreCore.Prices[SpawnedIdentifier];
             }
 
+            //Increase Price of thebuilding built
+            ScoreCore.Prices[SpawnedIdentifier] += 5;
+            Camera.main.GetComponent<ScoreCore>().PriceDisplayers[SpawnedIdentifier].text = ScoreCore.Prices[SpawnedIdentifier].ToString()+"$";
+
+
             //Returning the draggable to origin position
             gameObject.transform.localPosition = ReturnPosition;
         }
