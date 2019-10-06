@@ -34,9 +34,11 @@ public class CellFactory : MonoBehaviour
         {
             return null;
         }
-        o = Instantiate(cellPrefabs[index]);
+        o = Instantiate(cellPrefabs[index]  );
+        
         o.Instantiate(pos);
         o.name = cellPrefabs[index].name;
+        
         for (int i = 0; i < cells.Count; i++)
         {
 
