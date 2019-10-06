@@ -46,8 +46,8 @@ public class ObjectDraggable : MonoBehaviour
             Vector2Int hPos = Cell.getHexCoords(WorldPos, 55f/64f);
 
                 
-            //Checking if position is occupied and if player has enough cash to build the cell
-            if ((Factory.Find(hPos) == null&&ScoreCore.Cash>= ScoreCore.Prices[SpawnedIdentifier]&&grassFactory.Find(hPos).buildable))
+            //Checking if position is occupied and if player has enough cash to build the cell. Also if the position is within gamespace
+            if ((Factory.Find(hPos) == null&&ScoreCore.Cash>= ScoreCore.Prices[SpawnedIdentifier]&&grassFactory.Find(hPos).buildable)&& Input.mousePosition.y>200)
             {
                 Factory.Add(hPos, SpawnedIdentifier);
                 GameObject.Instantiate(Resources.Load<GameObject>("BuildParticles") as GameObject, Cell.getGlobalCoords(Cell.getHexCoords(WorldPos, 55f/64f), 55f/64f), Quaternion.identity);
