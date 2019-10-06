@@ -10,9 +10,11 @@ public class ScoreCore : MonoBehaviour
     public static int Cash=0;
     public static int[] Prices = { 20, 999, 15, 5 };
         public Text CashDisplayer;
-            public Text BankPriceDisplayer;
-            public Text TurretPriceDisplayer;
-            public Text WallPriceDisplayer;
+        public Text TimeDisplayer;
+
+
+        public Text[] PriceDisplayers=new Text[4];
+
 
 
     [Header("Round related")]
@@ -36,15 +38,16 @@ public class ScoreCore : MonoBehaviour
         {
             CashDisplayer = GameObject.Find("CashDisplayer").GetComponent<Text>();
         }
-        BankPriceDisplayer.text=(Prices[0]+"$");
-        TurretPriceDisplayer.text=(Prices[2]+"$");
-        WallPriceDisplayer.text=(Prices[3]+"$");
+        PriceDisplayers[0].text=(Prices[0]+"$");
+        PriceDisplayers[2].text=(Prices[2]+"$");
+        PriceDisplayers[3].text=(Prices[3]+"$");
     }
 
     //Current Cash level is updated
     void Update()
     {
         CashDisplayer.text = Cash.ToString();
+        TimeDisplayer.text = Mathf.FloorToInt(Time.time).ToString();
     }
 
     private bool isRoundCompleted()

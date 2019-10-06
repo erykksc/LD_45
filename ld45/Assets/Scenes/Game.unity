@@ -704,7 +704,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cellPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 7981637462068535399, guid: 32c4a043457800e49848a89b24034fd1,
+      objectReference: {fileID: 7981637462068535399, guid: d9fc27fff8c7fbd4696d8bd998f6ad45,
         type: 3}
     - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
         type: 3}
@@ -879,7 +879,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: ab01e33af31c2a147a0eb046f590c17f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ed5a453db34a5301fb88813915d0aeab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
