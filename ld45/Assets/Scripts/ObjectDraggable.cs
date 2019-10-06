@@ -14,7 +14,7 @@ public class ObjectDraggable : MonoBehaviour
 
     public void SetDraggableReturnPosition()
     {
-        ReturnPosition = gameObject.transform.position;
+        ReturnPosition = gameObject.transform.localPosition;
     }
 
     private void OnMouseOver()
@@ -56,7 +56,7 @@ if (Input.GetMouseButtonDown(1)){Debug.LogWarning(Camera.main.ScreenToWorldPoint
             }
 
             //Returning the draggable to origin position
-            gameObject.transform.position = ReturnPosition;
+            gameObject.transform.localPosition = ReturnPosition;
         }
         
     }
