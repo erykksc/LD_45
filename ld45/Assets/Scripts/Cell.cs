@@ -184,7 +184,7 @@ public class Cell : Propagateable
 
     ~Cell()
     {
-        Debug.Log("Destructor called");
+        //Debug.Log("Destructor called");
         for(int i = 0;i<6;i++)
         {
             if(neighbours[i]!=null)

@@ -37,7 +37,7 @@ public class Turret : Cell
 
     public override void onImpulse()
     {
-        Debug.Log("wrk");
+        //Debug.Log("wrk");
         StartCoroutine(initiateShooting());
     }
 
@@ -46,7 +46,7 @@ public class Turret : Cell
     private void Shoot()
     {
         GameObject Target = GetTarget();
-        Debug.Log("Searching");
+        //Debug.Log("Searching");
 
         Vector2 dist =  Target.GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
         // Ważne
@@ -55,13 +55,13 @@ public class Turret : Cell
 
         if (dist.sqrMagnitude < range && Target != gameObject)
         {
-            Debug.Log("One frame, one kill");
             //DrawArrow.ForDebug(gameObject.GetComponent<Transform>().position, dist);
             Vector3[] points = new Vector3[2];
             points[0] = (Vector2) gameObject.GetComponent<Transform>().position + dist.normalized * 0.4f;
             points[1] = (Vector2) Target.GetComponent<Transform>().position;
             line.SetPositions(points);
             StartCoroutine(deleteLine());
+            //Debug.Log("One frame, one kill");
             Destroy(Target);
         }
     }

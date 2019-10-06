@@ -96,7 +96,7 @@ public class MapGenerator : MonoBehaviour
         for(int i = -2;i<size.y*2+2;i++)
         {
             xoffset = (int)Mathf.Sqrt(Mathf.Pow(size.x+size.y, 2) - Mathf.Pow(i - size.y, 2));
-            Debug.Log($"offset: {xoffset}");
+            //Debug.Log($"offset: {xoffset}");
             for(int j = -xoffset;j<size.x*2+xoffset;j++)
             {
                 pos = new Vector2Int(pos3.x+j+(pos3.y + i)%2,pos3.y+i);
