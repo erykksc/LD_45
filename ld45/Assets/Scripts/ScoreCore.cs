@@ -6,16 +6,16 @@ using UnityEditor;
 
 public class ScoreCore : MonoBehaviour
 {
-    public Text CashDisplayer;
+    [Header("Cash related")]
     public static int Cash=0;
-
     public static int[] Prices = { 20, 999, 15, 5 };
+        public Text CashDisplayer;
+            public Text BankPriceDisplayer;
+            public Text TurretPriceDisplayer;
+            public Text WallPriceDisplayer;
 
-    public Text BankPriceDisplayer;
-    public Text TurretPriceDisplayer;
-    public Text WallPriceDisplayer;
 
-
+    [Header("Round related")]
     [SerializeField] private float nextRoundCheckTime = 0.0f;
     [SerializeField] private float roundCheckingRate = 0.5f;
     [SerializeField] private int roundNum = 0;
@@ -28,6 +28,7 @@ public class ScoreCore : MonoBehaviour
     [SerializeField] private float distanceOfSpawnersFromGen = 25.0f;
 
 
+    //Starting cash is set and text objects are assigned
     void Awake()
     {
         Cash = 80;
@@ -40,9 +41,9 @@ public class ScoreCore : MonoBehaviour
         WallPriceDisplayer.text=(Prices[3]+"$");
     }
 
+    //Current Cash level is updated
     void Update()
     {
-        //Cash++;
         CashDisplayer.text = Cash.ToString();
     }
 
