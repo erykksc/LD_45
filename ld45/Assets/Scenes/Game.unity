@@ -342,6 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d142d62a73f1f3e4ca6fb513e219a251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MapGenerator: {fileID: 599833002}
   factory: {fileID: 56327861}
 --- !u!114 &599833004
 MonoBehaviour:
@@ -396,6 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40e2e71fd2fb9f40b81bc956bace65f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MapGenerator: {fileID: 599833002}
   MoveSpeed: 10
 --- !u!1 &623542311
 GameObject:
