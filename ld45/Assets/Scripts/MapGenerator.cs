@@ -67,4 +67,12 @@ public class MapGenerator : MonoBehaviour
             cell.transform.localRotation = Quaternion.Euler(0,0,60);
         }
     } 
+    void expand(Cell cell,ref int count,int minNeighbours,int maxNeighbours)
+    {
+
+    }
+    void generateSeed(int type, int seedsCount, int minNeighboursRequired, int maxNeighboursRequired)
+    {
+        Cell.Switch(ref grassFactory.Find(new Vector2Int(0,0)),ref grassFactory.Find(new Vector2Int(1, 0))):
+    }
 }
