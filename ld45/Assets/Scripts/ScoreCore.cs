@@ -9,7 +9,11 @@ public class ScoreCore : MonoBehaviour
     public Text CashDisplayer;
     public static int Cash=0;
 
-    public static int[] Prices = { 10, 20, 30, 40 };
+    public static int[] Prices = { 20, 999, 15, 5 };
+
+    public Text BankPriceDisplayer;
+    public Text TurretPriceDisplayer;
+    public Text WallPriceDisplayer;
 
 
     [SerializeField] private float nextRoundCheckTime = 0.0f;
@@ -31,6 +35,9 @@ public class ScoreCore : MonoBehaviour
         {
             CashDisplayer = GameObject.Find("CashDisplayer").GetComponent<Text>();
         }
+        BankPriceDisplayer.text=(Prices[0]+"$");
+        TurretPriceDisplayer.text=(Prices[2]+"$");
+        WallPriceDisplayer.text=(Prices[3]+"$");
     }
 
     void Update()

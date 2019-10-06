@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7795674353743363013}
   - component: {fileID: 1445653308963066968}
   m_Layer: 0
-  m_Name: Grass5
+  m_Name: stones1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,3 +104,6 @@ MonoBehaviour:
   timesActivated: 0
   pos: {x: 0, y: 0}
   hp: 100
+  sprites:
+  - {fileID: 21300000, guid: b603a24d12658e54887a13f0f78c6dbe, type: 3}
+  - {fileID: 21300000, guid: b603a24d12658e54887a13f0f78c6dbe, type: 3}

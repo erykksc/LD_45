@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4728697408820111919}
   - component: {fileID: 4161193831991739826}
   m_Layer: 0
-  m_Name: Grass0
+  m_Name: Dirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,3 +104,6 @@ MonoBehaviour:
   timesActivated: 0
   pos: {x: 0, y: 0}
   hp: 100
+  sprites:
+  - {fileID: 21300000, guid: 36d6baca69db61949acb105089e8c12b, type: 3}
+  - {fileID: 21300000, guid: 36d6baca69db61949acb105089e8c12b, type: 3}
