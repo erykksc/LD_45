@@ -9,6 +9,8 @@ public class Turret : Cell
     public int damage;
     public int damageSpeed;
     private int passed;
+    public float timeGap = 0.5f;
+    bool switch1 = true;
 
 
     //Finding a target by finding the nearest object with the tag ENEMY
@@ -35,7 +37,7 @@ public class Turret : Cell
     public override void onImpulse()
     {
         Debug.Log("wrk");
-        Shoot();
+        StartCoroutine(initiateShooting());
     }
 
 
@@ -46,8 +48,8 @@ public class Turret : Cell
         Debug.Log("Searching");
 
         Vector2 dist =  Target.GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
-
-        if (Target!= gameObject ) Rotate(dist);
+        // Ważne
+        //if (Target!= gameObject ) Rotate(dist);
 
 
         if (dist.sqrMagnitude < range && Target != gameObject)
@@ -55,6 +57,45 @@ public class Turret : Cell
             Debug.Log("One frame, one kill");
             Destroy(Target);
             DrawArrow.ForDebug(gameObject.GetComponent<Transform>().position, dist);
+        }
+    }
+    private IEnumerator initiateShooting()
+    {
+        // warunek - odległóść
+        if(GetTarget()!=gameObject)
+        {
+            
+        }
+        
+        StartCoroutine(animate());
+        switch1 = false;
+        yield return new WaitForSeconds(timeGap);
+        Shoot();
+    }
+    private IEnumerator animate()
+    {
+        Transform ch;
+        ch = GetComponentsInChildren<Transform>()[1];
+
+        Vector3 origin = ch.right;
+        Vector3 target = (GetTarget().GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position);
+        target.z = origin.z = 0;
+        origin = Vector3.Normalize(origin);
+        target = Vector3.Normalize(target);
+        float time = 0;
+        
+        while (time<timeGap)
+        {
+            foreach (Transform trans in GetComponentsInChildren<Transform>())
+            {
+                if (trans.name != "TurretBase")
+                {
+                    trans.right = -target*(time/timeGap)+origin*(1-time/timeGap);
+
+                }
+            }
+            time += Time.deltaTime;
+            yield return null;
         }
     }
     private void Awake()
@@ -67,13 +108,16 @@ public class Turret : Cell
     {
         
         //Determining the rotation and rotating
-        float RotAngle = Vector2.Angle(Vector2.up,Vect2);
+        //float RotAngle = Vector2.Angle(Vector2.up,Vect2);
         foreach (Transform trans in GetComponentsInChildren<Transform>())
         {
             if (trans.name != "TurretBase")
             {
+                trans.right =-GetTarget().GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
                 //trans.RotateAround(Vector3.forward, RotAngle);
-                trans.rotation = Quaternion.Euler(0, 0, RotAngle-90);
+                //trans.rotation = Quaternion.Euler(0, 0, RotAngle-90);
+
+
             }
         }
        
