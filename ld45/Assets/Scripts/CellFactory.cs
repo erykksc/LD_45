@@ -13,7 +13,7 @@ public class CellFactory : MonoBehaviour
         return 1;
     }
     // Start is called before the first frame update
-    List<Cell> cells;
+    List<Cell> cells = new List<Cell>();
     public Cell [] cellPrefabs;
 
     public Cell Find(Vector2Int pos)
@@ -112,8 +112,7 @@ public class CellFactory : MonoBehaviour
     }
     void Awake()
     {
-
-        cells = new List<Cell>();
+       
     }
 }
    

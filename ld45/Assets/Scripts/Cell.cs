@@ -9,6 +9,42 @@ public class Cell : MonoBehaviour
 
     //}
     //These are the neighbouring tiles
+    //This is on only ONCE per energy cycle. Used for singe-time actions
+    public bool active = false;
+
+    //This determines the energy of the tile
+    public bool isActivated = false;
+
+    public int timesActivated = 0;
+
+    public Vector2Int pos;
+
+    public static float timeStep = 0.5f;
+
+    [SerializeField] private int hp = 10000;
+
+    public Sprite[] sprites;
+
+
+    public static void Switch(ref Cell a, ref Cell b)
+    {
+        Cell buff1 = a;
+        buff1.isActivated = b.isActivated;
+        buff1.active = b.active;
+        buff1.timesActivated = b.timesActivated;
+        buff1.hp = b.hp;
+
+        Cell buff2 = b;
+        buff2.isActivated = a.isActivated;
+        buff2.active = a.active;
+        buff2.timesActivated = a.timesActivated;
+        buff2.hp = a.hp;
+
+        Destroy(a);
+        Destroy(b);
+
+    }
+
     public static Vector2 getGlobalCoords(Vector2Int pos, float size)
     {
         return new Vector2((-(pos.y % 2) * 0.5f + pos.x) * size, (pos.y * Mathf.Sqrt(3) * 0.5f) * size);
@@ -47,23 +83,6 @@ public class Cell : MonoBehaviour
         transform.localPosition = getGlobalCoords(pos,1);
     }
 
-    //This is on only ONCE per energy cycle. Used for singe-time actions
-    public bool active = false;
-
-    //This determines the energy of the tile
-    public bool isActivated = false;
-
-    public int timesActivated = 0;
-
-    public Vector2Int pos;
-
-    public static float timeStep = 0.5f;
-
-    [SerializeField] private int hp = 10000;
-
-    public Sprite [] sprites;
-
-
     public void InstantiateCell(Vector2Int p)
     {
         pos = p;
@@ -90,7 +109,36 @@ public class Cell : MonoBehaviour
             GameObject.Destroy(gameObject);
         }
     }
-
+    Vector2Int getPos() { return pos; }
+    int getNeighbourCount()
+    {
+        int v = 6;
+        if(right==null)
+        {
+            v--;
+        }
+        if (left == null)
+        {
+            v--;
+        }
+        if (lup == null)
+        {
+            v--;
+        }
+        if (ldown == null)
+        {
+            v--;
+        }
+        if (rup == null)
+        {
+            v--;
+        }
+        if (rdown == null)
+        {
+            v--;
+        }
+        return v;
+    }
 
     /// Function
     /*public IEnumerator animate(int duration)
@@ -198,6 +246,7 @@ public class Cell : MonoBehaviour
     }
     ~Cell()
     {
+        Debug.Log("Destructor called");
         left.right = null;
         right.left = null;
         lup.rdown = null;

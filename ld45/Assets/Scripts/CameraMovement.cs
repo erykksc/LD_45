@@ -6,7 +6,7 @@ public class CameraMovement : MonoBehaviour
 {
     public float MoveSpeed;
 
-    // Update is called once per frame
+
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
