@@ -13,7 +13,12 @@ public class MapGenerator : MonoBehaviour
         Debug.Log($"In MapGenerator length of prefabs in grass {grassFactory.cellPrefabs.Length}");
         lists = new List<Cell>[grassFactory.cellPrefabs.Length];
         CreateShape();
-
+        generateSeed(1, 10, 0);
+        //for(int i = 0;i<lists[1].Count;i++)
+        Filling(1, 0,3, 0, 7);
+        Filling(1, 1, 3, 0, 7);
+        Filling(1, 2, 3, 0, 7);
+        Filling(1, 3, 3, 0, 7);
     }
 
     Vector2Int[] vertices;
@@ -74,7 +79,74 @@ public class MapGenerator : MonoBehaviour
     } 
     void generateSeed(int index,int count,int size)
     {
-        //for(int i = 0;i<)
+        Cell a, b;
+        lists[index] = new List<Cell>();
+        Vector2Int rPos = new Vector2Int(0,0);
+        for(int i = 0;i<count;i++)
+        {
+            
+            rPos = new Vector2Int((int)((float)xSize*Random.Range(0f,1f)), (int)((float)ySize * Random.Range(0f, 1f)));
+            //Debug.Log($"pos: {rPos} on {i}");
+            grassFactory.DestroyCell(rPos);
+            lists[index].Add(grassFactory.Add(rPos, index));
+        }
+    }
+    public bool canBuild(Propagateable cell,int index,int min,int max)
+    {
+        if(cell.getNeighbourCount(index)<min|| cell.getNeighbourCount(index)>max)
+        {
+            return false;
+        }
+        for(int i = 0;i<6;i++)
+        {
+            if (cell.neighbours[i].getNeighbourCount(index) < min-1 || cell.neighbours[i].getNeighbourCount(index) > max-1)
+            {
+                return false;
+            }
+        }
+        if(cell.terrainType==index)
+        {
+            return false;
+        }
+        return true;
+    }
+    void Filling(int index,int index2,int size,int minNeig,int maxNeig)
+    {
+        Vector2Int rPos;
+        Propagateable current;
+        List<Propagateable> available = new List<Propagateable>();
+       
+        current = lists[index][index2];
+
+        for(int i = 0;i<6;i++)
+        {
+            available.Add(current.neighbours[i]);
+        }
+        for(int j = 0;j<size&&available.Count!=0;j++)
+        {
+            for (int i = 0; i < available.Count; i++)
+            {
+                if (available[i].terrainType == index)
+                {
+                    available.RemoveAt(i);
+                }
+            }
+            current = available[(int)((float)(available.Count-1) * Random.Range(0f, 1f))];
+
+            rPos = current.pos;
+            available.Remove(current);
+            grassFactory.DestroyCell(rPos);
+            grassFactory.Add(rPos, index);
+            for (int i = 0; i < 6; i++)
+            {
+                if(!available.Contains(current.neighbours[i]))
+                {
+                    //available.Add(current.neighbours[i]);
+                }
+            }
+            Debug.Log($"filling index{j}");
+            //break;
+        }
     }
     
 }

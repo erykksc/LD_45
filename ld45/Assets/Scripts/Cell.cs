@@ -17,9 +17,10 @@ public class Cell : Propagateable
 
     //public int timesActivated = 0;
 
-    public bool isBuildable = true;
+    
 
-    public Vector2Int pos;
+
+    public bool isBuildable = true;
 
     public static float timeStep = 0.5f;
 

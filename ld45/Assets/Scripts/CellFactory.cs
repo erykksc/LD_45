@@ -27,6 +27,7 @@ public class CellFactory : MonoBehaviour
         }
         return null;
     }
+
     public Cell Add(Vector2Int pos,int index = 0)
     {
         Cell o;
@@ -80,18 +81,23 @@ public class CellFactory : MonoBehaviour
         //Debug.Log(cells.Count);
         return o;
     }
-    void DestroyCell(Vector2Int pos)
+    public void DestroyCell(Vector2Int pos)
     {
+        Cell r;
         for(int i = 0;i<cells.Count;i++)
         {
             if(pos==cells[i].pos)
             {
+                Debug.Log("seeked");
+                Destroy(cells[i].gameObject);
                 cells[i] = cells[cells.Count - 1];
+                r = cells[cells.Count - 1];
                 cells.RemoveAt(cells.Count - 1);
+                
             }
         }
     }
-    void DestroyCell(Cell cell)
+    public void DestroyCell(Cell cell)
     {
         for (int i = 0; i < cells.Count; i++)
         {
@@ -99,10 +105,11 @@ public class CellFactory : MonoBehaviour
             {
                 cells[i] = cells[cells.Count - 1];
                 cells.RemoveAt(cells.Count - 1);
+
             }
         }
     }
-    void DestroyCell(int index)
+    public void DestroyCell(int index)
     {
         if(index>=0&&index<cells.Count)
         {

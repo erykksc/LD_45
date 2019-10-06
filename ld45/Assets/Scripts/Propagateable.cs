@@ -4,6 +4,25 @@ using UnityEngine;
 
 public class Propagateable : MonoBehaviour
 {
+    // Legacy stuff
+    public Vector2Int pos;
+
+    public int terrainType = 0;
+
+    public int getNeighbourCount(int index)
+    {
+        int count = 0;
+        for (int i = 0; i < 6; i++)
+        {
+            if (neighbours[i] != null && neighbours[i].terrainType == index)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
     // Start is called before the first frame update
     public float impulsTime = 0.5f;
     public bool activated = false;
