@@ -35,6 +35,31 @@ public class MapGenerator : MonoBehaviour
             genSpot(pos+delta, new Vector2Int(1, size+4), 8);
             genSpot(pos, new Vector2Int(2, size), 7);
         }
+        Vector2Int gPos = new Vector2Int(xSize / 2, ySize / 2);
+        for(int i = 0;i<5;i++)
+        {
+            for(int j = 0;j<5;j++)
+            {
+                if(Mathf.Pow(i,2)+Mathf.Pow(j,2)<25)
+                {
+                    pos = new Vector2Int(i,j);
+                    grassFactory.DestroyCell(grassFactory.Find(gPos + pos));
+                    grassFactory.Add(gPos+pos, Random.Range(0, 2)).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
+
+                    pos.x = -pos.x;
+                    grassFactory.DestroyCell(grassFactory.Find(gPos + pos));
+                    grassFactory.Add(gPos+pos, Random.Range(0, 2)).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
+
+                    pos.y = -pos.y;
+                    grassFactory.DestroyCell(grassFactory.Find(gPos + pos));
+                    grassFactory.Add(gPos+pos, Random.Range(0, 2)).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
+
+                    pos.x = -pos.x;
+                    grassFactory.DestroyCell(grassFactory.Find(gPos + pos));
+                    grassFactory.Add(gPos+pos, Random.Range(0, 2)).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
+                }
+            }
+        }
         //genSpot(new Vector2Int(10, 9), new Vector2Int(1, 6), 8);//genRocks(5);
     }
 
