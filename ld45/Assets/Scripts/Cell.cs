@@ -17,7 +17,7 @@ public class Cell : Propagateable
 
     //public int timesActivated = 0;
 
-    
+    public bool buildable;
 
     public Vector2Int pos;
 
