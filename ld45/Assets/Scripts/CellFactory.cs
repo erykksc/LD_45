@@ -42,37 +42,37 @@ public class CellFactory : MonoBehaviour
 
             if (o.pos.x - cells[i].pos.x == -1 + (o.pos.y % 2) && o.pos.y - cells[i].pos.y == 1)
             {
-                o.rdown = cells[i];
-                cells[i].lup = o;
+                o.neighbours[0] = cells[i];
+                cells[i].neighbours[3] = o;
             }
             if (cells[i].pos.x - o.pos.x == -1 + (cells[i].pos.y % 2) && cells[i].pos.y - o.pos.y == 1)
             {
                 //swap
-                cells[i].rdown = o;
-                o.lup = cells[i];
+                cells[i].neighbours[0] = o;
+                o.neighbours[3] = cells[i];
             }
             ///
             if (cells[i].pos.x - o.pos.x == 0 + (cells[i].pos.y % 2) &&  cells[i].pos.y - o.pos.y == 1) 
             {
                 //swap
-                cells[i].ldown = o;
-                o.rup = cells[i];
+                cells[i].neighbours[1] = o;
+                o.neighbours[4] = cells[i];
             }
             if (o.pos.x - cells[i].pos.x == 0 + (o.pos.y % 2) && o.pos.y - cells[i].pos.y == 1)
             {
-                o.ldown = cells[i];
-                cells[i].rup = o;
+                o.neighbours[1] = cells[i];
+                cells[i].neighbours[4] = o;
             }
             ///
             if (o.pos.x - cells[i].pos.x == 1 && o.pos.y - cells[i].pos.y == 0)
             {
-                o.left = cells[i];
-                cells[i].right = o;
+                o.neighbours[2] = cells[i];
+                cells[i].neighbours[5] = o;
             }
             if (cells[i].pos.x - o.pos.x  == 1 && cells[i].pos.y - o.pos.y == 0)
             {
-                cells[i].left = o;
-                o.right = cells[i];
+                cells[i].neighbours[2] = o;
+                o.neighbours[5] = cells[i];
             }
 
         }

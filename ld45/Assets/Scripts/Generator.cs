@@ -11,41 +11,12 @@ public class Generator : Cell
 
     IEnumerator pulsate()
     {
-        while(active)
+       while(true)
         {
-            for (int i = 0; i < sprites.Length; i++)
-            {
-                GetComponent<SpriteRenderer>().sprite = sprites[i];
-                yield return new WaitForSeconds(pulsationRate / (sprites.Length - 1));
-            }
-            GetComponent<SpriteRenderer>().sprite = sprites[0];
-
-
             timesActivated++;
-            if (right != null)
-            {
-                right.getImpulse(this);
-            }
-            if (left != null)
-            {
-                left.getImpulse(this);
-            }
-            if (rup != null)
-            {
-                rup.getImpulse(this);
-            }
-            if (rdown != null)
-            {
-                rdown.getImpulse(this);
-            }
-            if (lup != null)
-            {
-                lup.getImpulse(this);
-            }
-            if (ldown != null)
-            {
-                ldown.getImpulse(this);
-            }
+            propagateImpuls();
+            StartCoroutine(animate());
+            yield return new WaitForSeconds(2f);
         }
     }
     void Start()
@@ -54,6 +25,7 @@ public class Generator : Cell
     }
     private void Awake()
     {
+        
         //sprite = gameObject.GetComponent<Sprite>();
         //gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
     }
