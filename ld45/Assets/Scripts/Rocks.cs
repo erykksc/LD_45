@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grass : Cell
+public class Rocks : Cell
 {
     // Start is called before the first frame update
-
     void Start()
     {
         

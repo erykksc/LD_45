@@ -17,7 +17,7 @@ public class Cell : Propagateable
 
     //public int timesActivated = 0;
 
-    
+    public bool isBuildable = true;
 
     public Vector2Int pos;
 
@@ -27,8 +27,7 @@ public class Cell : Propagateable
 
     public Sprite[] sprites;
 
-
-    static void Swap(ref Cell a,ref Cell b)
+    public static void Swap(ref Cell a,ref Cell b)
     {
         for(int i = 0;i<6;i++)
         {
@@ -51,6 +50,8 @@ public class Cell : Propagateable
         Vector2Int pos = a.pos;
         a.pos = b.pos;
         b.pos = pos;
+        a.transform.localPosition = getGlobalCoords(a.pos, 55f / 64f);
+        b.transform.localPosition = getGlobalCoords(b.pos, 55f / 64f);
     }
 
     public void action()

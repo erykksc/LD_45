@@ -10,12 +10,17 @@ public class MapGenerator : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log($"In MapGenerator length of prefabs in grass {grassFactory.cellPrefabs.Length}");
+        lists = new List<Cell>[grassFactory.cellPrefabs.Length];
         CreateShape();
+
     }
 
     Vector2Int[] vertices;
     public int xSize;
     public int ySize;
+
+    List<Cell>[] lists;
 
     private int pickTile()
     {
@@ -63,8 +68,13 @@ public class MapGenerator : MonoBehaviour
         for (int i = 0; i < vertices.Length; i++)
         {
             //Creating a tile on pos Vert[i],setting it's sprtite by Picktile, setting its rotation too.
-            Cell cell = grassFactory.Add(vertices[i], pickTile());
-            cell.transform.localRotation = Quaternion.Euler(0,0,60);
+            Cell cell = grassFactory.Add(vertices[i], 0);
+            cell.transform.localRotation = Quaternion.Euler(0,0,60*(int)Random.Range(1,7));
         }
     } 
+    void generateSeed(int index,int count,int size)
+    {
+        //for(int i = 0;i<)
+    }
+    
 }
