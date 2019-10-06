@@ -176,18 +176,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1945c1c6a974d8141a34230322962441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 0
-  isActivated: 0
-  timesActivated: 0
+  impulsTime: 0.5
+  activated: 0
+  propagates: 1
+  neighbours:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   pos: {x: 0, y: 0}
   hp: 10000
   sprites: []
-  right: {fileID: 0}
-  lup: {fileID: 0}
-  ldown: {fileID: 0}
-  left: {fileID: 0}
-  rup: {fileID: 0}
-  rdown: {fileID: 0}
   range: 10
   damage: 0
   damageSpeed: 0
@@ -204,14 +205,14 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 999
+  m_AngularDrag: 999
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 3
+  m_Constraints: 7
 --- !u!58 &1480674152154004419
 CircleCollider2D:
   m_ObjectHideFlags: 0
