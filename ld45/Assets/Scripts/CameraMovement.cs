@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    public MapGenerator MapGenerator;
     public float MoveSpeed;
 
 
@@ -22,19 +23,19 @@ public class CameraMovement : MonoBehaviour
 
     public void Start()
     {
-        XMaxLimit = GetComponent<MapGenerator>().xSize - 17;
-        XMinLimit = 8;
-        YMaxLimit = GetComponent<MapGenerator>().ySize - 13;
-        YMinLimit = 5;
+        XMaxLimit = GetComponent<MapGenerator>().xSize * 0.84252352941176470588235294117647f - 7f;
+        XMinLimit = 7f;
+        YMaxLimit = GetComponent<MapGenerator>().ySize * 0.72023225806451612903225806451613f - 4f;
+        YMinLimit = 5f;
     }
 
     void FixedUpdate()
     {
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) ) && transform.position.x> XMinLimit)
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && transform.position.x > XMinLimit)
         {
-            GetComponent<Rigidbody2D>().AddForce(Vector2.left * MoveSpeed)  ;
+            GetComponent<Rigidbody2D>().AddForce(Vector2.left * MoveSpeed);
         }
-        if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))&& transform.position.x < XMaxLimit)
+        if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && transform.position.x < XMaxLimit)
         {
             GetComponent<Rigidbody2D>().AddForce(Vector2.right * MoveSpeed);
         }
@@ -47,6 +48,10 @@ public class CameraMovement : MonoBehaviour
             GetComponent<Rigidbody2D>().AddForce(Vector2.down * MoveSpeed);
         }
 
-
+        if (Input.GetKeyDown("g"))
+        {
+            Vector2 pos = Cell.getGlobalCoords(new Vector2Int((int)((float)MapGenerator.xSize / 2), (int)((float)MapGenerator.ySize / 2)), 55f / 64f);
+            transform.position = new Vector3(pos.x, pos.y, -3);
+        }
     }
 }
