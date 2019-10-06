@@ -11,6 +11,11 @@ public class Enemy : MonoBehaviour
         damage = 30;
     }
 
+
+
+
+
+
     public void dealDamage(int damage2deal)
     {
         if (damage > 0)

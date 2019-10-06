@@ -8,9 +8,15 @@ public class EnemyControl : MonoBehaviour
     public GameObject Target;
     public float maxSpeed;
     public float speed;
+
+
     private bool isRunningAway = false;
     private float startedToRunAway = 0.0f;
+    [SerializeField] private Sprite[] Sprites;
     [SerializeField] private float runAwayFor = 0.2f; 
+
+    [SerializeField] private float AnimationSpeed=1;
+    private Vector2 move;
 
     GameObject GetTarget()
     {
@@ -34,7 +40,9 @@ public class EnemyControl : MonoBehaviour
     }
     void Start()
     {
-        //Target = GetTarget();   
+                StartCoroutine(   animate()   ); 
+                 
+                  
     }
 
 
@@ -53,9 +61,10 @@ public class EnemyControl : MonoBehaviour
         Vector2 position = gameObject.GetComponent<Transform>().position;
         Vector2 playerPos = Target.GetComponent<Transform>().position;
         //Debug.Log(playerPos);
-        Vector2 move = playerPos - position;
+        move = playerPos - position;
 
         move = move.normalized * speed;
+        //Extract movevector here
 
         if (isRunningAway)
         {
@@ -69,6 +78,37 @@ public class EnemyControl : MonoBehaviour
         //normalize
         gameObject.GetComponent<Rigidbody2D>().AddForce(move,ForceMode2D.Force);
     }
+
+
+public IEnumerator animate()
+    {
+                int i=0;
+        while (true)
+      {
+        float speed = GetComponent<Rigidbody2D>().velocity.magnitude;
+        Vector2 Direction =  move;
+
+        //Handle rotation
+        gameObject.transform.up = Direction;
+
+        //handle animation speed
+;
+        if(i<Sprites.Length)
+        {
+            GetComponent<SpriteRenderer>().sprite = Sprites[i];
+            i++;
+
+        }
+        else
+        {
+            i=0;
+        }
+            Debug.LogWarning(speed+" :"+i);
+            yield return new WaitForSeconds( 1/(   speed+AnimationSpeed)     );
+      }
+
+    }
+
     public void run()
     {
         isRunningAway = true;

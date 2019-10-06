@@ -19,12 +19,10 @@ public class ObjectDraggable : MonoBehaviour
 
     private void OnMouseOver()
     {
-        Debug.LogWarning("MouseOver");
         //When LMB is pressed, start following
         if (Input.GetMouseButtonDown(0))
         {
             SetDraggableReturnPosition();
-            Debug.LogWarning("Selected");
             IsSelected = true;
         }
     }
@@ -32,7 +30,7 @@ public class ObjectDraggable : MonoBehaviour
 
     void Update()
     {
-if (Input.GetMouseButtonDown(1)){Debug.LogWarning(Camera.main.ScreenToWorldPoint(Input.mousePosition));}
+        
 
         //While holding LMB, object follows the mouse position
         if (IsSelected) ObjectFollowsMouse(gameObject);

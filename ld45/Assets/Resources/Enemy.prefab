@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4978959046530675588}
   - component: {fileID: 7719875724741636873}
   - component: {fileID: 7529834488267077514}
-  - component: {fileID: 9037000166668734938}
   - component: {fileID: -5730294292955419425}
+  - component: {fileID: -2467268715782506846}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -97,7 +97,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.2
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -120,21 +120,13 @@ MonoBehaviour:
   Target: {fileID: 0}
   maxSpeed: 6.91
   speed: 0.5
+  Sprites:
+  - {fileID: 21300000, guid: 62883e02cfa51624087a1e1e29b61ee3, type: 3}
+  - {fileID: 21300000, guid: bc4a3e6f629066e4a9722580accc93e0, type: 3}
+  - {fileID: 21300000, guid: d5a13f4c3ffbb144bb0c6ee9f6a074c6, type: 3}
+  - {fileID: 21300000, guid: a5b2107bae9d03d44a0c0a5ed91c15f4, type: 3}
   runAwayFor: 0.2
---- !u!114 &9037000166668734938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084219891773357284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d682db0a31ce5532b035ab72318e73f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  hp: 0
+  AnimationSpeed: 8
 --- !u!61 &-5730294292955419425
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -152,7 +144,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 4.74, y: 6.69}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -161,3 +153,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-2467268715782506846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084219891773357284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d682db0a31ce5532b035ab72318e73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  hp: 0
