@@ -20,13 +20,13 @@ public class ScoreCore : MonoBehaviour
     [Header("Round related")]
     [SerializeField] private float nextRoundCheckTime = 0.0f;
     [SerializeField] private float roundCheckingRate = 0.5f;
-    [SerializeField] private int roundNum = 0;
+    [SerializeField] private int roundNum = 1;
     [SerializeField] private float timeBetweenRounds = 10.0f;
     [SerializeField] private float startOfTheNextRoundTime = 0.0f;
     [SerializeField] private bool waitingForNextRound = false;
     public static GameObject mainSpawner;
     private int nextNumOfEnemiesGroups = 1;
-    private int nextNumOfEnemiesPerGroup = 1;
+    private int nextNumOfEnemiesPerGroup = 0;
     [SerializeField] private float distanceOfSpawnersFromGen = 25.0f;
 
 
@@ -65,11 +65,26 @@ public class ScoreCore : MonoBehaviour
 
     private void startNextRound()
     {
+        changeEnemiesInNextRound(roundNum);
         roundNum += 1;
         mainSpawner.GetComponent<SpawnerSpawner>().Spawn(distanceOfSpawnersFromGen, nextNumOfEnemiesPerGroup, nextNumOfEnemiesGroups, 0.1f);
         //Temporary
-        nextNumOfEnemiesGroups += 1;
         waitingForNextRound = false;
+    }
+
+    private void changeEnemiesInNextRound(int round)
+    {
+        round -= 1;
+        if (round%2==0)
+        {
+            
+            nextNumOfEnemiesPerGroup += 1;
+        }
+        else
+        {
+            nextNumOfEnemiesGroups += 1;
+        }
+        Debug.Log($"Wave enemies {round+1} ,{nextNumOfEnemiesGroups}, {nextNumOfEnemiesPerGroup}");
     }
 
     private void FixedUpdate() {
