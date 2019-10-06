@@ -96,15 +96,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e8442d3cee2c540a151e605790c226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  right: {fileID: 0}
-  lup: {fileID: 0}
-  ldown: {fileID: 0}
-  left: {fileID: 0}
-  rup: {fileID: 0}
-  rdown: {fileID: 0}
-  active: 1
-  isActivated: 0
-  timesActivated: 0
+  impulsTime: 0.5
+  activated: 0
+  propagates: 1
+  neighbours:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   pos: {x: 0, y: 0}
   hp: 100
   sprites:
@@ -112,9 +113,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 00c81663085121e4abbdc1cb82b93371, type: 3}
   - {fileID: 21300000, guid: 0c3eb1c6e74404540b7541676eab5184, type: 3}
   - {fileID: 21300000, guid: b4aad7e7ab0028e4f8525094b8ec37bb, type: 3}
-  - {fileID: 21300000, guid: b4aad7e7ab0028e4f8525094b8ec37bb, type: 3}
-  - {fileID: 21300000, guid: 0c3eb1c6e74404540b7541676eab5184, type: 3}
-  - {fileID: 21300000, guid: 00c81663085121e4abbdc1cb82b93371, type: 3}
+  - {fileID: 21300000, guid: 6707cb90803d5624da46112c062e46c0, type: 3}
+  - {fileID: 21300000, guid: c37f3997e8620e146b3b570a36d2d899, type: 3}
+  - {fileID: 21300000, guid: 8c5d8e3a77ab33e46a566549cf3c9075, type: 3}
   - {fileID: 21300000, guid: 10cfc06c70c1a174484b689ced6c12aa, type: 3}
   pulsationRate: 2
 --- !u!60 &7579728639729413176
@@ -134,7 +135,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1636363, y: 1.1636363}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
