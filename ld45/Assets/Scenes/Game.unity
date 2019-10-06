@@ -301,9 +301,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CashDisplayer: {fileID: 814644880}
-  BankPriceDisplayer: {fileID: 1978126317}
-  TurretPriceDisplayer: {fileID: 1971679990}
-  WallPriceDisplayer: {fileID: 1271819163}
+  TimeDisplayer: {fileID: 0}
+  PriceDisplayers:
+  - {fileID: 1978126317}
+  - {fileID: 0}
+  - {fileID: 1971679990}
+  - {fileID: 1271819163}
   nextRoundCheckTime: 0
   roundCheckingRate: 0.5
   roundNum: 1
