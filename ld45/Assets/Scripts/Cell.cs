@@ -17,6 +17,8 @@ public class Cell : Propagateable
 
     //public int timesActivated = 0;
 
+    
+
     public Vector2Int pos;
 
     public static float timeStep = 0.5f;
@@ -25,7 +27,32 @@ public class Cell : Propagateable
 
     public Sprite[] sprites;
 
-    //public Animateable animator;
+
+    static void Swap(ref Cell a,ref Cell b)
+    {
+        for(int i = 0;i<6;i++)
+        {
+            if(a.neighbours[i]!=null)
+            {
+                a.neighbours[i].neighbours[(i + 3) % 6] = b;
+            }
+        }
+        for (int i = 0; i < 6; i++)
+        {
+            if (b.neighbours[i] != null)
+            {
+                b.neighbours[i].neighbours[(i + 3) % 6] = a;
+            }
+        }
+        Propagateable[] neighbours = new Propagateable[6];
+        neighbours = a.neighbours;
+        a.neighbours = b.neighbours;
+        b.neighbours = neighbours;
+        Vector2Int pos = a.pos;
+        a.pos = b.pos;
+        b.pos = pos;
+    }
+
     public void action()
     {
         StartCoroutine(animate());
@@ -79,7 +106,7 @@ public class Cell : Propagateable
     public void Instantiate(Vector2Int p)
     {
         pos = p;
-        transform.localPosition = getGlobalCoords(pos,1);
+        transform.localPosition = getGlobalCoords(pos,55f/64f);
     }
 
     public void InstantiateCell(Vector2Int p)

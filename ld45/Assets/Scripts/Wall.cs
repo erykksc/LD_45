@@ -13,7 +13,7 @@ public class Wall : Cell
     {
         healPerImpulse = newHealPerImpulse;
     }
-    void onImpulse()
+    public override void onImpulse()
     {
         dealDamage(-getHealPerImpulse());
     }

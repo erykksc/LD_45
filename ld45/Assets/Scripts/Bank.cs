@@ -6,7 +6,7 @@ public class Bank : Cell
 {
    
     // Update is called once per frame
-    void onImpulse()
+    public override void onImpulse()
     {
         ScoreCore.Cash++;
         
