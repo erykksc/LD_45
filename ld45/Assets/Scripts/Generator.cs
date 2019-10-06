@@ -11,41 +11,12 @@ public class Generator : Cell
 
     IEnumerator pulsate()
     {
-        while(active)
+       while(true)
         {
-            for (int i = 0; i < sprites.Length; i++)
-            {
-                GetComponent<SpriteRenderer>().sprite = sprites[i];
-                yield return new WaitForSeconds(pulsationRate / (sprites.Length - 1));
-            }
-            GetComponent<SpriteRenderer>().sprite = sprites[0];
-
-
+            Debug.Log("pulsating");
             timesActivated++;
-            if (right != null)
-            {
-                right.getImpulse(this);
-            }
-            if (left != null)
-            {
-                left.getImpulse(this);
-            }
-            if (rup != null)
-            {
-                rup.getImpulse(this);
-            }
-            if (rdown != null)
-            {
-                rdown.getImpulse(this);
-            }
-            if (lup != null)
-            {
-                lup.getImpulse(this);
-            }
-            if (ldown != null)
-            {
-                ldown.getImpulse(this);
-            }
+            propagateImpuls();
+            yield return new WaitForSeconds(2f);
         }
     }
     void Start()

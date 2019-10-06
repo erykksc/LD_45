@@ -13,9 +13,14 @@ public class Wall : Cell
     {
         healPerImpulse = newHealPerImpulse;
     }
+    void onImpulse()
+    {
+        dealDamage(-getHealPerImpulse());
+    }
     
     private void Awake()
     {
+        setPulseAction(action);
         //GetComponent<SpriteRenderer>().color = Color.green;
         //sprite = gameObject.GetComponent<Sprite>();
     }

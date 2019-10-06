@@ -6,15 +6,15 @@ public class Propagateable : MonoBehaviour
 {
     // Start is called before the first frame update
     public float impulsTime = 0.5f;
-    bool activated = false;
-    private int timesActivated = 0;
+    public bool activated = false;
+    protected int timesActivated = 0;
     public bool propagates = true;
 
     public delegate void pulseAction();
 
-    private pulseAction Action;
+    private pulseAction Action = null;
 
-    Propagateable [ ]neighbours = new Propagateable[6];
+    public Propagateable [ ]neighbours = new Propagateable[6];
 
     public void setPulseAction(pulseAction pAction)
     {
@@ -23,12 +23,19 @@ public class Propagateable : MonoBehaviour
 
     public IEnumerator receiveImpuls(Propagateable origin)
     {
-        Action();
-        timesActivated = origin.timesActivated;
-        activated = true;
-        yield return new WaitForSeconds(impulsTime);
-        activated = false;
-        propagateImpuls();
+        if(timesActivated<origin.timesActivated)
+        {
+            Debug.Log("receiving, deceiving");
+            if (Action != null)
+            {
+                Action();
+            }
+            timesActivated = origin.timesActivated;
+            activated = true;
+            yield return new WaitForSeconds(impulsTime);
+            activated = false;
+            propagateImpuls();
+        }
     }
     public void propagateImpuls()
     {
@@ -36,7 +43,8 @@ public class Propagateable : MonoBehaviour
         {
             if(neighbours[i]!=null)
             {
-                neighbours[i].receiveImpuls(this);
+                Debug.Log("propagation in progress");
+                StartCoroutine(neighbours[i].receiveImpuls(this));
             }
         }
     }

@@ -73,6 +73,6 @@ public class MapGenerator : MonoBehaviour
     }
     void generateSeed(int type, int seedsCount, int minNeighboursRequired, int maxNeighboursRequired)
     {
-        Cell.Switch(ref grassFactory.Find(new Vector2Int(0,0)),ref grassFactory.Find(new Vector2Int(1, 0))):
+        //Cell.Switch(ref grassFactory.Find(new Vector2Int(0,0)),ref grassFactory.Find(new Vector2Int(1, 0))):
     }
 }
