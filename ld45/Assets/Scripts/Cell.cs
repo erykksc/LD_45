@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cell : MonoBehaviour
+public class Cell : Propagateable
 {
     //public static Vector2Int toHexCoords(Vector2 pos)
     //{
@@ -10,12 +10,12 @@ public class Cell : MonoBehaviour
     //}
     //These are the neighbouring tiles
     //This is on only ONCE per energy cycle. Used for singe-time actions
-    public bool active = false;
+    //public bool active = false;
 
     //This determines the energy of the tile
-    public bool isActivated = false;
+    //public bool isActivated = false;
 
-    public int timesActivated = 0;
+    //public int timesActivated = 0;
 
     public Vector2Int pos;
 
@@ -25,24 +25,24 @@ public class Cell : MonoBehaviour
 
     public Sprite[] sprites;
 
-
-    public static void Switch(ref Cell a, ref Cell b)
+    //public Animateable animator;
+    public void action()
     {
-        Cell buff1 = a;
-        buff1.isActivated = b.isActivated;
-        buff1.active = b.active;
-        buff1.timesActivated = b.timesActivated;
-        buff1.hp = b.hp;
-
-        Cell buff2 = b;
-        buff2.isActivated = a.isActivated;
-        buff2.active = a.active;
-        buff2.timesActivated = a.timesActivated;
-        buff2.hp = a.hp;
-
-        Destroy(a);
-        Destroy(b);
-
+        StartCoroutine(animate());
+        onImpulse();
+    }
+    public virtual void onImpulse()
+    {
+        
+    }
+    public IEnumerator animate()
+    {
+        for(int i =0;i<sprites.Length;i++)
+        {
+            GetComponent<SpriteRenderer>().sprite = sprites[i];
+            yield return new WaitForSeconds(timeStep / (sprites.Length-1));
+        }
+        GetComponent<SpriteRenderer>().sprite = sprites[0];
     }
 
     public static Vector2 getGlobalCoords(Vector2Int pos, float size)
@@ -75,7 +75,6 @@ public class Cell : MonoBehaviour
         }
         return mV;
     }
-    public Cell right = null , lup = null , ldown = null, left = null,rup = null,rdown = null;
     
     public void Instantiate(Vector2Int p)
     {
@@ -110,35 +109,6 @@ public class Cell : MonoBehaviour
         }
     }
     Vector2Int getPos() { return pos; }
-    int getNeighbourCount()
-    {
-        int v = 6;
-        if(right==null)
-        {
-            v--;
-        }
-        if (left == null)
-        {
-            v--;
-        }
-        if (lup == null)
-        {
-            v--;
-        }
-        if (ldown == null)
-        {
-            v--;
-        }
-        if (rup == null)
-        {
-            v--;
-        }
-        if (rdown == null)
-        {
-            v--;
-        }
-        return v;
-    }
 
     /// Function
     /*public IEnumerator animate(int duration)
@@ -153,71 +123,15 @@ public class Cell : MonoBehaviour
         }
     }*/
 
-    public void getImpulse(Cell parent)
-    {
-        // Debug.Log("from getImpulse");
-        if(parent.timesActivated>timesActivated)
-        {
-            //Debug.Log("got impulse");
-            isActivated = true;
-
-            try {  }
-            catch { }
-
-            WhenActivatedDoOnce();
-            timesActivated = parent.timesActivated;
-            StartCoroutine(propagateImpuls());
-            
-        }
-    }
-    public virtual void WhenActivatedDoOnce()
-    {
-    }
-
 
     // coroutine
-    public IEnumerator propagateImpuls()
-    {
-        for(int i = 0;i<sprites.Length;i++)
-        {
-            GetComponent<SpriteRenderer>().sprite = sprites[i];
-            yield return new WaitForSeconds(timeStep / (sprites.Length-1));
-        }
-        GetComponent<SpriteRenderer>().sprite = sprites[0];
-        //GetComponent<SpriteRenderer>().color = Color.blue;
-        //yield return new WaitForSeconds(0.5f);
-        //yield return new WaitForSeconds(timeStep);
-        if(right!=null)
-        {
-            right.getImpulse(this);
-        }
-        if (left != null)
-        {
-            left.getImpulse(this);
-        }
-        if (rup != null)
-        {
-            rup.getImpulse(this);
-        }
-        if (rdown != null)
-        {
-            rdown.getImpulse(this);
-        }
-        if (lup != null)
-        {
-            lup.getImpulse(this);
-        }
-        if (ldown != null)
-        {
-            ldown.getImpulse(this);
-        }
-        isActivated = false;
-        //GetComponent<SpriteRenderer>().color = Color.green;
-    }
+
 
     public void Awake()
     {
+
         GetComponent<SpriteRenderer>().sprite = sprites[0];
+        setPulseAction(action);
         //GetComponent<SpriteRenderer>().color = Color.green;
         //GetComponent<SpriteRenderer>().color = Color.green;
         //GetComponent<SpriteRenderer>().color = Color.blue;
@@ -228,31 +142,21 @@ public class Cell : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-
     public void FixedUpdate()
     {
-        //Setting sprite accordingly to cell's activation state
-        //if (isActivated && gameObject.GetComponent<SpriteRenderer>().sprite == SpriteDeactivated) gameObject.GetComponent<SpriteRenderer>().sprite = SpriteActivated;
-        //if (!isActivated && gameObject.GetComponent<SpriteRenderer>().sprite == SpriteActivated) gameObject.GetComponent<SpriteRenderer>().sprite = SpriteDeactivated;
     }
+    
 
-
-    //This will ensure that this GameObject is at coordinates expressed in Int values
-    public void SnapToIntPosition()
-    {
-        Vector2 SnappedPosition = new Vector2(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
-        transform.position = SnappedPosition;
-    }
     ~Cell()
     {
         Debug.Log("Destructor called");
-        left.right = null;
-        right.left = null;
-        lup.rdown = null;
-        rdown.lup = null;
-        rup.ldown = null;
-        ldown.rup = null;
+        for(int i = 0;i<6;i++)
+        {
+            if(neighbours[i]!=null)
+            {
+                neighbours[i].neighbours[(i + 3) % 6] = null;
+            }
+        }
     }
 
 }
