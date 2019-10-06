@@ -32,7 +32,7 @@ public class Turret : Cell
     }
 
     // Update is called once per frame
-    public override void WhenActivatedDoOnce()
+    public void onImpulse()
     {
         Shoot();
     }
@@ -48,5 +48,9 @@ public class Turret : Cell
             Destroy(Target);
             DrawArrow.ForDebug(gameObject.GetComponent<Transform>().position, dist);
         }
+    }
+    private void Awake()
+    {
+        setPulseAction(action);
     }
 }

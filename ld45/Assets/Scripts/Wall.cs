@@ -25,8 +25,8 @@ public class Wall : Cell
         //sprite = gameObject.GetComponent<Sprite>();
     }
     
-    public override void WhenActivatedDoOnce()
-    {
-        setHp(getHp()+healPerImpulse);
-    }
+    //public override void WhenActivatedDoOnce()
+    //{
+        //setHp(getHp()+healPerImpulse);
+    //}
 }

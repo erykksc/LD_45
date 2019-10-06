@@ -98,7 +98,7 @@ public class Cell : Propagateable
     {
         if (damage > 0)
         {
-            //hp -= damage;
+            hp -= damage;
         }
 
         if (hp <= 0)
@@ -120,11 +120,6 @@ public class Cell : Propagateable
             yield return null;
         }
     }*/
-
-
-    public virtual void WhenActivatedDoOnce()
-    {
-    }
 
 
     // coroutine

@@ -13,9 +13,9 @@ public class Generator : Cell
     {
        while(true)
         {
-            Debug.Log("pulsating");
             timesActivated++;
             propagateImpuls();
+            StartCoroutine(animate());
             yield return new WaitForSeconds(2f);
         }
     }
@@ -25,6 +25,7 @@ public class Generator : Cell
     }
     private void Awake()
     {
+        
         //sprite = gameObject.GetComponent<Sprite>();
         //gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
     }
