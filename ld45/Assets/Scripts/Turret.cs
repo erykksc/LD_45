@@ -57,12 +57,11 @@ public class Turret : Cell
         {
             Debug.Log("One frame, one kill");
             //DrawArrow.ForDebug(gameObject.GetComponent<Transform>().position, dist);
-            line.positionCount = 2;
             Vector3[] points = new Vector3[2];
-            points[0] = (Vector2) gameObject.GetComponent<Transform>().position;
+            points[0] = (Vector2) gameObject.GetComponent<Transform>().position + dist.normalized * 0.4f;
             points[1] = (Vector2) Target.GetComponent<Transform>().position;
             line.SetPositions(points);
-            deleteLine();
+            StartCoroutine(deleteLine());
             Destroy(Target);
         }
     }
@@ -109,12 +108,16 @@ public class Turret : Cell
     {
         setPulseAction(action);
         line = gameObject.GetComponent<LineRenderer>();
+        line.positionCount = 2;
     }
 
     private IEnumerator deleteLine()
     {
-        yield return new WaitForSeconds(0.5f);
-        line.positionCount = 0;
+        yield return new WaitForSeconds(0.1f);
+        Vector3[] points = new Vector3[2];
+        points[0] = new Vector3(0,0,-1000);
+        points[1] = new Vector3(0,0,-1000);
+        line.SetPositions(points);
     }
 
     private void Rotate(Vector2 Vect2)

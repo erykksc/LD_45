@@ -187,6 +187,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  buildable: 0
   pos: {x: 0, y: 0}
   hp: 10000
   sprites:
@@ -197,6 +198,7 @@ MonoBehaviour:
   range: 10
   damage: 0
   damageSpeed: 0
+  timeGap: 0.5
 --- !u!50 &7981637462068535397
 Rigidbody2D:
   serializedVersion: 4
@@ -271,7 +273,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 40
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
@@ -280,8 +282,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.008678436
-        value: 0.02857399
+        time: 0
+        value: 0.009521484
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -290,7 +292,7 @@ LineRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.14761905
+        value: 0.038091466
         inSlope: 0
         outSlope: 0
         tangentMode: 0
