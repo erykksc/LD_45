@@ -19,7 +19,7 @@ public class MapGenerator : MonoBehaviour
 
     private int pickTile()
     {
-        int[] numbers = {0, 0, 0, 0, 1, 1, 1, 1, 2, 3, 4, 5, 6, 7};
+        int[] numbers = {0, 0, 0, 0, 1, 1, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         int randInt = Random.Range(0, numbers.Length-1);
         return numbers[randInt];
     }
