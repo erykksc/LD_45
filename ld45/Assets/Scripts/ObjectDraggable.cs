@@ -51,11 +51,12 @@ public class ObjectDraggable : MonoBehaviour
                 Factory.Add(hPos, SpawnedIdentifier);
                 GameObject.Instantiate(Resources.Load<GameObject>("BuildParticles") as GameObject, Cell.getGlobalCoords(Cell.getHexCoords(WorldPos, 55f/64f), 55f/64f), Quaternion.identity);
                 ScoreCore.Cash -= ScoreCore.Prices[SpawnedIdentifier];
+                //Increase Price of thebuilding built
+                ScoreCore.Prices[SpawnedIdentifier] += 5;
+                Camera.main.GetComponent<ScoreCore>().PriceDisplayers[SpawnedIdentifier].text = ScoreCore.Prices[SpawnedIdentifier].ToString() + "$";
             }
 
-            //Increase Price of thebuilding built
-            ScoreCore.Prices[SpawnedIdentifier] += 5;
-            Camera.main.GetComponent<ScoreCore>().PriceDisplayers[SpawnedIdentifier].text = ScoreCore.Prices[SpawnedIdentifier].ToString()+"$";
+
 
 
             //Returning the draggable to origin position
