@@ -112,7 +112,8 @@ public class CellFactory : MonoBehaviour
     }
     void Awake()
     {
-       
+        Debug.Log($"prefab0: {cellPrefabs[0].buildable}");
+        Debug.Log($"prefab0: {cellPrefabs[1].buildable}");
     }
 }
    

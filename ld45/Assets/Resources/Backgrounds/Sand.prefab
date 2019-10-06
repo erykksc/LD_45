@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f30529962a80e41846ff547b4c5617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildable: 1
   impulsTime: 0.5
   activated: 0
   propagates: 1
