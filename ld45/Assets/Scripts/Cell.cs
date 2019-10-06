@@ -17,7 +17,7 @@ public class Cell : Propagateable
 
     //public int timesActivated = 0;
 
-    
+    public bool buildable;
 
     public Vector2Int pos;
 
@@ -132,6 +132,14 @@ public class Cell : Propagateable
 
         if (hp <= 0)
         {
+            for(int i = 0;i<6;i++)
+            {
+                if(neighbours[i]!=null)
+                {
+                    neighbours[i].neighbours[(i + 3) % 6] = null;
+                }
+                neighbours[i] = null;
+            }
             GameObject.Destroy(gameObject);
         }
     }
@@ -183,6 +191,7 @@ public class Cell : Propagateable
             {
                 neighbours[i].neighbours[(i + 3) % 6] = null;
             }
+            neighbours[i] = null;
         }
     }
 

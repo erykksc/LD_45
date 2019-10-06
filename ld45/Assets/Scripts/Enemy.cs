@@ -34,7 +34,8 @@ public class Enemy : MonoBehaviour
         {
             collision.gameObject.GetComponent<Cell>().dealDamage(damage);
             // Debug.Log($"{collision.gameObject.name} destroyed");
-            gameObject.GetComponent<EnemyControl>().run();
+            // gameObject.GetComponent<EnemyControl>().run();
+            gameObject.GetComponent<EnemyControl>().bounce();
         }
     }
 }
