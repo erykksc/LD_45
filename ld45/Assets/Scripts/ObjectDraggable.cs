@@ -9,8 +9,6 @@ public class ObjectDraggable : MonoBehaviour
     public CellFactory grassFactory;
     public int SpawnedIdentifier=0;
     public Vector3 ReturnPosition;
-
-    // xD
     public bool makeInfinite = false;
 
     public void SetDraggableReturnPosition()

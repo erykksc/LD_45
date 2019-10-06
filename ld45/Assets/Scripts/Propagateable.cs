@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Propagateable : MonoBehaviour
 {
-    // Start is called before the first frame update
     public float impulsTime = 0.5f;
     public bool activated = false;
     protected int timesActivated = 0;

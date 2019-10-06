@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Turret : Cell
 {
-    // Start is called before the first frame update
     public float range;
     public int damage;
     public int damageSpeed;
     private int passed;
-
 
     //Finding a target by finding the nearest object with the tag ENEMY
     private GameObject GetTarget()
@@ -72,7 +70,6 @@ public class Turret : Cell
         {
             if (trans.name != "TurretBase")
             {
-                //trans.RotateAround(Vector3.forward, RotAngle);
                 trans.rotation = Quaternion.Euler(0, 0, RotAngle-90);
             }
         }

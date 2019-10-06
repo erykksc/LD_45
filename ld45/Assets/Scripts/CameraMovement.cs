@@ -6,13 +6,6 @@ public class CameraMovement : MonoBehaviour
 {
     public float MoveSpeed;
 
-
-    //50 x30
-
-
-    //x 7 >>35
-    //y 3 >> 19
-
     private float XMaxLimit;
     private float XMinLimit;
     private float YMaxLimit;

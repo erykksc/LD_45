@@ -5,7 +5,6 @@ using UnityEngine;
 public class CameraAtStart : MonoBehaviour
 {
     public CellFactory factory;
-    // Start is called before the first frame update
     void Start()
     {
         transform.position = new Vector3(22, 11,-3);
@@ -13,7 +12,6 @@ public class CameraAtStart : MonoBehaviour
         ScoreCore.mainSpawner = GameObject.FindGameObjectWithTag("MainSpawner");
     }
 
-    // Update is called once per frame
     void Update()
     {
         
