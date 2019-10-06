@@ -9,9 +9,11 @@ public class CameraAtStart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(0.84252352941176470588235294117647f * (MapGenerator.xSize / 2 + 0.5f), 0.72023225806451612903225806451613f * (MapGenerator.ySize / 2 + 0.5f), -3);
-        factory.Add(Cell.getHexCoords(new Vector2(0.84252352941176470588235294117647f * (MapGenerator.xSize / 2 + 0.5f), 0.72023225806451612903225806451613f * (MapGenerator.ySize / 2 + 0.5f)), 1), 1);
+       // transform.position = new Vector3(0.84252352941176470588235294117647f * (MapGenerator.xSize / 2), 0.72023225806451612903225806451613f * (MapGenerator.ySize / 2), -3);
+        factory.Add(new Vector2Int((int)((float)MapGenerator.xSize/2),(int)((float)MapGenerator.ySize/2)) ,1);
         ScoreCore.mainSpawner = GameObject.FindGameObjectWithTag("MainSpawner");
+        Vector2 pos = Cell.getGlobalCoords(new Vector2Int((int)((float)MapGenerator.xSize / 2), (int)((float)MapGenerator.ySize / 2)), 55f / 64f);
+        transform.position = new Vector3(pos.x, pos.y, -3);
     }
 
     // Update is called once per frame
