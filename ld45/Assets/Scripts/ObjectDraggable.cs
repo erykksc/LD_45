@@ -44,14 +44,14 @@ if (Input.GetMouseButtonDown(1)){Debug.LogWarning(Camera.main.ScreenToWorldPoint
             IsSelected = false;
             Vector2 WorldPos =  Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
 
-            Vector2Int hPos = Cell.getHexCoords(WorldPos, 1);
+            Vector2Int hPos = Cell.getHexCoords(WorldPos, 55f/64f);
 
                 
             //Checking if position is occupied and if player has enough cash to build the cell
             if ((Factory.Find(hPos) == null&&ScoreCore.Cash>= ScoreCore.Prices[SpawnedIdentifier])||makeInfinite)
             {
                 Factory.Add(hPos, SpawnedIdentifier);
-                GameObject.Instantiate(Resources.Load<GameObject>("BuildParticles") as GameObject, Cell.getGlobalCoords(Cell.getHexCoords(WorldPos, 1), 1), Quaternion.identity);
+                GameObject.Instantiate(Resources.Load<GameObject>("BuildParticles") as GameObject, Cell.getGlobalCoords(Cell.getHexCoords(WorldPos, 55f/64f), 55f/64f), Quaternion.identity);
                 ScoreCore.Cash -= ScoreCore.Prices[SpawnedIdentifier];
             }
 

@@ -13,15 +13,20 @@ public class Wall : Cell
     {
         healPerImpulse = newHealPerImpulse;
     }
+    public override void onImpulse()
+    {
+        dealDamage(-getHealPerImpulse());
+    }
     
     private void Awake()
     {
+        setPulseAction(action);
         //GetComponent<SpriteRenderer>().color = Color.green;
         //sprite = gameObject.GetComponent<Sprite>();
     }
     
-    public override void WhenActivatedDoOnce()
-    {
-        setHp(getHp()+healPerImpulse);
-    }
+    //public override void WhenActivatedDoOnce()
+    //{
+        //setHp(getHp()+healPerImpulse);
+    //}
 }

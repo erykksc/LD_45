@@ -6,8 +6,13 @@ public class Bank : Cell
 {
    
     // Update is called once per frame
-    public override void WhenActivatedDoOnce()
+    public override void onImpulse()
     {
-        ScoreCore.Cash += 1;
+        ScoreCore.Cash++;
+        
+    }
+    private void Awake()
+    {
+        setPulseAction(action);
     }
 }
