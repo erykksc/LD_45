@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraAtStart : MonoBehaviour
 {
+    public MapGenerator MapGenerator;
     public CellFactory factory;
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,6 @@ public class CameraAtStart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

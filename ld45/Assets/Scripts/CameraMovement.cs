@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    public MapGenerator MapGenerator;
     public float MoveSpeed;
 
 
@@ -30,11 +31,11 @@ public class CameraMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) ) && transform.position.x> XMinLimit)
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && transform.position.x > XMinLimit)
         {
-            GetComponent<Rigidbody2D>().AddForce(Vector2.left * MoveSpeed)  ;
+            GetComponent<Rigidbody2D>().AddForce(Vector2.left * MoveSpeed);
         }
-        if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))&& transform.position.x < XMaxLimit)
+        if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && transform.position.x < XMaxLimit)
         {
             GetComponent<Rigidbody2D>().AddForce(Vector2.right * MoveSpeed);
         }

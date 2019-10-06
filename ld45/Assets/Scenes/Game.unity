@@ -533,7 +533,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSelected: 0
   Factory: {fileID: 56327861}
-  grassFactory: {fileID: 2004089835}
   SpawnedIdentifier: 0
   ReturnPosition: {x: 0, y: 0, z: 0}
   makeInfinite: 0
@@ -844,7 +843,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSelected: 0
   Factory: {fileID: 56327861}
-  grassFactory: {fileID: 2004089835}
   SpawnedIdentifier: 2
   ReturnPosition: {x: 0, y: 0, z: 0}
   makeInfinite: 0
@@ -958,7 +956,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSelected: 0
   Factory: {fileID: 56327861}
-  grassFactory: {fileID: 2004089835}
   SpawnedIdentifier: 3
   ReturnPosition: {x: 0, y: 0, z: 0}
   makeInfinite: 0
