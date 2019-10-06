@@ -47,13 +47,15 @@ if (Input.GetMouseButtonDown(1)){Debug.LogWarning(Camera.main.ScreenToWorldPoint
             Vector2Int hPos = Cell.getHexCoords(WorldPos, 1);
 
                 
-
+            //Checking if position is occupied and if player has enough cash to build the cell
             if ((Factory.Find(hPos) == null&&ScoreCore.Cash>= ScoreCore.Prices[SpawnedIdentifier])||makeInfinite)
             {
                 Factory.Add(hPos, SpawnedIdentifier);
                 GameObject.Instantiate(Resources.Load<GameObject>("BuildParticles") as GameObject, Cell.getGlobalCoords(Cell.getHexCoords(WorldPos, 1), 1), Quaternion.identity);
                 ScoreCore.Cash -= ScoreCore.Prices[SpawnedIdentifier];
             }
+
+            //Returning the draggable to origin position
             gameObject.transform.position = ReturnPosition;
         }
         
@@ -66,7 +68,4 @@ if (Input.GetMouseButtonDown(1)){Debug.LogWarning(Camera.main.ScreenToWorldPoint
     }
 
 
-    private void OnDrawGizmos() {
-        Gizmos.DrawSphere(Camera.main.ScreenToWorldPoint(Input.mousePosition),3);
-    }
 }
