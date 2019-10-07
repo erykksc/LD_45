@@ -101,7 +101,7 @@ public IEnumerator animate()
         {
             i=0;
         }
-            Debug.LogWarning(speed+" :"+i);
+            //Debug.LogWarning(speed+" :"+i);
             yield return new WaitForSeconds( 1/(   speed+AnimationSpeed)     );
       }
 
