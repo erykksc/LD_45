@@ -314,14 +314,11 @@ MonoBehaviour:
   - {fileID: 1271819163}
   - {fileID: 1661260128}
   MessagePanel: {fileID: 1477982891}
-  nextRoundCheckTime: 0
-  roundCheckingRate: 0.5
   roundNum: 1
   timeBetweenRounds: 10
-  startOfTheNextRoundTime: 0
-  waitingForNextRound: 1
+  roundDisplayTime: 2
   distanceOfSpawnersFromGen: 25
-  roundNumText: {fileID: 0}
+  roundNumDisplayer: {fileID: 857626573}
 --- !u!114 &599833002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,7 +922,7 @@ GameObject:
   - component: {fileID: 857626576}
   - component: {fileID: 857626575}
   m_Layer: 8
-  m_Name: RoundAnnouncer
+  m_Name: RoundDisplayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -981,7 +978,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ROUND
+  m_Text: '
+
+'
 --- !u!222 &857626576
 CanvasRenderer:
   m_ObjectHideFlags: 0
