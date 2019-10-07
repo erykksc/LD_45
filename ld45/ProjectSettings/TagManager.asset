@@ -20,7 +20,7 @@ TagManager:
   - 
   - 
   - HighUI
-  - 
+  - HigherUI
   - 
   - 
   - 
@@ -49,4 +49,7 @@ TagManager:
     locked: 0
   - name: HighUI
     uniqueID: 2408154077
+    locked: 0
+  - name: HigherUI
+    uniqueID: 911944033
     locked: 0

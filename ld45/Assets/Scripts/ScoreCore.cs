@@ -133,4 +133,8 @@ public class ScoreCore : MonoBehaviour
     {
         MessagePanel.active = !MessagePanel.active;
     }
+    public void CloseMessageWindow()
+    {
+        MessagePanel.active = false;
+    }
 }
