@@ -7,13 +7,6 @@ public class CameraMovement : MonoBehaviour
     public MapGenerator MapGenerator;
     public float MoveSpeed;
 
-
-    //50 x30
-
-
-    //x 7 >>35
-    //y 3 >> 19
-
     private float XMaxLimit;
     private float XMinLimit;
     private float YMaxLimit;
@@ -23,6 +16,7 @@ public class CameraMovement : MonoBehaviour
 
     public void Start()
     {
+        MapGenerator = gameObject.GetComponent<MapGenerator>();
         XMaxLimit = GetComponent<MapGenerator>().xSize * 0.84252352941176470588235294117647f - 7f;
         XMinLimit = 7.5f;
         YMaxLimit = GetComponent<MapGenerator>().ySize * 0.72023225806451612903225806451613f - 4.5f;

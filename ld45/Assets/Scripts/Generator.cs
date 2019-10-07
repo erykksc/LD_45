@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Generator : Cell
 {
-    // Start is called before the first frame update
-
-    //[SerializeField] static Sprite sprite;
     [SerializeField] private float pulsationRate = 2.0f;
 
     IEnumerator pulsate()
@@ -47,9 +45,13 @@ public class Generator : Cell
         //gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.LoadScene(0);
     }
 }

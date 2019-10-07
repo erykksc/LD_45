@@ -40,12 +40,5 @@ public class Wall : Cell
         selfHeal[1] = 10;
 
         Upgrade();
-        //GetComponent<SpriteRenderer>().color = Color.green;
-        //sprite = gameObject.GetComponent<Sprite>();
     }
-    
-    //public override void WhenActivatedDoOnce()
-    //{
-        //setHp(getHp()+healPerImpulse);
-    //}
 }

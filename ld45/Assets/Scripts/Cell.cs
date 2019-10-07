@@ -27,7 +27,6 @@ public class Cell : Propagateable
 
     public int level = 0;
     
-
     public bool buildable;
     public bool isWater;
 
@@ -83,7 +82,6 @@ public class Cell : Propagateable
         int x, y;
         x = (int)Mathf.Round(pos.x / xstep);
         y = (int)Mathf.Round(pos.y / ystep);
-        //Debug.Log($"data:{y}");
         float min = float.MaxValue;
         Vector2Int mV = new Vector2Int(0, 0);
         Vector2 tPos = new Vector2(0, 0);
@@ -124,6 +122,7 @@ public class Cell : Propagateable
 
     public void dealDamage(int damage)
     {
+        Debug.Log("a");
         if (damage > 0)
         {
             health[0] -= damage;
@@ -142,24 +141,10 @@ public class Cell : Propagateable
             GameObject.Destroy(gameObject);
         }
     }
-    Vector2Int getPos() { return pos; }
-
-    /// Function
-    /*public IEnumerator animate(int duration)
+    Vector2Int getPos()
     {
-        Color color = new Color(1, 1, 1);
-        float t = 0;
-        while(t<duration)
-        {
-            color.r = 1 * (t / duration);
-            t += Time.deltaTime;
-            yield return null;
-        }
-    }*/
-
-
-    // coroutine
-
+        return pos;
+    }
 
     public void Awake()
     {
@@ -209,7 +194,6 @@ public class Cell : Propagateable
 
     ~Cell()
     {
-        //Debug.Log("Destructor called");
         for(int i = 0;i<6;i++)
         {
             if(neighbours[i]!=null)

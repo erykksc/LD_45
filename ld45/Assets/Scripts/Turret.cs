@@ -5,16 +5,11 @@ using System.Linq;
 
 public class Turret : Cell
 {
-    // Start is called before the first frame update
-    //public int damage;
-    //public int damageSpeed;
-    //private int passed;
     public float timeGap = 0.5f;
     //bool switch1 = true;
     private LineRenderer line;
     private List<GameObject> Deleted = new List<GameObject>();
     //[SerializeField] private int additionalRayCount = 0;
-
 
     //Finding a target by finding the nearest object with the tag ENEMY
     private GameObject GetTarget(Vector3 startingPos)
@@ -39,15 +34,14 @@ public class Turret : Cell
 
     public override void onImpulse()
     {
-        //Debug.Log("wrk");
         Deleted.Clear();
         StartCoroutine(initiateShooting());
     }
 
-    private void DeleteEnemy(GameObject target)
+    private void dealDamage2Enemy(GameObject target)
     {
+        target.GetComponent<Enemy>().dealDamage(damage[0]);
         Deleted.Add(target);
-        Destroy(target);
     }
 
     private void Shoot()
@@ -55,34 +49,27 @@ public class Turret : Cell
         GameObject Target = GetTarget(gameObject.GetComponent<Transform>().position);
         Vector2 dist =  Target.GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
         // Ważne
-        //if (Target!= gameObject ) Rotate(dist);
-
 
         if (dist.sqrMagnitude < range[0] && Target != gameObject)
         {
-            //DrawArrow.ForDebug(gameObject.GetComponent<Transform>().position, dist);
             List<Vector3> points = new List<Vector3>();
             points.Add((Vector2) gameObject.GetComponent<Transform>().position + dist.normalized * 0.4f);
             points.Add((Vector2) Target.GetComponent<Transform>().position);
-            //Debug.Log("One frame, one kill");
             Vector2 pos = Target.GetComponent<Transform>().position;
-            DeleteEnemy(Target);
+            dealDamage2Enemy(Target);
 
             for(int i = 0; i < rays[0]; i++)
             {
-                //Debug.Log(pos);
                 Target = GetTarget(pos);
                 dist =  Target.GetComponent<Transform>().position - points[points.Count -1];
                 if (Target == gameObject || dist.sqrMagnitude > (range[0]/4))
                 {
                     break;
                 }
-                Debug.Log(Target);
                 points.Add((Vector2) Target.GetComponent<Transform>().position);
                 pos = Target.GetComponent<Transform>().position;
-                DeleteEnemy(Target);
+                dealDamage2Enemy(Target);
             }
-            Debug.Log(points);
             line.positionCount = points.Count;
             line.SetPositions(points.ToArray());
             StartCoroutine(deleteLine());
@@ -164,16 +151,12 @@ public class Turret : Cell
     {
         
         //Determining the rotation and rotating
-        //float RotAngle = Vector2.Angle(Vector2.up,Vect2);
+        float RotAngle = Vector2.Angle(Vector2.up,Vect2);
         foreach (Transform trans in GetComponentsInChildren<Transform>())
         {
             if (trans.name != "TurretBase")
             {
                 trans.right =-GetTarget(gameObject.GetComponent<Transform>().position).GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
-                //trans.RotateAround(Vector3.forward, RotAngle);
-                //trans.rotation = Quaternion.Euler(0, 0, RotAngle-90);
-
-
             }
         }
         
