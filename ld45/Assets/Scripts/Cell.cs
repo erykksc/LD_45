@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Cell : Propagateable
 {
-    private static int cellCount = 0;
     public bool UpgradeWindowShowing = false;
     public GameObject UpgradeInterface;
     //public static Vector2Int toHexCoords(Vector2 pos)
@@ -179,11 +178,6 @@ public class Cell : Propagateable
         selfHeal[1] = 10;
 
         Upgrade();
-        cellCount++;
-    }
-    static int getCellCount()
-    {
-        return cellCount;
     }
     private void Update()
     {
@@ -240,7 +234,11 @@ public class Cell : Propagateable
         }
         Destroy(gameObject);
     }
-
+    private void OnDestroy()
+    {
+        Debug.Log("erasing Cell");
+        CellFactory.cellCount--;
+    }
     ~Cell()
     {
         for(int i = 0;i<6;i++)
