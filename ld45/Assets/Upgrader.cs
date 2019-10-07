@@ -8,6 +8,18 @@ public class Upgrader : MonoBehaviour
 
     public void Awake()
     {
+        //Scaling size for 2k, 4k 
+        float ScreenScaleX = Camera.main.scaledPixelWidth / 3840.0f   ;
+        float ScreenScaleY = Camera.main.scaledPixelHeight / 2160.0f   ;
+        //Camera.main.
+
+            //Debug.LogError("ScreenX:" + ScreenScaleX+"Width:"+ Camera.main.aspect);
+           // Debug.LogError("ScreenY:" + ScreenScaleY+"Height:"+ Camera.main.aspect);
+
+        transform.localScale = new Vector3(1.2f* ScreenScaleX, 1.2f* ScreenScaleY,1);
+
+
+
         CF = null;
         Transform SemiTarget = null;
         
