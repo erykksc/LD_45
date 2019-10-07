@@ -192,17 +192,13 @@ MonoBehaviour:
   - {fileID: 0}
   UpgradeWindowShowing: 0
   UpgradeInterface: {fileID: 0}
-  health: 0000000064000000c80000002c010000
-  moneyps: 00000000000000000000000000000000
-  range:
-  - 0
-  - 15
-  - 25
-  - 35
-  damage: 000000000a000000140000001e000000
-  rays: 00000000000000000100000002000000
-  selfHeal: 00000000000000000000000001000000
-  cash: 00000000000000000000000000000000
+  health: 320000006400000096000000c8000000
+  moneyps: 
+  range: []
+  damage: 
+  rays: 
+  selfHeal: 
+  cash: 
   level: 0
   buildable: 0
   isWater: 0
@@ -229,8 +225,9 @@ MonoBehaviour:
   animationLength: 6
   heads:
   - {fileID: 21300000, guid: 8508613b581377f4f9dfa8e75290cd47, type: 3}
-  - {fileID: 21300000, guid: 08dfb9202f76f0041b774a2354cd0dce, type: 3}
-  - {fileID: 21300000, guid: a1d9d469e31db62469aea54ab3cd7d94, type: 3}
+  - {fileID: 21300000, guid: b54111e541b84a2429e28f0a9731c474, type: 3}
+  - {fileID: 21300000, guid: fc09ef376186bbf4b9f474b94a3d26bc, type: 3}
+  renderer: {fileID: 0}
   timeGap: 0.5
 --- !u!50 &7981637462068535397
 Rigidbody2D:

@@ -123,7 +123,21 @@ public class Turret : Cell
         setPulseAction(action);
         line = gameObject.GetComponent<LineRenderer>();
 
-        level = 0;
+        health = new int[2];
+        range = new float[2];
+        rays = new int[2];
+        moneyps = new int[2];
+        cash = new int[2];
+        selfHeal = new int[2];
+        damage = new int[2];
+
+        health[1] = 100;
+        range[1] = 15;
+        rays[1] = 0;
+        moneyps[1] = 2;
+        cash[1] = 100;
+        damage[1] = 50;
+        selfHeal[1] = 10;
 
         animationLength = 6;
 
@@ -168,6 +182,7 @@ public class Turret : Cell
             range[0] = range[level];
             cash[0] = cash[level];
             renderer.sprite = heads[level-1];
+            Debug.Log("TEST");
         }
     }
 
