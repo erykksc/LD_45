@@ -241,6 +241,22 @@ public class Cell : Propagateable
         }
         Destroy(gameObject);
     }
+    private void OnDestroy()
+    {
+        CellFactory CF = null;
+        Transform SemiTarget = null;
+        foreach (Transform trans in Camera.main.GetComponentsInChildren<Transform>())
+        {
+            if (trans.gameObject.name == "Canvas") SemiTarget = trans;
+        }
+        foreach (Transform trans in Camera.main.GetComponentsInChildren<Transform>())
+        {
+            if (trans.gameObject.name == "GrassFactory") SemiTarget = trans;
+        }
+        CF = SemiTarget.GetComponent<CellFactory>();
+
+
+    }
 
     ~Cell()
     {
