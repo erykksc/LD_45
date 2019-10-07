@@ -5,9 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Generator : Cell
 {
-    // Start is called before the first frame update
-
-    //[SerializeField] static Sprite sprite;
     [SerializeField] private float pulsationRate = 2.0f;
 
     IEnumerator pulsate()
@@ -26,12 +23,8 @@ public class Generator : Cell
     }
     private void Awake()
     {
-        
-        //sprite = gameObject.GetComponent<Sprite>();
-        //gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
     }
 
-    // Update is called once per frame
     void Update()
     {
         

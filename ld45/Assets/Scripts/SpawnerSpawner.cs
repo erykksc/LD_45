@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpawnerSpawner : MonoBehaviour
 {
     private int passed = 0;
-    // Start is called before the first frame update
     [SerializeField] private float distance;
     [SerializeField] private GameObject spawner;
     [SerializeField] private GameObject enemyPrefab;
