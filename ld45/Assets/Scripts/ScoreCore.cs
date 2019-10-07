@@ -58,7 +58,7 @@ public class ScoreCore : MonoBehaviour
         string seconds = Mathf.Floor(TimeSinceStart % 60).ToString("00");
 
         TimeDisplayer.text = minutes + ":" + seconds;              //Mathf.FloorToInt(Time.time).ToString();
-        SupplyDisplayer.text = (CellFactory.cellCount  + "/"+ Silos.getAvailableBuildings());
+        SupplyDisplayer.text = (CellFactory.cellCount + "/"+ Silos.getAvailableBuildings());
     }
 
     private bool isRoundCompleted()
