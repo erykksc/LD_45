@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Upgrader : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Upgrade()
     {
-        
+        Debug.LogError("Upgrade");
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void Bulldoze()
     {
-        
+        Debug.LogError("Downgrade");
     }
 }
