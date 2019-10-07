@@ -169,7 +169,7 @@ public class Turret : Cell
         }
     }
 
-    public void Upgrade()
+    public override void Upgrade()
     {
         if (level + 1 < health.Length)
         {
@@ -182,6 +182,7 @@ public class Turret : Cell
             range[0] = range[level];
             cash[0] = cash[level];
             renderer.sprite = heads[level-1];
+            Debug.Log("TEST");
         }
     }
 

@@ -142,7 +142,7 @@ MonoBehaviour:
   - {fileID: 0}
   UpgradeWindowShowing: 0
   UpgradeInterface: {fileID: 0}
-  health: 
+  health: 320000006400000096000000c8000000
   moneyps: 
   range: []
   damage: 
