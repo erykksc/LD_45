@@ -75,6 +75,7 @@ public class CellFactory : MonoBehaviour
 
         }
         cells.Add(o);
+        o.ID = index;
         Debug.Log("Adding cell");
         return o;
     }

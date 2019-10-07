@@ -6,6 +6,11 @@ public class Cell : Propagateable
 {
     public bool UpgradeWindowShowing = false;
     public GameObject UpgradeInterface;
+
+    public int ID = -1;
+
+    public static int cellNumber = 0;
+
     //public static Vector2Int toHexCoords(Vector2 pos)
     //{
 
@@ -226,7 +231,7 @@ public class Cell : Propagateable
             catch { }
         }
     }
-
+    
     public void destroyCell()
     {
         for (int i = 0; i < 6; i++)
@@ -241,6 +246,20 @@ public class Cell : Propagateable
     }
     private void OnDestroy()
     {
+        if(ID>=0)
+        {
+            ScoreCore.cellCount[ID]--;
+        }
+        
+        ScoreCore.Prices[0] = 4 * ScoreCore.cellCount[0];
+        ScoreCore.Prices[2] = 4 * ScoreCore.cellCount[2];
+        ScoreCore.Prices[3] = 4 * ScoreCore.cellCount[3];
+        ScoreCore.Prices[4] = 4 * ScoreCore.cellCount[4];
+        Camera.main.GetComponent<ScoreCore>().PriceDisplayers[0].text = ScoreCore.Prices[0].ToString() + "$";
+        Camera.main.GetComponent<ScoreCore>().PriceDisplayers[2].text = ScoreCore.Prices[2].ToString() + "$";
+        Camera.main.GetComponent<ScoreCore>().PriceDisplayers[3].text = ScoreCore.Prices[3].ToString() + "$";
+        Camera.main.GetComponent<ScoreCore>().PriceDisplayers[4].text = ScoreCore.Prices[4].ToString() + "$";
+
         CellFactory CF = null;
         Transform SemiTarget = null;
         foreach (Transform trans in Camera.main.GetComponentsInChildren<Transform>())
