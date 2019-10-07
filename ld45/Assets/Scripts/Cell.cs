@@ -20,6 +20,7 @@ public class Cell : Propagateable
 
 
     public bool buildable;
+    public bool isWater;
 
     public static float timeStep = 0.75f;
 
