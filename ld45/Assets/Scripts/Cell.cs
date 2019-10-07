@@ -120,7 +120,8 @@ public class Cell : Propagateable
         hp = newHp;
     }
 
-    public void dealDamage(int damage)
+    //Returns True if the cell has been destroyed
+    public bool dealDamage(int damage)
     {
         //Debug.Log("a");
         health[0] -= damage;
@@ -136,6 +137,7 @@ public class Cell : Propagateable
                 neighbours[i] = null;
             }
             GameObject.Destroy(gameObject);
+            return true;
         }
         if(health[0]-damage>health[level])
         {

@@ -142,6 +142,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   hp: 100
+  lastCollider: {fileID: 0}
+  timeOfLastAttack: 0
+  attackRate: 0.2
 --- !u!60 &838102031206557078
 PolygonCollider2D:
   m_ObjectHideFlags: 0
