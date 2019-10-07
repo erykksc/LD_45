@@ -78,6 +78,7 @@ public class Turret : Cell
     private IEnumerator initiateShooting()
     {
         // warunek - odległóść
+
         if(GetTarget(gameObject.GetComponent<Transform>().position)!=gameObject)
         {
             
@@ -133,6 +134,8 @@ public class Turret : Cell
         cash[1] = 100;
         damage[1] = 50;
         selfHeal[1] = 10;
+
+        animationLength = 6;
 
         Upgrade();
     }

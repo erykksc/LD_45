@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Cell : Propagateable
 {
-    private Cell c1;
     public bool UpgradeWindowShowing = false;
     public GameObject UpgradeInterface;
     //public static Vector2Int toHexCoords(Vector2 pos)
@@ -51,6 +50,7 @@ public class Cell : Propagateable
             rays[0] = rays[level];
             moneyps[0] = moneyps[level];
             range[0] = range[level];
+            cash[0] = cash[level];
         }
     }
 
@@ -65,12 +65,12 @@ public class Cell : Propagateable
     }
     public IEnumerator animate()
     {
-        for(int i =0;i<sprites.Length;i++)
+        for(int i =0;i<animationLength;i++)
         {
-            GetComponent<SpriteRenderer>().sprite = sprites[i];
-            yield return new WaitForSeconds(timeStep / (sprites.Length-1));
+            GetComponent<SpriteRenderer>().sprite = sprites[(level-1)* animationLength+i];
+            yield return new WaitForSeconds(timeStep / (animationLength - 1));
         }
-        GetComponent<SpriteRenderer>().sprite = sprites[0];
+        GetComponent<SpriteRenderer>().sprite = sprites[animationLength*(level-1)];
     }
 
     public static Vector2 getGlobalCoords(Vector2Int pos, float size)
@@ -158,6 +158,7 @@ public class Cell : Propagateable
 
         GetComponent<SpriteRenderer>().sprite = sprites[0];
         setPulseAction(action);
+
         level = 0;
         health = new int[2];
         range = new float[2];
@@ -177,7 +178,6 @@ public class Cell : Propagateable
 
         Upgrade();
     }
-
     private void Update()
     {
     }
@@ -254,8 +254,6 @@ public class Cell : Propagateable
             if (trans.gameObject.name == "GrassFactory") SemiTarget = trans;
         }
         CF = SemiTarget.GetComponent<CellFactory>();
-
-
     }
 
     ~Cell()
