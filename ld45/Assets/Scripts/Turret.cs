@@ -5,14 +5,11 @@ using System.Linq;
 
 public class Turret : Cell
 {
-    [SerializeField] private float range;
-    [SerializeField] private int damage;
-    private int passed;
     public float timeGap = 0.5f;
-    bool switch1 = true;
+    //bool switch1 = true;
     private LineRenderer line;
     private List<GameObject> Deleted = new List<GameObject>();
-    [SerializeField] private int additionalRayCount = 0;
+    //[SerializeField] private int additionalRayCount = 0;
 
     //Finding a target by finding the nearest object with the tag ENEMY
     private GameObject GetTarget(Vector3 startingPos)
@@ -43,7 +40,7 @@ public class Turret : Cell
 
     private void dealDamage2Enemy(GameObject target)
     {
-        target.GetComponent<Enemy>().dealDamage(damage);
+        target.GetComponent<Enemy>().dealDamage(damage[0]);
         Deleted.Add(target);
     }
 
@@ -53,7 +50,7 @@ public class Turret : Cell
         Vector2 dist =  Target.GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
         // Ważne
 
-        if (dist.sqrMagnitude < range && Target != gameObject)
+        if (dist.sqrMagnitude < range[0] && Target != gameObject)
         {
             List<Vector3> points = new List<Vector3>();
             points.Add((Vector2) gameObject.GetComponent<Transform>().position + dist.normalized * 0.4f);
@@ -61,11 +58,11 @@ public class Turret : Cell
             Vector2 pos = Target.GetComponent<Transform>().position;
             dealDamage2Enemy(Target);
 
-            for(int i = 0; i < additionalRayCount; i++)
+            for(int i = 0; i < rays[0]; i++)
             {
                 Target = GetTarget(pos);
                 dist =  Target.GetComponent<Transform>().position - points[points.Count -1];
-                if (Target == gameObject || dist.sqrMagnitude > (range/4))
+                if (Target == gameObject || dist.sqrMagnitude > (range[0]/4))
                 {
                     break;
                 }
@@ -87,7 +84,6 @@ public class Turret : Cell
         }
         
         StartCoroutine(animate());
-        switch1 = false;
         yield return new WaitForSeconds(timeGap);
         Shoot();
     }
@@ -121,6 +117,24 @@ public class Turret : Cell
     {
         setPulseAction(action);
         line = gameObject.GetComponent<LineRenderer>();
+
+        health = new int[2];
+        range = new float[2];
+        rays = new int[2];
+        moneyps = new int[2];
+        cash = new int[2];
+        selfHeal = new int[2];
+        damage = new int[2];
+
+        health[1] = 100;
+        range[1] = 15;
+        rays[1] = 0;
+        moneyps[1] = 2;
+        cash[1] = 100;
+        damage[1] = 50;
+        selfHeal[1] = 10;
+
+        Upgrade();
     }
 
     private IEnumerator deleteLine()
