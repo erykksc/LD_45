@@ -140,9 +140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d682db0a31ce5532b035ab72318e73f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 20
   hp: 100
-  attackRate: 0
+  attackRate: 0.25
   BloodSplat: {fileID: 3219137761117346358, guid: c38628c098c075e42aca1713581eb704,
     type: 3}
   BloodPool: {fileID: 7154009541728109565, guid: 812c81391a002614e931a2cefd5ee76c,

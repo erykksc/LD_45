@@ -39,7 +39,7 @@ public class ScoreCore : MonoBehaviour
         Prices = new int[] { 0, 999, 0, 0, 0 };
 
         TimeSinceStart = 0;
-        Cash = 800000;
+        Cash = 0;
         if (CashDisplayer == null)
         {
             CashDisplayer = GameObject.Find("CashDisplayer").GetComponent<Text>();
