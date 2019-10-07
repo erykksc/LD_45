@@ -9,7 +9,6 @@ public class Silos : Cell
 
     void Awake()
     {
-        level = 0;
         if(allInst == null)
         {
             allInst = new List<Silos>();
