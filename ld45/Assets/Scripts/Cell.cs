@@ -122,11 +122,8 @@ public class Cell : Propagateable
 
     public void dealDamage(int damage)
     {
-        Debug.Log("a");
-        if (damage > 0)
-        {
-            health[0] -= damage;
-        }
+        //Debug.Log("a");
+        health[0] -= damage;
 
         if (health[0] <= 0)
         {
@@ -139,6 +136,10 @@ public class Cell : Propagateable
                 neighbours[i] = null;
             }
             GameObject.Destroy(gameObject);
+        }
+        if(health[0]-damage>health[level])
+        {
+            health[0] = health[level];
         }
     }
     Vector2Int getPos()

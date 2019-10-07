@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Bank : Cell
 {
-    [SerializeField] private int moneyToAdd = 1;
     
     public override void onImpulse()
     {
-        ScoreCore.Cash = ScoreCore.Cash + moneyToAdd;
+        ScoreCore.Cash = ScoreCore.Cash + moneyps[0];
         
     }
     private void Awake()

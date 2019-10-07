@@ -10,8 +10,8 @@ public class MapGenerator : MonoBehaviour
 
     private void Start()
     {
-        grassFactory.generateGrid(new Vector2Int(50,50));
-        /*CreateShape();
+        //grassFactory.generateGrid(new Vector2Int(50,50));
+        CreateShape();
         
         //genPatch(new Vector2Int(20, 20), 7,50, 0);
 
@@ -75,7 +75,7 @@ public class MapGenerator : MonoBehaviour
                     grassFactory.Add(gPos+pos, Random.Range(0, 2)).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
                 }
             }
-        }*/
+        }
         //genSpot(new Vector2Int(10, 9), new Vector2Int(1, 6), 8);//genRocks(5);
     }
     // to add : river/patch
