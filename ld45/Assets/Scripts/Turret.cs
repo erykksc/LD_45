@@ -43,7 +43,6 @@ public class Turret : Cell
 
     private void dealDamage2Enemy(GameObject target)
     {
-        Debug.Log(target);
         target.GetComponent<Enemy>().dealDamage(damage);
         Deleted.Add(target);
     }
@@ -53,15 +52,12 @@ public class Turret : Cell
         GameObject Target = GetTarget(gameObject.GetComponent<Transform>().position);
         Vector2 dist =  Target.GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
         // Ważne
-        //if (Target!= gameObject ) Rotate(dist);
 
         if (dist.sqrMagnitude < range && Target != gameObject)
         {
-            //DrawArrow.ForDebug(gameObject.GetComponent<Transform>().position, dist);
             List<Vector3> points = new List<Vector3>();
             points.Add((Vector2) gameObject.GetComponent<Transform>().position + dist.normalized * 0.4f);
             points.Add((Vector2) Target.GetComponent<Transform>().position);
-            //Debug.Log("One frame, one kill");
             Vector2 pos = Target.GetComponent<Transform>().position;
             dealDamage2Enemy(Target);
 
@@ -73,12 +69,10 @@ public class Turret : Cell
                 {
                     break;
                 }
-                Debug.Log(Target);
                 points.Add((Vector2) Target.GetComponent<Transform>().position);
                 pos = Target.GetComponent<Transform>().position;
                 dealDamage2Enemy(Target);
             }
-            Debug.Log(points);
             line.positionCount = points.Count;
             line.SetPositions(points.ToArray());
             StartCoroutine(deleteLine());

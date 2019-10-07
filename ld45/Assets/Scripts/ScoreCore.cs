@@ -87,7 +87,6 @@ public class ScoreCore : MonoBehaviour
         {
             nextNumOfEnemiesGroups += 1;
         }
-        //Debug.Log($"Wave enemies {round+1} ,{nextNumOfEnemiesGroups}, {nextNumOfEnemiesPerGroup}");
     }
 
     private void FixedUpdate() {

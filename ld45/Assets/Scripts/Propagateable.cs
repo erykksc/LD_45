@@ -38,7 +38,6 @@ public class Propagateable : MonoBehaviour
     {
         if(timesActivated<origin.timesActivated)
         {
-            //Debug.Log("receiving, deceiving");
             if (Action != null)
             {
                 Action();
@@ -57,7 +56,6 @@ public class Propagateable : MonoBehaviour
         {
             if(neighbours[i]!=null)
             {
-                //Debug.Log("propagation in progress");
                 StartCoroutine(neighbours[i].receiveImpuls(this));
             }
         }

@@ -48,21 +48,15 @@ public class Tester : MonoBehaviour
     }
     private void Awake()
     {
-        //Debug.Log("Official: ");
         Vector2 position = (getGlobalCoords(new Vector2Int(40, 17),10));
         position += new Vector2(2, 3);
-        //Debug.Log(position);
-        //Debug.Log("Inverse:");
         Vector2Int p = getHexCoords(position, 10);
-        //Debug.Log(p);
     }
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //Debug.Log("button pressed");
             Vector2 mouse = Input.mousePosition;
-            //Debug.Log(mouse);
         }
     }
 }
