@@ -16,34 +16,17 @@ public class Cell : Propagateable
     //public bool isActivated = false;
 
     //public int timesActivated = 0;
-    public struct Properties
-    {
-        public int health;
-        public int moneyps;
-        public float range;
-        public int dameg;
-        public int rays;
-        public int selfHeal;
-        public int cash;
-    }
+    public int []health;
+    public int []moneyps;
+    public float []range;
+    public int []damage;
+    public int []rays;
+    public int []selfHeal;
+    public int []cash;
+    
 
-    static Properties[] upgrades;
-
-    Properties currentStatus;
-
-    public int level = 1;
-
-    public void Upgrade()
-    {
-        if(level+1<upgrades.Length)
-        {
-            // do poprawy
-            level++;
-            currentStatus = upgrades[level];
-        }
-    }
-
-    static public Properties properties;
+    public int level = 0;
+    
 
     public bool buildable;
     public bool isWater;
@@ -53,6 +36,21 @@ public class Cell : Propagateable
     [SerializeField] private int hp = 10000;
 
     public Sprite[] sprites;
+    public int animationLength;
+
+    public void Upgrade()
+    {
+        if(level+1<health.Length)
+        {
+            level++;
+            health[0] = health[level];
+            damage[0] = damage[level];
+            selfHeal[0] = selfHeal[level];
+            rays[0] = rays[level];
+            moneyps[0] = moneyps[level];
+            range[0] = range[level];
+        }
+    }
 
     public void action()
     {
@@ -128,10 +126,10 @@ public class Cell : Propagateable
     {
         if (damage > 0)
         {
-            currentStatus.health -= damage;
+            health[0] -= damage;
         }
 
-        if (currentStatus.health <= 0)
+        if (health[0] <= 0)
         {
             for(int i = 0;i<6;i++)
             {
@@ -168,9 +166,24 @@ public class Cell : Propagateable
 
         GetComponent<SpriteRenderer>().sprite = sprites[0];
         setPulseAction(action);
-        //GetComponent<SpriteRenderer>().color = Color.green;
-        //GetComponent<SpriteRenderer>().color = Color.green;
-        //GetComponent<SpriteRenderer>().color = Color.blue;
+        level = 0;
+        health = new int[2];
+        range = new float[2];
+        rays = new int[2];
+        moneyps = new int[2];
+        cash = new int[2];
+        selfHeal = new int[2];
+        damage = new int[2];
+
+        health[1] = 100;
+        range[1] = 15;
+        rays[1] = 0;
+        moneyps[1] = 2;
+        cash[1] = 100;
+        damage[1] = 50;
+        selfHeal[1] = 10;
+
+        Upgrade();
     }
 
     private void Update()

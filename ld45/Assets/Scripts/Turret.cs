@@ -6,15 +6,14 @@ using System.Linq;
 public class Turret : Cell
 {
     // Start is called before the first frame update
-    [SerializeField] private float range;
     //public int damage;
     //public int damageSpeed;
-    private int passed;
+    //private int passed;
     public float timeGap = 0.5f;
-    bool switch1 = true;
+    //bool switch1 = true;
     private LineRenderer line;
     private List<GameObject> Deleted = new List<GameObject>();
-    [SerializeField] private int additionalRayCount = 0;
+    //[SerializeField] private int additionalRayCount = 0;
 
 
     //Finding a target by finding the nearest object with the tag ENEMY
@@ -59,7 +58,7 @@ public class Turret : Cell
         //if (Target!= gameObject ) Rotate(dist);
 
 
-        if (dist.sqrMagnitude < range && Target != gameObject)
+        if (dist.sqrMagnitude < range[0] && Target != gameObject)
         {
             //DrawArrow.ForDebug(gameObject.GetComponent<Transform>().position, dist);
             List<Vector3> points = new List<Vector3>();
@@ -69,12 +68,12 @@ public class Turret : Cell
             Vector2 pos = Target.GetComponent<Transform>().position;
             DeleteEnemy(Target);
 
-            for(int i = 0; i < additionalRayCount; i++)
+            for(int i = 0; i < rays[0]; i++)
             {
                 //Debug.Log(pos);
                 Target = GetTarget(pos);
                 dist =  Target.GetComponent<Transform>().position - points[points.Count -1];
-                if (Target == gameObject || dist.sqrMagnitude > (range/4))
+                if (Target == gameObject || dist.sqrMagnitude > (range[0]/4))
                 {
                     break;
                 }
@@ -98,7 +97,6 @@ public class Turret : Cell
         }
         
         StartCoroutine(animate());
-        switch1 = false;
         yield return new WaitForSeconds(timeGap);
         Shoot();
     }
@@ -132,6 +130,24 @@ public class Turret : Cell
     {
         setPulseAction(action);
         line = gameObject.GetComponent<LineRenderer>();
+
+        health = new int[2];
+        range = new float[2];
+        rays = new int[2];
+        moneyps = new int[2];
+        cash = new int[2];
+        selfHeal = new int[2];
+        damage = new int[2];
+
+        health[1] = 100;
+        range[1] = 15;
+        rays[1] = 0;
+        moneyps[1] = 2;
+        cash[1] = 100;
+        damage[1] = 50;
+        selfHeal[1] = 10;
+
+        Upgrade();
     }
 
     private IEnumerator deleteLine()
