@@ -5,6 +5,10 @@ using System.Linq;
 
 public class Turret : Cell
 {
+    public Sprite[] heads;
+
+    public SpriteRenderer renderer;
+
     public float timeGap = 0.5f;
     //bool switch1 = true;
     private LineRenderer line;
@@ -87,7 +91,7 @@ public class Turret : Cell
         StartCoroutine(animate());
         yield return new WaitForSeconds(timeGap);
         Shoot();
-    }
+    } 
     private IEnumerator animate()
     {
         Transform ch;
@@ -137,6 +141,7 @@ public class Turret : Cell
 
         animationLength = 6;
 
+        renderer = GetComponentsInChildren<SpriteRenderer>()[1];
         Upgrade();
     }
 
@@ -162,11 +167,22 @@ public class Turret : Cell
                 trans.right =-GetTarget(gameObject.GetComponent<Transform>().position).GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
             }
         }
-        
-
-
-
     }
 
+    public void Upgrade()
+    {
+        if (level + 1 < health.Length)
+        {
+            level++;
+            health[0] = health[level];
+            damage[0] = damage[level];
+            selfHeal[0] = selfHeal[level];
+            rays[0] = rays[level];
+            moneyps[0] = moneyps[level];
+            range[0] = range[level];
+            cash[0] = cash[level];
+            renderer.sprite = heads[level-1];
+        }
+    }
 
 }
