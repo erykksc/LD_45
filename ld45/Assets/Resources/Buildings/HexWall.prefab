@@ -127,9 +127,9 @@ MonoBehaviour:
   hp: 100
   sprites:
   - {fileID: 21300000, guid: 4b1ed62c7704b944d8b8aa30ec7de58f, type: 3}
+  - {fileID: 21300000, guid: 5e97c6336f6d1e94394ff7d4b47cd6c7, type: 3}
   - {fileID: 21300000, guid: 722d20ff867874c4dab80e994fbb8d6c, type: 3}
   - {fileID: 21300000, guid: 1260859f94cd5a04bbf071c8e084a23b, type: 3}
-  - {fileID: 21300000, guid: c617e4fed99ded944bfbce4e7df87997, type: 3}
   - {fileID: 21300000, guid: c617e4fed99ded944bfbce4e7df87997, type: 3}
   - {fileID: 21300000, guid: 1260859f94cd5a04bbf071c8e084a23b, type: 3}
   - {fileID: 21300000, guid: 722d20ff867874c4dab80e994fbb8d6c, type: 3}

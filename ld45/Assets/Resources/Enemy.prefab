@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   hp: 100
-  attackRate: 0.2
+  attackRate: 0
   BloodSplat: {fileID: 3219137761117346358, guid: c38628c098c075e42aca1713581eb704,
     type: 3}
   BloodPool: {fileID: 7154009541728109565, guid: 812c81391a002614e931a2cefd5ee76c,

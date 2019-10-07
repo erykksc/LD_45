@@ -5,6 +5,10 @@ using System.Linq;
 
 public class Turret : Cell
 {
+    public Sprite[] heads;
+
+    public SpriteRenderer renderer;
+
     public float timeGap = 0.5f;
     //bool switch1 = true;
     private LineRenderer line;
@@ -87,7 +91,7 @@ public class Turret : Cell
         StartCoroutine(animate());
         yield return new WaitForSeconds(timeGap);
         Shoot();
-    }
+    } 
     private IEnumerator animate()
     {
         Transform ch;
@@ -118,25 +122,11 @@ public class Turret : Cell
     {
         setPulseAction(action);
         line = gameObject.GetComponent<LineRenderer>();
-
-        health = new int[2];
-        range = new float[2];
-        rays = new int[2];
-        moneyps = new int[2];
-        cash = new int[2];
-        selfHeal = new int[2];
-        damage = new int[2];
-
-        health[1] = 100;
-        range[1] = 15;
-        rays[1] = 0;
-        moneyps[1] = 2;
-        cash[1] = 100;
-        damage[1] = 50;
-        selfHeal[1] = 10;
+        level = 0;
 
         animationLength = 6;
 
+        renderer = GetComponentsInChildren<SpriteRenderer>()[1];
         Upgrade();
     }
 
@@ -162,11 +152,23 @@ public class Turret : Cell
                 trans.right =-GetTarget(gameObject.GetComponent<Transform>().position).GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
             }
         }
-        
-
-
-
     }
 
+    public override void Upgrade()
+    {
+        if (level + 1 < health.Length)
+        {
+            level++;
+            health[0] = health[level];
+            damage[0] = damage[level];
+            selfHeal[0] = selfHeal[level];
+            rays[0] = rays[level];
+            moneyps[0] = moneyps[level];
+            range[0] = range[level];
+            cash[0] = cash[level];
+            renderer.sprite = heads[level-1];
+            Debug.Log("TEST");
+        }
+    }
 
 }
