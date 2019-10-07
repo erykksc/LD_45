@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5032297422039019315}
   - component: {fileID: 8573594161632221502}
+  - component: {fileID: -3815568094982885150}
   m_Layer: 0
   m_Name: BloodPool
   m_TagString: Untagged
@@ -80,3 +81,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-3815568094982885150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7154009541728109565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e9f35e079fd6848af7f4ac9991b59d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeLeft: 15
