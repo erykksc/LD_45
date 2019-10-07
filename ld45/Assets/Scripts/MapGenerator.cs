@@ -50,12 +50,12 @@ public class MapGenerator : MonoBehaviour
             }
         }
         
-        for(int i = 0;i<25;i++)
+        for(int i = 0;i<5;i++)
         {
-            for(int j = 0;j<25;j++)
+            for(int j = 0;j<5;j++)
             {
-                //if(Mathf.Pow(i,2)+Mathf.Pow(j,2)<625*5)
-                //{
+                if(Mathf.Pow(i,2)+Mathf.Pow(j,2)<25)
+                {
                 // Water condition
                     Debug.Log("happens");
                     pos = new Vector2Int(i,j);
@@ -73,7 +73,7 @@ public class MapGenerator : MonoBehaviour
                     pos.x = -pos.x;
                     grassFactory.DestroyCell(grassFactory.Find(gPos + pos));
                     grassFactory.Add(gPos+pos, Random.Range(0, 2)).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
-                //}
+                }
             }
         }
         //genSpot(new Vector2Int(10, 9), new Vector2Int(1, 6), 8);//genRocks(5);
@@ -196,7 +196,15 @@ public class MapGenerator : MonoBehaviour
     {
         Propagateable cell = grassFactory.Find(iPos);
         Vector2Int pos = new Vector2Int(0, 0);
-        if (cell = null)
+        if (cell == null)
+        {
+            return;
+        }
+        if (cell.pos == null)
+        {
+            return;
+        }
+        if(pos==null)
         {
             return;
         }
@@ -206,7 +214,7 @@ public class MapGenerator : MonoBehaviour
             grassFactory.DestroyCell(cell.pos);
             cell = grassFactory.Add(pos, index);
             cell = cell.neighbours[(dir + Random.Range(0, 3) + 5) % 6];
-            if(cell=null)
+            if(cell==null)
             {
                 break;
             }
