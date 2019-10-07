@@ -39,7 +39,7 @@ public class Cell : Propagateable
     public Sprite[] sprites;
     public int animationLength;
 
-    public void Upgrade()
+    public virtual void Upgrade()
     {
         if(level+1<health.Length)
         {

@@ -155,7 +155,7 @@ public class Turret : Cell
         }
     }
 
-    public void Upgrade()
+    public override void Upgrade()
     {
         if (level + 1 < health.Length)
         {
