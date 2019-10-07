@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 599833010}
   - component: {fileID: 599833007}
   - component: {fileID: 599833009}
+  - component: {fileID: 599833008}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -332,8 +333,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFactory: {fileID: 56327861}
   grassFactory: {fileID: 2004089835}
-  xSize: 60
-  ySize: 60
+  xSize: 90
+  ySize: 90
 --- !u!114 &599833003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,6 +416,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f41a71fd17c10344a4f4db93b4075ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &599833008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599832997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ded66c5ed6db044a4c1e4e628a7122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 599832999}
 --- !u!82 &599833009
 AudioSource:
   m_ObjectHideFlags: 0
