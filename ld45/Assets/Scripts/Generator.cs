@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Generator : Cell
 {
@@ -34,5 +35,10 @@ public class Generator : Cell
     void Update()
     {
         
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.LoadScene(0);
     }
 }
