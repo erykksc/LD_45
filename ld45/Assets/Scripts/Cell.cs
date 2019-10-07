@@ -86,7 +86,6 @@ public class Cell : Propagateable
 
     public void dealDamage(int damage)
     {
-        Debug.Log("a");
         if (damage > 0)
         {
             hp -= damage;
