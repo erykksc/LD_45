@@ -190,6 +190,16 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  UpgradeWindowShowing: 0
+  UpgradeInterface: {fileID: 0}
+  health: 
+  moneyps: 
+  range: []
+  damage: 
+  rays: 
+  selfHeal: 
+  cash: 
+  level: 0
   buildable: 0
   isWater: 0
   hp: 100
@@ -200,10 +210,20 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 755664c6230b09c4f9db7f3bf3c031dd, type: 3}
   - {fileID: 21300000, guid: 2fbc69aad1aa73c4cbc37c8c4d7b8518, type: 3}
   - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
-  range: 15
-  damage: 50
+  - {fileID: 21300000, guid: ec1c31173f871364fa4e9575708496eb, type: 3}
+  - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
+  - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
+  - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
+  - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
+  - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
+  - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
+  - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
+  - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
+  - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
+  - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
+  - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
+  animationLength: 0
   timeGap: 0.5
-  additionalRayCount: 0
 --- !u!50 &7981637462068535397
 Rigidbody2D:
   serializedVersion: 4
