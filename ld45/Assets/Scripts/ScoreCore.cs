@@ -32,6 +32,8 @@ public class ScoreCore : MonoBehaviour
     //Starting cash is set and text objects are assigned
     void Awake()
     {
+        Prices = new int[]{ 20, 999, 15, 5 };
+
         TimeSinceStart = 0;
         Cash = 80;
         if (CashDisplayer == null)

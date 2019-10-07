@@ -17,7 +17,8 @@ public class Cell : Propagateable
 
     //public int timesActivated = 0;
     private Cell c1;
-
+    public bool UpgradeWindowShowing = false;
+    public GameObject UpgradeInterface;
 
     public bool buildable;
     public bool isWater;
@@ -149,13 +150,20 @@ public class Cell : Propagateable
 
     private void Update()
     {
-
+        UpgradeInterface.transform.position = transform.position;
+        UpgradeInterface.active = UpgradeWindowShowing;
     }
 
-    public void FixedUpdate()
+    public void OnMouseOver()
     {
+        if (Input.GetMouseButtonDown(0) && UpgradeWindowShowing) { Debug.LogError("Opening Upgrades"); UpgradeWindowShowing = true;  }
     }
-    
+    public void OnMouseExit()
+    {
+        if (UpgradeWindowShowing) { Debug.LogError("Closing Upgrades"); UpgradeWindowShowing = false;     }
+    }
+
+
 
     ~Cell()
     {
