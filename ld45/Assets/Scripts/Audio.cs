@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioSource : MonoBehaviour
 {
     public AudioSource Track1;
-    public AudioSource Track2;
+    public AudioClip Track2;
     public int TrackSelector;
     public int TrackHistory;
 
