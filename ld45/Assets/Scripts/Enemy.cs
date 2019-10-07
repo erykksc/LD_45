@@ -14,7 +14,8 @@ public class Enemy : MonoBehaviour
     {
         lastCollider = gameObject;
     }
-    public void dealDamage(int damage2deal)
+    //Returns True if the enemy has been destroyed
+    public bool dealDamage(int damage2deal)
     {
         if (damage2deal > 0)
         {
@@ -24,7 +25,9 @@ public class Enemy : MonoBehaviour
         if (hp <= 0)
         {
             GameObject.Destroy(gameObject);
+            return true;
         }
+        return false;
     }
 
     private bool stillTouching()
@@ -54,7 +57,11 @@ public class Enemy : MonoBehaviour
             {
                 if (lastCollider.CompareTag("Cell"))
                 {
-                    lastCollider.GetComponent<Cell>().dealDamage(damage);
+                    bool killed = lastCollider.GetComponent<Cell>().dealDamage(damage);
+                    if (killed)
+                    {
+                        lastCollider = gameObject;
+                    }
                     // gameObject.GetComponent<EnemyControl>().bounce();
                     timeOfLastAttack = Time.time;
                 }
