@@ -36,6 +36,16 @@ public class ObjectDraggable : MonoBehaviour
         {
             switch1 = false;
             CellFactory.cellCount = 0;
+            ScoreCore.cellCount = new int[5];
+            ScoreCore.cellCount[0] = 0;
+            ScoreCore.Prices[0] = 4 * ScoreCore.cellCount[0];
+            ScoreCore.Prices[2] = 4 * ScoreCore.cellCount[2];
+            ScoreCore.Prices[3] = 4 * ScoreCore.cellCount[3];
+            ScoreCore.Prices[4] = 4 * ScoreCore.cellCount[4];
+            Camera.main.GetComponent<ScoreCore>().PriceDisplayers[0].text = ScoreCore.Prices[0].ToString() + "$";
+            Camera.main.GetComponent<ScoreCore>().PriceDisplayers[2].text = ScoreCore.Prices[2].ToString() + "$";
+            Camera.main.GetComponent<ScoreCore>().PriceDisplayers[3].text = ScoreCore.Prices[3].ToString() + "$";
+            Camera.main.GetComponent<ScoreCore>().PriceDisplayers[4].text = ScoreCore.Prices[4].ToString() + "$";
         }
 
         //While holding LMB, object follows the mouse position
@@ -56,38 +66,28 @@ public class ObjectDraggable : MonoBehaviour
             if ((Factory.Find(hPos) == null&&ScoreCore.Cash>= ScoreCore.Prices[SpawnedIdentifier]&&grassFactory.Find(hPos).buildable) && Input.mousePosition.y>Camera.main.pixelWidth/7&&Silos.getAvailableBuildings()>CellFactory.cellCount  ) // > (Camera.main.pixelHeight/10) 
             {
                 CellFactory.cellCount++;
+
+                ScoreCore.cellCount[SpawnedIdentifier]++;
+
                 Factory.Add(hPos, SpawnedIdentifier);
                 GameObject.Instantiate(Resources.Load<GameObject>("BuildParticles") as GameObject, Cell.getGlobalCoords(Cell.getHexCoords(WorldPos, 55f/64f), 55f/64f), Quaternion.identity);
 
                 //Charging for purchase
                 ScoreCore.Cash -= ScoreCore.Prices[SpawnedIdentifier];
 
+                //Debug.Log(ScoreCore.cellCount[0]);
+
                 //Increase Price of thebuilding built
-                switch (SpawnedIdentifier)
-                {
-                    case(0):
-                        {
-                            ScoreCore.Prices[0] += 4;
-                            break;
-                        }
-                    case (2):
-                        {
-                            ScoreCore.Prices[2] += 3;
-                            break;
-                        }
-                    case (3):
-                        {
-                            ScoreCore.Prices[3] += 1;
-                            break;
-                        }
-                    case (4):
-                        {
-                            ScoreCore.Prices[4] += 8;
-                            break;
-                        }
-                }
+                ScoreCore.Prices[0] = 4 * ScoreCore.cellCount[0];
+                ScoreCore.Prices[2] = 4 * ScoreCore.cellCount[2];
+                ScoreCore.Prices[3] = 4 * ScoreCore.cellCount[3];
+                ScoreCore.Prices[4] = 4 * ScoreCore.cellCount[4];
                 
-                Camera.main.GetComponent<ScoreCore>().PriceDisplayers[SpawnedIdentifier].text = ScoreCore.Prices[SpawnedIdentifier].ToString() + "$";
+                Camera.main.GetComponent<ScoreCore>().PriceDisplayers[0].text = ScoreCore.Prices[0].ToString() + "$";
+                Camera.main.GetComponent<ScoreCore>().PriceDisplayers[2].text = ScoreCore.Prices[2].ToString() + "$";
+                Camera.main.GetComponent<ScoreCore>().PriceDisplayers[3].text = ScoreCore.Prices[3].ToString() + "$";
+                Camera.main.GetComponent<ScoreCore>().PriceDisplayers[4].text = ScoreCore.Prices[4].ToString() + "$";
+
                 Debug.Log($"Info cell: {CellFactory.cellCount}");
             }
 
