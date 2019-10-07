@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject []enemyPrefab;
     [SerializeField] private float spawnRate = 1.0f;
     [SerializeField] private int numOfEnemies2Spawn = 5;
     [SerializeField] private bool destroyAfterSpawning = true;
@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void setProperties(GameObject newEnemyPrefab, int newNumOfEnemies, float newSpawnRate, bool newDestroyAfterSpawning=true)
     {
-        enemyPrefab = newEnemyPrefab;
+        //enemyPrefab = newEnemyPrefab;
         setNumOfEnemies2Spawn(newNumOfEnemies);
         setSpawnRate(newSpawnRate);
         setDestroyAfterSpawning(newDestroyAfterSpawning);
@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
         {
             numOfEnemies2Spawn -= 1;
             nextSpawn = Time.time + spawnRate;
-            GameObject enemy = Instantiate(enemyPrefab, gameObject.transform.position, Quaternion.identity);
+            GameObject enemy = Instantiate(enemyPrefab[Random.Range(0,enemyPrefab.Length+1)], gameObject.transform.position, Quaternion.identity);
         }
         else if (numOfEnemies2Spawn <= 0 && destroyAfterSpawning)
         {
