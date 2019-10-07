@@ -35,7 +35,16 @@ public class Upgrader : MonoBehaviour
     public void Upgrade()
     {
         Debug.LogWarning("UP");
-        CF.Find(Cell.getHexCoords(transform.position, 55f / 64f)).Upgrade();
+        Vector2Int pos;
+        pos = Cell.getHexCoords(transform.position, 55f / 64f);
+        Cell cell = CF.Find(pos);
+        if(ScoreCore.Cash>=cell.uCost[cell.level]&&cell.level<3)
+        {
+            Debug.Log($"Penis{cell.level}");
+            ScoreCore.Cash -= cell.uCost[cell.level];
+            cell.Upgrade();
+        }
+        
     }
 
 

@@ -20,17 +20,18 @@ public class ScoreCore : MonoBehaviour
     public static float TimeSinceStart=0;
 
     [Header("Round related")]
-    [SerializeField] private float nextRoundCheckTime = 0.0f;
-    [SerializeField] private float roundCheckingRate = 0.5f;
+    private float nextRoundCheckTime = 0.0f;
+    private float roundCheckingRate = 0.5f;
     [SerializeField] private int roundNum = 1;
     [SerializeField] private float timeBetweenRounds = 10.0f;
-    [SerializeField] private float startOfTheNextRoundTime = 0.0f;
-    [SerializeField] private bool waitingForNextRound = false;
+    [SerializeField] private float roundDisplayTime = 2.0f;
+    private float startOfTheNextRoundTime = 0.0f;
+    private bool waitingForNextRound = false;
     public static GameObject mainSpawner;
     private int nextNumOfEnemiesGroups = 1;
     private int nextNumOfEnemiesPerGroup = 0;
     [SerializeField] private float distanceOfSpawnersFromGen = 25.0f;
-    [SerializeField] private Text roundNumText;
+    [SerializeField] private GameObject roundNumDisplayer;
 
     //Starting cash is set and text objects are assigned
     void Awake()
@@ -76,10 +77,22 @@ public class ScoreCore : MonoBehaviour
 
     private void startNextRound()
     {
+
+        Debug.Log($"Enemies coutn:{nextNumOfEnemiesPerGroup}");
         changeEnemiesInNextRound(roundNum);
+        StartCoroutine(displayNextRound());
         roundNum += 1;
         mainSpawner.GetComponent<SpawnerSpawner>().Spawn(distanceOfSpawnersFromGen, nextNumOfEnemiesPerGroup, nextNumOfEnemiesGroups, 0.1f);
         waitingForNextRound = false;
+    }
+
+    private IEnumerator displayNextRound()
+    {
+        Text roundNumDisplayerText = roundNumDisplayer.GetComponent<Text>();
+        roundNumDisplayerText.text = "ROUND " + roundNum.ToString();
+        roundNumDisplayerText.color = new Color(1f, 1f, 1f, 1f);
+        yield return new WaitForSeconds(roundDisplayTime);
+        roundNumDisplayerText.color = new Color(1f, 1f, 1f, 0f);
     }
 
     private void changeEnemiesInNextRound(int round)

@@ -38,7 +38,7 @@ public class MapGenerator : MonoBehaviour
                 size = 2 + Random.Range(0, 4);
                 pos.x = Random.Range(0, xSize);
                 pos.y = Random.Range(0, ySize);
-            } while (Mathf.Abs(pos.x - gPos.x) < (size - 5)|| Mathf.Abs(pos.y - gPos.y) < 3);
+            } while (Mathf.Abs(pos.x - gPos.x) < (size - 2)|| Mathf.Abs(pos.y - gPos.y) < 3);
 
             genSpot(pos+delta, new Vector2Int(1, size+4), 8);
             
