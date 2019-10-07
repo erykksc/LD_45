@@ -192,17 +192,13 @@ MonoBehaviour:
   - {fileID: 0}
   UpgradeWindowShowing: 0
   UpgradeInterface: {fileID: 0}
-  health: 0000000064000000c80000002c010000
-  moneyps: 00000000000000000000000000000000
-  range:
-  - 0
-  - 15
-  - 25
-  - 35
-  damage: 000000000a000000140000001e000000
-  rays: 00000000000000000100000002000000
-  selfHeal: 00000000000000000000000001000000
-  cash: 00000000000000000000000000000000
+  health: 
+  moneyps: 
+  range: []
+  damage: 
+  rays: 
+  selfHeal: 
+  cash: 
   level: 0
   buildable: 0
   isWater: 0

@@ -8,9 +8,12 @@ public class ScoreCore : MonoBehaviour
 {
     [Header("Cash related")]
     public static int Cash=0;
-    public static int[] Prices = { 20, 999, 15, 5 };
+    public static int[] Prices = { 20, 999, 15, 5, 5 };
         public Text CashDisplayer;
+        public Text SupplyDisplayer;
+
         public Text TimeDisplayer;
+
         public Text[] PriceDisplayers=new Text[4];
         public GameObject  MessagePanel;
 
@@ -32,7 +35,7 @@ public class ScoreCore : MonoBehaviour
     //Starting cash is set and text objects are assigned
     void Awake()
     {
-        Prices = new int[]{ 20, 999, 15, 5 };
+        Prices = new int[]{ 20, 999, 15, 5, 5 };
 
         TimeSinceStart = 0;
         Cash = 800000;
@@ -43,6 +46,7 @@ public class ScoreCore : MonoBehaviour
         PriceDisplayers[0].text=(Prices[0]+"$");
         PriceDisplayers[2].text=(Prices[2]+"$");
         PriceDisplayers[3].text=(Prices[3]+"$");
+        PriceDisplayers[4].text=(Prices[4]+"$");
     }
 
     //Current Cash level is updated
@@ -54,6 +58,7 @@ public class ScoreCore : MonoBehaviour
         string seconds = Mathf.Floor(TimeSinceStart % 60).ToString("00");
 
         TimeDisplayer.text = minutes + ":" + seconds;              //Mathf.FloorToInt(Time.time).ToString();
+        SupplyDisplayer.text = (CellFactory.cellCount + "/"+ Silos.getAvailableBuildings());
     }
 
     private bool isRoundCompleted()
