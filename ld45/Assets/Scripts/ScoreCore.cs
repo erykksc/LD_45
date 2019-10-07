@@ -27,7 +27,7 @@ public class ScoreCore : MonoBehaviour
     private int nextNumOfEnemiesGroups = 1;
     private int nextNumOfEnemiesPerGroup = 0;
     [SerializeField] private float distanceOfSpawnersFromGen = 25.0f;
-
+    [SerializeField] private GameObject roundNumText;
 
     //Starting cash is set and text objects are assigned
     void Awake()
@@ -109,7 +109,6 @@ public class ScoreCore : MonoBehaviour
         {
             startNextRound();
         }
-
     }
 
     public void ToggleMessageWindow()
