@@ -76,6 +76,42 @@ public class CellFactory : MonoBehaviour
         cells.Add(o);
         return o;
     }
+    public void generateGrid(Vector2Int size)
+    {
+        cells = new List<Cell>(new Cell[size.x * size.y]);
+
+        for (int i = 0,c = 0;i<size.x;i++)
+        {
+            for(int j = 0;j<size.y;j++,c++)
+            {
+                cells[c] = Instantiate(cellPrefabs[Random.Range(0,2)]);
+                cells[c].Instantiate(new Vector2Int(j, i));
+            }
+        }
+        for (int i = 0,c = 0; i < size.x; i++)
+        {
+            for (int j = 0; j < size.y; j++, c++)
+            {
+                
+                if(i>0)
+                {
+                    cells[c].neighbours[2] = cells[c - 1];
+                    cells[c - 1].neighbours[5] = cells[c];
+                }
+                if (i>0)
+                {
+                    cells[c].neighbours[0] = cells[c - size.x + (j ) % 2];
+                    /*int x, y;
+                    x = (c - size.y) % j;
+                    y = (c - size.x) % i;
+                    if(Mathf.Abs(x-i)<2||Mathf.Abs(y-j)<2)
+                    {
+
+                    }*/
+                }
+            }
+        }
+    }
     public void DestroyCell(Vector2Int pos)
     {
         for(int i = 0;i<cells.Count;i++)
