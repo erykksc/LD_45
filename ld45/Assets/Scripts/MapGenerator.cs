@@ -44,7 +44,8 @@ public class MapGenerator : MonoBehaviour
             genSpot(pos, new Vector2Int(2, size), 7);
             if(Random.Range(0,2)==1)
             {
-                genPatch(pos, 7, xSize + ySize, Random.Range(0, 7));
+                // do poprwaienia
+                //genPatch(pos, 7, xSize + ySize, Random.Range(0, 7));
             }
         }
         
