@@ -8,7 +8,7 @@ public class ScoreCore : MonoBehaviour
 {
     [Header("Cash related")]
     public static int Cash=0;
-    public static int[] Prices = { 20, 999, 15, 5, 5 };
+    public static int[] Prices = { 0, 999, 0, 0, 0 };
         public Text CashDisplayer;
         public Text SupplyDisplayer;
 
@@ -35,7 +35,7 @@ public class ScoreCore : MonoBehaviour
     //Starting cash is set and text objects are assigned
     void Awake()
     {
-        Prices = new int[]{ 20, 999, 15, 5, 5 };
+        Prices = new int[] { 0, 999, 0, 0, 0 };
 
         TimeSinceStart = 0;
         Cash = 800000;
