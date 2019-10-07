@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Cell : Propagateable
 {
-<<<<<<< HEAD
     private Cell c1;
     public bool UpgradeWindowShowing = false;
     public GameObject UpgradeInterface;
-=======
     //public static Vector2Int toHexCoords(Vector2 pos)
     //{
 
@@ -29,7 +27,6 @@ public class Cell : Propagateable
     public int []selfHeal;
     public int []cash;
     
->>>>>>> master
 
     public int level = 0;
     
@@ -190,7 +187,6 @@ public class Cell : Propagateable
     {
         if (Input.GetMouseButtonDown(0) && UpgradeWindowShowing==false ) { Debug.LogError("Opening Upgrades"); UpgradeWindowShowing = true;       ToggleUpgradeUI();  }
     }
-<<<<<<< HEAD
     public void OnMouseExit()
     {
         if (UpgradeWindowShowing) { Debug.LogError("Closing Upgrades"); UpgradeWindowShowing = false;         ToggleUpgradeUI();   }
@@ -212,7 +208,7 @@ public class Cell : Propagateable
 
 
 
-           UpgradeInterface = InstanceOfUpgrader;
+            UpgradeInterface = InstanceOfUpgrader;
         }
 
         //otherwise destroy it
@@ -226,7 +222,6 @@ public class Cell : Propagateable
     }
 
 
-=======
     public void destroyCell()
     {
         for (int i = 0; i < 6; i++)
@@ -239,7 +234,6 @@ public class Cell : Propagateable
         }
         Destroy(gameObject);
     }
->>>>>>> master
 
     ~Cell()
     {
