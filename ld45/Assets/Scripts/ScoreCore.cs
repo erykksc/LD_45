@@ -14,7 +14,7 @@ public class ScoreCore : MonoBehaviour
 
 
         public Text[] PriceDisplayers=new Text[4];
-
+        public GameObject  MessagePanel;
 
 
     [Header("Round related")]
@@ -106,5 +106,10 @@ public class ScoreCore : MonoBehaviour
             startNextRound();
         }
 
+    }
+
+    public void ToggleMessageWindow()
+    {
+        MessagePanel.active = !MessagePanel.active;
     }
 }
