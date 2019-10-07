@@ -124,17 +124,44 @@ public class Cell : Propagateable
 
     private void Update()
     {
-        UpgradeInterface.transform.position = transform.position;
-        UpgradeInterface.active = UpgradeWindowShowing;
     }
 
     public void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0) && UpgradeWindowShowing) { Debug.LogError("Opening Upgrades"); UpgradeWindowShowing = true;  }
+        if (Input.GetMouseButtonDown(0) && UpgradeWindowShowing==false ) { Debug.LogError("Opening Upgrades"); UpgradeWindowShowing = true;       ToggleUpgradeUI();  }
     }
     public void OnMouseExit()
     {
-        if (UpgradeWindowShowing) { Debug.LogError("Closing Upgrades"); UpgradeWindowShowing = false;     }
+        if (UpgradeWindowShowing) { Debug.LogError("Closing Upgrades"); UpgradeWindowShowing = false;         ToggleUpgradeUI();   }
+    }
+    public void ToggleUpgradeUI()
+    {
+        //When upgrade window is not displayed load it from resources
+        if (UpgradeWindowShowing)
+        {
+            GameObject Upgrader = Resources.Load<GameObject>("UpgraderMk4") as GameObject;
+            Transform TargetTransform   =   Camera.main.transform;
+            foreach (Transform trans in Camera.main.GetComponentsInChildren<Transform>())
+            {
+                if (trans.gameObject.name == "Canvas") TargetTransform = trans;
+            }
+
+
+            GameObject InstanceOfUpgrader = Instantiate(Upgrader, transform.position, Quaternion.identity, TargetTransform);
+
+
+
+           UpgradeInterface = InstanceOfUpgrader;
+        }
+
+        //otherwise destroy it
+        else
+        {
+            try {    Destroy(UpgradeInterface); }
+            catch { }
+        }
+
+
     }
 
 
