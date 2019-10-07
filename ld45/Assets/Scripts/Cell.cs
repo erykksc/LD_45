@@ -5,7 +5,31 @@ using UnityEngine;
 public class Cell : Propagateable
 {
     private Cell c1;
+    public bool UpgradeWindowShowing = false;
+    public GameObject UpgradeInterface;
+    //public static Vector2Int toHexCoords(Vector2 pos)
+    //{
 
+    //}
+    //These are the neighbouring tiles
+    //This is on only ONCE per energy cycle. Used for singe-time actions
+    //public bool active = false;
+
+    //This determines the energy of the tile
+    //public bool isActivated = false;
+
+    //public int timesActivated = 0;
+    public int []health;
+    public int []moneyps;
+    public float []range;
+    public int []damage;
+    public int []rays;
+    public int []selfHeal;
+    public int []cash;
+    
+
+    public int level = 0;
+    
     public bool buildable;
     public bool isWater;
 
@@ -14,6 +38,21 @@ public class Cell : Propagateable
     [SerializeField] private int hp = 10000;
 
     public Sprite[] sprites;
+    public int animationLength;
+
+    public void Upgrade()
+    {
+        if(level+1<health.Length)
+        {
+            level++;
+            health[0] = health[level];
+            damage[0] = damage[level];
+            selfHeal[0] = selfHeal[level];
+            rays[0] = rays[level];
+            moneyps[0] = moneyps[level];
+            range[0] = range[level];
+        }
+    }
 
     public void action()
     {
@@ -87,12 +126,10 @@ public class Cell : Propagateable
     //Returns True if the cell has been destroyed
     public bool dealDamage(int damage)
     {
-        if (damage > 0)
-        {
-            hp -= damage;
-        }
+        //Debug.Log("a");
+        health[0] -= damage;
 
-        if (hp <= 0)
+        if (health[0] <= 0)
         {
             for(int i = 0;i<6;i++)
             {
@@ -104,6 +141,11 @@ public class Cell : Propagateable
             }
             GameObject.Destroy(gameObject);
             return true;
+        }
+        if(health[0]-damage>health[level])
+        {
+            health[0] = health[level];
+            
         }
         return false;
     }
@@ -117,20 +159,81 @@ public class Cell : Propagateable
 
         GetComponent<SpriteRenderer>().sprite = sprites[0];
         setPulseAction(action);
-        //GetComponent<SpriteRenderer>().color = Color.green;
-        //GetComponent<SpriteRenderer>().color = Color.green;
-        //GetComponent<SpriteRenderer>().color = Color.blue;
+        level = 0;
+        health = new int[2];
+        range = new float[2];
+        rays = new int[2];
+        moneyps = new int[2];
+        cash = new int[2];
+        selfHeal = new int[2];
+        damage = new int[2];
+
+        health[1] = 100;
+        range[1] = 15;
+        rays[1] = 0;
+        moneyps[1] = 2;
+        cash[1] = 100;
+        damage[1] = 50;
+        selfHeal[1] = 10;
+
+        Upgrade();
     }
 
     private void Update()
     {
-
     }
 
-    public void FixedUpdate()
+    public void OnMouseOver()
     {
+        if (Input.GetMouseButtonDown(0) && UpgradeWindowShowing==false ) { Debug.LogError("Opening Upgrades"); UpgradeWindowShowing = true;       ToggleUpgradeUI();  }
     }
-    
+    public void OnMouseExit()
+    {
+        if (UpgradeWindowShowing) { Debug.LogError("Closing Upgrades"); UpgradeWindowShowing = false;         ToggleUpgradeUI();   }
+    }
+    public void ToggleUpgradeUI()
+    {
+        //When upgrade window is not displayed load it from resources
+        if (UpgradeWindowShowing)
+        {
+            GameObject Upgrader = Resources.Load<GameObject>("UpgraderMk4") as GameObject;
+            Transform TargetTransform   =   Camera.main.transform;
+            foreach (Transform trans in Camera.main.GetComponentsInChildren<Transform>())
+            {
+                if (trans.gameObject.name == "Canvas") TargetTransform = trans;
+            }
+
+
+            GameObject InstanceOfUpgrader = Instantiate(Upgrader, transform.position, Quaternion.identity, TargetTransform);
+
+
+
+            UpgradeInterface = InstanceOfUpgrader;
+        }
+
+        //otherwise destroy it
+        else
+        {
+            try {    Destroy(UpgradeInterface); }
+            catch { }
+        }
+
+
+    }
+
+
+    public void destroyCell()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            if (neighbours[i] != null)
+            {
+                neighbours[i].neighbours[(i + 3) % 6] = null;
+            }
+            neighbours[i] = null;
+        }
+        Destroy(gameObject);
+    }
 
     ~Cell()
     {

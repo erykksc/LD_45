@@ -19,33 +19,9 @@ public class Music : MonoBehaviour
         Source = gameObject.GetComponent<AudioSource>();
         //Track1 = GetComponent<AudioSource>();
         //Track2 = GetComponent<AudioSource>();
-        
-
-        TrackSelector = Random.Range(0, 4);
-        if (TrackSelector == 0)
-        {
-            Source.clip = Track1;
-            Source.Play();
-            TrackHistory = 1;
-        }
-        else if (TrackSelector == 1)
-        {
             Source.clip = Track2;
             Source.Play();
             TrackHistory = 2;
-        }
-        else if (TrackSelector == 2)
-        {
-            Source.clip = Track3;
-            Source.Play();
-            TrackHistory = 3;
-        }
-        else if (TrackSelector == 3)
-        {
-            Source.clip = Track4;
-            Source.Play();
-            TrackHistory = 4;
-        }
     }
 
     // Update is called once per frame

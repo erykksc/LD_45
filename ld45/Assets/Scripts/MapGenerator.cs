@@ -10,8 +10,9 @@ public class MapGenerator : MonoBehaviour
 
     private void Start()
     {
+        //grassFactory.generateGrid(new Vector2Int(50,50));
         CreateShape();
-
+        
         //genPatch(new Vector2Int(20, 20), 7,50, 0);
 
         genRocks(5);
@@ -22,7 +23,7 @@ public class MapGenerator : MonoBehaviour
         Vector2Int pos = new Vector2Int(0,0);
         Vector2Int delta = new Vector2Int(1, -4);
         Vector2Int gPos = new Vector2Int(xSize / 2, ySize / 2);
-        for (int i = 0; i < 1 + Random.Range(0, 2); i++)
+        for (int i = 0; i <3 + Random.Range(0, 2); i++)
         {
             size = 1 + Random.Range(0, 3);
             pos.x = Random.Range(0, xSize);
@@ -30,7 +31,7 @@ public class MapGenerator : MonoBehaviour
             genLooseSpot(pos, new Vector2Int(1, size),9);
             genLooseSpot(pos, new Vector2Int(1, size), 9);
         }
-        for (int i = 0;i<1+Random.Range(0,2);i++)
+        for (int i = 0;i<3+Random.Range(0,2);i++)
         {
             do
             {
@@ -45,7 +46,7 @@ public class MapGenerator : MonoBehaviour
             if(Random.Range(0,2)==1)
             {
                 // do poprwaienia
-                //genPatch(pos, 7, xSize + ySize, Random.Range(0, 7));
+                genPatch(pos, 7, xSize + ySize, Random.Range(0, 7));
             }
         }
         
@@ -55,7 +56,8 @@ public class MapGenerator : MonoBehaviour
             {
                 if(Mathf.Pow(i,2)+Mathf.Pow(j,2)<25)
                 {
-                    // Water condition
+                // Water condition
+                    Debug.Log("happens");
                     pos = new Vector2Int(i,j);
                     grassFactory.DestroyCell(grassFactory.Find(gPos + pos));
                     grassFactory.Add(gPos+pos, Random.Range(0, 2)).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
@@ -192,12 +194,28 @@ public class MapGenerator : MonoBehaviour
     {
         Propagateable cell = grassFactory.Find(iPos);
         Vector2Int pos = new Vector2Int(0, 0);
-        for(int i = 0;i<size;i++)
+        if (cell == null)
+        {
+            return;
+        }
+        if (cell.pos == null)
+        {
+            return;
+        }
+        if(pos==null)
+        {
+            return;
+        }
+        for (int i = 0;i<size;i++)
         {
             pos = cell.pos;
             grassFactory.DestroyCell(cell.pos);
             cell = grassFactory.Add(pos, index);
-            cell = cell.neighbours[(dir +Random.Range(0,3)+5) % 6];
+            cell = cell.neighbours[(dir + Random.Range(0, 3) + 5) % 6];
+            if(cell==null)
+            {
+                break;
+            }
         }
         return;
     }
