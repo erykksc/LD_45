@@ -47,7 +47,11 @@ public class ScoreCore : MonoBehaviour
     void Update()
     {
         CashDisplayer.text = Cash.ToString();
-        // TimeDisplayer.text = Mathf.FloorToInt(Time.time).ToString();
+        float timer = Time.time;
+        string minutes = Mathf.Floor(timer / 60).ToString("00");
+        string seconds = Mathf.Floor(timer % 60).ToString("00");
+
+        TimeDisplayer.text = minutes + ":" + seconds;              //Mathf.FloorToInt(Time.time).ToString();
     }
 
     private bool isRoundCompleted()
