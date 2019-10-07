@@ -59,18 +59,35 @@ public class ObjectDraggable : MonoBehaviour
                 Factory.Add(hPos, SpawnedIdentifier);
                 GameObject.Instantiate(Resources.Load<GameObject>("BuildParticles") as GameObject, Cell.getGlobalCoords(Cell.getHexCoords(WorldPos, 55f/64f), 55f/64f), Quaternion.identity);
 
+                //Charging for purchase
                 ScoreCore.Cash -= ScoreCore.Prices[SpawnedIdentifier];
 
                 //Increase Price of thebuilding built
-                ScoreCore.Prices[SpawnedIdentifier] += 5;
-                Camera.main.GetComponent<ScoreCore>().PriceDisplayers[SpawnedIdentifier].text = ScoreCore.Prices[SpawnedIdentifier].ToString() + "$";
-                /*
-                if (switch1)
+                switch (SpawnedIdentifier)
                 {
-                    switch1 = false;
-                    CellFactory.cellCount = 1;
+                    case(0):
+                        {
+                            ScoreCore.Prices[0] += 4;
+                            break;
+                        }
+                    case (2):
+                        {
+                            ScoreCore.Prices[2] += 3;
+                            break;
+                        }
+                    case (3):
+                        {
+                            ScoreCore.Prices[3] += 1;
+                            break;
+                        }
+                    case (4):
+                        {
+                            ScoreCore.Prices[4] += 8;
+                            break;
+                        }
                 }
-                */
+                
+                Camera.main.GetComponent<ScoreCore>().PriceDisplayers[SpawnedIdentifier].text = ScoreCore.Prices[SpawnedIdentifier].ToString() + "$";
                 Debug.Log($"Info cell: {CellFactory.cellCount}");
             }
 
