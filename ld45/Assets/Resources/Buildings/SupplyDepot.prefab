@@ -99,7 +99,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1.1636363, y: 1.1636363}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -153,6 +153,7 @@ MonoBehaviour:
   rays: 00000000000000000000000000000000
   selfHeal: 00000000000000000000000000000000
   cash: 00000000020000000400000008000000
+  uCost: 000000000a000000140000001e000000
   level: 0
   buildable: 0
   isWater: 0
