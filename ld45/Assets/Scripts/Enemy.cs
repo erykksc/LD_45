@@ -6,8 +6,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private int damage=30;
     [SerializeField] private int hp=100;
-    [SerializeField] private GameObject lastCollider;
-    [SerializeField] private float timeOfLastAttack=0.0f;
+    private GameObject lastCollider;
+    private float timeOfLastAttack=0.0f;
     [SerializeField] private float attackRate;
 
     private void Start() 
