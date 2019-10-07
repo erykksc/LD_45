@@ -76,6 +76,7 @@ public class MapGenerator : MonoBehaviour
                 }
             }
         }
+        //CellFactory.cellCount = 0;
         //genSpot(new Vector2Int(10, 9), new Vector2Int(1, 6), 8);//genRocks(5);
     }
     // to add : river/patch

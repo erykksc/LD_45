@@ -7,17 +7,22 @@ public class Silos : Cell
     // Start is called before the first frame update
     static public List<Silos> allInst;
 
-    void Start()
+    void Awake()
     {
         if(allInst == null)
         {
             allInst = new List<Silos>();
         }
         allInst.Add(this);
+        Debug.Log($"Silos count: {allInst.Count}");
     }
     static public int getAvailableBuildings()
     {
-        int res = 0;
+        if (allInst == null)
+        {
+            allInst = new List<Silos>();
+        }
+        int res = 12;
         for(int i = 0;i< allInst.Count;i++)
         {
             res += allInst[i].cash[0];
