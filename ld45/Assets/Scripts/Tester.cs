@@ -61,22 +61,22 @@ public class Tester : MonoBehaviour
     }
     private void Awake()
     {
-        Debug.Log("Official: ");
+        //Debug.Log("Official: ");
         Vector2 position = (getGlobalCoords(new Vector2Int(40, 17),10));
         position += new Vector2(2, 3);
-        Debug.Log(position);
-        Debug.Log("Inverse:");
+        //Debug.Log(position);
+        //Debug.Log("Inverse:");
         Vector2Int p = getHexCoords(position, 10);
-        Debug.Log(p);
+        //Debug.Log(p);
     }
     // Update is called once per frame
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("button pressed");
+            //Debug.Log("button pressed");
             Vector2 mouse = Input.mousePosition;
-            Debug.Log(mouse);
+            //Debug.Log(mouse);
         }
     }
 }
