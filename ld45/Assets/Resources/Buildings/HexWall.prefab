@@ -95,26 +95,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a2da76e819f864f9ab041acb1846cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  right: {fileID: 0}
-  lup: {fileID: 0}
-  ldown: {fileID: 0}
-  left: {fileID: 0}
-  rup: {fileID: 0}
-  rdown: {fileID: 0}
-  active: 1
-  isActivated: 0
-  timesActivated: 0
+  terrainType: 0
+  impulsTime: 0.5
+  conveyTime: 0.1
+  activated: 0
+  propagates: 1
   pos: {x: 0, y: 0}
+  neighbours:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  UpgradeWindowShowing: 0
+  UpgradeInterface: {fileID: 0}
+  health: 00000000000000000000000000000000
+  moneyps: 00000000000000000000000000000000
+  range:
+  - 0
+  - 0
+  - 0
+  - 0
+  damage: 00000000000000000000000000000000
+  rays: 00000000000000000000000000000000
+  selfHeal: 00000000000000000000000000000000
+  cash: 00000000000000000000000000000000
+  level: 0
+  buildable: 0
+  isWater: 0
   hp: 100
   sprites:
   - {fileID: 21300000, guid: 4b1ed62c7704b944d8b8aa30ec7de58f, type: 3}
+  - {fileID: 21300000, guid: 5e97c6336f6d1e94394ff7d4b47cd6c7, type: 3}
   - {fileID: 21300000, guid: 722d20ff867874c4dab80e994fbb8d6c, type: 3}
   - {fileID: 21300000, guid: 1260859f94cd5a04bbf071c8e084a23b, type: 3}
   - {fileID: 21300000, guid: c617e4fed99ded944bfbce4e7df87997, type: 3}
-  - {fileID: 21300000, guid: c617e4fed99ded944bfbce4e7df87997, type: 3}
   - {fileID: 21300000, guid: 1260859f94cd5a04bbf071c8e084a23b, type: 3}
   - {fileID: 21300000, guid: 722d20ff867874c4dab80e994fbb8d6c, type: 3}
-  - {fileID: 21300000, guid: 4b1ed62c7704b944d8b8aa30ec7de58f, type: 3}
+  - {fileID: 21300000, guid: 5e97c6336f6d1e94394ff7d4b47cd6c7, type: 3}
+  - {fileID: 21300000, guid: 1bff33ac8b23d7360a153df5b3b3257e, type: 3}
+  - {fileID: 21300000, guid: 71e99c2b4029ba830a8923dfedfefcb8, type: 3}
+  - {fileID: 21300000, guid: 691e80571866751139b09c87b4aac8c8, type: 3}
+  - {fileID: 21300000, guid: d1eeabeb524f3741ba0f6d42888d1edc, type: 3}
+  - {fileID: 21300000, guid: f2d0244ae571b1f2eb9ebdcb5334d3f7, type: 3}
+  - {fileID: 21300000, guid: d1eeabeb524f3741ba0f6d42888d1edc, type: 3}
+  - {fileID: 21300000, guid: 691e80571866751139b09c87b4aac8c8, type: 3}
+  - {fileID: 21300000, guid: 71e99c2b4029ba830a8923dfedfefcb8, type: 3}
+  - {fileID: 21300000, guid: ecc7d5115c58d5f87bb962ed0eb26d49, type: 3}
+  - {fileID: 21300000, guid: 8be879e620d578d06a28097efdc3c32c, type: 3}
+  - {fileID: 21300000, guid: e688c001028a4572e9990b4431f89476, type: 3}
+  - {fileID: 21300000, guid: c6432731a8b85e1918c89515e60a34a7, type: 3}
+  - {fileID: 21300000, guid: e1a2018fd4754154aa0e2b8d28b659fb, type: 3}
+  - {fileID: 21300000, guid: c6432731a8b85e1918c89515e60a34a7, type: 3}
+  - {fileID: 21300000, guid: e688c001028a4572e9990b4431f89476, type: 3}
+  - {fileID: 21300000, guid: 8be879e620d578d06a28097efdc3c32c, type: 3}
+  animationLength: 0
   healPerImpulse: 10
 --- !u!60 &8911756264087169421
 PolygonCollider2D:
@@ -133,7 +169,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
