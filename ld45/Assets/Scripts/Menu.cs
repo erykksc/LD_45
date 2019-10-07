@@ -10,6 +10,7 @@ public class Menu : MonoBehaviour
 
     public void PlayButtonPress()
     {
+
         SceneManager.LoadScene(1);
     }
 

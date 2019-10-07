@@ -11,11 +11,10 @@ public class ScoreCore : MonoBehaviour
     public static int[] Prices = { 20, 999, 15, 5 };
         public Text CashDisplayer;
         public Text TimeDisplayer;
-
-
         public Text[] PriceDisplayers=new Text[4];
         public GameObject  MessagePanel;
 
+    public static float TimeSinceStart=0;
 
     [Header("Round related")]
     [SerializeField] private float nextRoundCheckTime = 0.0f;
@@ -33,6 +32,7 @@ public class ScoreCore : MonoBehaviour
     //Starting cash is set and text objects are assigned
     void Awake()
     {
+        TimeSinceStart = 0;
         Cash = 80;
         if (CashDisplayer == null)
         {
@@ -47,9 +47,9 @@ public class ScoreCore : MonoBehaviour
     void Update()
     {
         CashDisplayer.text = Cash.ToString();
-        float timer = Time.time;
-        string minutes = Mathf.Floor(timer / 60).ToString("00");
-        string seconds = Mathf.Floor(timer % 60).ToString("00");
+        TimeSinceStart += Time.deltaTime;
+        string minutes = Mathf.Floor(TimeSinceStart / 60).ToString("00");
+        string seconds = Mathf.Floor(TimeSinceStart % 60).ToString("00");
 
         TimeDisplayer.text = minutes + ":" + seconds;              //Mathf.FloorToInt(Time.time).ToString();
     }
