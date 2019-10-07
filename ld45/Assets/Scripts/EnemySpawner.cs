@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
         {
             numOfEnemies2Spawn -= 1;
             nextSpawn = Time.time + spawnRate;
-            GameObject enemy = Instantiate(enemyPrefab[Random.Range(0,enemyPrefab.Length+1)], gameObject.transform.position, Quaternion.identity);
+            GameObject enemy = Instantiate(enemyPrefab[Random.Range(0,enemyPrefab.Length)], gameObject.transform.position, Quaternion.identity);
         }
         else if (numOfEnemies2Spawn <= 0 && destroyAfterSpawning)
         {

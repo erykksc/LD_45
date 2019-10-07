@@ -76,6 +76,8 @@ public class ScoreCore : MonoBehaviour
 
     private void startNextRound()
     {
+
+        Debug.Log($"Enemies coutn:{nextNumOfEnemiesPerGroup}");
         changeEnemiesInNextRound(roundNum);
         roundNum += 1;
         mainSpawner.GetComponent<SpawnerSpawner>().Spawn(distanceOfSpawnersFromGen, nextNumOfEnemiesPerGroup, nextNumOfEnemiesGroups, 0.1f);

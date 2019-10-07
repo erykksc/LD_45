@@ -25,7 +25,6 @@ public class SpawnerSpawner : MonoBehaviour
 
     public void spawnSpawner(GameObject enemyPrefab, int numOfEnemies, float spawnRate, bool destroyAfterSpawning=true)
     {
-
         GameObject newSpawner = Instantiate(spawner, (Vector3) randomUnitVector()*distance + gameObject.GetComponent<Transform>().position, gameObject.GetComponent<Transform>().rotation);
         newSpawner.GetComponent<EnemySpawner>().setProperties(enemyPrefab, numOfEnemies, spawnRate, destroyAfterSpawning);
     }
