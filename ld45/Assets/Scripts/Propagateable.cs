@@ -5,6 +5,7 @@ using UnityEngine;
 public class Propagateable : MonoBehaviour
 {
     // Start is called before the first frame update
+    public int terrainType;
     public float impulsTime = 0.5f;
     public float conveyTime = 0.1f;
     public bool activated = false;

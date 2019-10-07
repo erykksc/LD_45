@@ -12,13 +12,13 @@ public class MapGenerator : MonoBehaviour
     {
         CreateShape();
 
-        genPatch(new Vector2Int(10, 10), 5, 10, 0);
+        //genPatch(new Vector2Int(20, 20), 7,50, 0);
 
-        //genRocks(5);
+        genRocks(5);
 
         //genRocks();
 
-        /*int size;
+        int size;
         Vector2Int pos = new Vector2Int(0,0);
         Vector2Int delta = new Vector2Int(1, -4);
         Vector2Int gPos = new Vector2Int(xSize / 2, ySize / 2);
@@ -40,7 +40,12 @@ public class MapGenerator : MonoBehaviour
             } while (Mathf.Abs(pos.x - gPos.x) < (size + 5)|| Mathf.Abs(pos.y - gPos.y) < 3);
 
             genSpot(pos+delta, new Vector2Int(1, size+4), 8);
+            
             genSpot(pos, new Vector2Int(2, size), 7);
+            if(Random.Range(0,2)==1)
+            {
+                genPatch(pos, 7, xSize + ySize, Random.Range(0, 7));
+            }
         }
         
         for(int i = 0;i<5;i++)
@@ -49,6 +54,7 @@ public class MapGenerator : MonoBehaviour
             {
                 if(Mathf.Pow(i,2)+Mathf.Pow(j,2)<25)
                 {
+                    // Water condition
                     pos = new Vector2Int(i,j);
                     grassFactory.DestroyCell(grassFactory.Find(gPos + pos));
                     grassFactory.Add(gPos+pos, Random.Range(0, 2)).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
@@ -66,7 +72,7 @@ public class MapGenerator : MonoBehaviour
                     grassFactory.Add(gPos+pos, Random.Range(0, 2)).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
                 }
             }
-        }*/
+        }
         //genSpot(new Vector2Int(10, 9), new Vector2Int(1, 6), 8);//genRocks(5);
     }
     // to add : river/patch
@@ -158,7 +164,7 @@ public class MapGenerator : MonoBehaviour
                 minx = Random.Range(-3, 1);
                 maxx = Random.Range(0, 4);
             }
-            Debug.Log($"offset: {xoffset}");
+            Debug.Log($"offseton: {xoffset}");
             for(int j = -xoffset+minx;j<size.x*2+xoffset+maxx;j++)
             {
                 pos = new Vector2Int(pos3.x+j+(pos3.y + i)%2,pos3.y+i);
@@ -185,10 +191,31 @@ public class MapGenerator : MonoBehaviour
     }
     private void genPatch(Vector2Int iPos,int index,int size,int dir = 0)
     {
-        Cell cell = grassFactory.Find(new Vector2Int(10, 10));
-        Vector2Int pos = new Vector2Int(cell.pos.x,cell.pos.y);
-        grassFactory.DestroyCell(cell.pos);
-        grassFactory.Add(pos, 6);
+        Propagateable cell = grassFactory.Find(iPos);
+        Vector2Int pos = new Vector2Int(0, 0);
+        for(int i = 0;i<size;i++)
+        {
+            pos = cell.pos;
+            grassFactory.DestroyCell(cell.pos);
+            cell = grassFactory.Add(pos, index);
+            cell = cell.neighbours[(dir +Random.Range(0,3)+5) % 6];
+        }
         return;
+    }
+    private void shapeCorrection(Vector2Int p1,Vector2Int p2,int indexf,int indext,int cMin,int cMax)
+    {
+        for (int i = p1.x; i < p2.x; i++) 
+        {
+            for (int j = p1.y; j < p2.y; j++) 
+            {
+                int count = 0;
+                for(int k = 0;k<6;k++)
+                {
+                    //if (grassFactory.Find(new Vector2Int(i, j)).neighbours[k].)
+
+                }
+                //if(grassFactory.Find(new Vector2Int(i,j)))
+            }
+        }
     }
 }
