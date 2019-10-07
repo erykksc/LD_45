@@ -254,6 +254,7 @@ public class Cell : Propagateable
             if (trans.gameObject.name == "GrassFactory") SemiTarget = trans;
         }
         CF = SemiTarget.GetComponent<CellFactory>();
+        CellFactory.cellCount--;
     }
 
     ~Cell()

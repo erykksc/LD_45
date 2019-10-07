@@ -41,7 +41,7 @@ public class Upgrader : MonoBehaviour
 
     public void Bulldoze()
     {
-        CF.DestroyCell(Cell.getHexCoords(transform.position, 55f / 64f)    );    
+        CF.DestroyCell(Cell.getHexCoords(transform.position, 55f / 64f));    
     }
     private void FixedUpdate()
     {
