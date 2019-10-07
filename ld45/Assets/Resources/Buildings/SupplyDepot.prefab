@@ -1,0 +1,176 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2797858504569379450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 748361901234426288}
+  - component: {fileID: 5016547584622119736}
+  - component: {fileID: 2806892627589950509}
+  - component: {fileID: 4446853792762064833}
+  m_Layer: 0
+  m_Name: SupplyDepot
+  m_TagString: Cell
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &748361901234426288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2797858504569379450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.8387117, y: -0.58492035, z: -0.31723583}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &5016547584622119736
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2797858504569379450}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 4dd87cb7ef126df4cb4c8aa0fc95e469, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.1636363, y: 1.1636363}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!60 &2806892627589950509
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2797858504569379450}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 1.1636363, y: 1.1636363}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.18181817, y: 0.58181816}
+      - {x: -0.5454545, y: 0.39999998}
+      - {x: -0.5454545, y: -0.3272727}
+      - {x: -0.14545454, y: -0.58181816}
+      - {x: 0.16363636, y: -0.58181816}
+      - {x: 0.5454545, y: -0.34545454}
+      - {x: 0.5454545, y: 0.34545454}
+      - {x: 0.25454545, y: 0.58181816}
+--- !u!114 &4446853792762064833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2797858504569379450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93370992ecfe334438da1033506465dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terrainType: 0
+  impulsTime: 0.5
+  conveyTime: 0.1
+  activated: 0
+  propagates: 1
+  pos: {x: 0, y: 0}
+  neighbours:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  UpgradeWindowShowing: 0
+  UpgradeInterface: {fileID: 0}
+  health: 000000006400000096000000c8000000
+  moneyps: 00000000000000000000000000000000
+  range:
+  - 0
+  - 0
+  - 0
+  - 0
+  damage: 00000000000000000000000000000000
+  rays: 00000000000000000000000000000000
+  selfHeal: 00000000000000000000000000000000
+  cash: 00000000020000000400000008000000
+  level: 0
+  buildable: 0
+  isWater: 0
+  hp: 10000
+  sprites:
+  - {fileID: 21300000, guid: 4dd87cb7ef126df4cb4c8aa0fc95e469, type: 3}
+  - {fileID: 21300000, guid: 71d3636394d796843853a0c8c07519ab, type: 3}
+  - {fileID: 21300000, guid: 93c8cb56873476242bbe6ea5565ae75a, type: 3}
+  - {fileID: 21300000, guid: 5fbc906c689a31e4b8d48f177f475dcf, type: 3}
+  - {fileID: 21300000, guid: 92668ff263d64e84aa3fa40be97424eb, type: 3}
+  - {fileID: 21300000, guid: 4ae0085a409bf394ca8c5df83cc80e46, type: 3}
+  - {fileID: 21300000, guid: b185dd1472e562a44bbb7dcdd2e37b7b, type: 3}
+  - {fileID: 21300000, guid: 72d41a0bbb1a1a3408f78da448f18b77, type: 3}
+  - {fileID: 21300000, guid: 8fe313eb481390942a16832e29f9d06a, type: 3}
+  - {fileID: 21300000, guid: 0fbaae7ddffd3fe45a5d2df6d6f51762, type: 3}
+  - {fileID: 21300000, guid: 4a6a1b94eaa50134fb655a7547442778, type: 3}
+  - {fileID: 21300000, guid: b872f129f706fb14299bf06db51e642f, type: 3}
+  - {fileID: 21300000, guid: bfbef844b68a2e34a91105ace720d1b3, type: 3}
+  - {fileID: 21300000, guid: e97c29e7e8b98ed4298aa06d8009300c, type: 3}
+  - {fileID: 21300000, guid: 9da8b47fede062c429b24ad1d277c1b4, type: 3}
+  animationLength: 5

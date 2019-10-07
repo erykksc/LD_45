@@ -57,7 +57,6 @@ public class MapGenerator : MonoBehaviour
                 if(Mathf.Pow(i,2)+Mathf.Pow(j,2)<25)
                 {
                 // Water condition
-                    Debug.Log("happens");
                     pos = new Vector2Int(i,j);
                     grassFactory.DestroyCell(grassFactory.Find(gPos + pos));
                     grassFactory.Add(gPos+pos, Random.Range(0, 2)).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));

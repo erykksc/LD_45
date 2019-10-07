@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour
     private float timeOfLastAttack=0.0f;
     [SerializeField] private float attackRate;
 
+    [SerializeField] private GameObject BloodSplat;
+    [SerializeField] private GameObject BloodPool;
+
     private void Start() 
     {
         lastCollider = gameObject;
@@ -78,6 +81,17 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) 
     {
         lastCollider = collision.gameObject;
+    }
+
+    //Making enemy deaths more impressive/impactfull
+    private void OnDestroy()
+    {
+        //if (BloodSplat==null) BloodSplat = Resources.Load<GameObject>("EnemyDeathSplat") as GameObject;
+        //if (BloodPool == null) BloodPool = Resources.Load<GameObject>("BloodPool") as GameObject;
+
+        
+        GameObject.Instantiate(BloodSplat, new Vector3(transform.position.x, transform.position.y,-2)     ,Quaternion.identity);
+        GameObject.Instantiate(BloodPool, transform.position, Quaternion.Euler(0, 0, Random.Range(-40, 40)));
     }
 }
 
