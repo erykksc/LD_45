@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CellFactory : MonoBehaviour
 {
+    public static int cellCount = 0;
     static int getSign(int v)
     {
         if(v<0)
@@ -74,6 +75,7 @@ public class CellFactory : MonoBehaviour
 
         }
         cells.Add(o);
+        Debug.Log("Adding cell");
         return o;
     }
     public void generateGrid(Vector2Int size)
