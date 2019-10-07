@@ -30,12 +30,19 @@ public class ScoreCore : MonoBehaviour
     private int nextNumOfEnemiesGroups = 1;
     private int nextNumOfEnemiesPerGroup = 0;
     [SerializeField] private float distanceOfSpawnersFromGen = 25.0f;
-    [SerializeField] private GameObject roundNumText;
+    [SerializeField] private Text roundNumText;
 
     //Starting cash is set and text objects are assigned
     void Awake()
     {
-        Prices = new int[]{ 20, 999, 15, 5, 5 };
+        Prices = new int[]
+        {
+            20,
+            999,
+            15,
+            5,
+            5
+        };
 
         TimeSinceStart = 0;
         Cash = 800000;
