@@ -19,11 +19,11 @@ public class MapGenerator : MonoBehaviour
 
         //genRocks();
 
-        /*int size;
+        int size;
         Vector2Int pos = new Vector2Int(0,0);
         Vector2Int delta = new Vector2Int(1, -4);
         Vector2Int gPos = new Vector2Int(xSize / 2, ySize / 2);
-        for (int i = 0; i <3 + Random.Range(0, 2); i++)
+        for (int i = 0; i <5 + Random.Range(0, 2); i++)
         {
             size = 1 + Random.Range(0, 3);
             pos.x = Random.Range(0, xSize);
@@ -38,7 +38,7 @@ public class MapGenerator : MonoBehaviour
                 size = 2 + Random.Range(0, 4);
                 pos.x = Random.Range(0, xSize);
                 pos.y = Random.Range(0, ySize);
-            } while (Mathf.Abs(pos.x - gPos.x) < (size + 5)|| Mathf.Abs(pos.y - gPos.y) < 3);
+            } while (Mathf.Abs(pos.x - gPos.x) < (size - 5)|| Mathf.Abs(pos.y - gPos.y) < 3);
 
             genSpot(pos+delta, new Vector2Int(1, size+4), 8);
             
@@ -75,7 +75,7 @@ public class MapGenerator : MonoBehaviour
                     grassFactory.Add(gPos+pos, Random.Range(0, 2)).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
                 }
             }
-        }*/
+        }
         //genSpot(new Vector2Int(10, 9), new Vector2Int(1, 6), 8);//genRocks(5);
     }
     // to add : river/patch
@@ -173,8 +173,8 @@ public class MapGenerator : MonoBehaviour
             for(int j = -xoffset+minx;j<size.x*2+xoffset+maxx;j++)
             {
                 pos = new Vector2Int(pos3.x+j+(pos3.y + i)%2,pos3.y+i);
-                grassFactory.DestroyCell(grassFactory.Find(pos));
-                grassFactory.Add(pos, index).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
+                grassFactory.DestroyCell((pos));
+                grassFactory.AddBeyond(pos, index).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
             }
         }
     }
@@ -188,8 +188,8 @@ public class MapGenerator : MonoBehaviour
             for (int j = -xoffset; j < size.x * 2 + xoffset; j++)
             {
                 pos = new Vector2Int(pos3.x + (j + (pos3.y + i) % 2)*2+Random.Range(0,2), pos3.y + i*2 + Random.Range(0, 2));
-                grassFactory.DestroyCell(grassFactory.Find(pos));
-                grassFactory.Add(pos, index).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
+                grassFactory.DestroyCell((pos));
+                grassFactory.AddBeyond(pos, index).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
             }
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cell : Propagateable
 {
-    private Cell c1;
+    private static int cellCount = 0;
     public bool UpgradeWindowShowing = false;
     public GameObject UpgradeInterface;
     //public static Vector2Int toHexCoords(Vector2 pos)
@@ -51,6 +51,7 @@ public class Cell : Propagateable
             rays[0] = rays[level];
             moneyps[0] = moneyps[level];
             range[0] = range[level];
+            cash[0] = cash[level];
         }
     }
 
@@ -178,8 +179,12 @@ public class Cell : Propagateable
         selfHeal[1] = 10;
 
         Upgrade();
+        cellCount++;
     }
-
+    static int getCellCount()
+    {
+        return cellCount;
+    }
     private void Update()
     {
     }

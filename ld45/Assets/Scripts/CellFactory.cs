@@ -129,16 +129,17 @@ public class CellFactory : MonoBehaviour
             }
         }
     }
-    public void AddBeyond(Vector2Int pos,int index)
+    public Cell AddBeyond(Vector2Int pos,int index)
     {
         Cell o;
         if (index >= cellPrefabs.Length)
         {
-            return;
+            return null;
         }
         o = Instantiate(cellPrefabs[index]);
         o.Instantiate(pos);
         cells.Add(o);
+        return o;
     }
     public void DestroyCell(int index)
     {
