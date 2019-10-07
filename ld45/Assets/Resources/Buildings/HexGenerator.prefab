@@ -96,10 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e8442d3cee2c540a151e605790c226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terrainType: 0
   impulsTime: 0.5
   conveyTime: 0.2
   activated: 0
   propagates: 1
+  pos: {x: 0, y: 0}
   neighbours:
   - {fileID: 0}
   - {fileID: 0}
@@ -107,8 +109,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  UpgradeWindowShowing: 0
+  UpgradeInterface: {fileID: 0}
+  health: 
+  moneyps: 
+  range: []
+  damage: 
+  rays: 
+  selfHeal: 
+  cash: 
+  level: 0
   buildable: 0
-  pos: {x: 0, y: 0}
+  isWater: 0
   hp: 100
   sprites:
   - {fileID: 21300000, guid: 10cfc06c70c1a174484b689ced6c12aa, type: 3}
@@ -119,6 +131,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c37f3997e8620e146b3b570a36d2d899, type: 3}
   - {fileID: 21300000, guid: 8c5d8e3a77ab33e46a566549cf3c9075, type: 3}
   - {fileID: 21300000, guid: 10cfc06c70c1a174484b689ced6c12aa, type: 3}
+  animationLength: 8
   pulsationRate: 2
 --- !u!60 &7579728639729413176
 PolygonCollider2D:

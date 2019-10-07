@@ -176,23 +176,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1945c1c6a974d8141a34230322962441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 0
-  isActivated: 0
-  timesActivated: 0
+  terrainType: 0
+  impulsTime: 0.5
+  conveyTime: 0.1
+  activated: 0
+  propagates: 1
   pos: {x: 0, y: 0}
+  neighbours:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  UpgradeWindowShowing: 0
+  UpgradeInterface: {fileID: 0}
+  health: 
+  moneyps: 
+  range: []
+  damage: 
+  rays: 
+  selfHeal: 
+  cash: 
+  level: 0
+  buildable: 0
+  isWater: 0
   hp: 10000
   sprites:
-  - {fileID: 21300000, guid: c36f7fcb92525d8489ac65134140fc5f, type: 3}
-  - {fileID: 21300000, guid: c36f7fcb92525d8489ac65134140fc5f, type: 3}
-  right: {fileID: 0}
-  lup: {fileID: 0}
-  ldown: {fileID: 0}
-  left: {fileID: 0}
-  rup: {fileID: 0}
-  rdown: {fileID: 0}
-  range: 10
-  damage: 0
-  damageSpeed: 0
+  - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
+  - {fileID: 21300000, guid: ec1c31173f871364fa4e9575708496eb, type: 3}
+  - {fileID: 21300000, guid: 6ce8540cdb3ac474c9d1fec2eb2ee0b3, type: 3}
+  - {fileID: 21300000, guid: 11ca59d4f23e31d4db6a2791c9311076, type: 3}
+  - {fileID: 21300000, guid: 755664c6230b09c4f9db7f3bf3c031dd, type: 3}
+  - {fileID: 21300000, guid: 2fbc69aad1aa73c4cbc37c8c4d7b8518, type: 3}
+  animationLength: 6
+  timeGap: 0.5
 --- !u!60 &5331869480883570250
 PolygonCollider2D:
   m_ObjectHideFlags: 0
