@@ -24,8 +24,6 @@ public class EnemyControl : MonoBehaviour
     GameObject GetTarget()
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Cell");
-        //Debug.Log(objects.Length);
-        
         GameObject lastObject = gameObject;
         float distance = Mathf.Infinity;
         foreach (GameObject x in objects)
@@ -43,9 +41,7 @@ public class EnemyControl : MonoBehaviour
     }
     void Start()
     {
-                StartCoroutine(   animate()   ); 
-                 
-                  
+        StartCoroutine(animate()); 
     }
 
 
@@ -63,7 +59,6 @@ public class EnemyControl : MonoBehaviour
         //construct movement vector
         Vector2 position = gameObject.GetComponent<Transform>().position;
         Vector2 playerPos = Target.GetComponent<Transform>().position;
-        //Debug.Log(playerPos);
         moveDirection = playerPos - position;
 
         moveDirection = moveDirection.normalized;
@@ -79,7 +74,6 @@ public class EnemyControl : MonoBehaviour
             }
         }
 
-        //normalize
         gameObject.GetComponent<Rigidbody2D>().AddForce(moveDirection*speed,ForceMode2D.Force);
     }
 
@@ -107,7 +101,6 @@ public IEnumerator animate()
         {
             i=0;
         }
-            Debug.LogWarning(speed+" :"+i);
             yield return new WaitForSeconds( 1/(   speed+AnimationSpeed)     );
       }
 

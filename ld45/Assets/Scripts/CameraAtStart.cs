@@ -6,7 +6,6 @@ public class CameraAtStart : MonoBehaviour
 {
     public MapGenerator MapGenerator;
     public CellFactory factory;
-    // Start is called before the first frame update
     void Start()
     {
         MapGenerator = gameObject.GetComponent<MapGenerator>();
@@ -17,7 +16,6 @@ public class CameraAtStart : MonoBehaviour
         transform.position = new Vector3(pos.x, pos.y, -3);
     }
 
-    // Update is called once per frame
     void Update()
     {
 

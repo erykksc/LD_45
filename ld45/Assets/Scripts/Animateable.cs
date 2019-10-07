@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Animateable : MonoBehaviour
 {
-    // Start is called before the first frame update
     private IEnumerator coroutine;
     public Sprite []sprites;
     static private SpriteRenderer renderer;
@@ -42,7 +41,6 @@ public class Animateable : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
