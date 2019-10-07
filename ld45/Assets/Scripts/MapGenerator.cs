@@ -10,8 +10,9 @@ public class MapGenerator : MonoBehaviour
 
     private void Start()
     {
+        //grassFactory.generateGrid(new Vector2Int(50,50));
         CreateShape();
-
+        
         //genPatch(new Vector2Int(20, 20), 7,50, 0);
 
         genRocks(5);
