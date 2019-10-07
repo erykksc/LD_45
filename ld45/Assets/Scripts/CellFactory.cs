@@ -82,6 +82,14 @@ public class CellFactory : MonoBehaviour
         {
             if(pos==cells[i].pos)
             {
+                for (int j = 0; j < 6; j++)
+                {
+                    if (cells[i].neighbours[j] != null)
+                    {
+                        cells[i].neighbours[j].neighbours[(j + 3) % 6] = null;
+                    }
+                    cells[i].neighbours[j] = null;
+                }
                 Destroy(cells[i].gameObject);
                 cells[i] = cells[cells.Count - 1];
                 cells.RemoveAt(cells.Count - 1);
@@ -94,6 +102,14 @@ public class CellFactory : MonoBehaviour
         {
             if (cell == cells[i])
             {
+                for(int j = 0;j<6;j++)
+                {
+                    if(cells[i].neighbours[j]!=null)
+                    {
+                        cells[i].neighbours[j].neighbours[(j + 3) % 6] = null;
+                    }
+                    cells[i].neighbours[j] = null;
+                }
                 Destroy(cells[i].gameObject);
                 cells[i] = cells[cells.Count - 1];
                 cells.RemoveAt(cells.Count - 1);
@@ -104,6 +120,14 @@ public class CellFactory : MonoBehaviour
     {
         if(index>=0&&index<cells.Count)
         {
+            for (int j = 0; j < 6; j++)
+            {
+                if (cells[index].neighbours[j] != null)
+                {
+                    cells[index].neighbours[j].neighbours[(j + 3) % 6] = null;
+                }
+                cells[index].neighbours[j] = null;
+            }
             Destroy(cells[index].gameObject);
             cells[index] = cells[cells.Count - 1];
             cells.RemoveAt(cells.Count - 1);

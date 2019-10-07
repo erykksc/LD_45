@@ -4,16 +4,30 @@ using UnityEngine;
 
 public class Propagateable : MonoBehaviour
 {
+    public int terrainType;
     public float impulsTime = 0.5f;
+    public float conveyTime = 0.1f;
     public bool activated = false;
     protected int timesActivated = 0;
     public bool propagates = true;
+    public Vector2Int pos;
 
     public delegate void pulseAction();
 
     private pulseAction Action = null;
 
-    public Propagateable [ ]neighbours = new Propagateable[6];
+    public Propagateable [ ]neighbours = { null, null, null, null, null, null, };
+
+    public void refresh()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            if (neighbours[i] != null)
+            {
+                neighbours[i].neighbours[(i + 3) % 6] = this;
+            }
+        }
+    }
 
     public void setPulseAction(pulseAction pAction)
     {
@@ -31,9 +45,10 @@ public class Propagateable : MonoBehaviour
             }
             timesActivated = origin.timesActivated;
             activated = true;
-            yield return new WaitForSeconds(impulsTime);
+            yield return new WaitForSeconds(conveyTime);
             activated = false;
             propagateImpuls();
+            yield return new WaitForSeconds(impulsTime-conveyTime);
         }
     }
     public void propagateImpuls()
@@ -53,7 +68,6 @@ public class Propagateable : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
