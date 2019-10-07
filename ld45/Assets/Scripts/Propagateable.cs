@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Propagateable : MonoBehaviour
 {
-    // Start is called before the first frame update
     public int terrainType;
     public float impulsTime = 0.5f;
     public float conveyTime = 0.1f;
@@ -39,7 +38,6 @@ public class Propagateable : MonoBehaviour
     {
         if(timesActivated<origin.timesActivated)
         {
-            //Debug.Log("receiving, deceiving");
             if (Action != null)
             {
                 Action();
@@ -58,7 +56,6 @@ public class Propagateable : MonoBehaviour
         {
             if(neighbours[i]!=null)
             {
-                //Debug.Log("propagation in progress");
                 StartCoroutine(neighbours[i].receiveImpuls(this));
             }
         }
@@ -69,7 +66,6 @@ public class Propagateable : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         

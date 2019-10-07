@@ -12,7 +12,6 @@ public class CellFactory : MonoBehaviour
         }
         return 1;
     }
-    // Start is called before the first frame update
     List<Cell> cells = new List<Cell>();
     public Cell [] cellPrefabs;
 
@@ -51,7 +50,6 @@ public class CellFactory : MonoBehaviour
                 cells[i].neighbours[0] = o;
                 o.neighbours[3] = cells[i];
             }
-            ///
             if (cells[i].pos.x - o.pos.x == 0 + (cells[i].pos.y % 2) &&  cells[i].pos.y - o.pos.y == 1) 
             {
                 //swap
@@ -63,7 +61,6 @@ public class CellFactory : MonoBehaviour
                 o.neighbours[1] = cells[i];
                 cells[i].neighbours[4] = o;
             }
-            ///
             if (o.pos.x - cells[i].pos.x == 1 && o.pos.y - cells[i].pos.y == 0)
             {
                 o.neighbours[2] = cells[i];
@@ -77,7 +74,6 @@ public class CellFactory : MonoBehaviour
 
         }
         cells.Add(o);
-        //Debug.Log(cells.Count);
         return o;
     }
     public void DestroyCell(Vector2Int pos)

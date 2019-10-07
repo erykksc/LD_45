@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 3814441000205334073}
   m_Layer: 0
   m_Name: TurretBase
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,9 +177,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1945c1c6a974d8141a34230322962441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terrainType: 0
   impulsTime: 0.25
+  conveyTime: 0.1
   activated: 0
   propagates: 1
+  pos: {x: 0, y: 0}
   neighbours:
   - {fileID: 0}
   - {fileID: 0}
@@ -188,8 +191,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   buildable: 0
-  pos: {x: 0, y: 0}
-  hp: 10000
+  isWater: 0
+  hp: 100
   sprites:
   - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
   - {fileID: 21300000, guid: ec1c31173f871364fa4e9575708496eb, type: 3}
@@ -198,6 +201,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2fbc69aad1aa73c4cbc37c8c4d7b8518, type: 3}
   - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
   range: 15
+  damage: 50
   timeGap: 0.5
   additionalRayCount: 0
 --- !u!50 &7981637462068535397
