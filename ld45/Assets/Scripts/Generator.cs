@@ -6,13 +6,15 @@ using UnityEngine.SceneManagement;
 public class Generator : Cell
 {
     [SerializeField] private float pulsationRate = 2.0f;
+    private AudioSource sound;
 
     IEnumerator pulsate()
     {
-       while(true)
+        while(true)
         {
             timesActivated++;
             propagateImpuls();
+            sound.Play();
             StartCoroutine(animate());
             yield return new WaitForSeconds(2f);
         }
@@ -39,7 +41,7 @@ public class Generator : Cell
         cash[1] = 100;
         damage[1] = 50;
         selfHeal[1] = 10;
-
+        sound = gameObject.GetComponent<AudioSource>();
         Upgrade();
         //sprite = gameObject.GetComponent<Sprite>();
         //gameObject.GetComponent<SpriteRenderer>().color = Color.blue;

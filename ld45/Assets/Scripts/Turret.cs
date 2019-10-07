@@ -61,6 +61,7 @@ public class Turret : Cell
             points.Add((Vector2) Target.GetComponent<Transform>().position);
             Vector2 pos = Target.GetComponent<Transform>().position;
             dealDamage2Enemy(Target);
+            gameObject.GetComponent<AudioSource>().Play();
 
             for(int i = 0; i < rays[0]; i++)
             {
