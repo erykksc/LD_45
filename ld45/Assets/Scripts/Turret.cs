@@ -8,6 +8,9 @@ public class Turret : Cell
     public int damage;
     public int damageSpeed;
     private int passed;
+    public float timeGap = 0.5f;
+    bool switch1 = true;
+    private LineRenderer line;
 
     //Finding a target by finding the nearest object with the tag ENEMY
     private GameObject GetTarget()
@@ -33,7 +36,7 @@ public class Turret : Cell
     public override void onImpulse()
     {
         Debug.Log("wrk");
-        Shoot();
+        StartCoroutine(initiateShooting());
     }
 
 
@@ -44,36 +47,95 @@ public class Turret : Cell
         Debug.Log("Searching");
 
         Vector2 dist =  Target.GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
-
-        if (Target!= gameObject ) Rotate(dist);
+        // Ważne
+        //if (Target!= gameObject ) Rotate(dist);
 
 
         if (dist.sqrMagnitude < range && Target != gameObject)
         {
             Debug.Log("One frame, one kill");
+            //DrawArrow.ForDebug(gameObject.GetComponent<Transform>().position, dist);
+            Vector3[] points = new Vector3[2];
+            points[0] = (Vector2) gameObject.GetComponent<Transform>().position + dist.normalized * 0.4f;
+            points[1] = (Vector2) Target.GetComponent<Transform>().position;
+            line.SetPositions(points);
+            StartCoroutine(deleteLine());
             Destroy(Target);
-            DrawArrow.ForDebug(gameObject.GetComponent<Transform>().position, dist);
+        }
+    }
+    private IEnumerator initiateShooting()
+    {
+        // warunek - odległóść
+        if(GetTarget()!=gameObject)
+        {
+            
+        }
+        
+        StartCoroutine(animate());
+        switch1 = false;
+        yield return new WaitForSeconds(timeGap);
+        Shoot();
+    }
+    private IEnumerator animate()
+    {
+        Transform ch;
+        ch = GetComponentsInChildren<Transform>()[1];
+
+        Vector3 origin = ch.right;
+        Vector3 target = (GetTarget().GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position);
+        target.z = origin.z = 0;
+        origin = Vector3.Normalize(origin);
+        target = Vector3.Normalize(target);
+        float time = 0;
+        
+        while (time<timeGap)
+        {
+            foreach (Transform trans in GetComponentsInChildren<Transform>())
+            {
+                if (trans.name != "TurretBase")
+                {
+                    trans.right = -target*(time/timeGap)+origin*(1-time/timeGap);
+
+                }
+            }
+            time += Time.deltaTime;
+            yield return null;
         }
     }
     private void Awake()
     {
         setPulseAction(action);
+        line = gameObject.GetComponent<LineRenderer>();
+        line.positionCount = 2;
     }
 
+    private IEnumerator deleteLine()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Vector3[] points = new Vector3[2];
+        points[0] = new Vector3(0,0,-1000);
+        points[1] = new Vector3(0,0,-1000);
+        line.SetPositions(points);
+    }
 
     private void Rotate(Vector2 Vect2)
     {
         
         //Determining the rotation and rotating
-        float RotAngle = Vector2.Angle(Vector2.up,Vect2);
+        //float RotAngle = Vector2.Angle(Vector2.up,Vect2);
         foreach (Transform trans in GetComponentsInChildren<Transform>())
         {
             if (trans.name != "TurretBase")
             {
                 trans.rotation = Quaternion.Euler(0, 0, RotAngle-90);
+                //Zostawiłem merga tak jak jest na masterze i u mnie - GK
+                trans.right =-GetTarget().GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
+                //trans.RotateAround(Vector3.forward, RotAngle);
+                //trans.rotation = Quaternion.Euler(0, 0, RotAngle-90);
+
             }
         }
-       
+        
 
 
 
