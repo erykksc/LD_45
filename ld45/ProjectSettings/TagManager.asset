@@ -8,8 +8,6 @@ TagManager:
   - Enemy
   - MainSpawner
   - Draggable
-  - Upgrader
-  - Canvas
   layers:
   - Default
   - TransparentFX
