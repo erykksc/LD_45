@@ -199,7 +199,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
   range: 15
   timeGap: 0.5
-  additionalRayCount: 4
+  additionalRayCount: 0
 --- !u!50 &7981637462068535397
 Rigidbody2D:
   serializedVersion: 4
