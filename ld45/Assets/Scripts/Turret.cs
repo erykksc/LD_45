@@ -122,7 +122,7 @@ public class Turret : Cell
     {
         
         //Determining the rotation and rotating
-        //float RotAngle = Vector2.Angle(Vector2.up,Vect2);
+        float RotAngle = Vector2.Angle(Vector2.up,Vect2);
         foreach (Transform trans in GetComponentsInChildren<Transform>())
         {
             if (trans.name != "TurretBase")
