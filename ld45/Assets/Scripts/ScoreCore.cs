@@ -14,7 +14,7 @@ public class ScoreCore : MonoBehaviour
 
 
         public Text[] PriceDisplayers=new Text[4];
-
+        public GameObject  MessagePanel;
 
 
     [Header("Round related")]
@@ -47,7 +47,11 @@ public class ScoreCore : MonoBehaviour
     void Update()
     {
         CashDisplayer.text = Cash.ToString();
-        // TimeDisplayer.text = Mathf.FloorToInt(Time.time).ToString();
+        float timer = Time.time;
+        string minutes = Mathf.Floor(timer / 60).ToString("00");
+        string seconds = Mathf.Floor(timer % 60).ToString("00");
+
+        TimeDisplayer.text = minutes + ":" + seconds;              //Mathf.FloorToInt(Time.time).ToString();
     }
 
     private bool isRoundCompleted()
@@ -105,5 +109,10 @@ public class ScoreCore : MonoBehaviour
             startNextRound();
         }
 
+    }
+
+    public void ToggleMessageWindow()
+    {
+        MessagePanel.active = !MessagePanel.active;
     }
 }
