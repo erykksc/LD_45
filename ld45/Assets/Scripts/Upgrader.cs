@@ -38,7 +38,7 @@ public class Upgrader : MonoBehaviour
         Vector2Int pos;
         pos = Cell.getHexCoords(transform.position, 55f / 64f);
         Cell cell = CF.Find(pos);
-        if(ScoreCore.Cash>=cell.uCost[cell.level])
+        if(ScoreCore.Cash>=cell.uCost[cell.level]&&cell.level<4)
         {
             ScoreCore.Cash -= cell.uCost[cell.level];
             cell.Upgrade();
