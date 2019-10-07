@@ -16,42 +16,16 @@ public class Cell : Propagateable
     //public bool isActivated = false;
 
     //public int timesActivated = 0;
+    private Cell c1;
+
 
     public bool buildable;
 
-    public Vector2Int pos;
-
-    public static float timeStep = 0.5f;
+    public static float timeStep = 0.75f;
 
     [SerializeField] private int hp = 10000;
 
     public Sprite[] sprites;
-
-
-    static void Swap(ref Cell a,ref Cell b)
-    {
-        for(int i = 0;i<6;i++)
-        {
-            if(a.neighbours[i]!=null)
-            {
-                a.neighbours[i].neighbours[(i + 3) % 6] = b;
-            }
-        }
-        for (int i = 0; i < 6; i++)
-        {
-            if (b.neighbours[i] != null)
-            {
-                b.neighbours[i].neighbours[(i + 3) % 6] = a;
-            }
-        }
-        Propagateable[] neighbours = new Propagateable[6];
-        neighbours = a.neighbours;
-        a.neighbours = b.neighbours;
-        b.neighbours = neighbours;
-        Vector2Int pos = a.pos;
-        a.pos = b.pos;
-        b.pos = pos;
-    }
 
     public void action()
     {
@@ -189,9 +163,9 @@ public class Cell : Propagateable
         {
             if(neighbours[i]!=null)
             {
-                neighbours[i].neighbours[(i + 3) % 6] = null;
+                neighbours[i].neighbours[(i + 3) % 6] = (Propagateable)null;
             }
-            neighbours[i] = null;
+            neighbours[i] = (Propagateable)null;
         }
     }
 
