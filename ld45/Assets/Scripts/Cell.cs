@@ -225,10 +225,7 @@ public class Cell : Propagateable
             try {    Destroy(UpgradeInterface); }
             catch { }
         }
-
-
     }
-
 
     public void destroyCell()
     {
