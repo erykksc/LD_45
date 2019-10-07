@@ -92,23 +92,26 @@ public class CellFactory : MonoBehaviour
                 cells[c].Instantiate(new Vector2Int(j, i));
             }
         }
-        for (int j = 0,c = 0; j < size.x; j++)
+        for (int i = 0,c = 0; i < size.x; i++)
         {
-            for (int i = 0; i < size.y; i++, c++)
+            for (int j = 0; j < size.y; j++, c++)
             {
+                
                 if(i>0)
                 {
                     cells[c].neighbours[2] = cells[c - 1];
                     cells[c - 1].neighbours[5] = cells[c];
                 }
-                if(i<size.x-1)
+                if (i>0)
                 {
-                    //cells[c].neighbours[5] = cells[c + 1];
-                    //cells[c + 1].neighbours[2] = cells[c];
-                }
-                if (j+j%2>0)
-                {
-                    cells[c].neighbours[0] = cells[c - size.x - (j%2)];
+                    cells[c].neighbours[0] = cells[c - size.x + (j ) % 2];
+                    /*int x, y;
+                    x = (c - size.y) % j;
+                    y = (c - size.x) % i;
+                    if(Mathf.Abs(x-i)<2||Mathf.Abs(y-j)<2)
+                    {
+
+                    }*/
                 }
             }
         }

@@ -16,8 +16,34 @@ public class Cell : Propagateable
     //public bool isActivated = false;
 
     //public int timesActivated = 0;
-    private Cell c1;
+    public struct Properties
+    {
+        public int health;
+        public int moneyps;
+        public float range;
+        public int dameg;
+        public int rays;
+        public int selfHeal;
+        public int cash;
+    }
 
+    static Properties[] upgrades;
+
+    Properties currentStatus;
+
+    public int level = 1;
+
+    public void Upgrade()
+    {
+        if(level+1<upgrades.Length)
+        {
+            // do poprawy
+            level++;
+            currentStatus = upgrades[level];
+        }
+    }
+
+    static public Properties properties;
 
     public bool buildable;
     public bool isWater;
@@ -102,10 +128,10 @@ public class Cell : Propagateable
     {
         if (damage > 0)
         {
-            hp -= damage;
+            currentStatus.health -= damage;
         }
 
-        if (hp <= 0)
+        if (currentStatus.health <= 0)
         {
             for(int i = 0;i<6;i++)
             {
