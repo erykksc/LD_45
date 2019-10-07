@@ -12,11 +12,11 @@ public class Turret : Cell
     public float timeGap = 0.5f;
     bool switch1 = true;
     private LineRenderer line;
-    private int additionalRayCount = 0;
+    [SerializeField] private int additionalRayCount = 0;
 
 
     //Finding a target by finding the nearest object with the tag ENEMY
-    private GameObject GetTarget(Vector2 startingPos)
+    private GameObject GetTarget(Vector3 startingPos)
     {
         
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
@@ -25,7 +25,7 @@ public class Turret : Cell
         float distance = Mathf.Infinity;
         foreach (GameObject x in objects)
         {
-            Vector3 diff = x.GetComponent<Transform>().position - startingPos;
+            Vector3 diff =  x.GetComponent<Transform>().position - startingPos;
             float dist = diff.sqrMagnitude;
             if (dist < distance)
             {
@@ -57,7 +57,7 @@ public class Turret : Cell
         if (dist.sqrMagnitude < range && Target != gameObject)
         {
             //DrawArrow.ForDebug(gameObject.GetComponent<Transform>().position, dist);
-            List<Vector3> points;
+            List<Vector3> points = new List<Vector3>();
             points.Add((Vector2) gameObject.GetComponent<Transform>().position + dist.normalized * 0.4f);
             points.Add((Vector2) Target.GetComponent<Transform>().position);
             //Debug.Log("One frame, one kill");
@@ -66,24 +66,27 @@ public class Turret : Cell
 
             for(int i = 0; i < additionalRayCount; i++)
             {
+                //Debug.Log(pos);
                 Target = GetTarget(pos);
                 if (Target == gameObject)
                 {
                     break;
                 }
+                Debug.Log(Target);
                 points.Add((Vector2) Target.GetComponent<Transform>().position);
                 pos = Target.GetComponent<Transform>().position;
                 Destroy(Target);
             }
+            Debug.Log(points);
             line.positionCount = points.Count;
-            line.SetPositions(points);
+            line.SetPositions(points.ToArray());
             StartCoroutine(deleteLine());
         }
     }
     private IEnumerator initiateShooting()
     {
         // warunek - odległóść
-        if(GetTarget()!=gameObject)
+        if(GetTarget(gameObject.GetComponent<Transform>().position)!=gameObject)
         {
             
         }
@@ -99,7 +102,7 @@ public class Turret : Cell
         ch = GetComponentsInChildren<Transform>()[1];
 
         Vector3 origin = ch.right;
-        Vector3 target = (GetTarget().GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position);
+        Vector3 target = (GetTarget(gameObject.GetComponent<Transform>().position).GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position);
         target.z = origin.z = 0;
         origin = Vector3.Normalize(origin);
         target = Vector3.Normalize(target);
@@ -144,7 +147,7 @@ public class Turret : Cell
         {
             if (trans.name != "TurretBase")
             {
-                trans.right =-GetTarget().GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
+                trans.right =-GetTarget(gameObject.GetComponent<Transform>().position).GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
                 //trans.RotateAround(Vector3.forward, RotAngle);
                 //trans.rotation = Quaternion.Euler(0, 0, RotAngle-90);
 
