@@ -25,6 +25,7 @@ public class Cell : Propagateable
     public int []rays;
     public int []selfHeal;
     public int []cash;
+    public int[] uCost;
     
 
     public int level = 0;
