@@ -21,12 +21,5 @@ public class Wall : Cell
     private void Awake()
     {
         setPulseAction(action);
-        //GetComponent<SpriteRenderer>().color = Color.green;
-        //sprite = gameObject.GetComponent<Sprite>();
     }
-    
-    //public override void WhenActivatedDoOnce()
-    //{
-        //setHp(getHp()+healPerImpulse);
-    //}
 }

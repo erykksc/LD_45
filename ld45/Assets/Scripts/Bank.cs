@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Bank : Cell
 {
-   
-    // Update is called once per frame
+    [SerializeField] private int moneyToAdd = 1;
+    
     public override void onImpulse()
     {
-        ScoreCore.Cash++;
+        ScoreCore.Cash = ScoreCore.Cash + moneyToAdd;
         
     }
     private void Awake()

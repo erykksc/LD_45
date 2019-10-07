@@ -10,13 +10,11 @@ public class TimeLord : MonoBehaviour
 
     public void PauseGame()
     {
-        Debug.LogWarning("Game Paused");
         GamePaused = true;
         Time.timeScale = 0.01f;
     }
     public void UnPauseGame()
     {
-        Debug.LogWarning("Game Resumed");
         GamePaused = false;
         Time.timeScale = 1f;
     }

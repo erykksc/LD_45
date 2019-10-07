@@ -119,7 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
   maxSpeed: 6.91
-  speed: 0.5
+  speed: 1
   bounceForce: 10
   Sprites:
   - {fileID: 21300000, guid: 62883e02cfa51624087a1e1e29b61ee3, type: 3}
@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d682db0a31ce5532b035ab72318e73f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  hp: 0
+  damage: 20
+  hp: 100
 --- !u!60 &838102031206557078
 PolygonCollider2D:
   m_ObjectHideFlags: 0

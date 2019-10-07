@@ -74,7 +74,6 @@ public class ScoreCore : MonoBehaviour
         changeEnemiesInNextRound(roundNum);
         roundNum += 1;
         mainSpawner.GetComponent<SpawnerSpawner>().Spawn(distanceOfSpawnersFromGen, nextNumOfEnemiesPerGroup, nextNumOfEnemiesGroups, 0.1f);
-        //Temporary
         waitingForNextRound = false;
     }
 
@@ -90,7 +89,6 @@ public class ScoreCore : MonoBehaviour
         {
             nextNumOfEnemiesGroups += 1;
         }
-        Debug.Log($"Wave enemies {round+1} ,{nextNumOfEnemiesGroups}, {nextNumOfEnemiesPerGroup}");
     }
 
     private void FixedUpdate() {
