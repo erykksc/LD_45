@@ -43,6 +43,7 @@ public class ObjectDraggable : MonoBehaviour
 
             Vector2Int hPos = Cell.getHexCoords(WorldPos, 55f/64f);
 
+            //Debug.Log($"Available buildings: {Silos.getAvailableBuildings()}");
                 
             //Checking if position is occupied and if player has enough cash to build the cell
             if ((Factory.Find(hPos) == null&&ScoreCore.Cash>= ScoreCore.Prices[SpawnedIdentifier]&&grassFactory.Find(hPos).buildable) && Input.mousePosition.y>Camera.main.pixelWidth/7  ) // > (Camera.main.pixelHeight/10) 
