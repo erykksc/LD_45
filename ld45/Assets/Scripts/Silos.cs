@@ -9,12 +9,15 @@ public class Silos : Cell
 
     void Awake()
     {
+        level=0;
         if(allInst == null)
         {
             allInst = new List<Silos>();
         }
         allInst.Add(this);
         Debug.Log($"Silos count: {allInst.Count}");
+        Upgrade();
+        setPulseAction(action);
     }
     static public int getAvailableBuildings()
     {

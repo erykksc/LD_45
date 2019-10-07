@@ -45,9 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6ef8553776b3f4b96fc14721a247dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terrainType: 0
   impulsTime: 0.5
+  conveyTime: 0.1
   activated: 0
   propagates: 1
+  pos: {x: 0, y: 0}
   neighbours:
   - {fileID: 0}
   - {fileID: 0}
@@ -55,8 +58,22 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  UpgradeWindowShowing: 0
+  UpgradeInterface: {fileID: 0}
+  health: 0000000064000000c80000002c010000
+  moneyps: 00000000020000000400000006000000
+  range:
+  - 0
+  - 0
+  - 0
+  - 0
+  damage: 00000000000000000000000000000000
+  rays: 00000000000000000000000000000000
+  selfHeal: 00000000000000000000000000000000
+  cash: 00000000000000000000000000000000
+  level: 0
   buildable: 0
-  pos: {x: 0, y: 0}
+  isWater: 0
   hp: 100
   sprites:
   - {fileID: 21300000, guid: 89793aa7f0e39294e9f1c49ba1162547, type: 3}
@@ -67,7 +84,23 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b91e2ac5f59421c4998e85836d4bc39f, type: 3}
   - {fileID: 21300000, guid: 1c40a43019013624cb921475b136f5df, type: 3}
   - {fileID: 21300000, guid: 89793aa7f0e39294e9f1c49ba1162547, type: 3}
-  moneyToAdd: 2
+  - {fileID: 21300000, guid: e99214f01b2cbb24c9a4e6a5cbe1315e, type: 3}
+  - {fileID: 21300000, guid: 4576f5435d0f2bf479988f0659a248fe, type: 3}
+  - {fileID: 21300000, guid: d7d770055da374248823dd487b02a420, type: 3}
+  - {fileID: 21300000, guid: d1f328bccf86a044c88ff7e64c84bbf6, type: 3}
+  - {fileID: 21300000, guid: d1f328bccf86a044c88ff7e64c84bbf6, type: 3}
+  - {fileID: 21300000, guid: d7d770055da374248823dd487b02a420, type: 3}
+  - {fileID: 21300000, guid: 4576f5435d0f2bf479988f0659a248fe, type: 3}
+  - {fileID: 21300000, guid: e99214f01b2cbb24c9a4e6a5cbe1315e, type: 3}
+  - {fileID: 21300000, guid: 144c774a4caf8864b808f42744500a6a, type: 3}
+  - {fileID: 21300000, guid: d892d19a26263654f8257608be3ca17a, type: 3}
+  - {fileID: 21300000, guid: 8ea1f5cdc5d0ecb4e9c8f3f98b41fefd, type: 3}
+  - {fileID: 21300000, guid: 281e9f04f28fcf647b874cf5b7abf07f, type: 3}
+  - {fileID: 21300000, guid: 281e9f04f28fcf647b874cf5b7abf07f, type: 3}
+  - {fileID: 21300000, guid: 8ea1f5cdc5d0ecb4e9c8f3f98b41fefd, type: 3}
+  - {fileID: 21300000, guid: d892d19a26263654f8257608be3ca17a, type: 3}
+  - {fileID: 21300000, guid: 144c774a4caf8864b808f42744500a6a, type: 3}
+  animationLength: 8
 --- !u!212 &2215687315673305609
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -34,6 +34,7 @@ public class Upgrader : MonoBehaviour
 
     public void Upgrade()
     {
+        Debug.LogWarning("UP");
         CF.Find(Cell.getHexCoords(transform.position, 55f / 64f)).Upgrade();
     }
 
