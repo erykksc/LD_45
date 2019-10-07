@@ -8,6 +8,12 @@ public class Upgrader : MonoBehaviour
 
     public void Awake()
     {
+        //Scaling size for 2k, 4k 
+        float ScreenScaleX = Camera.main.scaledPixelWidth / 3840.0f   ;
+        float ScreenScaleY = Camera.main.scaledPixelHeight / 2160.0f   ;
+
+        transform.localScale = new Vector3(1.2f* ScreenScaleX, 1.2f* ScreenScaleY,1);
+
         CF = null;
         Transform SemiTarget = null;
         
@@ -29,14 +35,12 @@ public class Upgrader : MonoBehaviour
     public void Upgrade()
     {
         CF.Find(Cell.getHexCoords(transform.position, 55f / 64f)).Upgrade();
-        Debug.LogError("Upgrade");
     }
 
 
     public void Bulldoze()
     {
         CF.DestroyCell(Cell.getHexCoords(transform.position, 55f / 64f)    );    
-        Debug.LogError("Downgrade");
     }
     private void FixedUpdate()
     {
