@@ -332,8 +332,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFactory: {fileID: 56327861}
   grassFactory: {fileID: 2004089835}
-  xSize: 60
-  ySize: 60
+  xSize: 90
+  ySize: 90
 --- !u!114 &599833003
 MonoBehaviour:
   m_ObjectHideFlags: 0
