@@ -155,7 +155,18 @@ public class Cell : Propagateable
     public void FixedUpdate()
     {
     }
-    
+    public void destroyCell()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            if (neighbours[i] != null)
+            {
+                neighbours[i].neighbours[(i + 3) % 6] = null;
+            }
+            neighbours[i] = null;
+        }
+        Destroy(gameObject);
+    }
 
     ~Cell()
     {
