@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Turret : Cell
 {
@@ -12,6 +13,7 @@ public class Turret : Cell
     public float timeGap = 0.5f;
     bool switch1 = true;
     private LineRenderer line;
+    private List<GameObject> Deleted = new List<GameObject>();
     [SerializeField] private int additionalRayCount = 0;
 
 
@@ -19,8 +21,8 @@ public class Turret : Cell
     private GameObject GetTarget(Vector3 startingPos)
     {
         
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
-        
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy").ToArray();
+        objects = objects.ToArray().Except(Deleted.ToArray()).ToArray();        
         GameObject lastObject = gameObject;
         float distance = Mathf.Infinity;
         foreach (GameObject x in objects)
@@ -39,16 +41,19 @@ public class Turret : Cell
     public override void onImpulse()
     {
         //Debug.Log("wrk");
+        Deleted.Clear();
         StartCoroutine(initiateShooting());
     }
 
-
+    private void DeleteEnemy(GameObject target)
+    {
+        Deleted.Add(target);
+        Destroy(target);
+    }
 
     private void Shoot()
     {
         GameObject Target = GetTarget(gameObject.GetComponent<Transform>().position);
-        //Debug.Log("Searching");
-
         Vector2 dist =  Target.GetComponent<Transform>().position - gameObject.GetComponent<Transform>().position;
         // Ważne
         //if (Target!= gameObject ) Rotate(dist);
@@ -62,20 +67,21 @@ public class Turret : Cell
             points.Add((Vector2) Target.GetComponent<Transform>().position);
             //Debug.Log("One frame, one kill");
             Vector2 pos = Target.GetComponent<Transform>().position;
-            Destroy(Target);
+            DeleteEnemy(Target);
 
             for(int i = 0; i < additionalRayCount; i++)
             {
                 //Debug.Log(pos);
                 Target = GetTarget(pos);
-                if (Target == gameObject)
+                dist =  Target.GetComponent<Transform>().position - points[points.Count -1];
+                if (Target == gameObject || dist.sqrMagnitude > (range/4))
                 {
                     break;
                 }
                 Debug.Log(Target);
                 points.Add((Vector2) Target.GetComponent<Transform>().position);
                 pos = Target.GetComponent<Transform>().position;
-                Destroy(Target);
+                DeleteEnemy(Target);
             }
             Debug.Log(points);
             line.positionCount = points.Count;
