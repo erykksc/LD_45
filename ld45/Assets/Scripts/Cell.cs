@@ -65,12 +65,12 @@ public class Cell : Propagateable
     }
     public IEnumerator animate()
     {
-        for(int i =0;i<sprites.Length;i++)
+        for(int i =0;i<animationLength;i++)
         {
-            GetComponent<SpriteRenderer>().sprite = sprites[i];
-            yield return new WaitForSeconds(timeStep / (sprites.Length-1));
+            GetComponent<SpriteRenderer>().sprite = sprites[(level-1)* animationLength+i];
+            yield return new WaitForSeconds(timeStep / (animationLength - 1));
         }
-        GetComponent<SpriteRenderer>().sprite = sprites[0];
+        GetComponent<SpriteRenderer>().sprite = sprites[animationLength*(level-1)];
     }
 
     public static Vector2 getGlobalCoords(Vector2Int pos, float size)
@@ -159,6 +159,7 @@ public class Cell : Propagateable
 
         GetComponent<SpriteRenderer>().sprite = sprites[0];
         setPulseAction(action);
+
         level = 0;
         health = new int[2];
         range = new float[2];

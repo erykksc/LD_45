@@ -10,8 +10,8 @@ public class MapGenerator : MonoBehaviour
 
     private void Start()
     {
-        //grassFactory.generateGrid(new Vector2Int(50,50));
-        CreateShape();
+        grassFactory.generateGrid(new Vector2Int(xSize,ySize));
+        //CreateShape();
         
         //genPatch(new Vector2Int(20, 20), 7,50, 0);
 
@@ -19,7 +19,7 @@ public class MapGenerator : MonoBehaviour
 
         //genRocks();
 
-        int size;
+        /*int size;
         Vector2Int pos = new Vector2Int(0,0);
         Vector2Int delta = new Vector2Int(1, -4);
         Vector2Int gPos = new Vector2Int(xSize / 2, ySize / 2);
@@ -46,7 +46,7 @@ public class MapGenerator : MonoBehaviour
             if(Random.Range(0,2)==1)
             {
                 // do poprwaienia
-                genPatch(pos, 7, xSize + ySize, Random.Range(0, 7));
+                //genPatch(pos, 7, xSize + ySize, Random.Range(0, 7));
             }
         }
         
@@ -75,7 +75,7 @@ public class MapGenerator : MonoBehaviour
                     grassFactory.Add(gPos+pos, Random.Range(0, 2)).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
                 }
             }
-        }
+        }*/
         //genSpot(new Vector2Int(10, 9), new Vector2Int(1, 6), 8);//genRocks(5);
     }
     // to add : river/patch
@@ -139,6 +139,7 @@ public class MapGenerator : MonoBehaviour
         int ys = ySize / 10;
         int count;
         Vector2Int pos;
+        Vector2Int buff;
         for(int i = 0;i<xs;i++)
         {
             for(int j = 0;j<ys;j++)
@@ -147,8 +148,10 @@ public class MapGenerator : MonoBehaviour
                 for(int k = 0;k<count;k++)
                 {
                     pos = new Vector2Int((int)Random.Range(0, 10) + i * 10, (int)Random.Range(0, 10) + j * 10);
-                    grassFactory.DestroyCell(grassFactory.Find(pos));
-                    grassFactory.Add(pos, index).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
+                    buff = grassFactory.cells[pos.x + pos.y * xSize].pos;
+                    grassFactory.DestroyCell(pos.x+pos.y*xSize);
+                    grassFactory.AddBeyond(buff, 6);
+                    //grassFactory.Add(pos, index).transform.localRotation = Quaternion.Euler(0, 0, 60 * Random.Range(1, 7));
                 }
             }
         }

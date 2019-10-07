@@ -12,7 +12,7 @@ public class CellFactory : MonoBehaviour
         }
         return 1;
     }
-    List<Cell> cells = new List<Cell>();
+    public List<Cell> cells = new List<Cell>();
     public Cell [] cellPrefabs;
 
     public Cell Find(Vector2Int pos)
@@ -85,30 +85,7 @@ public class CellFactory : MonoBehaviour
             for(int j = 0;j<size.y;j++,c++)
             {
                 cells[c] = Instantiate(cellPrefabs[Random.Range(0,2)]);
-                cells[c].Instantiate(new Vector2Int(j, i));
-            }
-        }
-        for (int i = 0,c = 0; i < size.x; i++)
-        {
-            for (int j = 0; j < size.y; j++, c++)
-            {
-                
-                if(i>0)
-                {
-                    cells[c].neighbours[2] = cells[c - 1];
-                    cells[c - 1].neighbours[5] = cells[c];
-                }
-                if (i>0)
-                {
-                    cells[c].neighbours[0] = cells[c - size.x + (j ) % 2];
-                    /*int x, y;
-                    x = (c - size.y) % j;
-                    y = (c - size.x) % i;
-                    if(Mathf.Abs(x-i)<2||Mathf.Abs(y-j)<2)
-                    {
-
-                    }*/
-                }
+                cells[c].Instantiate(new Vector2Int(i, j));
             }
         }
     }
@@ -152,8 +129,23 @@ public class CellFactory : MonoBehaviour
             }
         }
     }
+    public void AddBeyond(Vector2Int pos,int index)
+    {
+        Cell o;
+        if (index >= cellPrefabs.Length)
+        {
+            return;
+        }
+        o = Instantiate(cellPrefabs[index]);
+        o.Instantiate(pos);
+        cells.Add(o);
+    }
     public void DestroyCell(int index)
     {
+        if(cells[index]==null)
+        {
+            return;
+        }
         if(index>=0&&index<cells.Count)
         {
             for (int j = 0; j < 6; j++)
