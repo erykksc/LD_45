@@ -126,7 +126,6 @@ public class Cell : Propagateable
     //Returns True if the cell has been destroyed
     public bool dealDamage(int damage)
     {
-        //Debug.Log("a");
         health[0] -= damage;
 
         if (health[0] <= 0)
@@ -185,11 +184,19 @@ public class Cell : Propagateable
 
     public void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0) && UpgradeWindowShowing==false ) { Debug.LogError("Opening Upgrades"); UpgradeWindowShowing = true;       ToggleUpgradeUI();  }
+        if (Input.GetMouseButtonDown(0) && UpgradeWindowShowing==false )
+        {
+            UpgradeWindowShowing = true;
+            ToggleUpgradeUI(); 
+        }
     }
     public void OnMouseExit()
     {
-        if (UpgradeWindowShowing) { Debug.LogError("Closing Upgrades"); UpgradeWindowShowing = false;         ToggleUpgradeUI();   }
+        if (UpgradeWindowShowing)
+        {
+            UpgradeWindowShowing = false;
+            ToggleUpgradeUI();
+        }
     }
     public void ToggleUpgradeUI()
     {

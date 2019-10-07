@@ -29,14 +29,12 @@ public class Upgrader : MonoBehaviour
     public void Upgrade()
     {
         CF.Find(Cell.getHexCoords(transform.position, 55f / 64f)).Upgrade();
-        Debug.LogError("Upgrade");
     }
 
 
     public void Bulldoze()
     {
         CF.DestroyCell(Cell.getHexCoords(transform.position, 55f / 64f)    );    
-        Debug.LogError("Downgrade");
     }
     private void FixedUpdate()
     {
