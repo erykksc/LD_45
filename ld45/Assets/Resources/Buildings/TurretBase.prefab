@@ -190,45 +190,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  UpgradeWindowShowing: 0
-  UpgradeInterface: {fileID: 0}
-  health: 
-  moneyps: 
-  range: []
-  damage: 
-  rays: 
-  selfHeal: 
-  cash: 
-  level: 0
   buildable: 0
   isWater: 0
   hp: 100
   sprites:
   - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
   - {fileID: 21300000, guid: ec1c31173f871364fa4e9575708496eb, type: 3}
-  - {fileID: 21300000, guid: 6ce8540cdb3ac474c9d1fec2eb2ee0b3, type: 3}
   - {fileID: 21300000, guid: 11ca59d4f23e31d4db6a2791c9311076, type: 3}
   - {fileID: 21300000, guid: 755664c6230b09c4f9db7f3bf3c031dd, type: 3}
   - {fileID: 21300000, guid: 2fbc69aad1aa73c4cbc37c8c4d7b8518, type: 3}
-  - {fileID: 21300000, guid: 755664c6230b09c4f9db7f3bf3c031dd, type: 3}
-  - {fileID: 21300000, guid: 11ca59d4f23e31d4db6a2791c9311076, type: 3}
-  - {fileID: 21300000, guid: 6ce8540cdb3ac474c9d1fec2eb2ee0b3, type: 3}
-  - {fileID: 21300000, guid: ec1c31173f871364fa4e9575708496eb, type: 3}
-  - {fileID: 21300000, guid: 74c35b8e8455a0eeb89ba24a27da39d5, type: 3}
-  - {fileID: 21300000, guid: 0d40529e50e7d6bd3baff09e4bdea15e, type: 3}
-  - {fileID: 21300000, guid: 34678d42b89b5f4948319b20a692cf03, type: 3}
-  - {fileID: 21300000, guid: 85b2177dcd9e17ee5a0ec94256a2af5f, type: 3}
-  - {fileID: 21300000, guid: 964ff8badc7d1dacabd99890ce7340d2, type: 3}
-  - {fileID: 21300000, guid: 992acf9f4dd67ddb99356f8fc30a144f, type: 3}
-  - {fileID: 21300000, guid: 992acf9f4dd67ddb99356f8fc30a144f, type: 3}
-  - {fileID: 21300000, guid: c141b9d37094425f8b1af1b695d191d7, type: 3}
-  - {fileID: 21300000, guid: 1194ca2a93de548cea3196bed15900ec, type: 3}
-  - {fileID: 21300000, guid: d09a42e05d1afe9e5a92aba4255f8d08, type: 3}
-  - {fileID: 21300000, guid: 5884f9baa25baef33b24084a41145b3e, type: 3}
-  - {fileID: 21300000, guid: 786ef32bf065618d4a2052e755151d73, type: 3}
-  - {fileID: 21300000, guid: 6f2879a75850b5018831b3643a9bddbf, type: 3}
-  animationLength: 0
+  - {fileID: 21300000, guid: af090b65937041645b1909705374d363, type: 3}
+  range: 15
+  damage: 50
   timeGap: 0.5
+  additionalRayCount: 0
 --- !u!50 &7981637462068535397
 Rigidbody2D:
   serializedVersion: 4
