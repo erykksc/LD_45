@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d682db0a31ce5532b035ab72318e73f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  hp: 0
+  damage: 0
+  hp: 100
 --- !u!60 &838102031206557078
 PolygonCollider2D:
   m_ObjectHideFlags: 0

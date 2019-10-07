@@ -4,23 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private int damage;
-    [SerializeField] private int hp;
-
-    private void Start() {
-        damage = 30;
-    }
-
-
-
-
-
+    [SerializeField] private int damage=30;
+    [SerializeField] private int hp=100;
 
     public void dealDamage(int damage2deal)
     {
-        if (damage > 0)
+        if (damage2deal > 0)
         {
-            hp -= damage;
+            hp -= damage2deal;
         }
 
         if (hp <= 0)
