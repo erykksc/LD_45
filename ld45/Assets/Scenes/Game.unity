@@ -330,8 +330,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFactory: {fileID: 56327861}
   grassFactory: {fileID: 2004089835}
-  xSize: 50
-  ySize: 30
+  xSize: 150
+  ySize: 150
 --- !u!114 &599833003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2296,6 +2296,12 @@ PrefabInstance:
     - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
         type: 3}
       propertyPath: cellPrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 2417079216324815231, guid: 08fee50b022f16e459851ef512d9ce19,
+        type: 3}
+    - target: {fileID: 4720508987111260716, guid: b9f3f2a3438db8c479d6003e71841953,
+        type: 3}
+      propertyPath: cellPrefabs.Array.data[10]
       value: 
       objectReference: {fileID: 6002804682226739256, guid: b4bde4a81a354f3428a8a3833bfdd1b9,
         type: 3}

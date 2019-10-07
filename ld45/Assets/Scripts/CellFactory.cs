@@ -80,32 +80,59 @@ public class CellFactory : MonoBehaviour
         //Debug.Log(cells.Count);
         return o;
     }
-    void DestroyCell(Vector2Int pos)
+    public void DestroyCell(Vector2Int pos)
     {
         for(int i = 0;i<cells.Count;i++)
         {
             if(pos==cells[i].pos)
             {
+                for (int j = 0; j < 6; j++)
+                {
+                    if (cells[i].neighbours[j] != null)
+                    {
+                        cells[i].neighbours[j].neighbours[(j + 3) % 6] = null;
+                    }
+                    cells[i].neighbours[j] = null;
+                }
+                Destroy(cells[i].gameObject);
                 cells[i] = cells[cells.Count - 1];
                 cells.RemoveAt(cells.Count - 1);
             }
         }
     }
-    void DestroyCell(Cell cell)
+    public void DestroyCell(Cell cell)
     {
         for (int i = 0; i < cells.Count; i++)
         {
             if (cell == cells[i])
             {
+                for(int j = 0;j<6;j++)
+                {
+                    if(cells[i].neighbours[j]!=null)
+                    {
+                        cells[i].neighbours[j].neighbours[(j + 3) % 6] = null;
+                    }
+                    cells[i].neighbours[j] = null;
+                }
+                Destroy(cells[i].gameObject);
                 cells[i] = cells[cells.Count - 1];
                 cells.RemoveAt(cells.Count - 1);
             }
         }
     }
-    void DestroyCell(int index)
+    public void DestroyCell(int index)
     {
         if(index>=0&&index<cells.Count)
         {
+            for (int j = 0; j < 6; j++)
+            {
+                if (cells[index].neighbours[j] != null)
+                {
+                    cells[index].neighbours[j].neighbours[(j + 3) % 6] = null;
+                }
+                cells[index].neighbours[j] = null;
+            }
+            Destroy(cells[index].gameObject);
             cells[index] = cells[cells.Count - 1];
             cells.RemoveAt(cells.Count - 1);
         }
