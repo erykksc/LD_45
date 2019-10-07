@@ -142,7 +142,9 @@ public class Cell : Propagateable
         if(health[0]-damage>health[level])
         {
             health[0] = health[level];
+            
         }
+        return false;
     }
     Vector2Int getPos()
     {
