@@ -4,8 +4,26 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
+    protected bool isShown = true;
 
-    private Cell[] neighbours = { null, null, null, null, null, null, };
+    public bool isCellShown
+    {
+        get
+        {
+            return isShown;
+        }
+        set
+        {
+            isShown = value;
+            if (!isShown&&renderer!=null)
+            {
+                Debug.Log("deactivated");
+                renderer.sprite = null;
+            }
+        }
+
+    }
+    [SerializeField] private Cell[] neighbours = { null, null, null, null, null, null, };
 
     public int distToGen;//Dijkstra
 
@@ -18,11 +36,11 @@ public class Cell : MonoBehaviour
 
     public void setNeighbour(Cell prop, int index)
     {
+        neighbours[index] = prop;
         if (prop == null)
         {
             return;
         }
-        neighbours[index] = prop;
         prop.neighbours[(index + 3) % 6] = this;
     }
     public Cell getNeighbour(int index)
@@ -72,12 +90,13 @@ public class Cell : MonoBehaviour
         return mV;
     }
     
-    public void InstantiateCell(Vector2Int p,int index,CellFactory fac)
+    public void InstantiateCell(Vector2Int p,int index,CellFactory fac, bool shown = false)
     {
         pos = p;
         transform.position = getGlobalCoords(pos,55f/64f);
         ID = index;
         factory = fac;
+        isCellShown = shown;
     }
     
     public Vector2Int getHexPos()
@@ -99,19 +118,19 @@ public class Cell : MonoBehaviour
         {
             return;
         }
-        GetComponent<SpriteRenderer>().sprite = sprites[0];
+        renderer = GetComponent<SpriteRenderer>();
+        renderer.sprite = sprites[0];
     }
     private void Update()
     {
     }
+    
 
-    public virtual void onCellDestroy() { }
-
-    private void OnDestroy()
+    protected void OnDestroy()
     {
+        factory.removeFromList(this);
         for (int i = 0; i < 6; i++)
         {
-            onCellDestroy();
             if (neighbours[i] != null)
             {
                 neighbours[i].neighbours[(i + 3) % 6] = null;

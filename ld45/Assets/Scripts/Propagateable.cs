@@ -12,6 +12,7 @@ public class Propagateable : Cell
         public int moneyps;
     }
 
+
     [SerializeField] private Properties properties;
 
     public float conveyTime = 0.1f;

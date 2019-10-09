@@ -12,12 +12,16 @@ public class Terrain : Cell
     }
     private void Awake()
     {
-        renderer.sprite = sprites[0];
+        base.Awake();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    private void OnDestroy()
+    {
+        base.OnDestroy();
     }
 }

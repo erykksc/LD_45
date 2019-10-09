@@ -26,9 +26,9 @@ public class CellFactory : MonoBehaviour
         return cellCount[index];
     }
 
-    private List<Cell> cells = new List<Cell>();
+    protected List<Cell> cells = new List<Cell>();
 
-    private Cell [] cellPrefabs;
+    [SerializeField] private Cell [] cellPrefabs;
 
     public Cell Find(Vector2Int pos)
     {
@@ -50,19 +50,20 @@ public class CellFactory : MonoBehaviour
         return null;
     }
 
-    public Cell Add(Vector2Int pos,int index = 0)
+    protected Cell Add(Vector2Int pos,int index = 0)
     {
+        if(index<0||index>cellPrefabs.Length-1)
+        {
+            Debug.Log("In CellFactory, Add: Requested unexisting index");
+            return null;
+        }
         Cell o;
         o = Instantiate(cellPrefabs[index]);
-        o.InstantiateCell(pos, index, this);
-        return null;
+        o.InstantiateCell(pos, index, this, true);
+        o.transform.parent = transform;
+        return o;
     }
-
-    public void generateGrid(Vector2Int size)
-    {
-        cells = new List<Cell>(new Cell[size.x * size.y]);
-
-    }
+    
 
     public void DestroyCell(Vector2Int pos)
     {
@@ -109,36 +110,26 @@ public class CellFactory : MonoBehaviour
         {
             cellCount = new int[cellPrefabs.Length];
         }
+       if(cellPrefabs==null)
+        {
+            Debug.Log("CellFactory, Awake: No Prefabs to instantiate");
+        }
+    }
+    public void removeFromList(Cell cell)
+    {
+        Debug.Log("In CellFactory, removeFromList: Cell removed from list");
+        if(cell==null)
+        {
+            Debug.Log("In Cellfactory, reomveFromList: null argument passed");
+            return;
+        }
+        for(int i = 0;i<cells.Count;i++)
+        {
+            if(cells[i]==cell)
+            {
+                cells[i] = cells[cells.Count - 1];
+                cells.RemoveAt(cells.Count - 1);
+            }
+        }
     }
 }
-/*
- Vector2Int getNeighbourPos(Vector2Int pos,int index)
-    {
-        if (index == 0) 
-        {
-            return new Vector2Int(pos.x + 1, pos.y);
-        }
-        if (index == 3)
-        {
-            return new Vector2Int(pos.x - 1, pos.y);
-        }
-        if (index == 1)
-        {
-            return new Vector2Int(pos.x - (pos.y + 1) % 2, pos.y + 1);
-        }
-        if (index == 4)
-        {
-            return new Vector2Int(pos.x - (pos.y + 1) % 2 + 1, pos.y - 1);
-        }
-        if (index == 2)
-        {
-            return new Vector2Int(pos.x - (pos.y + 1) % 2, pos.y - 1);
-        }
-        if (index == 5)
-        {
-            return new Vector2Int(pos.x - (pos.y + 1) % 2 + 1, pos.y + 1);
-        }
-        return new Vector2Int(0, 0);
-    }
-
-    */
