@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bridge : Cell
+public class Terrain : Cell
 {
+
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
     private void Awake()
     {
-        setPulseAction(action);
+        renderer.sprite = sprites[0];
     }
 
     // Update is called once per frame

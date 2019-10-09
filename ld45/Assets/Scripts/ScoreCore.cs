@@ -61,7 +61,7 @@ public class ScoreCore : MonoBehaviour
         string seconds = Mathf.Floor(TimeSinceStart % 60).ToString("00");
 
         TimeDisplayer.text = minutes + ":" + seconds;              //Mathf.FloorToInt(Time.time).ToString();
-        SupplyDisplayer.text = (CellFactory.cellCount + "/"+ Silos.getAvailableBuildings());
+        //SupplyDisplayer.text = (CellFactory.cellCount + "/"+ Silos.getAvailableBuildings());
     }
 
     private bool isRoundCompleted()
@@ -84,7 +84,7 @@ public class ScoreCore : MonoBehaviour
         changeEnemiesInNextRound(roundNum);
         StartCoroutine(displayNextRound());
         roundNum += 1;
-        mainSpawner.GetComponent<SpawnerSpawner>().Spawn(distanceOfSpawnersFromGen, nextNumOfEnemiesPerGroup, nextNumOfEnemiesGroups, 0.1f);
+        //mainSpawner.GetComponent<SpawnerSpawner>().Spawn(distanceOfSpawnersFromGen, nextNumOfEnemiesPerGroup, nextNumOfEnemiesGroups, 0.1f);
         waitingForNextRound = false;
     }
 

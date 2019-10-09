@@ -2,82 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cell : Propagateable
+public class Cell : MonoBehaviour
 {
-    public bool UpgradeWindowShowing = false;
-    public GameObject UpgradeInterface;
 
-    public int ID = -1;
+    private Cell[] neighbours = { null, null, null, null, null, null, };
 
-    public static int cellNumber = 0;
+    public int distToGen;//Dijkstra
 
-    //public static Vector2Int toHexCoords(Vector2 pos)
-    //{
+    protected CellFactory factory;
 
-    //}
-    //These are the neighbouring tiles
-    //This is on only ONCE per energy cycle. Used for singe-time actions
-    //public bool active = false;
-
-    //This determines the energy of the tile
-    //public bool isActivated = false;
-
-    //public int timesActivated = 0;
-    public int []health;
-    public int []moneyps;
-    public float []range;
-    public int []damage;
-    public int []rays;
-    public int []selfHeal;
-    public int []cash;
-    public int[] uCost;
-    
-
-    public int level = 0;
-    
-    public bool buildable;
-    public bool isWater;
-
-    public static float timeStep = 0.75f;
-
-    [SerializeField] private int hp = 10000;
-
-    public Sprite[] sprites;
-    public int animationLength;
-
-    public virtual void Upgrade()
+    public CellFactory getFactory()
     {
-        if(level+1<health.Length)
+        return factory;
+    }
+
+    public void setNeighbour(Cell prop, int index)
+    {
+        if (prop == null)
         {
-            level++;
-            health[0] = health[level];
-            damage[0] = damage[level];
-            selfHeal[0] = selfHeal[level];
-            rays[0] = rays[level];
-            moneyps[0] = moneyps[level];
-            range[0] = range[level];
-            cash[0] = cash[level];
+            return;
         }
+        neighbours[index] = prop;
+        prop.neighbours[(index + 3) % 6] = this;
+    }
+    public Cell getNeighbour(int index)
+    {
+        return neighbours[index];
     }
 
-    public void action()
-    {
-        StartCoroutine(animate());
-        onImpulse();
-    }
-    public virtual void onImpulse()
-    {
-        
-    }
-    public IEnumerator animate()
-    {
-        for(int i =0;i<animationLength;i++)
-        {
-            GetComponent<SpriteRenderer>().sprite = sprites[(level-1)* animationLength+i];
-            yield return new WaitForSeconds(timeStep / (animationLength - 1));
-        }
-        GetComponent<SpriteRenderer>().sprite = sprites[animationLength*(level-1)];
-    }
+    public int ID;
+    public Vector2Int pos;
+    protected SpriteRenderer renderer;
+
+    public static float animationDuration = 0.75f;
+
+    public int animationOffset;
+
+    [SerializeField] protected Sprite[] sprites;
+    public int animationPerUpgrade;
+    
 
     public static Vector2 getGlobalCoords(Vector2Int pos, float size)
     {
@@ -94,9 +57,9 @@ public class Cell : Propagateable
         float min = float.MaxValue;
         Vector2Int mV = new Vector2Int(0, 0);
         Vector2 tPos = new Vector2(0, 0);
-        for (int i = x - 3; i < x + 3; i++)
+        for (int i = x - 2; i < x + 2; i++)
         {
-            for (int j = y - 3; j < y + 3; j++)
+            for (int j = y - 1; j < y + 2; j++)
             {
                 tPos = getGlobalCoords(new Vector2Int(i, j), size);
                 if (Mathf.Pow(tPos.x - pos.x, 2) + Mathf.Pow(tPos.y - pos.y, 2) < min)
@@ -109,181 +72,50 @@ public class Cell : Propagateable
         return mV;
     }
     
-    public void Instantiate(Vector2Int p)
+    public void InstantiateCell(Vector2Int p,int index,CellFactory fac)
     {
         pos = p;
-        transform.localPosition = getGlobalCoords(pos,55f/64f);
+        transform.position = getGlobalCoords(pos,55f/64f);
+        ID = index;
+        factory = fac;
     }
-
-    public void InstantiateCell(Vector2Int p)
-    {
-        pos = p;
-        transform.position = (Vector2)pos;
-    }
-    public int getHp()
-    {
-        return hp;
-    }
-    public void setHp(int newHp)
-    {
-        hp = newHp;
-    }
-
-    //Returns True if the cell has been destroyed
-    public bool dealDamage(int damage)
-    {
-        health[0] -= damage;
-
-        if (health[0] <= 0)
-        {
-            for(int i = 0;i<6;i++)
-            {
-                if(neighbours[i]!=null)
-                {
-                    neighbours[i].neighbours[(i + 3) % 6] = null;
-                }
-                neighbours[i] = null;
-            }
-            GameObject.Destroy(gameObject);
-            return true;
-        }
-        if(health[0]-damage>health[level])
-        {
-            health[0] = health[level];
-            
-        }
-        return false;
-    }
-    Vector2Int getPos()
+    
+    public Vector2Int getHexPos()
     {
         return pos;
+    }
+    public Vector2 getLocalPos()
+    {
+        return transform.localPosition;
     }
 
     public void Awake()
     {
-
+        if(sprites==null)
+        {
+            return;
+        }
+        if(sprites.Length==0)
+        {
+            return;
+        }
         GetComponent<SpriteRenderer>().sprite = sprites[0];
-        setPulseAction(action);
-
-        level = 0;
-        health = new int[2];
-        range = new float[2];
-        rays = new int[2];
-        moneyps = new int[2];
-        cash = new int[2];
-        selfHeal = new int[2];
-        damage = new int[2];
-
-        health[1] = 100;
-        range[1] = 15;
-        rays[1] = 0;
-        moneyps[1] = 2;
-        cash[1] = 100;
-        damage[1] = 50;
-        selfHeal[1] = 10;
-
-        Upgrade();
     }
     private void Update()
     {
     }
 
-    public void OnMouseOver()
-    {
-        if (Input.GetMouseButtonDown(0) && UpgradeWindowShowing==false )
-        {
-            UpgradeWindowShowing = true;
-            ToggleUpgradeUI(); 
-        }
-    }
-    public void OnMouseExit()
-    {
-        if (UpgradeWindowShowing)
-        {
-            UpgradeWindowShowing = false;
-            ToggleUpgradeUI();
-        }
-    }
-    public void ToggleUpgradeUI()
-    {
-        //When upgrade window is not displayed load it from resources
-        if (UpgradeWindowShowing)
-        {
-            GameObject Upgrader = Resources.Load<GameObject>("UpgraderMk4") as GameObject;
-            Transform TargetTransform   =   Camera.main.transform;
-            foreach (Transform trans in Camera.main.GetComponentsInChildren<Transform>())
-            {
-                if (trans.gameObject.name == "Canvas") TargetTransform = trans;
-            }
+    public virtual void onCellDestroy() { }
 
-
-            GameObject InstanceOfUpgrader = Instantiate(Upgrader, transform.position, Quaternion.identity, TargetTransform);
-
-
-
-            UpgradeInterface = InstanceOfUpgrader;
-        }
-
-        //otherwise destroy it
-        else
-        {
-            try {    Destroy(UpgradeInterface); }
-            catch { }
-        }
-    }
-    
-    public void destroyCell()
+    private void OnDestroy()
     {
         for (int i = 0; i < 6; i++)
         {
+            onCellDestroy();
             if (neighbours[i] != null)
             {
                 neighbours[i].neighbours[(i + 3) % 6] = null;
             }
-            neighbours[i] = null;
-        }
-        Destroy(gameObject);
-    }
-    private void OnDestroy()
-    {
-        if(ID>=0)
-        {
-            ScoreCore.cellCount[ID]--;
-        }
-        
-        ScoreCore.Prices[0] = 4 * ScoreCore.cellCount[0];
-        ScoreCore.Prices[2] = 4 * ScoreCore.cellCount[2];
-        ScoreCore.Prices[3] = 4 * ScoreCore.cellCount[3];
-        ScoreCore.Prices[4] = 4 * ScoreCore.cellCount[4];
-        Camera.main.GetComponent<ScoreCore>().PriceDisplayers[0].text = ScoreCore.Prices[0].ToString() + "$";
-        Camera.main.GetComponent<ScoreCore>().PriceDisplayers[2].text = ScoreCore.Prices[2].ToString() + "$";
-        Camera.main.GetComponent<ScoreCore>().PriceDisplayers[3].text = ScoreCore.Prices[3].ToString() + "$";
-        Camera.main.GetComponent<ScoreCore>().PriceDisplayers[4].text = ScoreCore.Prices[4].ToString() + "$";
-
-        CellFactory CF = null;
-        Transform SemiTarget = null;
-        foreach (Transform trans in Camera.main.GetComponentsInChildren<Transform>())
-        {
-            if (trans.gameObject.name == "Canvas") SemiTarget = trans;
-        }
-        foreach (Transform trans in Camera.main.GetComponentsInChildren<Transform>())
-        {
-            if (trans.gameObject.name == "GrassFactory") SemiTarget = trans;
-        }
-        CF = SemiTarget.GetComponent<CellFactory>();
-        CellFactory.cellCount--;
-    }
-
-    ~Cell()
-    {
-        for(int i = 0;i<6;i++)
-        {
-            if(neighbours[i]!=null)
-            {
-                neighbours[i].neighbours[(i + 3) % 6] = (Propagateable)null;
-            }
-            neighbours[i] = (Propagateable)null;
         }
     }
-
 }

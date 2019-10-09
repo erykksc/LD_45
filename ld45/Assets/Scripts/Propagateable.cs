@@ -2,31 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Propagateable : MonoBehaviour
+public class Propagateable : Cell
 {
-    public int terrainType;
-    public float impulsTime = 0.5f;
+    [System.Serializable]
+    public class Properties
+
+    {
+        public int hp;
+        public int moneyps;
+    }
+
+    [SerializeField] private Properties properties;
+
     public float conveyTime = 0.1f;
     public bool activated = false;
     protected int timesActivated = 0;
     public bool propagates = true;
-    public Vector2Int pos;
+
 
     public delegate void pulseAction();
 
     private pulseAction Action = null;
 
-    public Propagateable [ ]neighbours = { null, null, null, null, null, null, };
-
-    public void refresh()
+    public IEnumerator animatePulse()
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < animationPerUpgrade; i++)
         {
-            if (neighbours[i] != null)
-            {
-                neighbours[i].neighbours[(i + 3) % 6] = this;
-            }
+            GetComponent<SpriteRenderer>().sprite = sprites[(animationOffset) * animationPerUpgrade + i];
+            yield return new WaitForSeconds(animationDuration / (animationPerUpgrade - 1));
         }
+        GetComponent<SpriteRenderer>().sprite = sprites[animationPerUpgrade * (animationOffset)];
     }
 
     public void setPulseAction(pulseAction pAction)
@@ -47,16 +52,19 @@ public class Propagateable : MonoBehaviour
             yield return new WaitForSeconds(conveyTime);
             activated = false;
             propagateImpuls();
-            yield return new WaitForSeconds(impulsTime-conveyTime);
         }
     }
     public void propagateImpuls()
     {
+        if(!propagates)
+        {
+            return;
+        }
         for(int i = 0;i<6;i++)
         {
-            if(neighbours[i]!=null)
+            if(getNeighbour(i)!=null)
             {
-                StartCoroutine(neighbours[i].receiveImpuls(this));
+                StartCoroutine(((Propagateable)getNeighbour(i)).receiveImpuls(this));
             }
         }
     }
