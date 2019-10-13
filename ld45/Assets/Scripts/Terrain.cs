@@ -6,6 +6,9 @@ public class Terrain : Cell
 {
 
     // Start is called before the first frame update
+
+    public int buildable = 0;
+
     void Start()
     {
         

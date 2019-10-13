@@ -58,6 +58,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 99515707e93ef5f4494c51d082d72104, type: 3}
   animationPerUpgrade: 0
+  buildable: 2
 --- !u!212 &4691714671789021279
 SpriteRenderer:
   m_ObjectHideFlags: 0
