@@ -391,6 +391,10 @@ MonoBehaviour:
   cellCount: 
   cellPrefabs:
   - {fileID: 6385715760298614406, guid: d77b698ec9371654e94b2ab3694ea732, type: 3}
+  - {fileID: 1733760502270338925, guid: 573c017a6ac377b4fb11b69fdd1435c5, type: 3}
+  - {fileID: 7924600508779670244, guid: 8fda2335df3f39e42a16fa97850584c2, type: 3}
+  - {fileID: 5045955412068485040, guid: 55da808293b2a4e44930c243b162c0cc, type: 3}
+  - {fileID: 4605517123957900055, guid: c4ca602f7097e7840944a3eb32c7a64b, type: 3}
   tFactory: {fileID: 906209747}
 --- !u!1 &906209745
 GameObject:

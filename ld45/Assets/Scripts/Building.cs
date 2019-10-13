@@ -31,7 +31,7 @@ public class Building : Propagateable
 
     [SerializeField] protected Properties current;
 
-    void Upgrade()
+    protected void Upgrade()
     {
         current.level++;
         if(current.level>3)

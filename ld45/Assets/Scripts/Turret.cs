@@ -5,6 +5,38 @@ using UnityEngine;
 public class Turret : Building
 {
     // Start is called before the first frame update
+    [SerializeField] SpriteRenderer head;
+    [SerializeField] float turningTime;
+    [SerializeField] Sprite[] heads;
+
+    IEnumerator Seek(GameObject target)
+    {
+        Vector2 dir1 = target.transform.position-transform.position;
+        Vector2 dir2 = head.transform.right;
+        Vector2 dir3;
+        float time = 0;
+        while(time<turningTime)
+        {
+            head.transform.right = Vector3.Normalize((dir1*(turningTime-time) + dir2*time)/turningTime);
+            time += Time.deltaTime;
+            yield return new WaitForSeconds(0.05f);
+        }
+        yield return null;
+    }
+    new protected void Upgrade()
+    {
+        base.Upgrade();
+        head.sprite = heads[current.level - 1];
+    }
+
+    private void Awake()
+    {
+        base.Awake();
+        head = GetComponentsInChildren<SpriteRenderer>()[1];
+        current.level = 0;
+        Upgrade();
+    }
+
     void Start()
     {
         
