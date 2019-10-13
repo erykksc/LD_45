@@ -477,23 +477,31 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "So you might have opened the game and had no god damn idea what to do.
-    Naturaly, you clicked \"Controls\" button like a weakling you are.I am givig you\r\nthe
-    last chance to get the rest of your dignity and go play the game like a man...
-    You still there? Well, its ok now, becouse I am here. The whole\r\nthing is to
-    build and defend your base from enemies. Simple stuff right? Lets start with the
-    buildings availabe to you. You got your generator\r\n(I GOOOOT THE POOOWER). Its
-    the heart of your base that genareates electric impulses that move it all to life.
-    An impulse will spread out communism\r\nand power all of your buildings, making
-    them do their desgined function. Your buildings are as follows\r\n$Money Generator$
-    with each impulse it will genarate a small amount of currency. You need currency
-    to build new buildings.\r\nTurret-its a basic def struture, that hase ammunition
-    which will be shoot towards your enemies (and Kennedy). Each impulse make them
-    recharge one bullet.\r\nWall-like, I uhhh... what else you want me to explain?
-    ITS A FUCKING WALL. Its not? Ok it regenarates some of it hitpoints with each
-    impulse\r\nAnd your enemies enemies: energy meath-heads that want to get to your
-    generator. KILL THEM WITH CRUELTY.\r\nThats basicly it. Go and play the game,
-    pussy"
+  m_Text: "So, you might have opened the game and have no god damn idea what to do.
+    Naturally, you clicked \u201CControls\u201D button like a weakling you are. I\u2019m
+    giving you the last chance to get the rest of your dignity and to go play the
+    game like a man\u2026 You still there? Well, it\u2019s OK now, because I\u2019m
+    here. The whole thing is to build and defend your base from enemies. Simple stuff
+    right? Let\u2019s start with the buildings available to you.\r\n\nYou got your
+    GENERATOR. It\u2019s the heart of your base that generates electric impulses that
+    move it all to life. An impulse will spread out and power all of your buildings,
+    making them do their designed function and generally your base will appear to
+    be more fancy than it actually is.\r\n\r\nMINE - $Money Maker$ with each impulse
+    will generate a small amount of currency. You need currency to set up new buildings.
+    Cost of \u2018Mine\u2019 will increase depending on the amount of Mines you already
+    posses. You can upgrade it to get more money per impulse.\r\n\r\nTURRET is a basic
+    defensive structure, that shoots lasers. With each upgrade, turret\u2019s damage
+    and range is increased, making it more deadly.\r\n\r\nWALL is like, I uhhh\u2026
+    what else you want me to explain? IT\u2019S A FUCKING WALL. Isn\u2019t it? Ok,
+    it regenerates some of its hitpoints with each impulse. Walls\u2019 HP and HP-reg
+    is increased with each upgrade.\r\n\r\nThere is also a limit to the amount of
+    buildings you can set up. Sucks major ass, so we are giving you supply SILO to
+    increase number of structures you can have, so that\u2019s nice.\r\n\r\nAnd your
+    enemies: energy thirsty spiders that want to get to your generator. KILL THEM
+    WITH CRUELTY. If not, you will die and dying isn\u2019t exactly fun or interactive
+    gameplay.\r\n\r\nIf you haven't figured it out yet, WASD / ARROW KEYS move the
+    camera and you can zoom in/out with the SCROLL WHEEL.\nThat\u2019s basically it.
+    Go and play the game now."
 --- !u!222 &399533948
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -938,9 +946,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834739077}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1345627655}
   - {fileID: 794640027}
@@ -952,8 +960,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1600, y: 900}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &834739079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,8 +1010,8 @@ Canvas:
   m_GameObject: {fileID: 834739077}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 395208817}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
