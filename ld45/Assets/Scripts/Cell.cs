@@ -250,11 +250,11 @@ public class Cell : Propagateable
         {
             ScoreCore.cellCount[ID]--;
         }
-        
-        ScoreCore.Prices[0] = 4 * ScoreCore.cellCount[0];
-        ScoreCore.Prices[2] = 4 * ScoreCore.cellCount[2];
-        ScoreCore.Prices[3] = 4 * ScoreCore.cellCount[3];
-        ScoreCore.Prices[4] = 4 * ScoreCore.cellCount[4];
+
+        ScoreCore.Prices[0] = 8 * ScoreCore.cellCount[0];
+        ScoreCore.Prices[2] = 6 * ScoreCore.cellCount[2];
+        ScoreCore.Prices[3] = 3 * ScoreCore.cellCount[3];
+        ScoreCore.Prices[4] = 8 * ScoreCore.cellCount[4];
         Camera.main.GetComponent<ScoreCore>().PriceDisplayers[0].text = ScoreCore.Prices[0].ToString() + "$";
         Camera.main.GetComponent<ScoreCore>().PriceDisplayers[2].text = ScoreCore.Prices[2].ToString() + "$";
         Camera.main.GetComponent<ScoreCore>().PriceDisplayers[3].text = ScoreCore.Prices[3].ToString() + "$";

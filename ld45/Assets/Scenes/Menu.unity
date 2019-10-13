@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 171910162}
   - component: {fileID: 171910164}
   - component: {fileID: 171910163}
+  - component: {fileID: 171910165}
   m_Layer: 0
   m_Name: menu
   m_TagString: Untagged
@@ -146,11 +147,11 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171910161}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 343}
-  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 834739078}
-  m_RootOrder: 3
+  m_Father: {fileID: 983121771}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -164,7 +165,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171910161}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -214,6 +215,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171910161}
   m_CullTransparentMesh: 0
+--- !u!114 &171910165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171910161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 8e680708638075749ad22edb7b774b69, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &395208815
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +295,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0
-  far clip plane: 1000
+  far clip plane: 2000
   field of view: 60
   orthographic: 1
   orthographic size: 436.9846
@@ -293,10 +322,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395208815}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 834739078}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -470,30 +498,38 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 200
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "So you might have opened the game and had no god damn idea what to do.
-    Naturaly, you clicked \"Controls\" button like a weakling you are.I am givig you\r\nthe
-    last chance to get the rest of your dignity and go play the game like a man...
-    You still there? Well, its ok now, becouse I am here. The whole\r\nthing is to
-    build and defend your base from enemies. Simple stuff right? Lets start with the
-    buildings availabe to you. You got your generator\r\n(I GOOOOT THE POOOWER). Its
-    the heart of your base that genareates electric impulses that move it all to life.
-    An impulse will spread out communism\r\nand power all of your buildings, making
-    them do their desgined function. Your buildings are as follows\r\n$Money Generator$
-    with each impulse it will genarate a small amount of currency. You need currency
-    to build new buildings.\r\nTurret-its a basic def struture, that hase ammunition
-    which will be shoot towards your enemies (and Kennedy). Each impulse make them
-    recharge one bullet.\r\nWall-like, I uhhh... what else you want me to explain?
-    ITS A FUCKING WALL. Its not? Ok it regenarates some of it hitpoints with each
-    impulse\r\nAnd your enemies enemies: energy meath-heads that want to get to your
-    generator. KILL THEM WITH CRUELTY.\r\nThats basicly it. Go and play the game,
-    pussy"
+  m_Text: "So, you might have opened the game and have no god damn idea what to do.
+    Naturally, you clicked \u201CControls\u201D button like a weakling you are. I\u2019m
+    giving you the last chance to get the rest of your dignity and to go play the
+    game like a man\u2026 You still there? Well, it\u2019s OK now, because I\u2019m
+    here. The whole thing is to build and defend your base from enemies. Simple stuff
+    right? Let\u2019s start with the buildings available to you.\r\n\nYou got your
+    GENERATOR. It\u2019s the heart of your base that generates electric impulses that
+    move it all to life. An impulse will spread out and power all of your buildings,
+    making them do their designed function and generally your base will appear to
+    be more fancy than it actually is.\r\n\r\nMINE - $Money Maker$ with each impulse
+    will generate a small amount of currency. You need currency to set up new buildings.
+    Cost of \u2018Mine\u2019 will increase depending on the amount of Mines you already
+    posses. You can upgrade it to get more money per impulse.\r\n\r\nTURRET is a basic
+    defensive structure, that shoots lasers. With each upgrade, turret\u2019s damage
+    and range is increased, making it more deadly.\r\n\r\nWALL is like, I uhhh\u2026
+    what else you want me to explain? IT\u2019S A FUCKING WALL. Isn\u2019t it? Ok,
+    it regenerates some of its hitpoints with each impulse. Walls\u2019 HP and HP-reg
+    is increased with each upgrade.\r\n\r\nThere is also a limit to the amount of
+    buildings you can set up. Sucks major ass, so we are giving you supply SILO to
+    increase number of structures you can have, so that\u2019s nice.\r\n\r\nAnd your
+    enemies: energy thirsty spiders that want to get to your generator. KILL THEM
+    WITH CRUELTY. If not, you will die and dying isn\u2019t exactly fun or interactive
+    gameplay.\r\n\r\nIf you haven't figured it out yet, WASD / ARROW KEYS move the
+    camera and you can zoom in/out with the SCROLL WHEEL.\nThat\u2019s basically it.
+    Go and play the game now."
 --- !u!222 &399533948
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -692,7 +728,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 200
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -817,10 +853,10 @@ RectTransform:
   m_Father: {fileID: 834739078}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -475, y: -284}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchorMin: {x: 0.3, y: 0.41}
+  m_AnchorMax: {x: 0.43, y: 0.61}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &794640028
 MonoBehaviour:
@@ -925,7 +961,7 @@ GameObject:
   - component: {fileID: 834739080}
   - component: {fileID: 834739079}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: OverlayingCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -938,22 +974,21 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834739077}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1345627655}
   - {fileID: 794640027}
   - {fileID: 742121066}
-  - {fileID: 171910162}
-  m_Father: {fileID: 395208818}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1600, y: 900}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &834739079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,9 +1037,9 @@ Canvas:
   m_GameObject: {fileID: 834739077}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 395208817}
+  m_PlaneDistance: 0
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -1014,6 +1049,105 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
+--- !u!1 &983121767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 983121771}
+  - component: {fileID: 983121770}
+  - component: {fileID: 983121769}
+  - component: {fileID: 983121768}
+  m_Layer: 5
+  m_Name: BackgroundCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &983121768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983121767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &983121769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983121767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+--- !u!223 &983121770
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983121767}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 1
+  m_Camera: {fileID: 395208817}
+  m_PlaneDistance: 0
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &983121771
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983121767}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 171910162}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &1082771956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,10 +1325,10 @@ RectTransform:
   m_Father: {fileID: 834739078}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -266, y: 12}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchorMin: {x: 0.07, y: 0.41}
+  m_AnchorMax: {x: 0.22, y: 0.61}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1345627656
 MonoBehaviour:
@@ -1347,7 +1481,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 200
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
