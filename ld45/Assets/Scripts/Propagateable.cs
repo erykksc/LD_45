@@ -4,16 +4,6 @@ using UnityEngine;
 
 public class Propagateable : Cell
 {
-    [System.Serializable]
-    public class Properties
-
-    {
-        public int hp;
-        public int moneyps;
-    }
-
-
-    [SerializeField] private Properties properties;
 
     public float conveyTime = 0.1f;
     public bool activated = false;
@@ -29,10 +19,10 @@ public class Propagateable : Cell
     {
         for (int i = 0; i < animationPerUpgrade; i++)
         {
-            GetComponent<SpriteRenderer>().sprite = sprites[(animationOffset) * animationPerUpgrade + i];
+            renderer.sprite = sprites[(animationOffset) * animationPerUpgrade + i];
             yield return new WaitForSeconds(animationDuration / (animationPerUpgrade - 1));
         }
-        GetComponent<SpriteRenderer>().sprite = sprites[animationPerUpgrade * (animationOffset)];
+        renderer.sprite = sprites[animationPerUpgrade * (animationOffset)];
     }
 
     public void setPulseAction(pulseAction pAction)
@@ -44,12 +34,12 @@ public class Propagateable : Cell
     {
         if(timesActivated<origin.timesActivated)
         {
+            timesActivated = origin.timesActivated;
+            activated = true;
             if (Action != null)
             {
                 Action();
             }
-            timesActivated = origin.timesActivated;
-            activated = true;
             yield return new WaitForSeconds(conveyTime);
             activated = false;
             propagateImpuls();
@@ -69,6 +59,7 @@ public class Propagateable : Cell
             }
         }
     }
+    
 
     void Start()
     {

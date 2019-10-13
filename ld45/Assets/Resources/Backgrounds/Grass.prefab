@@ -44,13 +44,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ab24456e945544bb46ce2432b393a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distToGen: 0
+  neighbours:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ID: 0
   pos: {x: 0, y: 0}
   animationOffset: 0
   sprites:
   - {fileID: 21300000, guid: 11655d3953391ec4f9d2749bc7d74954, type: 3}
   animationPerUpgrade: 0
+  buildable: 0
+  distToGen: 0
 --- !u!212 &-582199715975865664
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -88,7 +96,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

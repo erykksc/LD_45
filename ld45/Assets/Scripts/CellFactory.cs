@@ -4,8 +4,36 @@ using UnityEngine;
 
 public class CellFactory : MonoBehaviour
 {
-    
-    private int[] cellCount;
+    protected Vector2Int getNeighbourGridPos(Vector2Int pos, int index)
+    {
+        if (index == 0)
+        {
+            return new Vector2Int(pos.x + 1, pos.y);
+        }
+        if (index == 3)
+        {
+            return new Vector2Int(pos.x - 1, pos.y);
+        }
+        if (index == 1)
+        {
+            return new Vector2Int(pos.x - (pos.y) % 2, pos.y + 1);
+        }
+        if (index == 4)
+        {
+            return new Vector2Int(pos.x - (pos.y) % 2 + 1, pos.y - 1);
+        }
+        if (index == 2)
+        {
+            return new Vector2Int(pos.x - (pos.y) % 2, pos.y - 1);
+        }
+        if (index == 5)
+        {
+            return new Vector2Int(pos.x - (pos.y) % 2 + 1, pos.y + 1);
+        }
+        return new Vector2Int(-1, -1);
+    }
+
+    [SerializeField] private int[] cellCount;
 
     public int getCellCount(int index)
     {
@@ -29,6 +57,8 @@ public class CellFactory : MonoBehaviour
     protected List<Cell> cells = new List<Cell>();
 
     [SerializeField] private Cell [] cellPrefabs;
+
+   
 
     public Cell Find(Vector2Int pos)
     {
@@ -106,8 +136,9 @@ public class CellFactory : MonoBehaviour
     }
     protected void Awake()
     {
-       if(cellCount == null&&cellPrefabs!=null)
+       if(cellPrefabs!=null)
         {
+            //Debug.Log("Instantiating...");
             cellCount = new int[cellPrefabs.Length];
         }
        if(cellPrefabs==null)
@@ -118,12 +149,15 @@ public class CellFactory : MonoBehaviour
     public void removeFromList(Cell cell)
     {
         Debug.Log("In CellFactory, removeFromList: Cell removed from list");
+
         if(cell==null)
         {
             Debug.Log("In Cellfactory, reomveFromList: null argument passed");
             return;
         }
-        for(int i = 0;i<cells.Count;i++)
+        Debug.Log("Destroying...");
+        cellCount[cell.ID]--;
+        for (int i = 0;i<cells.Count;i++)
         {
             if(cells[i]==cell)
             {
@@ -131,5 +165,18 @@ public class CellFactory : MonoBehaviour
                 cells.RemoveAt(cells.Count - 1);
             }
         }
+    }
+    public void addToList(Cell cell)
+    {
+        if(cell==null)
+        {
+            Debug.Log("In CellFactorym addToList: null argument passed");
+            return;
+        }
+        if(cell.ID>-1&&cell.ID<cellCount.Length)
+        {
+            cellCount[cell.ID]++;
+        }
+        
     }
 }

@@ -51,7 +51,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  distToGen: 0
   ID: 0
   pos: {x: 0, y: 0}
   animationOffset: 0
@@ -59,6 +58,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b4fe2899cff549b7da7dd61c449bf4b7, type: 3}
   animationPerUpgrade: 0
   buildable: 3
+  distToGen: 0
 --- !u!212 &4213272268738278356
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

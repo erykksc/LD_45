@@ -204,6 +204,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 906209746}
+  - {fileID: 730975024}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -344,6 +345,53 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &730975023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 730975024}
+  - component: {fileID: 730975025}
+  m_Layer: 0
+  m_Name: BuildingFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &730975024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730975023}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 27.973146, y: 21.052565, z: -28.007812}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 599833000}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &730975025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730975023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48f3b5af3ca180941af721943cb4f513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellCount: 
+  cellPrefabs:
+  - {fileID: 6385715760298614406, guid: d77b698ec9371654e94b2ab3694ea732, type: 3}
+  tFactory: {fileID: 906209747}
 --- !u!1 &906209745
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9a50034a2300148859f1c17c61e4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cellCount: 
   cellPrefabs:
   - {fileID: 9034786537963886701, guid: b96bcf81e91c0c54d92864d42be8160f, type: 3}
   - {fileID: 1494386658458621976, guid: cf996d7e8891b4a40a8029b46fc32338, type: 3}

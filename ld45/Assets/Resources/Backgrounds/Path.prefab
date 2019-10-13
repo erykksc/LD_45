@@ -51,13 +51,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  distToGen: 0
   ID: 0
   pos: {x: 0, y: 0}
   animationOffset: 0
   sprites:
   - {fileID: 21300000, guid: 320c0a6babe712bc8b7e333e240b2297, type: 3}
   animationPerUpgrade: 0
+  buildable: 0
+  distToGen: 0
 --- !u!212 &3803341513704043986
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -95,7 +96,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

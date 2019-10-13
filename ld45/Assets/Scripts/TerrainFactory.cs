@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class TerrainFactory : CellFactory
 {
+
+    [SerializeField] private int buildable;
+
+    [SerializeField] private Vector2Int size;
+
     // Start is called before the first frame update
     bool getRandomBool(float prob)
     {
         prob *= 1000f;
         return Random.Range(0, 1001) <= prob;
+    }
+
+    public Vector2Int getSize()
+    {
+        return size;
     }
 
     bool checkHexCoords(Vector2Int pos)
@@ -35,39 +45,6 @@ public class TerrainFactory : CellFactory
         return getRandomBool((height - (Mathf.Pow(pos.x, 2) + Mathf.Pow(pos.y / ratio, 2))) / (height));
     }
 
-    [SerializeField] private int buildable;
-
-    [SerializeField] private Vector2Int size;
-
-    Vector2Int getNeighbourGridPos(Vector2Int pos, int index)
-    {
-        if (index == 0)
-        {
-            return new Vector2Int(pos.x + 1, pos.y);
-        }
-        if (index == 3)
-        {
-            return new Vector2Int(pos.x - 1, pos.y);
-        }
-        if (index == 1)
-        {
-            return new Vector2Int(pos.x - (pos.y) % 2, pos.y + 1);
-        }
-        if (index == 4)
-        {
-            return new Vector2Int(pos.x - (pos.y) % 2 + 1, pos.y - 1);
-        }
-        if (index == 2)
-        {
-            return new Vector2Int(pos.x - (pos.y) % 2, pos.y - 1);
-        }
-        if (index == 5)
-        {
-            return new Vector2Int(pos.x - (pos.y) % 2 + 1, pos.y + 1);
-        }
-        return new Vector2Int(-1, -1);
-    }
-
     public void GenerateMap()
     {
         GenerateGrid();
@@ -77,21 +54,31 @@ public class TerrainFactory : CellFactory
         float rratio2 = 0.4f + Random.Range(0, 100) / 50f;
 
         
-        for(int i = 0;i<3;i++)
+        for(int i = 0;i<3+ (size.x*size.y)/300f;i++)
         {
             GenerateSpot(new Vector2Int(Random.Range(0,size.x), Random.Range(0,size.y)), 6, 4+Random.Range(0,2), Distr2, 0.75f + Random.Range(0,100)/75f);
         }
 
+        // Path Generator
         if (Random.Range(0, 2) == 1)
         {
             GenerateLine(new Vector2Int(Random.Range(0, size.x), 0), 0, 200, 2);
-            GenerateLine(new Vector2Int(Random.Range(0, size.x), 0), 0, 200, 7);
 
         }
         else
         {
             GenerateLine(new Vector2Int(0, Random.Range(0, size.y)), 0, 200, 2);
-            GenerateLine(new Vector2Int(0, Random.Range(0, size.y)), 0, 200, 7);
+        }
+
+        // River Generator
+        if (Random.Range(0, 2) == 1)
+        {
+            GenerateLine(new Vector2Int(Random.Range(10, size.x-10), 0), 0, 200, 7);
+
+        }
+        else
+        {
+            GenerateLine(new Vector2Int(0, Random.Range(10, size.y-10)), 0, 200, 7);
         }
 
 
@@ -120,28 +107,43 @@ public class TerrainFactory : CellFactory
         {
             for(int j = 0;j<6; j++)
             {
-                if(Mathf.Pow(i,2)+Mathf.Pow(j,2)<36&& ((Terrain)cells[hexToIndex(center + new Vector2Int(i, j))]).buildable != 2)
+                if(Mathf.Pow(i,2)+Mathf.Pow(j,2)<36)
                 {
-                    Cell cell = Add(center+new Vector2Int(i, j), 0);
-                    Swap(cells[hexToIndex(center+new Vector2Int(i, j))], cell);
+                    if(((Terrain)cells[hexToIndex(center + new Vector2Int(i, j))]).buildable!=3)
+                    {
+                        Cell cell = Add(center + new Vector2Int(i, j), 0);
+                        Swap(cells[hexToIndex(center + new Vector2Int(i, j))], cell);
+                    }
 
-                    cell = Add(center + new Vector2Int(-i, j), 0);
-                    Swap(cells[hexToIndex(center + new Vector2Int(-i, j))], cell);
+                    if (((Terrain)cells[hexToIndex(center + new Vector2Int(-i, j))]).buildable != 3)
+                    {
+                        Cell cell = Add(center + new Vector2Int(-i, j), 0);
+                        Swap(cells[hexToIndex(center + new Vector2Int(-i, j))], cell);
+                    }
 
-                    cell = Add(center + new Vector2Int(i, -j), 0);
-                    Swap(cells[hexToIndex(center + new Vector2Int(i, -j))], cell);
+                    if (((Terrain)cells[hexToIndex(center + new Vector2Int(i, -j))]).buildable != 3)
+                    {
+                        Cell cell = Add(center + new Vector2Int(i, -j), 0);
+                        Swap(cells[hexToIndex(center + new Vector2Int(i, -j))], cell);
+                    }
 
-                    cell = Add(center + new Vector2Int(-i, -j), 0);
-                    Swap(cells[hexToIndex(center + new Vector2Int(-i, -j))], cell);
+                    if (((Terrain)cells[hexToIndex(center + new Vector2Int(-i, -j))]).buildable != 3)
+                    {
+                        Cell cell = Add(center + new Vector2Int(-i, -j), 0);
+                        Swap(cells[hexToIndex(center + new Vector2Int(-i, -j))], cell);
+                    }
                 }
             }
         }
 
-        Debug.Log($"IS prob func working: {getRandomBool(2)}");
+        ((Terrain)cells[hexToIndex(new Vector2Int(size.x / 2, size.y / 2))]).distToGen = 0;
+        Dijkstra(((Terrain)cells[hexToIndex(new Vector2Int(size.x / 2, size.y / 2))]));
+
+        //Debug.Log($"IS prob func working: {getRandomBool(2)}");
         Debug.Log($"cells Count: {cells.Count}");
     }
 
-    private int hexToIndex(Vector2Int pos)
+    public int hexToIndex(Vector2Int pos)
     {
         return pos.y + pos.x * size.x;
     }
@@ -272,9 +274,34 @@ public class TerrainFactory : CellFactory
         }
     }
 
-    void Dijkstra(Vector2Int pos)
+    void Dijkstra(Terrain cell)
     {
+        Terrain neighbour;
+        for(int i = 0;i<6;i++)
+        {
+            neighbour = (Terrain)cell.getNeighbour(i);
+            if(neighbour!=null)
+            {
+                if(neighbour.distToGen>cell.distToGen+1&&(neighbour.buildable==0||neighbour.buildable==1))
+                {
+                    neighbour.distToGen = cell.distToGen+1;
+                    Dijkstra(neighbour);
+                }
+            }
+        }
+    }
 
+    new Terrain Find(Vector2Int pos)
+    {
+        if(!checkHexCoords(pos))
+        {
+            return null;
+        }
+        if(hexToIndex(pos)>cells.Count-1||hexToIndex(pos)<0)
+        {
+            return null;
+        }
+        return (Terrain) cells[hexToIndex(pos)];
     }
 
     void Start()

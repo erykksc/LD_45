@@ -25,7 +25,6 @@ public class Cell : MonoBehaviour
     }
     [SerializeField] private Cell[] neighbours = { null, null, null, null, null, null, };
 
-    public int distToGen;//Dijkstra
 
     protected CellFactory factory;
 
@@ -97,6 +96,7 @@ public class Cell : MonoBehaviour
         ID = index;
         factory = fac;
         isCellShown = shown;
+        factory.addToList(this);
     }
     
     public Vector2Int getHexPos()
@@ -128,6 +128,8 @@ public class Cell : MonoBehaviour
 
     protected void OnDestroy()
     {
+
+        //Debug.Log("Destroying...");
         factory.removeFromList(this);
         for (int i = 0; i < 6; i++)
         {

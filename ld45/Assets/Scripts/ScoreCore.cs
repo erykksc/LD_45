@@ -7,7 +7,7 @@ using UnityEditor;
 public class ScoreCore : MonoBehaviour
 {
     [Header("Cash related")]
-    public static int Cash=0;
+    public static float Cash=0;
     public static int[] Prices = { 0, 999, 0, 0, 0 };
 
     public static int[] cellCount = { 0, 0, 0, 0, 0 };
