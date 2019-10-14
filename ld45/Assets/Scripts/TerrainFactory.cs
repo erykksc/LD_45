@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class TerrainFactory : CellFactory
 {
-
-    [SerializeField] private int buildable;
+    
 
     [SerializeField] private Vector2Int size;
 
@@ -26,10 +25,9 @@ public class TerrainFactory : CellFactory
         return (pos.x > -1 && pos.y > -1 && pos.x < size.x && pos.y < size.y);
     }
 
-    private void Awake()
+    new protected void Awake()
     {
         base.Awake();
-        GenerateMap();
     }
 
     delegate bool distribution(Vector2Int pos, float size, float ratio);
@@ -49,7 +47,7 @@ public class TerrainFactory : CellFactory
     {
         GenerateGrid();
 
-        GenerateRocks(5, 3);
+        GenerateRocks(5, 1);
 
         float rratio2 = 0.4f + Random.Range(0, 100) / 50f;
 
@@ -239,6 +237,12 @@ public class TerrainFactory : CellFactory
                 {
                     origin = Add(p, index);
                     temp = cells[hexToIndex(p)];
+
+                    //Water over sand condition - to Fix
+                    if(temp.ID==7&&origin.ID==4)
+                    {
+                        continue;
+                    }
                     Swap(temp, origin);
                 }
             }

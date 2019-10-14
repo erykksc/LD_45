@@ -31,7 +31,7 @@ public class Building : Propagateable
 
     [SerializeField] protected Properties current;
 
-    protected void Upgrade()
+    public virtual void Upgrade()
     {
         current.level++;
         if(current.level>3)
@@ -48,9 +48,9 @@ public class Building : Propagateable
         
     }
 
-    Terrain terrainUnder;
+    [SerializeField] protected Cell terrainUnder;
 
-    public void setTerrain(Terrain u)
+    public void setTerrain(Cell u)
     {
         terrainUnder = u;
     }
@@ -58,7 +58,7 @@ public class Building : Propagateable
     protected void onPulse()
     {
         StartCoroutine(animatePulse());
-        current.hp += current.selfHeal;
+        receiveDamage(-current.selfHeal);
         ScoreCore.Cash += current.moneyps;
         StartCoroutine(animatePulse());
     }
@@ -73,12 +73,16 @@ public class Building : Propagateable
         
     }
 
-    bool receiveDamage(int damage)
+    protected bool receiveDamage(float damage)
     {
         current.hp -= damage;
         if(current.hp<=0)
         {
             return true;
+        }
+        if(current.hp>levels[current.level-1].hp)
+        {
+            current.hp = levels[current.level-1].hp;
         }
         return false;
     }

@@ -10,36 +10,46 @@ public class BuildingFactory : CellFactory
     private void Awake()
     {
         base.Awake();
-        if(tFactory==null)
+    }
+
+    public void Initialize()
+    {
+        if (tFactory == null)
         {
             Debug.Log("In buildingFactory, Awake: Lacking tFactory object");
             return;
         }
         Build(new Vector2Int(tFactory.getSize().x / 2, tFactory.getSize().y / 2), 0);
-        Build(new Vector2Int((tFactory.getSize().x / 2)+1, tFactory.getSize().y / 2), 2);
-
-        // 0 must correspond to generator building
     }
 
     public void Build(Vector2Int pos,int index)
     {
-        Add(pos, index);
+        for(int i = 0;i<cells.Count;i++)
+        {
+            if(pos==cells[i].pos)
+            {
+                return;
+            }
+        }
+        Terrain under = (Terrain)tFactory.Find(pos);
+        if(under.buildable!=0)
+        {
+            return;
+        }
+        Add(pos, index).setTerrain(under);
     }
 
     new Building Add(Vector2Int pos,int index)
     {
         Building b = (Building)base.Add(pos, index);
-        b.setTerrain((Terrain)tFactory.Find(tFactory.hexToIndex(pos)));
         Vector2Int npos;
         for(int i = 0;i<6;i++)
         {
             npos = getNeighbourGridPos(pos, i);
-            Debug.Log($"NPos:{npos}");
             for(int j = 0;j<cells.Count;j++)
             {
                 if(cells[j].pos==npos)
                 {
-                    Debug.Log("Connection forced");
                     b.setNeighbour(cells[j], i);
                 }
             }

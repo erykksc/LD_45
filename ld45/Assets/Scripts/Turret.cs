@@ -33,6 +33,8 @@ public class Turret : Building
     {
         base.Awake();
         head = GetComponentsInChildren<SpriteRenderer>()[1];
+        head.transform.localPosition = new Vector2(0, 0);
+
         current.level = 0;
         Upgrade();
     }

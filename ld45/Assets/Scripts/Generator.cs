@@ -7,12 +7,15 @@ public class Generator : Building
     // Start is called before the first frame update
     float timeSinceLastPulse;
     
-
+    new public void Upgrade()
+    {
+        base.Upgrade();
+    }
     void Start()
     {
         
     }
-    private void Awake()
+    new private void Awake()
     {
         base.Awake();
         timeSinceLastPulse = 1f/current.pulseFrequency;

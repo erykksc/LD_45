@@ -5,6 +5,12 @@ using UnityEngine;
 public class Wall : Building
 {
     // Start is called before the first frame update
+    public override void Upgrade()
+    {
+        base.Upgrade();
+        animationOffset = current.level - 1;
+    }
+
     void Start()
     {
         
