@@ -11,7 +11,7 @@ public class Controller : MonoBehaviour
 
     float buildingsAvailable;
 
-    Vector2 sSize;
+    Vector2 cpmax,cpmin;
 
     [SerializeField] Camera cam;
     [SerializeField] TerrainFactory tFactory;
@@ -25,10 +25,13 @@ public class Controller : MonoBehaviour
         }
         tFactory.GenerateMap();
         bFactory.Initialize();
-        sSize.x = Screen.width;
-        sSize.y = Screen.height;
-        sSize = Camera.main.ScreenToWorldPoint(sSize);
-        cam.transform.localPosition = Camera.main.ScreenToWorldPoint(Cell.getGlobalCoords(tFactory.getSize(),55f/64f)*0.5f);
+
+        Vector2 ssize;
+        ssize = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width/2, Screen.height/2, 10));
+
+        cpmax = Cell.getGlobalCoords(tFactory.getSize(), 55f / 64f)-ssize;
+        cpmin = new Vector2(0, 0)+ssize;
+        cam.transform.localPosition = (cpmin+cpmax)/ 2;
     }
 
     void Start()
@@ -41,28 +44,36 @@ public class Controller : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            cam.transform.localPosition += new Vector3(-3, 0, 0) * Time.deltaTime;
+            cam.transform.localPosition += new Vector3(-5, 0, 0) * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.W))
         {
-            cam.transform.localPosition += new Vector3(0, 3, 0) * Time.deltaTime;
+            cam.transform.localPosition += new Vector3(0, 5, 0) * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            cam.transform.localPosition += new Vector3(0, -3, 0) * Time.deltaTime;
+            cam.transform.localPosition += new Vector3(0, -5, 0) * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            cam.transform.localPosition += new Vector3(3, 0, 0) * Time.deltaTime;
+            cam.transform.localPosition += new Vector3(5, 0, 0) * Time.deltaTime;
         }
         Vector2 cPos = cam.transform.localPosition;
-        if (cPos.x<sSize.x)
+        if (cPos.x<cpmin.x)
         {
-            cPos.x = sSize.x;
+            cPos.x = cpmin.x;
         }
-        if (cPos.y < 0)
+        if (cPos.y < cpmin.y)
         {
-            cPos.y = 0;
+            cPos.y = cpmin.y;
+        }
+        if (cPos.x > cpmax.x)
+        {
+            cPos.x = cpmax.x;
+        }
+        if (cPos.y > cpmax.y)
+        {
+            cPos.y = cpmax.y;
         }
         cam.transform.localPosition = cPos;
 
