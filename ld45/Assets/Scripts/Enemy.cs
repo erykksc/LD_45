@@ -104,6 +104,7 @@ public class Enemy : MonoBehaviour
         vel = vel * (1 -0.5f * Time.fixedDeltaTime);
 
         p = p - dest;
+        //To Optimize
         if(tFactory.Find(Cell.getHexCoords(transform.localPosition, 55f / 64f))==dstCell)
         {
             pickDest();

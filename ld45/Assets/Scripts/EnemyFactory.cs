@@ -26,7 +26,7 @@ public class EnemyFactory : MonoBehaviour
     }
     public void Initialize()
     {
-        Spawn(0);
+        SpawnBatch(50);
     }
 
     public void Spawn(int index)
@@ -37,9 +37,12 @@ public class EnemyFactory : MonoBehaviour
         }
         Enemy e = Instantiate(preEnemies[index]);
 
-        int y = Random.Range(0, 4);
+        //e.transform.parent = transform;
+
+        int y = Random.Range(0, 3);
         Vector2Int pos;
-        //if(y==0)
+        int doomCounter = 0;
+        if(Random.Range(0,4)==0)
         {
             while(true)
             {
@@ -48,13 +51,74 @@ public class EnemyFactory : MonoBehaviour
                 {
                     break;
                 }
+                if(doomCounter>100)
+                {
+                    Destroy(e.gameObject);
+                    return;
+                }
+                doomCounter++;
             }
         }
+        else if(Random.Range(0, 3) == 0)
+        {
+            while (true)
+            {
+                pos = new Vector2Int(tFactory.getSize().x-1, Random.Range(0, tFactory.getSize().y));
+                if (((Terrain)tFactory.Find(pos)).distToGen < 9999)
+                {
+                    break;
+                }
+                if (doomCounter > 100)
+                {
+                    Destroy(e.gameObject);
+                    return;
+                }
+                doomCounter++;
+            }
+        }
+        else if (Random.Range(0, 2) == 0)
+        {
+            while (true)
+            {
+                pos = new Vector2Int( Random.Range(0, tFactory.getSize().x),0);
+                if (((Terrain)tFactory.Find(pos)).distToGen < 9999)
+                {
+                    break;
+                }
+                if (doomCounter > 100)
+                {
+                    Destroy(e.gameObject);
+                    return;
+                }
+                doomCounter++;
+            }
+        }
+        else
+        {
+            while (true)
+            {
+                pos = new Vector2Int(Random.Range(0, tFactory.getSize().x), tFactory.getSize().y-1);
+                if (((Terrain)tFactory.Find(pos)).distToGen < 9999)
+                {
+                    break;
+                }
+                if (doomCounter > 100)
+                {
+                    Destroy(e.gameObject);
+                    return;
+                }
+                doomCounter++;
+            }
+        }
+
         e.Instantiate(Cell.getGlobalCoords(pos,55f/64f), tFactory, this);
     }
     public void SpawnBatch(int count)
     {
-
+        for(int i = 0;i<count;i++)
+        {
+            Spawn(0);
+        }
     }
 
     public void AddToList(Enemy e)
@@ -75,9 +139,6 @@ public class EnemyFactory : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 dist;
-        Vector2 repulsion;
-        float ddist;
         
     }
 }
