@@ -23,10 +23,14 @@ public class Turret : Building
         }
         yield return null;
     }
-    new protected void Upgrade()
+    public override void Upgrade()
     {
+        
         base.Upgrade();
-        head.sprite = heads[current.level - 1];
+        if (head != null&&current.level-1<3)
+        {
+            head.sprite = heads[current.level - 1];
+        }
     }
 
     private void Awake()
@@ -37,6 +41,7 @@ public class Turret : Building
 
         current.level = 0;
         Upgrade();
+        head.sprite = heads[current.level - 1];
     }
 
     void Start()
