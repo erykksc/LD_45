@@ -9,6 +9,7 @@ public class Silos : Building
     {
         base.Upgrade();
         animationOffset = current.level - 1;
+        renderer.sprite = sprites[animationPerUpgrade * (animationOffset)];
     }
 
     void Start()

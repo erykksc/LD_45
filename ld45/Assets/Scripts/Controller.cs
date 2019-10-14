@@ -27,7 +27,8 @@ public class Controller : MonoBehaviour
         bFactory.Initialize();
 
         Vector2 ssize;
-        ssize = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width/2, Screen.height/2, 10));
+        ssize = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 10f));
+        
 
         cpmax = Cell.getGlobalCoords(tFactory.getSize(), 55f / 64f)-ssize;
         cpmin = new Vector2(0, 0)+ssize;

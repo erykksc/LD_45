@@ -27,7 +27,7 @@ public class Turret : Building
     {
         
         base.Upgrade();
-        if (head != null&&current.level-1<3)
+        if (head != null&&current.level<4)
         {
             head.sprite = heads[current.level - 1];
         }
