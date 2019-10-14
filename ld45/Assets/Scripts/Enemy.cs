@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
         factory.AddToList(this);
         vel = new Vector2(0, 0);
         transform.localPosition = pos;
-        pickDest();
+        StartCoroutine(Guidance());
     }
 
     bool receiveDamage(float damage)
@@ -95,23 +95,20 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
+    IEnumerator Guidance()
+    {
+        yield return new WaitForSeconds(Random.Range(0, 750) / 1000f);
+        while(true)
+        {
+            pickDest();
+            vel = Vector3.Normalize(dstCell.getLocalPos() - ((Vector2)transform.localPosition))*current.speed ;
+            yield return new WaitForSeconds(0.75f);
+        }
+    }
+
     void FixedUpdate()
     {
         transform.localPosition += (Vector3)vel * Time.fixedDeltaTime;
-        Vector2 p = transform.localPosition;
-
-        vel += (Vector2)Vector3.Normalize(dest - p) * Time.fixedDeltaTime * current.speed;
-        vel = vel * (1 -0.5f * Time.fixedDeltaTime);
-
-        p = p - dest;
-        //To Optimize
-        if(tFactory.Find(Cell.getHexCoords(transform.localPosition, 55f / 64f))==dstCell)
-        {
-            pickDest();
-            
-            vel =  (dstCell.getLocalPos()-((Vector2)transform.localPosition))*(current.speed/2f);
-        }
-        
     }
     private void OnDestroy()
     {
