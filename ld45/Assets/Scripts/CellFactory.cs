@@ -33,7 +33,7 @@ public class CellFactory : MonoBehaviour
         return new Vector2Int(-1, -1);
     }
 
-    [SerializeField] private int[] cellCount;
+    [SerializeField] protected int[] cellCount;
 
     public int getCellCount(int index)
     {

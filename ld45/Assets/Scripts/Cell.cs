@@ -26,7 +26,7 @@ public class Cell : MonoBehaviour
     [SerializeField] private Cell[] neighbours = { null, null, null, null, null, null, };
 
 
-    protected CellFactory factory;
+    private CellFactory factory;
 
     public CellFactory getFactory()
     {

@@ -107,25 +107,25 @@ public class TerrainFactory : CellFactory
             {
                 if(Mathf.Pow(i,2)+Mathf.Pow(j,2)<36)
                 {
-                    if(((Terrain)cells[hexToIndex(center + new Vector2Int(i, j))]).buildable!=3)
+                    //if(((Terrain)cells[hexToIndex(center + new Vector2Int(i, j))]).buildable!=3)
                     {
                         Cell cell = Add(center + new Vector2Int(i, j), 0);
                         Swap(cells[hexToIndex(center + new Vector2Int(i, j))], cell);
                     }
 
-                    if (((Terrain)cells[hexToIndex(center + new Vector2Int(-i, j))]).buildable != 3)
+                    //if (((Terrain)cells[hexToIndex(center + new Vector2Int(-i, j))]).buildable != 3)
                     {
                         Cell cell = Add(center + new Vector2Int(-i, j), 0);
                         Swap(cells[hexToIndex(center + new Vector2Int(-i, j))], cell);
                     }
 
-                    if (((Terrain)cells[hexToIndex(center + new Vector2Int(i, -j))]).buildable != 3)
+                    //if (((Terrain)cells[hexToIndex(center + new Vector2Int(i, -j))]).buildable != 3)
                     {
                         Cell cell = Add(center + new Vector2Int(i, -j), 0);
                         Swap(cells[hexToIndex(center + new Vector2Int(i, -j))], cell);
                     }
 
-                    if (((Terrain)cells[hexToIndex(center + new Vector2Int(-i, -j))]).buildable != 3)
+                    //if (((Terrain)cells[hexToIndex(center + new Vector2Int(-i, -j))]).buildable != 3)
                     {
                         Cell cell = Add(center + new Vector2Int(-i, -j), 0);
                         Swap(cells[hexToIndex(center + new Vector2Int(-i, -j))], cell);

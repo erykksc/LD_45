@@ -8,7 +8,7 @@ public class Building : Propagateable
 {
     // Start is called before the first frame update
     [System.Serializable]
-    protected struct Properties
+    public struct Properties
     {
         public int level;
 
@@ -29,7 +29,9 @@ public class Building : Propagateable
 
     [SerializeField] protected Properties[] levels;
 
-    [SerializeField] protected Properties current;
+    [SerializeField] public Properties current;
+
+
 
     public virtual void Upgrade()
     {
@@ -49,17 +51,22 @@ public class Building : Propagateable
     }
 
     [SerializeField] protected Cell terrainUnder;
+    [SerializeField] protected Controller controller;
 
     public void setTerrain(Cell u)
     {
         terrainUnder = u;
+    }
+    public void setController(Controller c)
+    {
+        controller = c;
     }
 
     protected void onPulse()
     {
         StartCoroutine(animatePulse());
         receiveDamage(-current.selfHeal);
-        ScoreCore.Cash += current.moneyps;
+        controller.modifyCash(-current.moneyps);
         StartCoroutine(animatePulse());
     }
     
@@ -91,5 +98,9 @@ public class Building : Propagateable
     void Update()
     {
         
+    }
+    private void OnDestroy()
+    {
+        base.OnDestroy();
     }
 }

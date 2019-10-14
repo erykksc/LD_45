@@ -5,17 +5,26 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     // Start is called before the first frame update
-    float Cash;
+    [SerializeField] float Cash;
 
-    float buildingCount;
-
-    float buildingsAvailable;
+    
 
     Vector2 cpmax,cpmin;
 
     [SerializeField] Camera cam;
     [SerializeField] TerrainFactory tFactory;
     [SerializeField] BuildingFactory bFactory;
+    [SerializeField] EnemyFactory eFactory;
+
+    public bool modifyCash(float amount)
+    {
+        if(Cash-amount<0)
+        {
+            return false;
+        }
+        Cash -= amount;
+        return true;
+    }
 
     private void Awake()
     {
@@ -25,6 +34,7 @@ public class Controller : MonoBehaviour
         }
         tFactory.GenerateMap();
         bFactory.Initialize();
+        eFactory.Initialize();
 
         Vector2 ssize;
         ssize = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 10f));

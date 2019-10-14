@@ -10,6 +10,10 @@ public class Silos : Building
         base.Upgrade();
         animationOffset = current.level - 1;
         renderer.sprite = sprites[animationPerUpgrade * (animationOffset)];
+        if(getFactory()==null)
+        {
+            Debug.Log("Major fuck up");
+        }
     }
 
     void Start()
@@ -21,5 +25,10 @@ public class Silos : Building
     void Update()
     {
         
+    }
+    private void OnDestroy()
+    {
+        base.OnDestroy();
+        ((BuildingFactory)getFactory()).updateAvailable();
     }
 }

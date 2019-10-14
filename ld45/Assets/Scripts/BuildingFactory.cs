@@ -6,6 +6,28 @@ public class BuildingFactory : CellFactory
 {
     // Start is called before the first frame update
     [SerializeField] TerrainFactory tFactory;
+    [SerializeField] Controller controller;
+
+    [SerializeField] int buildingsAvailable;
+
+    public void updateAvailable()
+    {
+        buildingsAvailable = 0;
+        Debug.Log("Updating available");
+        for(int i = 0;i<cells.Count;i++)
+        {
+            buildingsAvailable += ((Building)cells[i]).current.availableBuildings;
+        }
+    }
+   
+    public int getBuildingCount()
+    {
+        return cellCount[-1]-1;
+    }
+    public int getAvailableCount()
+    {
+        return buildingsAvailable;
+    }
 
     private void Awake()
     {
@@ -14,7 +36,7 @@ public class BuildingFactory : CellFactory
 
     public void Initialize()
     {
-        if (tFactory == null)
+        if (tFactory == null||controller == null)
         {
             Debug.Log("In buildingFactory, Awake: Lacking tFactory object");
             return;
@@ -54,6 +76,7 @@ public class BuildingFactory : CellFactory
                 }
             }
         }
+        b.setController(controller);
         cells.Add(b);
         return b;
     }
