@@ -5,8 +5,8 @@ using UnityEngine;
 public class ObjectDraggable : MonoBehaviour
 {
     public bool IsSelected = false;
-    public CellFactory Factory;
-    public CellFactory grassFactory;
+    public BuildingFactory Factory;
+    public TerrainFactory grassFactory;
     public int SpawnedIdentifier=0;
     public Vector3 ReturnPosition;
     public bool makeInfinite = false;
@@ -35,7 +35,6 @@ public class ObjectDraggable : MonoBehaviour
         if(switch1)
         {
             switch1 = false;
-            CellFactory.cellCount = 0;
             ScoreCore.cellCount = new int[5];
             ScoreCore.cellCount[0] = 0;
             ScoreCore.Prices[0] = 4 * ScoreCore.cellCount[0];
@@ -63,13 +62,12 @@ public class ObjectDraggable : MonoBehaviour
             
                 
             //Checking if position is occupied and if player has enough cash to build the cell
-            if ((Factory.Find(hPos) == null&&ScoreCore.Cash>= ScoreCore.Prices[SpawnedIdentifier]&&grassFactory.Find(hPos).buildable) && Input.mousePosition.y>Camera.main.pixelWidth/7&&Silos.getAvailableBuildings()>CellFactory.cellCount  ) // > (Camera.main.pixelHeight/10) 
+            if ((Factory.Find(hPos) == null&&ScoreCore.Cash>= ScoreCore.Prices[SpawnedIdentifier]&&((Terrain)grassFactory.Find(hPos)).buildable==0) && Input.mousePosition.y>Camera.main.pixelWidth/7)//&&Silos.getAvailableBuildings()>CellFactory.cellCount  ) // > (Camera.main.pixelHeight/10) 
             {
-                CellFactory.cellCount++;
 
                 ScoreCore.cellCount[SpawnedIdentifier]++;
 
-                Factory.Add(hPos, SpawnedIdentifier);
+                Factory.Build(hPos, SpawnedIdentifier);
                 GameObject.Instantiate(Resources.Load<GameObject>("BuildParticles") as GameObject, Cell.getGlobalCoords(Cell.getHexCoords(WorldPos, 55f/64f), 55f/64f), Quaternion.identity);
 
                 //Charging for purchase
@@ -88,7 +86,7 @@ public class ObjectDraggable : MonoBehaviour
                 Camera.main.GetComponent<ScoreCore>().PriceDisplayers[3].text = ScoreCore.Prices[3].ToString() + "$";
                 Camera.main.GetComponent<ScoreCore>().PriceDisplayers[4].text = ScoreCore.Prices[4].ToString() + "$";
 
-                Debug.Log($"Info cell: {CellFactory.cellCount}");
+                Debug.Log($"Info cell: {Factory.getCellCount(-1)}");
             }
 
             

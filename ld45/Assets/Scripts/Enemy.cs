@@ -25,9 +25,11 @@ public class Enemy : MonoBehaviour
     public Vector2 pos;
     public Vector2 vel;
 
+    Vector2 uBound;
+
     [SerializeField]Vector2 dest;
 
-    Cell dstCell;
+    public Cell dstCell;
 
     int dValue = int.MaxValue;
 
@@ -70,6 +72,7 @@ public class Enemy : MonoBehaviour
         renderer.sprite = sprites[0];
         color = Color.red;
         renderer.color = color;
+        
     }
     public void Instantiate(Vector2 p,TerrainFactory tf,EnemyFactory ef)
     {
@@ -81,6 +84,7 @@ public class Enemy : MonoBehaviour
         vel = new Vector2(0, 0);
         transform.localPosition = pos;
         StartCoroutine(Guidance());
+        uBound = Cell.getGlobalCoords(tFactory.getSize(), 55f / 64f);
     }
 
     bool receiveDamage(float damage)
@@ -101,7 +105,8 @@ public class Enemy : MonoBehaviour
         while(true)
         {
             pickDest();
-            vel = Vector3.Normalize(dstCell.getLocalPos() - ((Vector2)transform.localPosition))*current.speed ;
+            vel = vel * 0.25f;
+            vel += (Vector2)Vector3.Normalize(dstCell.getLocalPos() - ((Vector2)transform.localPosition))*current.speed*0.75f ;
             yield return new WaitForSeconds(0.75f);
         }
     }
@@ -109,6 +114,23 @@ public class Enemy : MonoBehaviour
     void FixedUpdate()
     {
         transform.localPosition += (Vector3)vel * Time.fixedDeltaTime;
+        if(transform.localPosition.x<0)
+        {
+            transform.localPosition = new Vector3(0, transform.localPosition.y, transform.localPosition.z);
+        }
+        if (transform.localPosition.y < 0)
+        {
+            transform.localPosition = new Vector3(transform.localPosition.x, 0, transform.localPosition.z);
+        }
+
+        if (transform.localPosition.x >uBound.x)
+        {
+            transform.localPosition = new Vector3(uBound.x, transform.localPosition.y, transform.localPosition.z);
+        }
+        if (transform.localPosition.y >uBound.y)
+        {
+            transform.localPosition = new Vector3(transform.localPosition.x, uBound.y, transform.localPosition.z);
+        }
     }
     private void OnDestroy()
     {
