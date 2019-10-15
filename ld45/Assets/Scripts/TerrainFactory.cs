@@ -249,6 +249,23 @@ public class TerrainFactory : CellFactory
         }
     }
 
+    public bool buildBridge(Vector2Int pos)
+    {
+        Cell cell = Find(pos);
+        Cell temp;
+        if(cell==null)
+        {
+            return false;
+        }
+        if(cell.ID==7)
+        {
+            temp = Add(pos, 8);
+            Swap(cell, temp);
+            return true;
+        }
+        return false;
+    }
+
     void GenerateRocks(int index, int den)
     {
         int xstep, ystep;

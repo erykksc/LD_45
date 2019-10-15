@@ -125,6 +125,15 @@ public class Controller : MonoBehaviour
             bFactory.Build(Cell.getHexCoords(pos, 55f / 64f), 4);
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha5) )
+        {
+            Vector3 pos = Input.mousePosition;
+            pos.z = 10f;
+            pos = Camera.main.ScreenToWorldPoint(pos);
+
+            tFactory.buildBridge(Cell.getHexCoords(pos, 55f / 64f));
+        }
+
         if (Input.GetKeyDown(KeyCode.U))
         {
             Vector3 pos = Input.mousePosition;
