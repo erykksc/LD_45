@@ -261,6 +261,7 @@ public class TerrainFactory : CellFactory
         {
             temp = Add(pos, 8);
             Swap(cell, temp);
+            Dijkstra(((Terrain)cells[hexToIndex(new Vector2Int(size.x / 2, size.y / 2))]));
             return true;
         }
         return false;

@@ -449,6 +449,7 @@ MonoBehaviour:
   - {fileID: 3641044792922780545, guid: b65c4a669e6c31041a97250244dd40c9, type: 3}
   - {fileID: 5531806912329588687, guid: 08fee50b022f16e459851ef512d9ce19, type: 3}
   - {fileID: 5324182327837693962, guid: f1a811e3327ba594f99932979d08acf0, type: 3}
+  - {fileID: 4583340104920559674, guid: 12e98959280b98d4a8dd1ffcfd9e9d5d, type: 3}
   size: {x: 50, y: 50}
 --- !u!114 &1220522950 stripped
 MonoBehaviour:

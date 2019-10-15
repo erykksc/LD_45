@@ -35,7 +35,7 @@ public class EnemyFactory : MonoBehaviour
     }
     public void Initialize()
     {
-        SpawnBatch(2);
+        SpawnBatch(200);
     }
 
     public void Spawn(int index)
