@@ -55,7 +55,7 @@ public class ScoreCore : MonoBehaviour
     //Current Cash level is updated
     void Update()
     {
-        CashDisplayer.text = Cash.ToString();
+        CashDisplayer.text = Cash.ToString()+'$';
         TimeSinceStart += Time.deltaTime;
         string minutes = Mathf.Floor(TimeSinceStart / 60).ToString("00");
         string seconds = Mathf.Floor(TimeSinceStart % 60).ToString("00");
