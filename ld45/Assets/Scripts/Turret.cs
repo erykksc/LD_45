@@ -6,6 +6,7 @@ public class Turret : Building
 {
     // Start is called before the first frame update
     [SerializeField] SpriteRenderer head;
+    [SerializeField] LineRenderer liner;
     [SerializeField] float turningTime;
     [SerializeField] Sprite[] heads;
     EnemyFactory eFactory;
@@ -68,6 +69,7 @@ public class Turret : Building
     {
         base.Awake();
         head = GetComponentsInChildren<SpriteRenderer>()[1];
+        liner = GetComponentsInChildren<LineRenderer>()[1];
         head.transform.localPosition = new Vector2(0, 0);
 
         current.level = 0;
@@ -77,9 +79,9 @@ public class Turret : Building
         turningTime = 0.2f;
     }
 
-    IEnumerator animateBullet()
+    //IEnumerator animateBullet()
     {
-        yield return null;
+        //liner.
     }
 
     void Start()
