@@ -69,7 +69,7 @@ public class Turret : Building
     {
         base.Awake();
         head = GetComponentsInChildren<SpriteRenderer>()[1];
-        liner = GetComponentsInChildren<LineRenderer>()[1];
+        //liner = GetComponentsInChildren<LineRenderer>()[1];
         head.transform.localPosition = new Vector2(0, 0);
 
         current.level = 0;
@@ -79,10 +79,7 @@ public class Turret : Building
         turningTime = 0.2f;
     }
 
-    //IEnumerator animateBullet()
-    {
-        //liner.
-    }
+
 
     void Start()
     {

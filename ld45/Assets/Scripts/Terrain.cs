@@ -19,6 +19,7 @@ public class Terrain : Cell
     {
         base.Awake();
         distToGen = int.MaxValue;
+        transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 60 * Random.Range(0, 7)));
     }
 
     // Update is called once per frame
