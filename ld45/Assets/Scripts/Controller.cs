@@ -89,7 +89,7 @@ public class Controller : MonoBehaviour
         cam.transform.localPosition = cPos;
 
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1)&&bFactory.charge(1))
         {
             Vector3 pos = Input.mousePosition;
             pos.z = 10f;
@@ -98,7 +98,7 @@ public class Controller : MonoBehaviour
             bFactory.Build(Cell.getHexCoords(pos,55f/64f), 1);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) && bFactory.charge(2))
         {
             Vector3 pos = Input.mousePosition;
             pos.z = 10f;
@@ -107,7 +107,7 @@ public class Controller : MonoBehaviour
             bFactory.Build(Cell.getHexCoords(pos, 55f / 64f), 2);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3) && bFactory.charge(3))
         {
             Vector3 pos = Input.mousePosition;
             pos.z = 10f;
@@ -116,7 +116,7 @@ public class Controller : MonoBehaviour
             bFactory.Build(Cell.getHexCoords(pos, 55f / 64f), 3);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+        if (Input.GetKeyDown(KeyCode.Alpha4) && bFactory.charge(4))
         {
             Vector3 pos = Input.mousePosition;
             pos.z = 10f;
@@ -150,5 +150,6 @@ public class Controller : MonoBehaviour
             }
             
         }
+        bFactory.updateAvailable();
     }
 }

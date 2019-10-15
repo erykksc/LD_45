@@ -12,7 +12,7 @@ public class BuildingFactory : CellFactory
 
     public void updateAvailable()
     {
-        buildingsAvailable = 0;
+        buildingsAvailable = 5;
         Debug.Log("Updating available");
         for(int i = 0;i<cells.Count;i++)
         {
@@ -32,6 +32,13 @@ public class BuildingFactory : CellFactory
     private void Awake()
     {
         base.Awake();
+    }
+
+    int[] multipliers = { 1, 2, 3, 4 };
+
+    public bool charge(int index)
+    {
+        return controller.modifyCash(cellCount[index]*multipliers[index-1]);
     }
 
     public void Initialize()
