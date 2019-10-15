@@ -62,7 +62,7 @@ public class Building : Propagateable
         controller = c;
     }
 
-    protected void onPulse()
+    protected virtual void onPulse()
     {
         StartCoroutine(animatePulse());
         receiveDamage(-current.selfHeal);
@@ -80,11 +80,12 @@ public class Building : Propagateable
         
     }
 
-    protected bool receiveDamage(float damage)
+    public bool receiveDamage(float damage)
     {
         current.hp -= damage;
         if(current.hp<=0)
         {
+            Destroy(this.gameObject);
             return true;
         }
         if(current.hp>levels[current.level-1].hp)

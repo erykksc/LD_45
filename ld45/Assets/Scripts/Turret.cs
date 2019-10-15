@@ -8,19 +8,43 @@ public class Turret : Building
     [SerializeField] SpriteRenderer head;
     [SerializeField] float turningTime;
     [SerializeField] Sprite[] heads;
+    EnemyFactory eFactory;
+    bool shooting = false;
 
-    IEnumerator Seek(GameObject target)
+    void Seek()
     {
-        Vector2 dir1 = target.transform.position-transform.position;
+        Enemy t;
+            t = eFactory.getClosestTo(transform.localPosition);
+            if (t == null)
+            {
+            return;
+            }
+            if(Vector2.Distance(transform.localPosition,t.transform.localPosition)>current.range)
+            {
+            return;
+            }
+            Debug.Log("Enemy Found");
+            StartCoroutine(DestroyEnemy(t));
+        
+    }
+    IEnumerator DestroyEnemy(Enemy target)
+    {
+        
+        Vector2 dir1 = -Vector3.Normalize(target.transform.position-transform.position);
         Vector2 dir2 = head.transform.right;
         Vector2 dir3;
         float time = 0;
         while(time<turningTime)
         {
-            head.transform.right = Vector3.Normalize((dir1*(turningTime-time) + dir2*time)/turningTime);
+            dir1 = -Vector3.Normalize(target.transform.position - transform.position);
+            head.transform.right = (dir1 * time + dir2 * (turningTime - time))/turningTime;
             time += Time.deltaTime;
             yield return new WaitForSeconds(0.05f);
         }
+        //head.transform.right = Vector2.down;
+        //head.transform.right = dir1;
+        target.receiveDamage(current.damage);
+        Debug.Log("Enemy shot");
         yield return null;
     }
     public override void Upgrade()
@@ -33,6 +57,13 @@ public class Turret : Building
         }
     }
 
+    protected override void onPulse()
+    {
+        base.onPulse();
+        Seek();
+        Debug.Log("Overriden");
+    }
+
     private void Awake()
     {
         base.Awake();
@@ -42,11 +73,17 @@ public class Turret : Building
         current.level = 0;
         Upgrade();
         head.sprite = heads[current.level - 1];
+        eFactory = EnemyFactory.getFactory();
+        turningTime = 0.2f;
+    }
+
+    IEnumerator animateBullet()
+    {
+        yield return null;
     }
 
     void Start()
     {
-        
     }
 
     // Update is called once per frame

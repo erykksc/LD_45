@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current:
     hp: 100
-    damage: 10
+    damage: 5
     speed: 1
   tFactory: {fileID: 0}
   factory: {fileID: 0}
@@ -55,6 +55,7 @@ MonoBehaviour:
   pos: {x: 0, y: 0}
   vel: {x: 0, y: 0}
   dest: {x: 0, y: 0}
+  dstCell: {fileID: 0}
 --- !u!212 &3457237868362221200
 SpriteRenderer:
   m_ObjectHideFlags: 0

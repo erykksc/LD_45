@@ -14,6 +14,13 @@ public class EnemyFactory : MonoBehaviour
 
     float repulsionStrength = 1;
 
+    static EnemyFactory eFactory;
+
+    static public EnemyFactory getFactory()
+    {
+        return eFactory;
+    }
+
     void Start()
     {
 
@@ -24,10 +31,11 @@ public class EnemyFactory : MonoBehaviour
         {
             enemies = new List<Enemy>();
         }
+        eFactory = this;
     }
     public void Initialize()
     {
-        SpawnBatch(100);
+        SpawnBatch(2);
     }
 
     public void Spawn(int index)
@@ -47,7 +55,7 @@ public class EnemyFactory : MonoBehaviour
         {
             while (true)
             {
-                pos = new Vector2Int(0, Random.Range(0, tFactory.getSize().y));
+                pos = new Vector2Int(1, Random.Range(1, tFactory.getSize().y-1));
                 if (((Terrain)tFactory.Find(pos)).distToGen < 9999)
                 {
                     break;
@@ -64,7 +72,7 @@ public class EnemyFactory : MonoBehaviour
         {
             while (true)
             {
-                pos = new Vector2Int(tFactory.getSize().x - 1, Random.Range(0, tFactory.getSize().y));
+                pos = new Vector2Int(tFactory.getSize().x - 2, Random.Range(1, tFactory.getSize().y-1));
                 if (((Terrain)tFactory.Find(pos)).distToGen < 9999)
                 {
                     break;
@@ -81,7 +89,7 @@ public class EnemyFactory : MonoBehaviour
         {
             while (true)
             {
-                pos = new Vector2Int(Random.Range(0, tFactory.getSize().x), 0);
+                pos = new Vector2Int(Random.Range(1, tFactory.getSize().x-1), 1);
                 if (((Terrain)tFactory.Find(pos)).distToGen < 9999)
                 {
                     break;
@@ -98,7 +106,7 @@ public class EnemyFactory : MonoBehaviour
         {
             while (true)
             {
-                pos = new Vector2Int(Random.Range(0, tFactory.getSize().x), tFactory.getSize().y - 1);
+                pos = new Vector2Int(Random.Range(1, tFactory.getSize().x-1), tFactory.getSize().y - 2);
                 if (((Terrain)tFactory.Find(pos)).distToGen < 9999)
                 {
                     break;
@@ -177,8 +185,23 @@ public class EnemyFactory : MonoBehaviour
                 {
                     dir = (Vector2)Vector3.Normalize(dir);
                     enemies[i].vel += dir * (4 / (ddist + 0.3f)) * Time.fixedDeltaTime;
+                    building.receiveDamage(enemies[i].getDamage()*Time.fixedDeltaTime);
                 }
             }
         }
+    }
+    public Enemy getClosestTo(Vector2 pos)
+    {
+        Enemy e= null;
+        float dist = float.MaxValue;
+        for(int i = 0;i<enemies.Count;i++)
+        {
+            if(Vector2.Distance(pos,enemies[i].transform.localPosition)<dist)
+            {
+                e = enemies[i];
+                dist = Vector2.Distance(pos, enemies[i].transform.localPosition);
+            }
+        }
+        return e;
     }
 }

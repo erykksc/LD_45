@@ -12,6 +12,11 @@ public class Enemy : MonoBehaviour
         public float speed;
     }
 
+    public float getDamage()
+    {
+        return current.damage;
+    }
+
     [SerializeField] Status current;
 
     [SerializeField] TerrainFactory tFactory;
@@ -45,7 +50,7 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
-        Debug.Log($"Localized on:{t.pos}");
+       
         for(int i = 0;i<6;i++)
         {
             if(t.getNeighbour(i)!=null)
@@ -87,7 +92,7 @@ public class Enemy : MonoBehaviour
         uBound = Cell.getGlobalCoords(tFactory.getSize(), 55f / 64f);
     }
 
-    bool receiveDamage(float damage)
+    public bool receiveDamage(float damage)
     {
         current.hp -= damage;
         if(current.hp<=0)
@@ -106,7 +111,28 @@ public class Enemy : MonoBehaviour
         {
             pickDest();
             vel = vel * 0.25f;
+            if (dstCell == null)
+            {
+                //Destroy(this.gameObject);
+            }
             vel += (Vector2)Vector3.Normalize(dstCell.getLocalPos() - ((Vector2)transform.localPosition))*current.speed*0.75f ;
+            if (transform.localPosition.x < 0)
+            {
+                Destroy(this.gameObject);
+            }
+            if (transform.localPosition.y < 0)
+            {
+                Destroy(this.gameObject);
+            }
+
+            if (transform.localPosition.x > uBound.x)
+            {
+                Destroy(this.gameObject);
+            }
+            if (transform.localPosition.y > uBound.y)
+            {
+                Destroy(this.gameObject);
+            }
             yield return new WaitForSeconds(0.75f);
         }
     }
@@ -114,23 +140,7 @@ public class Enemy : MonoBehaviour
     void FixedUpdate()
     {
         transform.localPosition += (Vector3)vel * Time.fixedDeltaTime;
-        if(transform.localPosition.x<0)
-        {
-            transform.localPosition = new Vector3(0, transform.localPosition.y, transform.localPosition.z);
-        }
-        if (transform.localPosition.y < 0)
-        {
-            transform.localPosition = new Vector3(transform.localPosition.x, 0, transform.localPosition.z);
-        }
-
-        if (transform.localPosition.x >uBound.x)
-        {
-            transform.localPosition = new Vector3(uBound.x, transform.localPosition.y, transform.localPosition.z);
-        }
-        if (transform.localPosition.y >uBound.y)
-        {
-            transform.localPosition = new Vector3(transform.localPosition.x, uBound.y, transform.localPosition.z);
-        }
+        
     }
     private void OnDestroy()
     {
