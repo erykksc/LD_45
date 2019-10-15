@@ -7,7 +7,12 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] float Cash;
 
-    
+    static Controller controller;
+
+    public static Controller getController()
+    {
+        return controller;
+    }
 
     Vector2 cpmax,cpmin;
 
@@ -28,6 +33,7 @@ public class Controller : MonoBehaviour
 
     private void Awake()
     {
+        controller = this;
         if (tFactory == null||bFactory == null||cam==null)
         {
             Debug.Log("In Controller, Awake: Lacking factory object");

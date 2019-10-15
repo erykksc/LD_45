@@ -25,6 +25,8 @@ public class Building : Propagateable
         public float pulseFrequency;
 
         public int availableBuildings;
+
+        public int price;
     }
 
     [SerializeField] protected Properties[] levels;
@@ -35,12 +37,18 @@ public class Building : Propagateable
 
     public virtual void Upgrade()
     {
-        current.level++;
-        if(current.level>3)
+        Controller controller = Controller.getController();
+        if (current.level == 3)
         {
             current.level = 3;
             return;
         }
+        if(!controller.modifyCash(levels[current.level].price))
+        {
+            return;
+        }
+        current.level++;
+        
 
         current = levels[current.level-1];
     }

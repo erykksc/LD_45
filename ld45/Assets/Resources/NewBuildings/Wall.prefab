@@ -143,6 +143,8 @@ MonoBehaviour:
     range: 0
     selfHeal: 2
     pulseFrequency: 0
+    availableBuildings: 0
+    price: 0
   - level: 2
     hp: 400
     moneyps: 0
@@ -150,6 +152,8 @@ MonoBehaviour:
     range: 0
     selfHeal: 3
     pulseFrequency: 0
+    availableBuildings: 0
+    price: 3
   - level: 3
     hp: 600
     moneyps: 0
@@ -157,6 +161,8 @@ MonoBehaviour:
     range: 0
     selfHeal: 4
     pulseFrequency: 0
+    availableBuildings: 0
+    price: 5
   current:
     level: 0
     hp: 0
@@ -165,3 +171,7 @@ MonoBehaviour:
     range: 0
     selfHeal: 0
     pulseFrequency: 0
+    availableBuildings: 0
+    price: 0
+  terrainUnder: {fileID: 0}
+  controller: {fileID: 0}
